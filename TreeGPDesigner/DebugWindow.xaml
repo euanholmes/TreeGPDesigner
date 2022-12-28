@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TreeGPDesigner"
+        xmlns:local="clr-namespace:TreeGPDesigner" xmlns:i="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:DebugWindowViewModel}"
         Title="DebugWindow" Height="450" Width="800">
@@ -40,11 +40,11 @@
 
         <Border Margin="10" ClipToBounds="true" x:Name="testBorder" Background="White" Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
             <Grid>
-               
+
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="Images/PanZoom2.png"/>
 
-                <Canvas x:Name="testContainerCanvas">
-                    <ItemsControl ItemsSource="{Binding CurrentTreePlot}">
+                <Canvas x:Name="testContainerCanvas" RenderTransform="{Binding ZoomScaleTransform}">
+                    <ItemsControl x:Name="testCanvas1" ItemsSource="{Binding CurrentTreePlot}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <Canvas IsItemsHost="true"/>
@@ -57,10 +57,10 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <ItemsControl ItemsSource="{Binding CurrentTreePlot}">
+                    <ItemsControl x:Name="testCanvas2" ItemsSource="{Binding CurrentTreePlot}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <Canvas IsItemsHost="True"/>
+                                <Canvas  IsItemsHost="True"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemContainerStyle>
@@ -79,8 +79,6 @@
                     </ItemsControl>
                 </Canvas>
             </Grid>
-
-
         </Border>
 
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">

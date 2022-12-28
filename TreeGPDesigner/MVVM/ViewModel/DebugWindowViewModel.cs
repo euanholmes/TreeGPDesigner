@@ -9,17 +9,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner
 {
     public partial class DebugWindowViewModel : ObservableObject
     {
-        private List<int> testItems = new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 };
-        private int testBinCapacity = 60;
-        private int testBinCapacity2 = 61;
-        public static int testDisplayTreeCount = 0;
         public static BinPackingTemplate bpTemplate = new();
+        public static int testDisplayTreeCount = 0;
         public static int populationCount = 50;
         public static int minDepth = 1;
         public static int maxDepth = 3;
@@ -31,11 +29,11 @@ namespace TreeGPDesigner
         public static CornerRadius zeroCornerRadius = new CornerRadius(0);
         public static Node currentTree;
 
-        [ObservableProperty]
-        private string debugText = "Debug: ";
-
         public ICommand NextTreeCommand { get; }
         public ICommand MutateCommand { get; }
+
+        [ObservableProperty]
+        private string debugText = "Debug: ";
 
         [ObservableProperty]
         private string id = "ID:";
@@ -46,11 +44,13 @@ namespace TreeGPDesigner
         [ObservableProperty]
         private ObservableCollection<NodePlot> currentTreePlot = new ObservableCollection<NodePlot>();
 
+        //[ObservableProperty]
+        //private ScaleTransform zoomScaleTransform = new ScaleTransform();
+
         public DebugWindowViewModel()
         {
             NextTreeCommand = new RelayCommand(NextTree);
             MutateCommand = new RelayCommand(MutateTree);
-
 
             bpTemplate.AddFunctionNode(new FunctionNode("<=", 2, a => a[0] <= a[1] ? 1 : 0, true));
             bpTemplate.AddFunctionNode(new FunctionNode("+", 2, a => a[0] + a[1], false));
@@ -60,11 +60,6 @@ namespace TreeGPDesigner
             bpTemplate.AddTerminalNode(new TerminalNode("BC", 0, 2, true));
             bpTemplate.AddTerminalNode(new TerminalNode("-1", 0, -1, false));
             bpTemplate.AddRootNode(new FunctionNode("<=", 2, a => a[0] <= a[1] ? 1 : 0, true));
-
-            //Node ffdTree = bpTemplate.MakeFFDTree();
-            //bpTemplate.GetFitness(ffdTree, testItems, testBinCapacity);
-            //Console.WriteLine($"FFD Tree ID: {ffdTree.Id}. Node Fitness: {ffdTree.Fitness}");
-            //TreeDrawingAlgorithm.CalculateNodePositions(ffdTree);
 
             //Generate population then get fitness of all trees.
             bpTemplate.GeneratePopulationRampedHalfAndHalf(populationCount, minDepth, maxDepth);
@@ -79,7 +74,6 @@ namespace TreeGPDesigner
 
             DrawTree();
         }
-
 
         private void NextTree()
         {
