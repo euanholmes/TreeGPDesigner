@@ -14,17 +14,17 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TreeGPDesigner.MVVM.ViewModel;
 
-namespace TreeGPDesigner
+namespace TreeGPDesigner.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TutorialsMenu.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TutorialsMenu : UserControl
     {
-        public MainWindow()
+        public TutorialsMenu()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = new TutorialsMenuViewModel();
         }
     }
 }

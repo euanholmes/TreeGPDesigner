@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TreeGPDesigner
+namespace TreeGPDesigner.MVVM.Model
 {
     public abstract class Node
     {

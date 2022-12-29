@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using TreeGPDesigner.MVVM.Model;
 
-namespace TreeGPDesigner
+namespace TreeGPDesigner.MVVM.ViewModel
 {
     public partial class DebugWindowViewModel : ObservableObject
     {
@@ -31,6 +31,12 @@ namespace TreeGPDesigner
 
         public ICommand NextTreeCommand { get; }
         public ICommand MutateCommand { get; }
+
+        [ObservableProperty]
+        private float canvasWidth;
+
+        [ObservableProperty]
+        private float canvasHeight;
 
         [ObservableProperty]
         private string debugText = "Debug: ";
@@ -89,10 +95,11 @@ namespace TreeGPDesigner
 
         private void MutateTree()
         {
-            CurrentTreePlot.Clear();
             bpTemplate.Mutate(currentTree, maxDepth);
+            DrawTree();
+            /*CurrentTreePlot.Clear();
             TreeDrawingAlgorithm.CalculateNodePositions(currentTree);
-            GetTreePlot(currentTree);
+            GetTreePlot(currentTree);*/
         }
 
         private void DrawTree()
@@ -100,8 +107,13 @@ namespace TreeGPDesigner
             CurrentTreePlot.Clear();
             currentTree = bpTemplate.Generation[testDisplayTreeCount];
             TreeDrawingAlgorithm.CalculateNodePositions(currentTree);
+
+            CanvasHeight = currentTree.Height * 100;
+            canvasWidth = currentTree.Width * 100;
+
             GetTreePlot(currentTree);
             Id = "ID: " + currentTree.Id.ToString();
+            //bpTemplate.GetFitness(currentTree)
             Fitness = "Fitness: " + currentTree.Fitness.ToString();
         }
 

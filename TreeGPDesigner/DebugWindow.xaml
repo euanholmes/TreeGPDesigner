@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TreeGPDesigner" xmlns:i="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic"
+        xmlns:vm="clr-namespace:TreeGPDesigner.MVVM.ViewModel"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=local:DebugWindowViewModel}"
+        d:DataContext="{d:DesignInstance Type=vm:DebugWindowViewModel}"
         Title="DebugWindow" Height="450" Width="800">
     <Grid x:Name="debugWindowGrid">
 
@@ -39,12 +40,15 @@
         <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding DebugText}"></TextBlock>
 
         <Border Margin="10" ClipToBounds="true" x:Name="testBorder" Background="White" Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+            
             <Grid>
 
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="Images/PanZoom2.png"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="Images/zoom-pan-icon.png"/>
 
-                <Canvas x:Name="testContainerCanvas" RenderTransform="{Binding ZoomScaleTransform}">
-                    <ItemsControl x:Name="testCanvas1" ItemsSource="{Binding CurrentTreePlot}">
+                
+                
+                <Canvas x:Name="testContainerCanvas" Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}">
+                    <ItemsControl ItemsSource="{Binding CurrentTreePlot}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <Canvas IsItemsHost="true"/>
@@ -57,10 +61,10 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <ItemsControl x:Name="testCanvas2" ItemsSource="{Binding CurrentTreePlot}">
+                    <ItemsControl ItemsSource="{Binding CurrentTreePlot}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <Canvas  IsItemsHost="True"/>
+                                <Canvas IsItemsHost="True"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemContainerStyle>

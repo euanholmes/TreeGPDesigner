@@ -12,19 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TreeGPDesigner.MVVM.ViewModel;
 
-namespace TreeGPDesigner
+namespace TreeGPDesigner.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HomeView : UserControl
     {
-        public MainWindow()
+        public HomeView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+        }
+
+        private void DebugBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DebugWindow debugWindow = new DebugWindow();
+            debugWindow.Show();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Close();
         }
     }
 }

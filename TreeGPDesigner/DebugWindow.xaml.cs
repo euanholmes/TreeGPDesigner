@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TreeGPDesigner.MVVM.ViewModel;
 
 namespace TreeGPDesigner
 {
@@ -26,9 +27,14 @@ namespace TreeGPDesigner
 
 
             //Pan and zoom code.
+            TransformGroup transformGroup = new TransformGroup();
             ScaleTransform scaleTransform = new ScaleTransform();
-            testCanvas1.RenderTransform = scaleTransform;
-            testCanvas2.RenderTransform = scaleTransform;
+            MatrixTransform matrixTransform = new MatrixTransform();
+            var clickPosition = new Point(0, 0);
+            var isDragged = false;
+            transformGroup.Children.Add(matrixTransform);
+            transformGroup.Children.Add(scaleTransform);
+            testContainerCanvas.RenderTransform = transformGroup;
 
             testBorder.MouseWheel += (sender, e) =>
             {
@@ -43,11 +49,6 @@ namespace TreeGPDesigner
                     scaleTransform.ScaleY /= 1.1;
                 }
             };
-
-            var clickPosition = new Point(0, 0);
-            var isDragged = false;
-            var matrixTransform = new MatrixTransform();
-            testContainerCanvas.RenderTransform = matrixTransform;
 
             testBorder.MouseLeftButtonDown += (sender, e) =>
             {

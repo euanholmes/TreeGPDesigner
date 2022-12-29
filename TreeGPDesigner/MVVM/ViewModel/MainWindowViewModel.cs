@@ -8,30 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace TreeGPDesigner
+namespace TreeGPDesigner.MVVM.ViewModel
 {
     public partial class MainWindowViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private string name = "Euan";
 
-        public ICommand ChangeNameCommand { get; }
+        [ObservableProperty]
+        private object? currentView;
+
+        public HomeViewModel HomeVM { get; set; }
+
+        public TutorialsMenuViewModel TutorialsMenuVM { get; set; }
+
 
         public MainWindowViewModel()
         {
-            ChangeNameCommand = new RelayCommand(ChangeName);
-        }
-
-        private void ChangeName()
-        {
-            if (Name == "Euan")
-            {
-                Name = "Holmes";
-            }
-            else
-            {
-                Name = "Euan";
-            }      
+            HomeVM = new HomeViewModel();
+            TutorialsMenuVM = new TutorialsMenuViewModel();
+            CurrentView = HomeVM;
         }
     }
 }
