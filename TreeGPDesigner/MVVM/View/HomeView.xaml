@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
-    <!--Main Window Grid-->
+    
+    <!-- Main Window Grid -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
@@ -20,7 +21,7 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
-        <!-- Title and sub-title !-->
+        <!-- Title and sub-title -->
         <Grid Grid.Column="1" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -39,7 +40,7 @@
             </Viewbox>
         </Grid>
 
-        <!--Light/Dark Mode Button-->
+        <!-- Light/Dark Mode Button -->
         <Grid Grid.Column="2" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
@@ -54,7 +55,7 @@
             </Viewbox>
         </Grid>
         
-        <!--Main Menu Buttons-->
+        <!-- Main Menu Buttons -->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -77,7 +78,7 @@
             </Viewbox>
         </Grid>
         
-        <!--Example Tree and Colour Settings-->
+        <!-- Example Tree and Colour Settings -->
         <Grid Grid.Column="2" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
@@ -251,25 +252,28 @@
             </Grid>
         </Grid>
 
-        <!--Exit Button-->
+        <!-- Exit Button -->
         <Grid Grid.Column="1" Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.2*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="6*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Viewbox HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1">
+            <Viewbox HorizontalAlignment="Center" Grid.Row="1">
                 <Button Padding="8, 2" x:Name="exitBtn" Content="Exit" Click="ExitBtn_Click" />
             </Viewbox>
+        </Grid>
 
-            <Viewbox Grid.Column="3" Grid.Row="1">
+        <!-- Debug Window Button -->
+        <Grid Grid.Column="2" Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Viewbox HorizontalAlignment="Right" Grid.Row="1">
                 <Button Padding="8, 2" x:Name="debugBtn" Content="Debug Window" Click="DebugBtn_Click"/>
             </Viewbox>
         </Grid>

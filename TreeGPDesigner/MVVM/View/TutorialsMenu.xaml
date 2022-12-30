@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d"
              d:DesignHeight="540" d:DesignWidth="960">
-    <!--Tutorials Menu Grid-->
+    
+    <!-- Tutorials Menu Grid -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,12 +23,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--Tutorial Title-->
+        <!-- Tutorial Title -->
         <Viewbox Grid.Row="0" Grid.Column="1">
             <TextBlock FontWeight="Bold"  Text="Tutorials" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
-        <!--Tutorials-->
+        <!-- Tutorials -->
         <Border Background="#f5f5f5" Grid.Row="2" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -37,7 +38,7 @@
                 </Grid.RowDefinitions>
                 
 
-                <!--Genetic Programming Basics Tutorial-->
+                <!-- Genetic Programming Basics Tutorial -->
                 <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -72,7 +73,7 @@
                     </Grid>
                 </Border>
 
-                <!--Starting a GP Run Tutorial-->
+                <!-- Starting a GP Run Tutorial -->
                 <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1 1 1 1">
                     <Grid >
                         <Grid.ColumnDefinitions>
@@ -105,7 +106,7 @@
                     </Grid>
                 </Border>
 
-                <!--Custom Nodes Tutorial-->
+                <!-- Custom Nodes Tutorial -->
                 <Border Grid.Row="2"  BorderBrush="Black" BorderThickness="1 1 1 1">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -141,7 +142,7 @@
             </Grid>
         </Border>
 
-        <!--Main Menu Button-->
+        <!-- Main Menu Button -->
         <Grid Grid.Row="4" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
