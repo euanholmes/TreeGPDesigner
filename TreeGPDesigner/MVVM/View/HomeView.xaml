@@ -8,10 +8,10 @@
              d:DesignHeight="540" d:DesignWidth="960">
     <!--Main Window Grid-->
     <Grid>
-
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1.7*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -21,44 +21,64 @@
         </Grid.RowDefinitions>
 
         <!-- Title and sub-title !-->
-        <StackPanel Grid.Column="0" Grid.Row="0">
-            <TextBlock FontSize="50" FontWeight="Bold" Margin="0 10 0 0"  Text="Tree GP Designer" HorizontalAlignment="Center"/>
-            <TextBlock FontWeight="DemiBold" Margin="0 5 0 0" HorizontalAlignment="Center" Text="Automatically generate programs and algorithms"/>
-            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Center" Text="with tree-based genetic programming."/>
-        </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Viewbox Grid.Row="0">
+                <TextBlock FontWeight="Bold" Text="Tree GP Designer" HorizontalAlignment="Center"/>
+            </Viewbox>
+
+            <Viewbox  Grid.Row="1">
+                <TextBlock TextAlignment="Center" FontWeight="DemiBold" HorizontalAlignment="Center">
+                    Automatically generate programs and algorithms<LineBreak/>
+                    with tree-based genetic programming.
+                </TextBlock>
+            </Viewbox>
+        </Grid>
 
         <!--Light/Dark Mode Button-->
-        <ToggleButton Background="White" BorderThickness="0" Margin="0 20 20 0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="50" Width="100" Grid.Column="1">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Images/light-mode-toggle-icon.png"/>
-        </ToggleButton>
+        <Grid Grid.Column="2" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
 
+            <Viewbox Grid.Column="1">
+                <ToggleButton Background="Transparent" BorderThickness="0">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Images/light-mode-toggle-icon.png"/>
+                </ToggleButton>
+            </Viewbox>
+        </Grid>
+        
         <!--Main Menu Buttons-->
-        <Border Grid.Column="0" Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="1" HorizontalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Button Command="{Binding NavTutorialsMenuCommand}" Grid.Row="0" FontSize="20" HorizontalAlignment="Left" Height="40" Width="300" Background="#a5e8b4" Content="Tutorials"/>
-                    <Button Grid.Row="1" FontSize="20" HorizontalAlignment="Left" Height="40" Width="300" Background="#a5e8b4" Content="Start A GP Run"/>
-                    <Button Grid.Row="2" FontSize="20" HorizontalAlignment="Left" Height="40" Width="300" Background="#a5e8b4" Content="Profiles"/>
-                </Grid>
-            </Grid>
-
-
-        </Border>
-
-        <!--Example Tree and Colour Settings-->
         <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3.5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox Grid.Column="1" Grid.Row="1">
+                <UniformGrid  Rows="3">
+                    <Button Margin="0 5 0 0" Padding="8, 2" Command="{Binding NavTutorialsMenuCommand}"  Background="#a5e8b4" Content="Tutorials"/>
+                    <Button Margin="0 2.5 0 2.5" Padding="8, 2" Background="#a5e8b4" Content="Start A GP Run"/>
+                    <Button Margin="0 0 0 5" Padding="8, 2" Background="#a5e8b4" Content="Profiles"/>
+                </UniformGrid>
+            </Viewbox>
+        </Grid>
+        
+        <!--Example Tree and Colour Settings-->
+        <Grid Grid.Column="2" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
@@ -78,17 +98,39 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="1" Margin="20 0 20 0"  BorderBrush="Black" BorderThickness="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
 
                 </Border>
             </Grid>
         </Grid>
 
         <!--Exit Button-->
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
-            <Button VerticalAlignment="Bottom" Margin="20 0 0 20" Height="30" Width="50" x:Name="exitBtn" Content="Exit" Click="ExitBtn_Click" />
-            <Button VerticalAlignment="Bottom" Margin="20 0 0 20" Height="30" Width="100" x:Name="debugBtn" Content="Debug Window" Click="DebugBtn_Click"/>
-        </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1">
+                <Button Padding="8, 2" x:Name="exitBtn" Content="Exit" Click="ExitBtn_Click" />
+            </Viewbox>
+
+            <Viewbox Grid.Column="3" Grid.Row="1">
+                <Button Padding="8, 2" x:Name="debugBtn" Content="Debug Window" Click="DebugBtn_Click"/>
+            </Viewbox>
+        </Grid>
     </Grid>
 </UserControl>
