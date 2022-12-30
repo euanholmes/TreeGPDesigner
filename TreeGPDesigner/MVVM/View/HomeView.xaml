@@ -48,7 +48,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="0" FontSize="20" HorizontalAlignment="Left" Height="40" Width="300" Background="#a5e8b4" Content="Tutorials"/>
+                    <Button Command="{Binding NavTutorialsMenuCommand}" Grid.Row="0" FontSize="20" HorizontalAlignment="Left" Height="40" Width="300" Background="#a5e8b4" Content="Tutorials"/>
                     <Button Grid.Row="1" FontSize="20" HorizontalAlignment="Left" Height="40" Width="300" Background="#a5e8b4" Content="Start A GP Run"/>
                     <Button Grid.Row="2" FontSize="20" HorizontalAlignment="Left" Height="40" Width="300" Background="#a5e8b4" Content="Profiles"/>
                 </Grid>

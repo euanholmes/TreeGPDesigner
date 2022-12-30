@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -10,22 +11,19 @@ using System.Windows.Input;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class MainWindowViewModel : ObservableObject
+    public partial class MainWindowViewModel : INotifyPropertyChanged
     {
-
-        [ObservableProperty]
-        private object? currentView;
-
-        public HomeViewModel HomeVM { get; set; }
-
-        public TutorialsMenuViewModel TutorialsMenuVM { get; set; }
-
+        public object? CurrentView => AppInfoSingleton.Instance.CurrentViewModel;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public MainWindowViewModel()
         {
-            HomeVM = new HomeViewModel();
-            TutorialsMenuVM = new TutorialsMenuViewModel();
-            CurrentView = HomeVM;
+            AppInfoSingleton.Instance.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentView)));
         }
     }
 }

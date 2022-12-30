@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TreeGPDesigner.MVVM.ViewModel;
 
 namespace TreeGPDesigner.MVVM.View
 {
@@ -23,6 +24,7 @@ namespace TreeGPDesigner.MVVM.View
         public HomeView()
         {
             InitializeComponent();
+            DataContext = new HomeViewModel();
         }
 
         private void DebugBtn_Click(object sender, RoutedEventArgs e)
