@@ -6,36 +6,151 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d"
              d:DesignHeight="540" d:DesignWidth="960">
+    <!--Tutorials Menu Grid-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2.5*"/>
+
         </Grid.RowDefinitions>
 
-        <Viewbox Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Tutorial Title-->
+        <Viewbox Grid.Row="0" Grid.Column="1">
             <TextBlock FontWeight="Bold"  Text="Tutorials" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
-        
-        
 
-        <Border Margin="20 0 20 0" Grid.Row="1" Background="LightGray"/>
+        <!--Tutorials-->
+        <Border Background="#f5f5f5" Grid.Row="2" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
 
-        <Grid Grid.Row="2">
+                <!--Genetic Programming Basics Tutorial-->
+                <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.75*"/>
+                            <ColumnDefinition Width="2.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Background="#e0c28d" Grid.Column="0" Margin="15">
+                            <Viewbox>
+                                <TextBlock TextAlignment="Center" Margin="10 0 10 0">
+                                Genetic <LineBreak/>
+                                Programming <LineBreak/>
+                                Basics
+                                </TextBlock>
+                            </Viewbox>
+                        </Border>
+
+                        <Viewbox Grid.Column="1" Margin="15">
+                            <Button Padding="8, 2" Background="#a5e8b4" Margin="0 10 0 10" Content="Start"/>
+                        </Viewbox>
+
+                        <Border Background="#e0c28d" Grid.Column="2" Margin="15">
+                            <Viewbox VerticalAlignment="Center">
+                                <TextBlock Margin="10 0 10 0">
+                                Introduction to tree based genetic programming. <LineBreak/> 
+                                Interactive tutorials about terminal and function nodes.<LineBreak/> 
+                                Tree growing methods, selection, crossover and mutation.
+                                </TextBlock>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!--Starting a GP Run Tutorial-->
+                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1 1 1 1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.75*"/>
+                            <ColumnDefinition Width="2.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Background="#a19ee8" Grid.Column="0" Margin="15">
+                            <Viewbox>
+                                <TextBlock TextAlignment="Center" Margin="10 0 10 0">
+                                Starting a <LineBreak/>
+                                GP Run
+                                </TextBlock>
+                            </Viewbox>
+                        </Border>
+
+                        <Viewbox Grid.Column="1" Margin="15">
+                            <Button Padding="8, 2" Background="#a5e8b4" Margin="10 10 10 10" Content="Start"/>
+                        </Viewbox>
+
+                        <Border Background="#a19ee8" Grid.Column="2" Margin="15">
+                            <Viewbox VerticalAlignment="Center">
+                                <TextBlock Margin="10 0 10 0">
+                                Walkthrough of starting a GP run through the app <LineBreak/> 
+                                using the bin packing template.
+                                </TextBlock>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!--Custom Nodes Tutorial-->
+                <Border Grid.Row="2"  BorderBrush="Black" BorderThickness="1 1 1 1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.75*"/>
+                            <ColumnDefinition Width="2.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Background="#ce9ee8" Grid.Column="0" Margin="15">
+                            <Viewbox>
+                                <TextBlock TextAlignment="Center" Margin="10 0 10 0">
+                                Custom Nodes <LineBreak/>
+                                (Advanced)
+                                </TextBlock>
+                            </Viewbox>
+                        </Border>
+
+                        <Viewbox Grid.Column="1" Margin="15">
+                            <Button Padding="8, 2" Background="#a5e8b4" Margin="10 10 10 10" Content="Start"/>
+                        </Viewbox>
+
+                        <Border Background="#ce9ee8" Grid.Column="2" Margin="15">
+                            <Viewbox VerticalAlignment="Center">
+                                <TextBlock Margin="10 0 10 0">
+                                Walkthrough of how to use the custom node tools which <LineBreak/>
+                                allow users to add custom terminal and function nodes.<LineBreak/> 
+                                Requires   basic knowledge of C#.
+                                </TextBlock>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!--Main Menu Button-->
+        <Grid Grid.Row="4" Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
 
-            <Viewbox Grid.Column="1">
-                <Button Command="{Binding NavHomeMenuCommand}" Content="Main Menu"/>
+            <Viewbox Grid.Column="0">
+                <Button Padding="8, 2" Command="{Binding NavHomeMenuCommand}" Content="Main Menu"/>
             </Viewbox>
-           
         </Grid>
-        
-        
-        
-
     </Grid>
 </UserControl>
