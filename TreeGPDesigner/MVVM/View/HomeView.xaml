@@ -105,7 +105,148 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
+                        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Viewbox Margin="3" Grid.Column="0">
+                                    <Ellipse Width="45" Height="45" Fill="Pink"  Stroke="Red" Stretch="Uniform"></Ellipse>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="1">
+                                    <Rectangle Stroke="Blue" Width="45" Height="45" Fill="LightBlue"/>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="2">
+                                    <RadioButton GroupName="Colour" IsChecked="True"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Viewbox Margin="3" Grid.Column="0">
+                                    <Ellipse Width="45" Height="45" Fill="Orange"  Stroke="DarkOrange" Stretch="Uniform"></Ellipse>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="1">
+                                    <Rectangle Stroke="Purple" Width="45" Height="45" Fill="MediumPurple"/>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="2">
+                                    <RadioButton GroupName="Colour"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Viewbox Margin="3" Grid.Column="0">
+                                    <Ellipse Width="45" Height="45" Fill="LightYellow"  Stroke="Yellow" Stretch="Uniform"></Ellipse>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="1">
+                                    <Rectangle Stroke="blue" Width="45" Height="45" Fill="Magenta"/>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="2">
+                                    <RadioButton GroupName="Colour"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Viewbox Margin="3" Grid.Column="0">
+                                    <Ellipse Width="45" Height="45" Fill="RosyBrown"  Stroke="Brown" Stretch="Uniform"></Ellipse>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="1">
+                                    <Rectangle Stroke="Blue" Width="45" Height="45" Fill="DarkBlue"/>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="2">
+                                    <RadioButton GroupName="Colour"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="4" BorderBrush="Black" BorderThickness="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Viewbox Margin="3" Grid.Column="0">
+                                    <Ellipse Width="45" Height="45" Fill="Green"  Stroke="DarkGreen" Stretch="Uniform"></Ellipse>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="1">
+                                    <Rectangle Stroke="DarkTurquoise" Width="45" Height="45" Fill="Turquoise"/>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="2">
+                                    <RadioButton GroupName="Colour"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="5" BorderBrush="Black" BorderThickness="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Viewbox Margin="3" Grid.Column="0">
+                                    <Ellipse Width="45" Height="45" Fill="White"  Stroke="Black" Stretch="Uniform"></Ellipse>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="1">
+                                    <Rectangle Stroke="Black" Width="45" Height="45" Fill="White"/>
+                                </Viewbox>
+
+                                <Viewbox Margin="3" Grid.Column="2">
+                                    <RadioButton GroupName="Colour"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </Border>
             </Grid>
         </Grid>
