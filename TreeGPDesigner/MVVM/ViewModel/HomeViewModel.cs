@@ -28,6 +28,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private ObservableCollection<NodePlot> displayTreePlot = new ObservableCollection<NodePlot>();
 
+        [ObservableProperty]
+        private float canvasPositionHeight;
+
+        [ObservableProperty]
+        private float canvasPositionWidth;
+
         public HomeViewModel()
         {
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
@@ -43,6 +49,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             TreeDrawingAlgorithm.CalculateNodePositions(DisplayTree);
 
+            CanvasPositionHeight = DisplayTree.Height * 100 / (float)0.75;
+            CanvasPositionWidth = DisplayTree.Width * 100 / (float)0.75;
+            
+
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
                 TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush, FunctionCornerRadius, TerminalCornerRadius); 
         }
@@ -51,7 +61,5 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
         }
-
-
     }
 }

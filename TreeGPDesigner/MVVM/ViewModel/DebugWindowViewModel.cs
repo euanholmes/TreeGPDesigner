@@ -108,8 +108,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             currentTree = bpTemplate.Generation[testDisplayTreeCount];
             TreeDrawingAlgorithm.CalculateNodePositions(currentTree);
 
-            CanvasHeight = currentTree.Height * 100;
-            canvasWidth = currentTree.Width * 100;
+            CanvasHeight = currentTree.Height * 100 / 2;
+            canvasWidth = currentTree.Width * 100 / 2;
 
             GetTreePlot(currentTree);
             Id = "ID: " + currentTree.Id.ToString();

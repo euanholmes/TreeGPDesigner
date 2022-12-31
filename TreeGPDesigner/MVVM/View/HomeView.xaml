@@ -89,7 +89,7 @@
                 <Grid>
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="pack://application:,,,/Images/zoom-pan-icon.png"/>
                     
-                    <Canvas x:Name="mainContainerCanvas">
+                    <Canvas Height="{Binding CanvasPositionHeight}" Width="{Binding CanvasPositionWidth}" x:Name="mainContainerCanvas">
                         <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>

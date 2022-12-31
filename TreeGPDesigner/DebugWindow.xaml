@@ -42,7 +42,8 @@
         <Border Margin="10" ClipToBounds="true" x:Name="testBorder" Background="White" Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
             <Grid>
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="Images/zoom-pan-icon.png"/>
-                <Canvas x:Name="testContainerCanvas" Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}">
+                
+                <Canvas VerticalAlignment="{Binding CanvasHeight}" HorizontalAlignment="{Binding CanvasWidth}" x:Name="testContainerCanvas" Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}">
                     <ItemsControl ItemsSource="{Binding CurrentTreePlot}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -55,7 +56,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-
+                    
                     <ItemsControl ItemsSource="{Binding CurrentTreePlot}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
