@@ -43,7 +43,7 @@
             <Grid>
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="Images/zoom-pan-icon.png"/>
                 
-                <Canvas VerticalAlignment="{Binding CanvasHeight}" HorizontalAlignment="{Binding CanvasWidth}" x:Name="testContainerCanvas" Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}">
+                <Canvas VerticalAlignment="{Binding CanvasPostionHeight}" HorizontalAlignment="{Binding CanvasPositionWidth}" x:Name="testContainerCanvas" Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}">
                     <ItemsControl ItemsSource="{Binding CurrentTreePlot}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>

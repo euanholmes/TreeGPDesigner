@@ -170,7 +170,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Colour" IsChecked="True"/>
+                                    <RadioButton Command="{Binding RadioButton1Command}" GroupName="Colour" IsChecked="True"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -192,7 +192,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Colour"/>
+                                    <RadioButton Command="{Binding RadioButton2Command}" GroupName="Colour"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -214,7 +214,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Colour"/>
+                                    <RadioButton Command="{Binding RadioButton3Command}" GroupName="Colour"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -236,7 +236,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Colour"/>
+                                    <RadioButton Command="{Binding RadioButton4Command}" GroupName="Colour"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -258,7 +258,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Colour"/>
+                                    <RadioButton Command="{Binding RadioButton5Command}" GroupName="Colour"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -280,7 +280,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Colour"/>
+                                    <RadioButton Command="{Binding RadioButton6Command}" GroupName="Colour"/>
                                 </Viewbox>
                             </Grid>
                         </Border>

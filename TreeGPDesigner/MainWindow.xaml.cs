@@ -26,6 +26,10 @@ namespace TreeGPDesigner
         {
             InitializeComponent();
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
+            AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush = Brushes.Red;
+            AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush = Brushes.Pink;
+            AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush = Brushes.Blue;
+            AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush = Brushes.LightBlue;
             DataContext = new MainWindowViewModel();
         }
     }

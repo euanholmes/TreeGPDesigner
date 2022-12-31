@@ -39,6 +39,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private float canvasHeight;
 
         [ObservableProperty]
+        private float canvasPostionWidth;
+
+        [ObservableProperty]
+        private float canvasPostionHeight;
+
+        [ObservableProperty]
         private string debugText = "Debug: ";
 
         [ObservableProperty]
@@ -108,8 +114,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
             currentTree = bpTemplate.Generation[testDisplayTreeCount];
             TreeDrawingAlgorithm.CalculateNodePositions(currentTree);
 
-            CanvasHeight = currentTree.Height * 100 / 2;
-            canvasWidth = currentTree.Width * 100 / 2;
+            CanvasHeight = currentTree.Height * 100;
+            CanvasWidth = currentTree.Width * 100;
+
+            CanvasPostionHeight = CanvasHeight / 2;
+            CanvasPostionWidth = CanvasWidth / 2;
 
             GetTreePlot(currentTree);
             Id = "ID: " + currentTree.Id.ToString();
