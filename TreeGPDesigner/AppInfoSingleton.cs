@@ -126,14 +126,7 @@ namespace TreeGPDesigner
             CurrentTerminalNodeBackgroundBrushChanged?.Invoke();
         }
 
-
-
-
-
-
-
-
-
+        //Get tree plot function which makes a list of function node and terminal node graphic items based on the trees positons.
         public static ObservableCollection<NodePlot> GetTreePlot(ObservableCollection<NodePlot> treePlot, Node node, Brush functionOutlineBrush, Brush functionBackgroundBrush, 
             Brush terminalOutlineBrush, Brush terminalBackgroundBrush)
         {

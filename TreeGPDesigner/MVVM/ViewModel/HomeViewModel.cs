@@ -97,7 +97,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             ChangeBrushes(Brushes.Red, Brushes.Pink, Brushes.Blue, Brushes.LightBlue);
         }
-
         public void RadioButton2()
         {
             ChangeBrushes(Brushes.DarkOrange, Brushes.Orange, Brushes.Purple, Brushes.MediumPurple);

@@ -92,7 +92,7 @@ namespace TreeGPDesigner.MVVM.View
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Close();
+            Window.GetWindow(this).Close();
         }
     }
 }

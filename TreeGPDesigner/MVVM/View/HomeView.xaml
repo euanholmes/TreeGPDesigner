@@ -298,7 +298,7 @@
             </Grid.RowDefinitions>
 
             <Viewbox HorizontalAlignment="Center" Grid.Row="1">
-                <Button Padding="8, 2" x:Name="exitBtn" Content="Exit" Click="ExitBtn_Click" />
+                <Button Click="ExitBtn_Click" Padding="8, 2" Content="Exit"/>
             </Viewbox>
         </Grid>
 
