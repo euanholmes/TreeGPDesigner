@@ -58,7 +58,7 @@
                         </Border>
 
                         <Viewbox Grid.Column="1" Margin="15">
-                            <Button Padding="8, 2" Background="#a5e8b4" Margin="0 10 0 10" Content="Start"/>
+                            <Button Command="{Binding NavGPBasics1Command}" Padding="8, 2" Background="#a5e8b4" Margin="0 10 0 10" Content="Start"/>
                         </Viewbox>
 
                         <Border Background="#e0c28d" Grid.Column="2" Margin="15">

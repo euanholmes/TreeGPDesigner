@@ -16,6 +16,10 @@
                 <view:TutorialsMenu/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:GPBasics1ViewModel}">
+                <view:GPBasics1/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

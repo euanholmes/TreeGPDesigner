@@ -91,7 +91,7 @@
             </Grid.ColumnDefinitions>
 
             <Viewbox Grid.Column="1" Grid.Row="1">
-                <UniformGrid  Rows="3">
+                <UniformGrid Rows="3">
                     <Button Margin="0 5 0 0" Padding="8, 2" Command="{Binding NavTutorialsMenuCommand}"  Background="#a5e8b4" Content="Tutorials"/>
                     <Button Margin="0 2.5 0 2.5" Padding="8, 2" Background="#a5e8b4" Content="Start A GP Run"/>
                     <Button Margin="0 0 0 5" Padding="8, 2" Background="#a5e8b4" Content="Profiles"/>

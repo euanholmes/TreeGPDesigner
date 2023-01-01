@@ -112,7 +112,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             if (LightMode)
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon-inverted.png"));
-                AppInfoSingleton.Instance.CurrentBackground = Brushes.Black;
+                AppInfoSingleton.Instance.CurrentBackground = (Brush)new BrushConverter().ConvertFrom("#2b2828");
                 AppInfoSingleton.Instance.CurrentText = Brushes.White;
                 LightMode = false;
             }

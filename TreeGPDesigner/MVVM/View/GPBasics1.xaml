@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="TreeGPDesigner.MVVM.View.GPBasics1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="960">
+    <!-- Tutorials Menu Grid -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Tutorial Title -->
+        <Viewbox Grid.Row="0" Grid.Column="1">
+            <TextBlock Foreground="{Binding TextColour}" FontWeight="Bold"  Text="GP Basics - Function and Terminal Nodes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Viewbox>
+
+        <!-- Tutorial Panel -->
+        <Border Background="#f5f5f5" Grid.Row="2" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Information Panel -->
+                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="10 10 5 10" Background="White">
+                    <Viewbox Margin="5" VerticalAlignment="Top">
+                        <TextBlock>
+                            Genetic programming is the automatic<LineBreak/>
+                            generation of programs through <LineBreak/> 
+                            evolutionary functions such as crossover,<LineBreak/>  
+                            selection and mutation. In genetic <LineBreak/>
+                            programming programs are represented<LineBreak/> 
+                            as tree structures. These tree <LineBreak/> 
+                            structures are made up of function and<LineBreak/>  
+                            terminal nodes. Function nodes will have <LineBreak/>  
+                            one or more operands which will have a <LineBreak/>  
+                            function applied to them. For example an <LineBreak/>  
+                            addition function node would add two nodes<LineBreak/>  
+                            together. A terminal node can be a be a <LineBreak/> 
+                            variable or a static number like one. <LineBreak/> 
+                            Terminal nodes are so called because they<LineBreak/>  
+                            are placed at the end of a branch and have<LineBreak/>  
+                            no operands or nodes below them. Root nodes<LineBreak/>  
+                            appear at the top of a tree and can be <LineBreak/> 
+                            function or terminal nodes.<LineBreak/> 
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            Try out selecting different function, <LineBreak/> 
+                            terminal and root nodes and see the <LineBreak/> 
+                            different program trees you can generate.
+                        </TextBlock>
+                    </Viewbox>
+                </Border>
+
+                <!-- Nodes Panel -->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Function Nodes -->
+                    <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="5 10 5 5" Background="White">
+
+                    </Border>
+
+                    <!-- Terminal Nodes -->
+                    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="5 5 5 5" Background="White">
+
+                    </Border>
+
+                    <!-- Root Nodes -->
+                    <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" Margin="5 5 5 10" Background="White">
+
+                    </Border>
+                </Grid>
+
+                <!-- Display Tree Panel-->
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Display Tree-->
+                    <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="5 10 10 0" Background="White">
+
+                    </Border>
+
+                    <!-- Generate Tree Button-->
+                    <Viewbox Margin="25" Grid.Row="1">
+                        <Button Background="#a5e8b4" Padding="8, 2" Content="Generate Tree"/>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </Border>
+        
+        <!--Navigation Buttons-->
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Main Menu and Tutorials Menu Navigation Buttons-->
+            <Viewbox Grid.Column="0">
+                <StackPanel Orientation="Horizontal" >
+                    <Button Margin="0 0 2.5 0" Padding="8, 2" Command="{Binding NavHomeMenuCommand}" Content="Main Menu"/>
+                    <Button Margin="2.5 0 0 0" Padding="8, 2" Command="{Binding NavTutorialsMenuCommand}" Content="Tutorials Menu"/>
+                </StackPanel>
+            </Viewbox>
+
+            <!-- Next Tutorial Navigation Button-->
+            <Viewbox Margin="15" Grid.Column="1">
+                <Button Background="#a5e8b4" Padding="8, 2" Content="Next"/>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>
