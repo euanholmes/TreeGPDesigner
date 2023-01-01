@@ -50,7 +50,7 @@ namespace TreeGPDesigner
             CurrentViewModelChanged?.Invoke();
         }
 
-        //Current radio button  isChecked
+        //Which current radio button isChecked (1 - 6)
         public event Action CurrentRadioButtonCheckChanged;
         private int? currentRadioButtonCheck;
 
@@ -68,123 +68,6 @@ namespace TreeGPDesigner
         {
             CurrentRadioButtonCheckChanged?.Invoke();
         }
-
-
-        //Current radio button 1 isChecked
-        public event Action CurrentRadioButton1Changed;
-        private bool? currentRadioButton1;
-
-        public bool? CurrentRadioButton1
-        {
-            get => currentRadioButton1;
-            set
-            {
-                currentRadioButton1 = value;
-                OnCurrentRadioButton1Changed();
-            }
-        }
-
-        private void OnCurrentRadioButton1Changed()
-        {
-            CurrentRadioButton1Changed?.Invoke();
-        }
-
-        //Current radio button 2 isChecked
-        public event Action CurrentRadioButton2Changed;
-        private bool? currentRadioButton2;
-
-        public bool? CurrentRadioButton2
-        {
-            get => currentRadioButton2;
-            set
-            {
-                currentRadioButton2 = value;
-                OnCurrentRadioButton2Changed();
-            }
-        }
-
-        private void OnCurrentRadioButton2Changed()
-        {
-            CurrentRadioButton2Changed?.Invoke();
-        }
-
-        //Current radio button 3 isChecked
-        public event Action CurrentRadioButton3Changed;
-        private bool? currentRadioButton3;
-
-        public bool? CurrentRadioButton3
-        {
-            get => currentRadioButton3;
-            set
-            {
-                currentRadioButton3 = value;
-                OnCurrentRadioButton3Changed();
-            }
-        }
-
-        private void OnCurrentRadioButton3Changed()
-        {
-            CurrentRadioButton3Changed?.Invoke();
-        }
-
-        //Current radio button 4 isChecked
-        public event Action CurrentRadioButton4Changed;
-        private bool? currentRadioButton4;
-
-        public bool? CurrentRadioButton4
-        {
-            get => currentRadioButton4;
-            set
-            {
-                currentRadioButton4 = value;
-                OnCurrentRadioButton4Changed();
-            }
-        }
-
-        private void OnCurrentRadioButton4Changed()
-        {
-            CurrentRadioButton4Changed?.Invoke();
-        }
-
-        //Current radio button 5 isChecked
-        public event Action CurrentRadioButton5Changed;
-        private bool? currentRadioButton5;
-
-        public bool? CurrentRadioButton5
-        {
-            get => currentRadioButton5;
-            set
-            {
-                currentRadioButton5 = value;
-                OnCurrentRadioButton5Changed();
-            }
-        }
-
-        private void OnCurrentRadioButton5Changed()
-        {
-            CurrentRadioButton5Changed?.Invoke();
-        }
-
-        //Current radio button 6 isChecked
-        public event Action CurrentRadioButton6Changed;
-        private bool? currentRadioButton6;
-
-        public bool? CurrentRadioButton6
-        {
-            get => currentRadioButton6;
-            set
-            {
-                currentRadioButton6 = value;
-                OnCurrentRadioButton6Changed();
-            }
-        }
-
-        private void OnCurrentRadioButton6Changed()
-        {
-            CurrentRadioButton6Changed?.Invoke();
-        }
-
-
 
         //Current function node outline brush
         public event Action CurrentFunctionNodeOutlineBrushChanged;

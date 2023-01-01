@@ -191,7 +191,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <CheckBox Command="{Binding RadioButton1Command}" IsChecked="{Binding RadioButton1IsChecked}"/>
+                                    <RadioButton GroupName="Color" x:Name="RadioButton1" Command="{Binding RadioButton1Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -213,7 +213,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <CheckBox Command="{Binding RadioButton2Command}" IsChecked="{Binding RadioButton2IsChecked, Mode=OneWay}"/>
+                                    <RadioButton GroupName="Color" x:Name="RadioButton2" Command="{Binding RadioButton2Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -235,7 +235,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <CheckBox Command="{Binding RadioButton3Command}" IsChecked="{Binding RadioButton3IsChecked, Mode=OneWay}"/>
+                                    <RadioButton GroupName="Color" x:Name="RadioButton3" Command="{Binding RadioButton3Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -257,7 +257,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <CheckBox Command="{Binding RadioButton4Command}" IsChecked="{Binding RadioButton4IsChecked, Mode=OneWay}"/>
+                                    <RadioButton GroupName="Color" x:Name="RadioButton4" Command="{Binding RadioButton4Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -279,7 +279,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <CheckBox Command="{Binding RadioButton5Command}" IsChecked="{Binding RadioButton5IsChecked, Mode=OneWay}"/>
+                                    <RadioButton GroupName="Color" x:Name="RadioButton5" Command="{Binding RadioButton5Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -301,7 +301,7 @@
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <CheckBox Command="{Binding RadioButton6Command}" IsChecked="{Binding RadioButton6IsChecked, Mode=OneWay}"/>
+                                    <RadioButton GroupName="Color" x:Name="RadioButton6" Command="{Binding RadioButton6Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>

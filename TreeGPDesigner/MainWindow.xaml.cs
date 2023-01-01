@@ -33,12 +33,6 @@ namespace TreeGPDesigner
             AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
             AppInfoSingleton.Instance.CurrentBackground = Brushes.White;
             AppInfoSingleton.Instance.CurrentText = Brushes.Black;
-            AppInfoSingleton.Instance.CurrentRadioButton1 = true;
-            AppInfoSingleton.Instance.CurrentRadioButton2 = false;
-            AppInfoSingleton.Instance.CurrentRadioButton3 = false;
-            AppInfoSingleton.Instance.CurrentRadioButton4 = false;
-            AppInfoSingleton.Instance.CurrentRadioButton5 = false;
-            AppInfoSingleton.Instance.CurrentRadioButton6 = false;
             AppInfoSingleton.Instance.CurrentRadioButtonCheck = 1;
             DataContext = new MainWindowViewModel();
         }

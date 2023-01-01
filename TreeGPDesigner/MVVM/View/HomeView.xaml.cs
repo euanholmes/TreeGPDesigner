@@ -26,6 +26,8 @@ namespace TreeGPDesigner.MVVM.View
             InitializeComponent();
             DataContext = new HomeViewModel();
 
+            ChangeRadioButtonsIsChecked(AppInfoSingleton.Instance.CurrentRadioButtonCheck);
+
             //Pan and zoom code.
             TransformGroup transformGroup = new TransformGroup();
             ScaleTransform scaleTransform = new ScaleTransform();
@@ -93,6 +95,64 @@ namespace TreeGPDesigner.MVVM.View
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
+        }
+
+        public void ChangeRadioButtonsIsChecked(int? trueRadioButton)
+        {
+            if (trueRadioButton == 1)
+            {
+                RadioButton1.IsChecked = true;
+                RadioButton2.IsChecked = false;
+                RadioButton3.IsChecked = false;
+                RadioButton4.IsChecked = false;
+                RadioButton5.IsChecked = false;
+                RadioButton6.IsChecked = false;
+            }
+            else if(trueRadioButton == 2)
+            {
+                RadioButton1.IsChecked = false;
+                RadioButton2.IsChecked = true;
+                RadioButton3.IsChecked = false;
+                RadioButton4.IsChecked = false;
+                RadioButton5.IsChecked = false;
+                RadioButton6.IsChecked = false;
+            }
+            else if (trueRadioButton == 3)
+            {
+                RadioButton1.IsChecked = false;
+                RadioButton2.IsChecked = false;
+                RadioButton3.IsChecked = true;
+                RadioButton4.IsChecked = false;
+                RadioButton5.IsChecked = false;
+                RadioButton6.IsChecked = false;
+            }
+            else if (trueRadioButton == 4)
+            {
+                RadioButton1.IsChecked = false;
+                RadioButton2.IsChecked = false;
+                RadioButton3.IsChecked = false;
+                RadioButton4.IsChecked = true;
+                RadioButton5.IsChecked = false;
+                RadioButton6.IsChecked = false;
+            }
+            else if (trueRadioButton == 5)
+            {
+                RadioButton1.IsChecked = false;
+                RadioButton2.IsChecked = false;
+                RadioButton3.IsChecked = false;
+                RadioButton4.IsChecked = false;
+                RadioButton5.IsChecked = true;
+                RadioButton6.IsChecked = false;
+            }
+            else
+            {
+                RadioButton1.IsChecked = false;
+                RadioButton2.IsChecked = false;
+                RadioButton3.IsChecked = false;
+                RadioButton4.IsChecked = false;
+                RadioButton5.IsChecked = false;
+                RadioButton6.IsChecked = true;
+            }
         }
     }
 }
