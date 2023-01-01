@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\dark-mode-toggle-icon-inverted.png" />
     <None Remove="Images\dark-mode-toggle-icon.png" />
     <None Remove="Images\light-mode-toggle-icon.png" />
     <None Remove="Images\PanZoom2.png" />
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\dark-mode-toggle-icon-inverted.png" />
     <Resource Include="Images\dark-mode-toggle-icon.png" />
     <Resource Include="Images\light-mode-toggle-icon.png" />
     <Resource Include="Images\PanZoom2.png" />

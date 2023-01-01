@@ -25,7 +25,7 @@
 
         <!-- Tutorial Title -->
         <Viewbox Grid.Row="0" Grid.Column="1">
-            <TextBlock FontWeight="Bold"  Text="Tutorials" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Foreground="{Binding TextColour}" FontWeight="Bold"  Text="Tutorials" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Tutorials -->

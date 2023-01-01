@@ -8,22 +8,32 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
-        public object? CurrentView => AppInfoSingleton.Instance.CurrentViewModel;
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public MainWindowViewModel()
-        {
-            AppInfoSingleton.Instance.CurrentViewModelChanged += OnCurrentViewModelChanged;
-        }
+        public object? CurrentView => AppInfoSingleton.Instance.CurrentViewModel;
+        public Brush? Background => AppInfoSingleton.Instance.CurrentBackground;
 
         private void OnCurrentViewModelChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentView)));
+        }
+
+        private void OnCurrentBackgroundChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Background)));
+        }
+
+
+        public MainWindowViewModel()
+        {
+            AppInfoSingleton.Instance.CurrentViewModelChanged += OnCurrentViewModelChanged;
+            AppInfoSingleton.Instance.CurrentBackgroundChanged += OnCurrentBackgroundChanged;
         }
     }
 }

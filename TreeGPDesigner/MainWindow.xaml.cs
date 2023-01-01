@@ -31,6 +31,8 @@ namespace TreeGPDesigner
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush = Brushes.Blue;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush = Brushes.LightBlue;
             AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
+            AppInfoSingleton.Instance.CurrentBackground = Brushes.White;
+            AppInfoSingleton.Instance.CurrentText = Brushes.Black;
             DataContext = new MainWindowViewModel();
         }
     }

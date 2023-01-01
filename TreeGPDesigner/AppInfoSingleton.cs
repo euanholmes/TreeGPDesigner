@@ -126,7 +126,7 @@ namespace TreeGPDesigner
             CurrentTerminalNodeBackgroundBrushChanged?.Invoke();
         }
 
-        //Current mode
+        //Current toggle button
         public event Action CurrentModeToggleButtonChanged;
         private ImageSource? currentModeToggleButton;
 
@@ -143,6 +143,44 @@ namespace TreeGPDesigner
         private void OnCurrentModeToggleButtonChanged()
         {
             CurrentModeToggleButtonChanged?.Invoke();
+        }
+
+        //Current background colour
+        public event Action CurrentBackgroundChanged;
+        private Brush? currentBackground;
+
+        public Brush? CurrentBackground
+        {
+            get => currentBackground;
+            set
+            {
+                currentBackground = value;
+                OnCurrentBackgroundChanged();
+            }
+        }
+
+        private void OnCurrentBackgroundChanged()
+        {
+            CurrentBackgroundChanged?.Invoke();
+        }
+
+        //Current title text colour
+        public event Action CurrentTextChanged;
+        private Brush? currentText;
+
+        public Brush? CurrentText
+        {
+            get => currentText;
+            set
+            {
+                currentText = value;
+                OnCurrentTextChanged();
+            }
+        }
+
+        private void OnCurrentTextChanged()
+        {
+            CurrentTextChanged?.Invoke();
         }
 
         //Get tree plot function which makes a list of function node and terminal node graphic items based on the trees positons.

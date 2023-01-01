@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="540" d:DesignWidth="960">
 
     <UserControl.Resources>
@@ -19,7 +19,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Opacity" Value="1" />
+                                <Setter Property="Opacity" Value="0.8" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -50,11 +50,11 @@
             </Grid.RowDefinitions>
 
             <Viewbox Grid.Row="0">
-                <TextBlock FontWeight="Bold" Text="Tree GP Designer" HorizontalAlignment="Center"/>
+                <TextBlock Foreground="{Binding TextColour}"  FontWeight="Bold" Text="Tree GP Designer" HorizontalAlignment="Center"/>
             </Viewbox>
 
             <Viewbox  Grid.Row="1">
-                <TextBlock TextAlignment="Center" FontWeight="DemiBold" HorizontalAlignment="Center">
+                <TextBlock Foreground="{Binding TextColour}" TextAlignment="Center" FontWeight="DemiBold" HorizontalAlignment="Center">
                     Automatically generate programs and algorithms<LineBreak/>
                     with tree-based genetic programming.
                 </TextBlock>

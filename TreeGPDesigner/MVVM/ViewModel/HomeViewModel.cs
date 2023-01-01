@@ -24,6 +24,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public Brush? TerminalNodeOutlineBrush => AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
         public Brush? TerminalNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
         public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
+        public Brush? TextColour => AppInfoSingleton.Instance.CurrentText;
 
         private void OnCurrentFunctionNodeOutlineBrushChanged()
         {
@@ -44,6 +45,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private void OnCurrentToggleModeButtonChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ToggleButtonSource)));
+        }
+        private void OnCurrentTextChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextColour)));
         }
 
 
@@ -66,8 +71,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private float canvasPositionWidth;
 
         
-
-
         public Node DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
         public bool LightMode = true;
         
@@ -79,6 +82,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrushChanged += OnCurrentTerminalNodeOutlineBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
+            AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
 
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             ToggleButtonCommand = new RelayCommand(ToggleButtonLightDarkMode);
@@ -107,12 +111,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             if (LightMode)
             {
-                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon.png"));
+                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon-inverted.png"));
+                AppInfoSingleton.Instance.CurrentBackground = Brushes.Black;
+                AppInfoSingleton.Instance.CurrentText = Brushes.White;
                 LightMode = false;
             }
             else
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
+                AppInfoSingleton.Instance.CurrentBackground = Brushes.White;
+                AppInfoSingleton.Instance.CurrentText = Brushes.Black;
                 LightMode = true;
             }
         }
