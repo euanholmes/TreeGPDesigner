@@ -25,6 +25,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public Brush? TerminalNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
         public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
         public Brush? TextColour => AppInfoSingleton.Instance.CurrentText;
+        public bool? RadioButton1IsChecked => AppInfoSingleton.Instance.CurrentRadioButton1;
+        public bool? RadioButton2IsChecked => AppInfoSingleton.Instance.CurrentRadioButton2;
+        public bool? RadioButton3IsChecked => AppInfoSingleton.Instance.CurrentRadioButton3;
+        public bool? RadioButton4IsChecked => AppInfoSingleton.Instance.CurrentRadioButton4;
+        public bool? RadioButton5IsChecked => AppInfoSingleton.Instance.CurrentRadioButton5;
+        public bool? RadioButton6IsChecked => AppInfoSingleton.Instance.CurrentRadioButton6;
+        public int? RadioButtonCheck => AppInfoSingleton.Instance.CurrentRadioButtonCheck;
 
         private void OnCurrentFunctionNodeOutlineBrushChanged()
         {
@@ -50,7 +57,34 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextColour)));
         }
-
+        private void OnCurrentRadioButton1Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButton1IsChecked)));
+        }
+        private void OnCurrentRadioButton2Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButton2IsChecked)));
+        }
+        private void OnCurrentRadioButton3Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButton3IsChecked)));
+        }
+        private void OnCurrentRadioButton4Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButton4IsChecked)));
+        }
+        private void OnCurrentRadioButton5Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButton5IsChecked)));
+        }
+        private void OnCurrentRadioButton6Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButton6IsChecked)));
+        }
+        private void OnCurrentRadioButtonCheckChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButtonCheck)));
+        }
 
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand ToggleButtonCommand { get; }
@@ -71,6 +105,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private float canvasPositionWidth;
 
         
+
+        
         public Node DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
         public bool LightMode = true;
         
@@ -83,6 +119,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
             AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
+            AppInfoSingleton.Instance.CurrentRadioButton1Changed += OnCurrentRadioButton1Changed;
+            AppInfoSingleton.Instance.CurrentRadioButton2Changed += OnCurrentRadioButton2Changed;
+            AppInfoSingleton.Instance.CurrentRadioButton3Changed += OnCurrentRadioButton3Changed;
+            AppInfoSingleton.Instance.CurrentRadioButton4Changed += OnCurrentRadioButton4Changed;
+            AppInfoSingleton.Instance.CurrentRadioButton5Changed += OnCurrentRadioButton5Changed;
+            AppInfoSingleton.Instance.CurrentRadioButton6Changed += OnCurrentRadioButton6Changed;
+            AppInfoSingleton.Instance.CurrentRadioButtonCheckChanged += OnCurrentRadioButtonCheckChanged;
+
+            ChangeRadioButtonsIsChecked(5);
 
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             ToggleButtonCommand = new RelayCommand(ToggleButtonLightDarkMode);
@@ -133,26 +178,39 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void RadioButton1()
         {
             ChangeBrushes(Brushes.Red, Brushes.Pink, Brushes.Blue, Brushes.LightBlue);
+            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 1;
+            ChangeRadioButtonsIsChecked(1);
         }
         public void RadioButton2()
         {
             ChangeBrushes(Brushes.DarkOrange, Brushes.Orange, Brushes.Purple, Brushes.MediumPurple);
+            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 2;
+
+            ChangeRadioButtonsIsChecked(2);
         }
         public void RadioButton3()
         {
             ChangeBrushes(Brushes.Yellow, Brushes.LightYellow, Brushes.Blue, Brushes.Magenta);
+            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 3;
+            ChangeRadioButtonsIsChecked(3);
         }
         public void RadioButton4()
         {
             ChangeBrushes(Brushes.Brown, Brushes.RosyBrown, Brushes.Blue, Brushes.DarkBlue);
+            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 4;
+            ChangeRadioButtonsIsChecked(4);
         }
         public void RadioButton5()
         {
             ChangeBrushes(Brushes.DarkGreen, Brushes.Green, Brushes.DarkTurquoise, Brushes.Turquoise);
+            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 5;
+            ChangeRadioButtonsIsChecked(5);
         }
         public void RadioButton6()
         {
             ChangeBrushes(Brushes.Black, Brushes.White, Brushes.Black, Brushes.White);
+            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 6;
+            ChangeRadioButtonsIsChecked(6);
         }
 
         public void ChangeBrushes(Brush newFunctionNodeOutlineBrush, Brush newFunctionNodeBackgroundBrush, Brush newTerminalNodeOutlineBrush,
@@ -166,5 +224,27 @@ namespace TreeGPDesigner.MVVM.ViewModel
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
                 TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush);
         }
+
+        public void ChangeRadioButtonsIsChecked(int trueRadioButton)
+        {
+            bool?[] radioButtonIsCheckeds = { AppInfoSingleton.Instance.CurrentRadioButton1, AppInfoSingleton.Instance.CurrentRadioButton2,
+            AppInfoSingleton.Instance.CurrentRadioButton3, AppInfoSingleton.Instance.CurrentRadioButton4, AppInfoSingleton.Instance.CurrentRadioButton5,
+            AppInfoSingleton.Instance.CurrentRadioButton6};
+
+            for(int i = 0; i < 6; i++) 
+            {
+                if (i+1 == trueRadioButton)
+                {
+                    
+                }
+                else
+                {
+                    radioButtonIsCheckeds[i] = false;
+                }
+            }
+
+            radioButtonIsCheckeds[trueRadioButton - 1] = true;
+        }
+
     }
 }

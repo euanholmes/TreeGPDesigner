@@ -78,17 +78,392 @@
 
                     <!-- Function Nodes -->
                     <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="5 10 5 5" Background="White">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
+                            <!-- Function Nodes Title-->
+                            <Viewbox Grid.Row="0">
+                                <TextBlock FontWeight="DemiBold" Text="Function Nodes"/>
+                            </Viewbox>
+
+                            <!-- First Row of Function Nodes-->
+                            <Grid Grid.Row="1" Margin="0 0 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Addition Function Node-->
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- Less Than Function Node-->
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- Division Function Node-->
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="/"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+                            
+                            <!-- Second Row of Function Nodes-->
+                            <Grid Grid.Row="2" Margin="0 0 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Subtraction Function Node-->
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- Multiplication Function Node-->
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="*"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- Absolute Function Node-->
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="ABS"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Border>
 
                     <!-- Terminal Nodes -->
                     <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="5 5 5 5" Background="White">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
+                            <!-- Terminal Nodes Title-->
+                            <Viewbox Grid.Row="0">
+                                <TextBlock FontWeight="DemiBold" Text="Terminal Nodes"/>
+                            </Viewbox>
+
+                            <!-- First Row of Terminal Nodes-->
+                            <Grid Grid.Row="1" Margin="0 0 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Negative One Terminal Node-->
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-1"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- One Terminal Node-->
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- 34 Terminal Node-->
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="34"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Second Row of Terminal Nodes-->
+                            <Grid Grid.Row="2" Margin="0 0 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- X Terminal Node-->
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- Y Terminal Node-->
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Y"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- AB Terminal Node-->
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AB"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Border>
 
                     <!-- Root Nodes -->
                     <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" Margin="5 5 5 10" Background="White">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
+                            <!-- Root Nodes Title-->
+                            <Viewbox Grid.Row="0">
+                                <TextBlock FontWeight="DemiBold" Text="Root Nodes"/>
+                            </Viewbox>
+
+                            <!-- First Row of Root Nodes-->
+                            <Grid Grid.Row="1" Margin="0 0 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Addition Root Node-->
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- Less Than Root Node-->
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- Greater Than Or Equal Root Node-->
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">="/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Second Row of Root Nodes-->
+                            <Grid Grid.Row="2" Margin="0 0 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Subtraction Root Node-->
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- X Root Node-->
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+
+                                <!-- One Root Node-->
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox Margin="12" Grid.Column="0">
+                                        <CheckBox/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="1">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Border>
                 </Grid>
 
