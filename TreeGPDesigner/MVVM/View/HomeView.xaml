@@ -6,7 +6,28 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
-    
+
+    <UserControl.Resources>
+        <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <!-- Main Window Grid -->
     <Grid>
         <Grid.ColumnDefinitions>
@@ -49,8 +70,8 @@
             </Grid.ColumnDefinitions>
 
             <Viewbox Grid.Column="1">
-                <ToggleButton Background="Transparent" BorderThickness="0">
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Images/light-mode-toggle-icon.png"/>
+                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Command="{Binding ToggleButtonCommand}" Background="Transparent" BorderThickness="0">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding ToggleButtonSource}"/>
                 </ToggleButton>
             </Viewbox>
         </Grid>
@@ -315,4 +336,7 @@
             </Viewbox>
         </Grid>
     </Grid>
+
+    
+    
 </UserControl>

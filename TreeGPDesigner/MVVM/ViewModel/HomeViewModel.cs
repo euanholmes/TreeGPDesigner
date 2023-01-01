@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
@@ -22,6 +23,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public Brush? FunctionNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush;
         public Brush? TerminalNodeOutlineBrush => AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
         public Brush? TerminalNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
+        public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
 
         private void OnCurrentFunctionNodeOutlineBrushChanged()
         {
@@ -39,8 +41,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeBackgroundBrush)));
         }
+        private void OnCurrentToggleModeButtonChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ToggleButtonSource)));
+        }
+
 
         public ICommand NavTutorialsMenuCommand { get; }
+        public ICommand ToggleButtonCommand { get; }
         public ICommand RadioButton1Command { get; }
         public ICommand RadioButton2Command { get; }
         public ICommand RadioButton3Command { get; }
@@ -57,7 +65,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private float canvasPositionWidth;
 
+        
+
+
         public Node DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
+        public bool LightMode = true;
+        
 
         public HomeViewModel()
         {
@@ -65,8 +78,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrushChanged += OnCurrentFunctionNodeBackgroundBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrushChanged += OnCurrentTerminalNodeOutlineBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
+            AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
 
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
+            ToggleButtonCommand = new RelayCommand(ToggleButtonLightDarkMode);
             RadioButton1Command = new RelayCommand(RadioButton1);
             RadioButton2Command = new RelayCommand(RadioButton2);
             RadioButton3Command = new RelayCommand(RadioButton3);
@@ -86,6 +101,20 @@ namespace TreeGPDesigner.MVVM.ViewModel
             
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
                 TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush); 
+        }
+
+        public void ToggleButtonLightDarkMode()
+        {
+            if (LightMode)
+            {
+                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon.png"));
+                LightMode = false;
+            }
+            else
+            {
+                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
+                LightMode = true;
+            }
         }
 
         public void NavTutorialsMenu()
