@@ -118,7 +118,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
-                                        <TextBlock Text="{Binding Symbol}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -162,15 +162,15 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="3" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="Pink"  Stroke="Red" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Width="45" Height="45" Fill="Pink" Stroke="Red" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="1">
-                                    <Rectangle Stroke="Blue" Width="45" Height="45" Fill="LightBlue"/>
+                                    <Rectangle Stroke="Blue" StrokeThickness="2" Width="45" Height="45" Fill="LightBlue"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Color" x:Name="RadioButton1" Command="{Binding RadioButton1Command}"/>
+                                    <RadioButton Style="{DynamicResource RadioButton}" GroupName="Color" x:Name="RadioButton1" Command="{Binding RadioButton1Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -184,15 +184,15 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="3" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="Orange"  Stroke="DarkOrange" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Width="45" Height="45" Fill="Orange" Stroke="DarkOrange" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="1">
-                                    <Rectangle Stroke="Purple" Width="45" Height="45" Fill="MediumPurple"/>
+                                    <Rectangle Stroke="Purple" StrokeThickness="2" Width="45" Height="45" Fill="MediumPurple"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Color" x:Name="RadioButton2" Command="{Binding RadioButton2Command}"/>
+                                    <RadioButton Style="{DynamicResource RadioButton}" GroupName="Color" x:Name="RadioButton2" Command="{Binding RadioButton2Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -206,15 +206,15 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="3" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="LightYellow"  Stroke="Yellow" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Width="45" Height="45" Fill="LightYellow" Stroke="Yellow" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="1">
-                                    <Rectangle Stroke="blue" Width="45" Height="45" Fill="Magenta"/>
+                                    <Rectangle Stroke="blue" StrokeThickness="2" Width="45" Height="45" Fill="Magenta"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Color" x:Name="RadioButton3" Command="{Binding RadioButton3Command}"/>
+                                    <RadioButton Style="{DynamicResource RadioButton}" GroupName="Color" x:Name="RadioButton3" Command="{Binding RadioButton3Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -228,15 +228,15 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="3" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="RosyBrown"  Stroke="Brown" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Width="45" Height="45" Fill="RosyBrown" Stroke="Brown" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="1">
-                                    <Rectangle Stroke="Blue" Width="45" Height="45" Fill="DarkBlue"/>
+                                    <Rectangle Stroke="DarkBlue" StrokeThickness="2" Width="45" Height="45" Fill="Blue"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Color" x:Name="RadioButton4" Command="{Binding RadioButton4Command}"/>
+                                    <RadioButton Style="{DynamicResource RadioButton}" GroupName="Color" x:Name="RadioButton4" Command="{Binding RadioButton4Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -250,15 +250,15 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="3" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="Green"  Stroke="DarkGreen" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Width="45" Height="45" Fill="Green" Stroke="DarkGreen" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="1">
-                                    <Rectangle Stroke="DarkTurquoise" Width="45" Height="45" Fill="Turquoise"/>
+                                    <Rectangle Stroke="DarkTurquoise" StrokeThickness="2" Width="45" Height="45" Fill="Turquoise"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Color" x:Name="RadioButton5" Command="{Binding RadioButton5Command}"/>
+                                    <RadioButton Style="{DynamicResource RadioButton}" GroupName="Color" x:Name="RadioButton5" Command="{Binding RadioButton5Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
@@ -272,15 +272,15 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="3" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="White"  Stroke="Black" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Width="45" Height="45" Fill="White" Stroke="Black" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="1">
-                                    <Rectangle Stroke="Black" Width="45" Height="45" Fill="White"/>
+                                    <Rectangle Stroke="Black" StrokeThickness="2" Width="45" Height="45" Fill="White"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
-                                    <RadioButton GroupName="Color" x:Name="RadioButton6" Command="{Binding RadioButton6Command}"/>
+                                    <RadioButton Style="{DynamicResource RadioButton}" GroupName="Color" x:Name="RadioButton6" Command="{Binding RadioButton6Command}"/>
                                 </Viewbox>
                             </Grid>
                         </Border>

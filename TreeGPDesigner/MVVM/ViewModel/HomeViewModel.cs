@@ -74,11 +74,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ObservableCollection<NodePlot> displayTreePlot = new();
 
         [ObservableProperty]
-        private float canvasHeight;
+        private float? canvasHeight;
 
         [ObservableProperty]
-        private float canvasWidth;
-
+        private float? canvasWidth;
 
         //View Model Specific Variables.
         public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
@@ -120,9 +119,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrushChanged += OnCurrentTerminalNodeOutlineBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
 
-            CanvasHeight = DisplayTree.Height * 100 / (float)0.75;
-            CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
-
             //Viewmodel Specific variables.
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
             AppInfoSingleton.Instance.CurrentRadioButtonCheckChanged += OnCurrentRadioButtonCheckChanged;
@@ -143,7 +139,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             TreeDrawingAlgorithm.CalculateNodePositions(DisplayTree);
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
-                TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush); 
+                TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush);
+
+            CanvasHeight = DisplayTree.Height * 100 / (float)0.75; 
+            CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
         }
 
         public void ToggleButtonLightDarkMode()
@@ -192,7 +191,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
         public void RadioButton4()
         {
-            ChangeBrushes(Brushes.Brown, Brushes.RosyBrown, Brushes.Blue, Brushes.DarkBlue);
+            ChangeBrushes(Brushes.Brown, Brushes.RosyBrown, Brushes.DarkBlue, Brushes.Blue);
             AppInfoSingleton.Instance.CurrentRadioButtonCheck = 4;
         }
         public void RadioButton5()
