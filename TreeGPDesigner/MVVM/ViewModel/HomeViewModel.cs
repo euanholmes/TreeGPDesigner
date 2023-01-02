@@ -17,40 +17,77 @@ namespace TreeGPDesigner.MVVM.ViewModel
 {
     public partial class HomeViewModel : ObservableObject, INotifyPropertyChanged
     {
+        //Variables in every viewmodel.
         public new event PropertyChangedEventHandler? PropertyChanged;
 
-        public Brush? FunctionNodeOutlineBrush => AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush;
-        public Brush? FunctionNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush;
-        public Brush? TerminalNodeOutlineBrush => AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
-        public Brush? TerminalNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
-        public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
         public Brush? TextColour => AppInfoSingleton.Instance.CurrentText;
-        public int? RadioButtonCheck => AppInfoSingleton.Instance.CurrentRadioButtonCheck;
-
-        private void OnCurrentFunctionNodeOutlineBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeOutlineBrush)));
-        }
-        private void OnCurrentFunctionNodeBackgroundBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeBackgroundBrush)));
-        }
-        private void OnCurrentTerminalNodeOutlineBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeOutlineBrush)));
-        }
-        private void OnCurrentTerminalNodeBackgroundBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeBackgroundBrush)));
-        }
-        private void OnCurrentToggleModeButtonChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ToggleButtonSource)));
-        }
         private void OnCurrentTextChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextColour)));
         }
+
+        public Brush? Panel1Colour => AppInfoSingleton.Instance.CurrentPanel1Color;
+        private void OnCurrentPanel1ColourChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Panel1Colour)));
+        }
+
+        public Brush? NormalButtonColour => AppInfoSingleton.Instance.CurrentNormalButtonColor;
+        private void OnCurrentNormalButtonColourChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NormalButtonColour)));
+        }
+
+        public Brush? NavButtonColour => AppInfoSingleton.Instance.CurrentNavButtonColor;
+        private void OnCurrentNavButtonColourChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NavButtonColour)));
+        }
+
+
+        //Tree Drawing Variables.
+        public Brush? FunctionNodeOutlineBrush => AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush;
+        private void OnCurrentFunctionNodeOutlineBrushChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeOutlineBrush)));
+        }
+
+        public Brush? FunctionNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush;
+        private void OnCurrentFunctionNodeBackgroundBrushChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeBackgroundBrush)));
+        }
+
+        public Brush? TerminalNodeOutlineBrush => AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
+        private void OnCurrentTerminalNodeOutlineBrushChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeOutlineBrush)));
+        }
+
+        public Brush? TerminalNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
+        private void OnCurrentTerminalNodeBackgroundBrushChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeBackgroundBrush)));
+        }
+
+        [ObservableProperty]
+        public ObservableCollection<NodePlot> displayTreePlot = new();
+
+        [ObservableProperty]
+        private float canvasHeight;
+
+        [ObservableProperty]
+        private float canvasWidth;
+
+
+        //View Model Specific Variables.
+        public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
+        private void OnCurrentToggleModeButtonChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ToggleButtonSource)));
+        }
+
+        public int? RadioButtonCheck => AppInfoSingleton.Instance.CurrentRadioButtonCheck;
         private void OnCurrentRadioButtonCheckChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButtonCheck)));
@@ -65,27 +102,29 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand RadioButton5Command { get; }
         public ICommand RadioButton6Command { get; }
 
-        [ObservableProperty]
-        public ObservableCollection<NodePlot> displayTreePlot = new();
-
-        [ObservableProperty]
-        private float canvasHeight;
-
-        [ObservableProperty]
-        private float canvasWidth;
-
         public Node DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
         public bool LightMode = true;
         
 
         public HomeViewModel()
         {
+            //Variables in every viewmodel.
+            AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
+            AppInfoSingleton.Instance.CurrentPanel1ColorChanged += OnCurrentPanel1ColourChanged;
+            AppInfoSingleton.Instance.CurrentNormalButtonColorChanged += OnCurrentNormalButtonColourChanged;
+            AppInfoSingleton.Instance.CurrentNavButtonColorChanged += OnCurrentNavButtonColourChanged;
+
+            //Tree Drawing Variables.
             AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrushChanged += OnCurrentFunctionNodeOutlineBrushChanged;
             AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrushChanged += OnCurrentFunctionNodeBackgroundBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrushChanged += OnCurrentTerminalNodeOutlineBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
+
+            CanvasHeight = DisplayTree.Height * 100 / (float)0.75;
+            CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
+
+            //Viewmodel Specific variables.
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
-            AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
             AppInfoSingleton.Instance.CurrentRadioButtonCheckChanged += OnCurrentRadioButtonCheckChanged;
 
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
@@ -103,10 +142,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             DisplayTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("4766", 0, 0, false));;
 
             TreeDrawingAlgorithm.CalculateNodePositions(DisplayTree);
-
-            CanvasHeight = DisplayTree.Height * 100 / (float)0.75;
-            CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
-
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
                 TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush); 
         }
@@ -116,15 +151,21 @@ namespace TreeGPDesigner.MVVM.ViewModel
             if (LightMode)
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon-inverted.png"));
-                AppInfoSingleton.Instance.CurrentBackground = (Brush)new BrushConverter().ConvertFrom("#2b2828");
+                AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.DarkBackground;
                 AppInfoSingleton.Instance.CurrentText = Brushes.White;
+                AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.DarkPanel1;
+                AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.DarkNormalButton;
+                AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.DarkNavButton;
                 LightMode = false;
             }
             else
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
-                AppInfoSingleton.Instance.CurrentBackground = Brushes.White;
+                AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.LightBackground;
                 AppInfoSingleton.Instance.CurrentText = Brushes.Black;
+                AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.LightPanel1;
+                AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.LightNormalButton;
+                AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.LightNavButton;
                 LightMode = true;
             }
         }

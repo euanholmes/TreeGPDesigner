@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,8 +16,40 @@ namespace TreeGPDesigner
     {
         private static AppInfoSingleton instance = null;
 
+        //Brushes
+        public static LinearGradientBrush LightBackground = new();
+        public static LinearGradientBrush DarkBackground = new();
+        public static LinearGradientBrush LightPanel1 = new();
+        public static LinearGradientBrush DarkPanel1 = new();
+        public static Brush LightNormalButton = (Brush)new BrushConverter().ConvertFrom("#a5e8b4");
+        public static Brush DarkNormalButton = (Brush)new BrushConverter().ConvertFrom("#829460");
+        public static Brush LightNavButton = Brushes.LightGray;
+        public static Brush DarkNavButton = Brushes.Gray;
+
         private AppInfoSingleton()
         {
+            LightBackground.StartPoint = new Point(0, 0);
+            LightBackground.EndPoint = new Point(1, 1);
+            LightBackground.GradientStops.Add(new GradientStop(Colors.White, 0.0));
+            LightBackground.GradientStops.Add(new GradientStop(Colors.WhiteSmoke, 1.0));
+
+            DarkBackground.StartPoint = new Point(0, 0);
+            DarkBackground.EndPoint = new Point(1, 1);
+            DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#395B64"), 0.0));
+            DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3F4E4F"), 0.5));
+            DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#2C3639"), 1.0));
+
+            LightPanel1.StartPoint = new Point(0, 0);
+            LightPanel1.EndPoint = new Point(1, 1);
+            //LightPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#FEFCF3"), 0.0));
+            //LightPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#ECE8DD"), 0.5));
+            LightPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#DEF5E5"), 1.0));
+
+            DarkPanel1.StartPoint = new Point(0, 0);
+            DarkPanel1.EndPoint = new Point(1, 1);
+            //DarkPanel1.GradientStops.Add(new GradientStop(Colors.WhiteSmoke, 0.0));
+            //DarkPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3F4E4F"), 0.5));
+            DarkPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#7FB77E"), 1.0));
         }
 
         public static AppInfoSingleton Instance
@@ -30,6 +63,9 @@ namespace TreeGPDesigner
                 return instance;
             }
         }
+
+        
+        
 
         //Current view model
         public event Action CurrentViewModelChanged;
@@ -67,6 +103,63 @@ namespace TreeGPDesigner
         private void OnCurrentRadioButtonCheckChanged()
         {
             CurrentRadioButtonCheckChanged?.Invoke();
+        }
+
+        //Current Panel1 Colour
+        public event Action CurrentPanel1ColorChanged;
+        private Brush? currentPanel1Color;
+
+        public Brush? CurrentPanel1Color
+        {
+            get => currentPanel1Color;
+            set
+            {
+                currentPanel1Color = value;
+                OnCurrentPanel1ColorChanged();
+            }
+        }
+
+        private void OnCurrentPanel1ColorChanged()
+        {
+            CurrentPanel1ColorChanged?.Invoke();
+        }
+
+        //Current Normal Button Colour
+        public event Action CurrentNormalButtonColorChanged;
+        private Brush? currentNormalButtonColor;
+
+        public Brush? CurrentNormalButtonColor
+        {
+            get => currentNormalButtonColor;
+            set
+            {
+                currentNormalButtonColor = value;
+                OnCurrentNormalButtonColorChanged();
+            }
+        }
+
+        private void OnCurrentNormalButtonColorChanged()
+        {
+            CurrentNormalButtonColorChanged?.Invoke();
+        }
+
+        //Current Nav Button Colour
+        public event Action CurrentNavButtonColorChanged;
+        private Brush? currentNavButtonColor;
+
+        public Brush? CurrentNavButtonColor
+        {
+            get => currentNavButtonColor;
+            set
+            {
+                currentNavButtonColor = value;
+                OnCurrentNavButtonColorChanged();
+            }
+        }
+
+        private void OnCurrentNavButtonColorChanged()
+        {
+            CurrentNavButtonColorChanged?.Invoke();
         }
 
         //Current function node outline brush

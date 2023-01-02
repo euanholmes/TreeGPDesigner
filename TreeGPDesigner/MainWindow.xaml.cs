@@ -31,22 +31,12 @@ namespace TreeGPDesigner
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush = Brushes.Blue;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush = Brushes.LightBlue;
             AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
-            AppInfoSingleton.Instance.CurrentBackground = Brushes.White;
-
-
-            //Trying out gradient brushes
-            LinearGradientBrush LightBackground = new();
-            LightBackground.StartPoint = new Point(0, 0);
-            LightBackground.EndPoint = new Point(1, 1);
-            LightBackground.GradientStops.Add(new GradientStop(Colors.White, 0.0));
-            //LightBackground.GradientStops.Add(new GradientStop(Colors.GhostWhite, 0.5));
-            LightBackground.GradientStops.Add(new GradientStop(Colors.WhiteSmoke, 1.0));
-
-            //AppInfoSingleton.Instance.CurrentBackground = Brushes.White;
-            AppInfoSingleton.Instance.CurrentBackground = LightBackground;
-
+            AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.LightBackground;
             AppInfoSingleton.Instance.CurrentText = Brushes.Black;
             AppInfoSingleton.Instance.CurrentRadioButtonCheck = 1;
+            AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.LightPanel1;
+            AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.LightNormalButton;
+            AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.LightNavButton;
             DataContext = new MainWindowViewModel();
         }
     }
