@@ -108,7 +108,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
                                         </Border>
                                     </Viewbox>
@@ -124,7 +124,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
                                         </Border>
                                     </Viewbox>
@@ -140,7 +140,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="/"/>
                                         </Border>
                                     </Viewbox>
@@ -165,7 +165,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
                                         </Border>
                                     </Viewbox>
@@ -181,7 +181,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="*"/>
                                         </Border>
                                     </Viewbox>
@@ -197,7 +197,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="ABS"/>
                                         </Border>
                                     </Viewbox>
@@ -238,7 +238,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-1"/>
                                         </Border>
                                     </Viewbox>
@@ -254,7 +254,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
                                         </Border>
                                     </Viewbox>
@@ -270,7 +270,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="34"/>
                                         </Border>
                                     </Viewbox>
@@ -295,7 +295,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
                                         </Border>
                                     </Viewbox>
@@ -311,7 +311,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Y"/>
                                         </Border>
                                     </Viewbox>
@@ -327,7 +327,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AB"/>
                                         </Border>
                                     </Viewbox>
@@ -368,7 +368,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
                                         </Border>
                                     </Viewbox>
@@ -384,7 +384,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
                                         </Border>
                                     </Viewbox>
@@ -400,7 +400,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">="/>
                                         </Border>
                                     </Viewbox>
@@ -425,7 +425,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="1" CornerRadius="50">
+                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
                                         </Border>
                                     </Viewbox>
@@ -441,7 +441,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
                                         </Border>
                                     </Viewbox>
@@ -457,7 +457,7 @@
                                         <CheckBox/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="1" CornerRadius="0">
+                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
                                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
                                         </Border>
                                     </Viewbox>
@@ -475,8 +475,46 @@
                     </Grid.RowDefinitions>
 
                     <!-- Display Tree-->
-                    <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="5 10 10 0" Background="White">
+                    <Border x:Name="treeBorder" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="5 10 10 0" Background="White">
+                        <Grid>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="pack://application:,,,/Images/zoom-pan-icon.png"/>
 
+                            <Canvas Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="treeCanvas">
+                                <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas IsItemsHost="true"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="Black" StrokeThickness="2"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemContainerStyle>
+                                        <Style>
+                                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                        </Style>
+                                    </ItemsControl.ItemContainerStyle>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
+                                                <TextBlock Text="{Binding Symbol}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Canvas>
+                        </Grid>
                     </Border>
 
                     <!-- Generate Tree Button-->

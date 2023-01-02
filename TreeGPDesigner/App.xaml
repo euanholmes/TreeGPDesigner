@@ -8,6 +8,13 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            <ResourceDictionary.MergedDictionaries>
+                
+                <!-- App Styles-->
+                <ResourceDictionary Source="Theme/AppStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- View Model Data Templates -->
             <DataTemplate DataType="{x:Type vm:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
@@ -20,6 +27,20 @@
                 <view:GPBasics1/>
             </DataTemplate>
 
+
+            <!-- Custom Fonts -->
+            <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>
+            <FontFamily x:Key="RobotoBlackItalic">pack://application:,,,/Fonts/#Roboto Black Italic</FontFamily>
+            <FontFamily x:Key="RobotoBold">pack://application:,,,/Fonts/#Roboto Bold</FontFamily>
+            <FontFamily x:Key="RobotoBoldItalic">pack://application:,,,/Fonts/#Roboto Bold Italic</FontFamily>
+            <FontFamily x:Key="RobotoItalic">pack://application:,,,/Fonts/#Roboto Italic</FontFamily>
+            <FontFamily x:Key="RobotoLight">pack://application:,,,/Fonts/#Roboto Light</FontFamily>
+            <FontFamily x:Key="RobotoLightItalic">pack://application:,,,/Fonts/#Roboto Light Italic</FontFamily>
+            <FontFamily x:Key="RobotoMedium">pack://application:,,,/Fonts/#Roboto Medium</FontFamily>
+            <FontFamily x:Key="RobotoMediumItalic">pack://application:,,,/Fonts/#Roboto Medium Italic</FontFamily>
+            <FontFamily x:Key="RobotoRegular">pack://application:,,,/Fonts/#Roboto Regular</FontFamily>
+            <FontFamily x:Key="RobotoThin">pack://application:,,,/Fonts/#Roboto Thin</FontFamily>
+            <FontFamily x:Key="RobotoThinItalic">pack://application:,,,/Fonts/#Roboto Thin Italic</FontFamily>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

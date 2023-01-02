@@ -7,27 +7,6 @@
              mc:Ignorable="d"
              d:DesignHeight="540" d:DesignWidth="960">
 
-    <UserControl.Resources>
-        <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Opacity" Value="0.8" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
-
     <!-- Main Window Grid -->
     <Grid>
         <Grid.ColumnDefinitions>
@@ -50,11 +29,11 @@
             </Grid.RowDefinitions>
 
             <Viewbox Grid.Row="0">
-                <TextBlock Foreground="{Binding TextColour}"  FontWeight="Bold" Text="Tree GP Designer" HorizontalAlignment="Center"/>
+                <TextBlock Style="{StaticResource TitleText}" Foreground="{Binding TextColour}" Text="Tree GP Designer" HorizontalAlignment="Center"/>
             </Viewbox>
 
             <Viewbox  Grid.Row="1">
-                <TextBlock Foreground="{Binding TextColour}" TextAlignment="Center" FontWeight="DemiBold" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource SubTitleText}" Foreground="{Binding TextColour}" TextAlignment="Center" HorizontalAlignment="Center">
                     Automatically generate programs and algorithms<LineBreak/>
                     with tree-based genetic programming.
                 </TextBlock>
@@ -92,9 +71,9 @@
 
             <Viewbox Grid.Column="1" Grid.Row="1">
                 <UniformGrid Rows="3">
-                    <Button Margin="0 5 0 0" Padding="8, 2" Command="{Binding NavTutorialsMenuCommand}"  Background="#a5e8b4" Content="Tutorials"/>
-                    <Button Margin="0 2.5 0 2.5" Padding="8, 2" Background="#a5e8b4" Content="Start A GP Run"/>
-                    <Button Margin="0 0 0 5" Padding="8, 2" Background="#a5e8b4" Content="Profiles"/>
+                    <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 5 0 0" Command="{Binding NavTutorialsMenuCommand}" Content="Tutorials"/>
+                    <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 2.5 0 2.5"  Content="Start A GP Run"/>
+                    <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 0 0 5"  Content="Profiles"/>
                 </UniformGrid>
             </Viewbox>
         </Grid>
@@ -109,8 +88,8 @@
             <Border x:Name="mainBorder" ClipToBounds="true" Background="White" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
                 <Grid>
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="pack://application:,,,/Images/zoom-pan-icon.png"/>
-                    
-                    <Canvas Height="{Binding CanvasPositionHeight}" Width="{Binding CanvasPositionWidth}" x:Name="mainContainerCanvas">
+
+                    <Canvas Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="mainContainerCanvas">
                         <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -138,7 +117,7 @@
                             </ItemsControl.ItemContainerStyle>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="1" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
+                                    <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
                                         <TextBlock Text="{Binding Symbol}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     </Border>
                                 </DataTemplate>
@@ -163,7 +142,7 @@
                     <ColumnDefinition Width="0.2*"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                <Border Grid.Row="1" Grid.Column="1">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -174,7 +153,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1 1 1 0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -196,7 +175,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1 1 1 0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -218,7 +197,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1 1 1 0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -240,7 +219,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1 1 1 0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -262,7 +241,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="4" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="4" BorderBrush="Black" BorderThickness="1 1 1 0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -284,7 +263,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="5" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="5" BorderBrush="Black" BorderThickness="1 1 1 1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -319,7 +298,7 @@
             </Grid.RowDefinitions>
 
             <Viewbox HorizontalAlignment="Center" Grid.Row="1">
-                <Button Click="ExitBtn_Click" Padding="8, 2" Content="Exit"/>
+                <Button Style="{StaticResource NavButtonStyle}" Click="ExitBtn_Click"  Content="Exit"/>
             </Viewbox>
         </Grid>
 
@@ -332,7 +311,7 @@
             </Grid.RowDefinitions>
             
             <Viewbox HorizontalAlignment="Right" Grid.Row="1">
-                <Button Padding="8, 2" x:Name="debugBtn" Content="Debug Window" Click="DebugBtn_Click"/>
+                <Button Style="{DynamicResource NavButtonStyle}" x:Name="debugBtn" Content="Debug Window" Click="DebugBtn_Click"/>
             </Viewbox>
         </Grid>
     </Grid>

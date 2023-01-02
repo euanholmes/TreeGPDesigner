@@ -69,10 +69,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ObservableCollection<NodePlot> displayTreePlot = new();
 
         [ObservableProperty]
-        private float canvasPositionHeight;
+        private float canvasHeight;
 
         [ObservableProperty]
-        private float canvasPositionWidth;
+        private float canvasWidth;
 
         public Node DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
         public bool LightMode = true;
@@ -104,9 +104,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             TreeDrawingAlgorithm.CalculateNodePositions(DisplayTree);
 
-            CanvasPositionHeight = DisplayTree.Height * 100 / (float)0.75;
-            CanvasPositionWidth = DisplayTree.Width * 100 / (float)0.75;
-            
+            CanvasHeight = DisplayTree.Height * 100 / (float)0.75;
+            CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
+
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
                 TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush); 
         }
