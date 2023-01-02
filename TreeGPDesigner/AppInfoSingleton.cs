@@ -22,7 +22,7 @@ namespace TreeGPDesigner
         public static LinearGradientBrush LightPanel1 = new();
         public static LinearGradientBrush DarkPanel1 = new();
         public static Brush LightNormalButton = (Brush)new BrushConverter().ConvertFrom("#a5e8b4");
-        public static Brush DarkNormalButton = (Brush)new BrushConverter().ConvertFrom("#829460");
+        public static Brush DarkNormalButton = (Brush)new BrushConverter().ConvertFrom("#044343");
         public static Brush LightNavButton = Brushes.LightGray;
         public static Brush DarkNavButton = Brushes.Gray;
 
@@ -49,7 +49,7 @@ namespace TreeGPDesigner
             DarkPanel1.EndPoint = new Point(1, 1);
             //DarkPanel1.GradientStops.Add(new GradientStop(Colors.WhiteSmoke, 0.0));
             //DarkPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3F4E4F"), 0.5));
-            DarkPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#7FB77E"), 1.0));
+            DarkPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3C6562"), 1.0));
         }
 
         public static AppInfoSingleton Instance
