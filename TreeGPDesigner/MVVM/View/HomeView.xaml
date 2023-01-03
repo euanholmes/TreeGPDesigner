@@ -87,7 +87,7 @@
 
             <Border Style="{DynamicResource Panel1}" x:Name="mainBorder" ClipToBounds="true"  Grid.Column="0">
                 <Grid>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="pack://application:,,,/Images/zoom-pan-icon.png"/>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
 
                     <Canvas Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="mainContainerCanvas">
                         <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
@@ -153,7 +153,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="0 0 0 1">
+                        <Border Grid.Row="0" BorderBrush="{Binding TextColour}" BorderThickness="0 0 0 1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -175,7 +175,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0 0 0 1">
+                        <Border Grid.Row="1" BorderBrush="{Binding TextColour}" BorderThickness="0 0 0 1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -197,7 +197,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0 0 0 1">
+                        <Border Grid.Row="2" BorderBrush="{Binding TextColour}" BorderThickness="0 0 0 1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -219,7 +219,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="0 0 0 1">
+                        <Border Grid.Row="3" BorderBrush="{Binding TextColour}" BorderThickness="0 0 0 1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -241,7 +241,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="4" BorderBrush="Black" BorderThickness="0 0 0 1">
+                        <Border Grid.Row="4" BorderBrush="{Binding TextColour}" BorderThickness="0 0 0 1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>

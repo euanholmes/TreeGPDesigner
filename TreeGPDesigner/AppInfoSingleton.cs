@@ -19,8 +19,10 @@ namespace TreeGPDesigner
         //Brushes
         public static LinearGradientBrush LightBackground = new();
         public static LinearGradientBrush DarkBackground = new();
-        public static LinearGradientBrush LightPanel1 = new();
-        public static LinearGradientBrush DarkPanel1 = new();
+        public static Brush LightPanel1 = (Brush)new BrushConverter().ConvertFrom("#DEF5E5");
+        public static Brush DarkPanel1 = (Brush)new BrushConverter().ConvertFrom("#3C6562");
+        public static Brush LightPanel2 = (Brush)new BrushConverter().ConvertFrom("#C0EEE4");
+        public static Brush DarkPanel2 = (Brush)new BrushConverter().ConvertFrom("#133B5C");
         public static Brush LightNormalButton = (Brush)new BrushConverter().ConvertFrom("#a5e8b4");
         public static Brush DarkNormalButton = (Brush)new BrushConverter().ConvertFrom("#044343");
         public static Brush LightNavButton = Brushes.LightGray;
@@ -38,18 +40,6 @@ namespace TreeGPDesigner
             DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#395B64"), 0.0));
             DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3F4E4F"), 0.5));
             DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#2C3639"), 1.0));
-
-            LightPanel1.StartPoint = new Point(0, 0);
-            LightPanel1.EndPoint = new Point(1, 1);
-            //LightPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#FEFCF3"), 0.0));
-            //LightPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#ECE8DD"), 0.5));
-            LightPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#DEF5E5"), 1.0));
-
-            DarkPanel1.StartPoint = new Point(0, 0);
-            DarkPanel1.EndPoint = new Point(1, 1);
-            //DarkPanel1.GradientStops.Add(new GradientStop(Colors.WhiteSmoke, 0.0));
-            //DarkPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3F4E4F"), 0.5));
-            DarkPanel1.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3C6562"), 1.0));
         }
 
         public static AppInfoSingleton Instance
@@ -122,6 +112,25 @@ namespace TreeGPDesigner
         private void OnCurrentPanel1ColorChanged()
         {
             CurrentPanel1ColorChanged?.Invoke();
+        }
+
+        //Current Panel2 Colour
+        public event Action CurrentPanel2ColorChanged;
+        private Brush? currentPanel2Color;
+
+        public Brush? CurrentPanel2Color
+        {
+            get => currentPanel2Color;
+            set
+            {
+                currentPanel2Color = value;
+                OnCurrentPanel2ColorChanged();
+            }
+        }
+
+        private void OnCurrentPanel2ColorChanged()
+        {
+            CurrentPanel2ColorChanged?.Invoke();
         }
 
         //Current Normal Button Colour
@@ -255,6 +264,25 @@ namespace TreeGPDesigner
         private void OnCurrentModeToggleButtonChanged()
         {
             CurrentModeToggleButtonChanged?.Invoke();
+        }
+
+        //Current zoom icon
+        public event Action CurrentZoomIconChanged;
+        private ImageSource? currentZoomIcon;
+
+        public ImageSource? CurrentZoomIcon
+        {
+            get => currentZoomIcon;
+            set
+            {
+                currentZoomIcon = value;
+                OnCurrentZoomIconChanged();
+            }
+        }
+
+        private void OnCurrentZoomIconChanged()
+        {
+            CurrentZoomIconChanged?.Invoke();
         }
 
         //Current background colour

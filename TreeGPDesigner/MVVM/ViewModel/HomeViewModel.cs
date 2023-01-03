@@ -32,6 +32,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Panel1Colour)));
         }
 
+        public Brush? Panel2Colour => AppInfoSingleton.Instance.CurrentPanel2Color;
+        private void OnCurrentPanel2ColourChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Panel2Colour)));
+        }
+
         public Brush? NormalButtonColour => AppInfoSingleton.Instance.CurrentNormalButtonColor;
         private void OnCurrentNormalButtonColourChanged()
         {
@@ -68,6 +74,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private void OnCurrentTerminalNodeBackgroundBrushChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeBackgroundBrush)));
+        }
+
+        public ImageSource? ZoomIconSource => AppInfoSingleton.Instance.CurrentZoomIcon;
+        private void OnCurrentZoomIconChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ZoomIconSource)));
         }
 
         [ObservableProperty]
@@ -110,6 +122,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             //Variables in every viewmodel.
             AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
             AppInfoSingleton.Instance.CurrentPanel1ColorChanged += OnCurrentPanel1ColourChanged;
+            AppInfoSingleton.Instance.CurrentPanel2ColorChanged += OnCurrentPanel2ColourChanged;
             AppInfoSingleton.Instance.CurrentNormalButtonColorChanged += OnCurrentNormalButtonColourChanged;
             AppInfoSingleton.Instance.CurrentNavButtonColorChanged += OnCurrentNavButtonColourChanged;
 
@@ -118,6 +131,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrushChanged += OnCurrentFunctionNodeBackgroundBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrushChanged += OnCurrentTerminalNodeOutlineBrushChanged;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
+            AppInfoSingleton.Instance.CurrentZoomIconChanged += OnCurrentZoomIconChanged;
 
             //Viewmodel Specific variables.
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
@@ -150,9 +164,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
             if (LightMode)
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon-inverted.png"));
+                AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/Images/zoom-pan-icon-inverted.png"));
                 AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.DarkBackground;
                 AppInfoSingleton.Instance.CurrentText = Brushes.White;
                 AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.DarkPanel1;
+                AppInfoSingleton.Instance.CurrentPanel2Color = AppInfoSingleton.DarkPanel2;
                 AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.DarkNormalButton;
                 AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.DarkNavButton;
                 LightMode = false;
@@ -160,9 +176,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
             else
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
+                AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/Images/zoom-pan-icon.png"));
                 AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.LightBackground;
                 AppInfoSingleton.Instance.CurrentText = Brushes.Black;
                 AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.LightPanel1;
+                AppInfoSingleton.Instance.CurrentPanel2Color = AppInfoSingleton.LightPanel2;
                 AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.LightNormalButton;
                 AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.LightNavButton;
                 LightMode = true;

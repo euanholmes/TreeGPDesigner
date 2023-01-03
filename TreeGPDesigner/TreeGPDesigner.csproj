@@ -24,6 +24,7 @@
     <None Remove="Images\dark-mode-toggle-icon.png" />
     <None Remove="Images\light-mode-toggle-icon.png" />
     <None Remove="Images\PanZoom2.png" />
+    <None Remove="Images\zoom-pan-icon-inverted.png" />
     <None Remove="Images\zoom-pan-icon.png" />
   </ItemGroup>
 
@@ -48,6 +49,7 @@
     <Resource Include="Images\dark-mode-toggle-icon.png" />
     <Resource Include="Images\light-mode-toggle-icon.png" />
     <Resource Include="Images\PanZoom2.png" />
+    <Resource Include="Images\zoom-pan-icon-inverted.png" />
     <Resource Include="Images\zoom-pan-icon.png" />
   </ItemGroup>
 

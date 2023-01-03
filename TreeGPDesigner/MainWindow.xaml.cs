@@ -31,10 +31,12 @@ namespace TreeGPDesigner
             AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush = Brushes.Blue;
             AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush = Brushes.LightBlue;
             AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
+            AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/Images/zoom-pan-icon.png"));
             AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.LightBackground;
             AppInfoSingleton.Instance.CurrentText = Brushes.Black;
             AppInfoSingleton.Instance.CurrentRadioButtonCheck = 1;
             AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.LightPanel1;
+            AppInfoSingleton.Instance.CurrentPanel2Color = AppInfoSingleton.LightPanel2;
             AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.LightNormalButton;
             AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.LightNavButton;
             DataContext = new MainWindowViewModel();

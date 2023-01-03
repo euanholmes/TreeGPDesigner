@@ -11,23 +11,28 @@ using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class TutorialsMenuViewModel : ObservableObject, INotifyPropertyChanged
+    public partial class TutorialsMenuViewModel : ObservableObject
     {
-        public new event PropertyChangedEventHandler? PropertyChanged;
-        public Brush? TextColour => AppInfoSingleton.Instance.CurrentText;
+        [ObservableProperty]
+        private Brush textColour = AppInfoSingleton.Instance.CurrentText;
 
-        private void OnCurrentTextChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextColour)));
-        }
+        [ObservableProperty]
+        private Brush normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
+
+        [ObservableProperty]
+        private Brush navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
+
+        [ObservableProperty]
+        private Brush panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
+
+        [ObservableProperty]
+        private Brush panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavGPBasics1Command { get; }
 
         public TutorialsMenuViewModel()
         {
-            AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
-
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavGPBasics1Command = new RelayCommand(NavGPBasics1);
         }
