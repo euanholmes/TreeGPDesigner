@@ -52,28 +52,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
 
         //Tree Drawing Variables.
-        public Brush? FunctionNodeOutlineBrush => AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush;
-        private void OnCurrentFunctionNodeOutlineBrushChanged()
+        public Brush[]? BrushSet => AppInfoSingleton.Instance.CurrentBrushSet;
+        private void OnCurrentBrushSetChanged()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeOutlineBrush)));
-        }
-
-        public Brush? FunctionNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush;
-        private void OnCurrentFunctionNodeBackgroundBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeBackgroundBrush)));
-        }
-
-        public Brush? TerminalNodeOutlineBrush => AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
-        private void OnCurrentTerminalNodeOutlineBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeOutlineBrush)));
-        }
-
-        public Brush? TerminalNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
-        private void OnCurrentTerminalNodeBackgroundBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeBackgroundBrush)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet)));
         }
 
         public ImageSource? ZoomIconSource => AppInfoSingleton.Instance.CurrentZoomIcon;
@@ -92,6 +74,43 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private float? canvasWidth;
 
         //View Model Specific Variables.
+        public Brush[]? BrushSet1 => AppInfoSingleton.Instance.CurrentBrushSet1;
+        private void OnCurrentBrushSet1Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet1)));
+        }
+
+        public Brush[]? BrushSet2 => AppInfoSingleton.Instance.CurrentBrushSet2;
+        private void OnCurrentBrushSet2Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet2)));
+        }
+
+        public Brush[]? BrushSet3 => AppInfoSingleton.Instance.CurrentBrushSet3;
+        private void OnCurrentBrushSet3Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet3)));
+        }
+
+        public Brush[]? BrushSet4 => AppInfoSingleton.Instance.CurrentBrushSet4;
+        private void OnCurrentBrushSet4Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet4)));
+        }
+
+        public Brush[]? BrushSet5 => AppInfoSingleton.Instance.CurrentBrushSet5;
+        private void OnCurrentBrushSet5Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet5)));
+        }
+
+        public Brush[]? BrushSet6 => AppInfoSingleton.Instance.CurrentBrushSet6;
+        private void OnCurrentBrushSet6Changed()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet6)));
+        }
+
+
         public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
         private void OnCurrentToggleModeButtonChanged()
         {
@@ -120,11 +139,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentNavButtonColorChanged += OnCurrentNavButtonColourChanged;
 
             //Tree Drawing Variables.
-            AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrushChanged += OnCurrentFunctionNodeOutlineBrushChanged;
-            AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrushChanged += OnCurrentFunctionNodeBackgroundBrushChanged;
-            AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrushChanged += OnCurrentTerminalNodeOutlineBrushChanged;
-            AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
+            AppInfoSingleton.Instance.CurrentBrushSetChanged += OnCurrentBrushSetChanged;
             AppInfoSingleton.Instance.CurrentZoomIconChanged += OnCurrentZoomIconChanged;
+
+            //Brush sets.
+            AppInfoSingleton.Instance.CurrentBrushSet1Changed += OnCurrentBrushSet1Changed;
+            AppInfoSingleton.Instance.CurrentBrushSet2Changed += OnCurrentBrushSet2Changed;
+            AppInfoSingleton.Instance.CurrentBrushSet3Changed += OnCurrentBrushSet3Changed;
+            AppInfoSingleton.Instance.CurrentBrushSet4Changed += OnCurrentBrushSet4Changed;
+            AppInfoSingleton.Instance.CurrentBrushSet5Changed += OnCurrentBrushSet5Changed;
+            AppInfoSingleton.Instance.CurrentBrushSet6Changed += OnCurrentBrushSet6Changed;
 
             //Viewmodel Specific variables.
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
@@ -144,8 +168,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             DisplayTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("4766", 0, 0, false));;
 
             TreeDrawingAlgorithm.CalculateNodePositions(DisplayTree);
-            DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
-                TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush);
+            DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, BrushSet);
 
             CanvasHeight = DisplayTree.Height * 100 / (float)0.75; 
             CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
@@ -153,6 +176,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void ToggleButtonLightDarkMode()
         {
+            SwitchBrushSets();
+            SwitchCurrentBrushSet();
+
             if (Properties.Settings.Default.SettingsMode)
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon-inverted.png"));
@@ -179,6 +205,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 Properties.Settings.Default.SettingsMode = true;
                 Properties.Settings.Default.Save();
             }
+
+            DisplayTreePlot.Clear();
+            DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, BrushSet);
         }
 
         public void NavTutorialsMenu()
@@ -188,50 +217,96 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void RadioButton1()
         {
-            ChangeBrushes(AppInfoSingleton.BrushSet1);
+            ChangeBrushes(AppInfoSingleton.Instance.CurrentBrushSet1);
             Properties.Settings.Default.SettingsRadioButton = 1;
             Properties.Settings.Default.Save();
         }
         public void RadioButton2()
         {
-            ChangeBrushes(AppInfoSingleton.BrushSet2);
+            ChangeBrushes(AppInfoSingleton.Instance.CurrentBrushSet2);
             Properties.Settings.Default.SettingsRadioButton = 2;
             Properties.Settings.Default.Save();
         }
         public void RadioButton3()
         {
-            ChangeBrushes(AppInfoSingleton.BrushSet3);
+            ChangeBrushes(AppInfoSingleton.Instance.CurrentBrushSet3);
             Properties.Settings.Default.SettingsRadioButton = 3;
             Properties.Settings.Default.Save();
         }
         public void RadioButton4()
         {
-            ChangeBrushes(AppInfoSingleton.BrushSet4);
+            ChangeBrushes(AppInfoSingleton.Instance.CurrentBrushSet4);
             Properties.Settings.Default.SettingsRadioButton = 4;
             Properties.Settings.Default.Save();
         }
         public void RadioButton5()
         {
-            ChangeBrushes(AppInfoSingleton.BrushSet5);
+            ChangeBrushes(AppInfoSingleton.Instance.CurrentBrushSet5);
             Properties.Settings.Default.SettingsRadioButton = 5;
             Properties.Settings.Default.Save();
         }
         public void RadioButton6()
         {
-            ChangeBrushes(AppInfoSingleton.BrushSet6);
+            ChangeBrushes(AppInfoSingleton.Instance.CurrentBrushSet6);
             Properties.Settings.Default.SettingsRadioButton = 6;
             Properties.Settings.Default.Save();
         }
 
         public void ChangeBrushes(Brush[] brushSet)
         {
-            AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush = brushSet[0];
-            AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush = brushSet[1];
-            AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush = brushSet[2];
-            AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush = brushSet[3];
+            AppInfoSingleton.Instance.CurrentBrushSet = brushSet;
             DisplayTreePlot.Clear();
-            DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
-                TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush);
+            DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, BrushSet);
+        }
+
+        public void SwitchBrushSets()
+        {
+            if (!Properties.Settings.Default.SettingsMode)
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet1 = AppInfoSingleton.BrushSet1;
+                AppInfoSingleton.Instance.CurrentBrushSet2 = AppInfoSingleton.BrushSet2;
+                AppInfoSingleton.Instance.CurrentBrushSet3 = AppInfoSingleton.BrushSet3;
+                AppInfoSingleton.Instance.CurrentBrushSet4 = AppInfoSingleton.BrushSet4;
+                AppInfoSingleton.Instance.CurrentBrushSet5 = AppInfoSingleton.BrushSet5;
+                AppInfoSingleton.Instance.CurrentBrushSet6 = AppInfoSingleton.BrushSet6;
+            }
+            else
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet1 = AppInfoSingleton.BrushSet1Dark;
+                AppInfoSingleton.Instance.CurrentBrushSet2 = AppInfoSingleton.BrushSet2Dark;
+                AppInfoSingleton.Instance.CurrentBrushSet3 = AppInfoSingleton.BrushSet3Dark;
+                AppInfoSingleton.Instance.CurrentBrushSet4 = AppInfoSingleton.BrushSet4Dark;
+                AppInfoSingleton.Instance.CurrentBrushSet5 = AppInfoSingleton.BrushSet5Dark;
+                AppInfoSingleton.Instance.CurrentBrushSet6 = AppInfoSingleton.BrushSet6Dark;
+            }
+        }
+
+        public void SwitchCurrentBrushSet()
+        {
+            if (Properties.Settings.Default.SettingsRadioButton == 1)
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet1;
+            }
+            else if (Properties.Settings.Default.SettingsRadioButton == 2)
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet2;
+            }
+            else if (Properties.Settings.Default.SettingsRadioButton == 3)
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet3;
+            }
+            else if (Properties.Settings.Default.SettingsRadioButton == 4)
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet4;
+            }
+            else if (Properties.Settings.Default.SettingsRadioButton == 5)
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet5;
+            }
+            else if (Properties.Settings.Default.SettingsRadioButton == 6)
+            {
+                AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet6;
+            }
         }
     }
 }

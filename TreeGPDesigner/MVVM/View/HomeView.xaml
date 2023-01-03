@@ -98,7 +98,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="Black" StrokeThickness="2"/>
+                                    <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="{Binding SymbolColour}" StrokeThickness="2"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
@@ -118,7 +118,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
-                                        <TextBlock Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -162,11 +162,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="5" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="Pink" Stroke="Red" StrokeThickness="2" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Stroke="{Binding BrushSet1[0]}" Fill="{Binding BrushSet1[1]}" Width="45" Height="45"  StrokeThickness="2" Stretch="Uniform"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="5" Grid.Column="1">
-                                    <Rectangle Stroke="Blue" StrokeThickness="2" Width="45" Height="45" Fill="LightBlue"/>
+                                    <Rectangle Stroke="{Binding BrushSet1[2]}" Fill="{Binding BrushSet1[3]}" StrokeThickness="2" Width="45" Height="45"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
@@ -184,11 +184,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="5" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="Orange" Stroke="DarkOrange" StrokeThickness="2" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Stroke="{Binding BrushSet2[0]}" Fill="{Binding BrushSet2[1]}" Width="45" Height="45"  StrokeThickness="2" Stretch="Uniform"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="5" Grid.Column="1">
-                                    <Rectangle Stroke="Purple" StrokeThickness="2" Width="45" Height="45" Fill="MediumPurple"/>
+                                    <Rectangle Stroke="{Binding BrushSet2[2]}" Fill="{Binding BrushSet2[3]}" StrokeThickness="2" Width="45" Height="45"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
@@ -206,11 +206,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="5" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="LightYellow" Stroke="Yellow" StrokeThickness="2" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Stroke="{Binding BrushSet3[0]}" Fill="{Binding BrushSet3[1]}" Width="45" Height="45" StrokeThickness="2" Stretch="Uniform"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="5" Grid.Column="1">
-                                    <Rectangle Stroke="blue" StrokeThickness="2" Width="45" Height="45" Fill="Magenta"/>
+                                    <Rectangle Stroke="{Binding BrushSet3[2]}" Fill="{Binding BrushSet3[3]}" StrokeThickness="2" Width="45" Height="45"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
@@ -228,11 +228,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="5" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="RosyBrown" Stroke="Brown" StrokeThickness="2" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Stroke="{Binding BrushSet4[0]}" Fill="{Binding BrushSet4[1]}" Width="45" Height="45" StrokeThickness="2" Stretch="Uniform"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="5" Grid.Column="1">
-                                    <Rectangle Stroke="DarkBlue" StrokeThickness="2" Width="45" Height="45" Fill="Blue"/>
+                                    <Rectangle Stroke="{Binding BrushSet4[2]}" Fill="{Binding BrushSet4[3]}" StrokeThickness="2" Width="45" Height="45"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
@@ -250,11 +250,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="5" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="Green" Stroke="DarkGreen" StrokeThickness="2" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Stroke="{Binding BrushSet5[0]}" Fill="{Binding BrushSet5[1]}" Width="45" Height="45" StrokeThickness="2" Stretch="Uniform"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="5" Grid.Column="1">
-                                    <Rectangle Stroke="DarkTurquoise" StrokeThickness="2" Width="45" Height="45" Fill="Turquoise"/>
+                                    <Rectangle Stroke="{Binding BrushSet5[2]}" Fill="{Binding BrushSet5[3]}" StrokeThickness="2" Width="45" Height="45"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">
@@ -272,11 +272,11 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Viewbox Margin="5" Grid.Column="0">
-                                    <Ellipse Width="45" Height="45" Fill="White" Stroke="Black" StrokeThickness="2" Stretch="Uniform"></Ellipse>
+                                    <Ellipse Stroke="{Binding BrushSet6[0]}" Fill="{Binding BrushSet6[1]}" Width="45" Height="45" StrokeThickness="2" Stretch="Uniform"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="5" Grid.Column="1">
-                                    <Rectangle Stroke="Black" StrokeThickness="2" Width="45" Height="45" Fill="White"/>
+                                    <Rectangle Stroke="{Binding BrushSet6[2]}" Fill="{Binding BrushSet6[3]}" StrokeThickness="2" Width="45" Height="45"/>
                                 </Viewbox>
 
                                 <Viewbox Margin="3" Grid.Column="2">

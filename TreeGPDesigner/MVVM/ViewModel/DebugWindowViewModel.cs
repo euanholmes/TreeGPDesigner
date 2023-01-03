@@ -132,13 +132,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
             {
                 if (node.Parent == null)
                 {
-                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, pinkBrush, redBrush, fiftyCornerRadius, node.Symbol, 0, 0, 0, 0);
+                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, pinkBrush, redBrush, fiftyCornerRadius, node.Symbol, 0, 0, 0, 0, Brushes.Black);
                     CurrentTreePlot.Add(nodePlot);
                 }
                 else
                 {
                     NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, pinkBrush, redBrush, fiftyCornerRadius, node.Symbol,
-                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25);
+                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25, Brushes.Black);
                     CurrentTreePlot.Add(nodePlot);
                 }
             }
@@ -146,13 +146,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
             {
                 if (node.Parent == null)
                 {
-                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, lightBlueBrush, blueBrush, zeroCornerRadius, node.Symbol, 0, 0, 0, 0);
+                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, lightBlueBrush, blueBrush, zeroCornerRadius, node.Symbol, 0, 0, 0, 0, Brushes.Black);
                     CurrentTreePlot.Add(nodePlot);
                 }
                 else
                 {
                     NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, lightBlueBrush, blueBrush, zeroCornerRadius, node.Symbol,
-                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25);
+                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25, Brushes.Black);
                     CurrentTreePlot.Add(nodePlot);
                 }
             }

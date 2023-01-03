@@ -29,19 +29,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Brush panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
-
         //Tree Drawing Variables
         [ObservableProperty]
-        private Brush functionNodeOutlineBrush = AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush;
-
-        [ObservableProperty]
-        private Brush functionNodeBackgroundBrush = AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush;
-
-        [ObservableProperty]
-        private Brush terminalNodeOutlineBrush = AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
-
-        [ObservableProperty]
-        private Brush terminalNodeBackgroundBrush = AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
+        private Brush[] brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
 
         [ObservableProperty]
         private ImageSource zoomIconSource = AppInfoSingleton.Instance.CurrentZoomIcon;

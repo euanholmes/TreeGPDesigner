@@ -106,12 +106,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+                                        
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+                                    
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -122,12 +132,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+                                    
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+                                    
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -138,12 +158,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="/"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="/"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -163,12 +193,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -179,12 +219,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="*"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="*"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -195,12 +245,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="ABS"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="ABS"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -236,12 +296,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-1"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-1"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -252,12 +322,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -268,12 +348,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="34"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="34"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -293,12 +383,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -309,12 +409,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Y"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Y"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -325,12 +435,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AB"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AB"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -366,12 +486,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -382,12 +512,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -398,12 +538,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">="/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">="/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -423,12 +573,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[1]}"  BorderBrush="{Binding BrushSet[0]}" BorderThickness="2" CornerRadius="50">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -439,12 +599,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -455,12 +625,22 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="8" Grid.Column="0">
-                                        <CheckBox Style="{DynamicResource CheckBox}"/>
-                                    </Viewbox>
+
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="0.75*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1">
+                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                        </Viewbox>
+                                    </Grid>
+
                                     <Viewbox Grid.Column="1">
-                                        <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
+                                        <Border Width="45" Height="45" Background="{Binding BrushSet[3]}"  BorderBrush="{Binding BrushSet[2]}" BorderThickness="2" CornerRadius="0">
+                                            <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>

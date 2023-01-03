@@ -16,7 +16,7 @@ namespace TreeGPDesigner
     {
         private static AppInfoSingleton instance = null;
 
-        //Brushes
+        //Theme Brushes.
         public static LinearGradientBrush LightBackground = new();
         public static LinearGradientBrush DarkBackground = new();
         public static Brush LightPanel1 = (Brush)new BrushConverter().ConvertFrom("#DEF5E5");
@@ -27,12 +27,62 @@ namespace TreeGPDesigner
         public static Brush DarkNormalButton = (Brush)new BrushConverter().ConvertFrom("#044343");
         public static Brush LightNavButton = Brushes.LightGray;
         public static Brush DarkNavButton = Brushes.Gray;
-        public static Brush[] BrushSet1 = { Brushes.Red, Brushes.Pink, Brushes.Blue, Brushes.LightBlue };
-        public static Brush[] BrushSet2 = { Brushes.DarkOrange, Brushes.Orange, Brushes.Purple, Brushes.MediumPurple };
-        public static Brush[] BrushSet3 = { Brushes.Yellow, Brushes.LightYellow, Brushes.Blue, Brushes.Magenta };
-        public static Brush[] BrushSet4 = { Brushes.Brown, Brushes.RosyBrown, Brushes.DarkBlue, Brushes.Blue };
-        public static Brush[] BrushSet5 = { Brushes.DarkGreen, Brushes.Green, Brushes.DarkTurquoise, Brushes.Turquoise };
+
+        //Node Brushes.
+        public static Brush[] BrushSet1 = { Brushes.Red, 
+                                            Brushes.Pink, 
+                                            Brushes.Blue, 
+                                            Brushes.LightBlue };
+
+        public static Brush[] BrushSet2 = { (Brush)new BrushConverter().ConvertFrom("#E66100"), 
+                                            Brushes.Orange,
+                                            (Brush)new BrushConverter().ConvertFrom("#5D3A9B"), 
+                                            Brushes.MediumPurple };
+
+        public static Brush[] BrushSet3 = { Brushes.Yellow, 
+                                            Brushes.LightYellow, 
+                                            Brushes.Blue, 
+                                            Brushes.Magenta };
+
+        public static Brush[] BrushSet4 = { Brushes.Brown, 
+                                            Brushes.RosyBrown, 
+                                            Brushes.DarkBlue, 
+                                            Brushes.Blue };
+
+        public static Brush[] BrushSet5 = { Brushes.DarkGreen, 
+                                            Brushes.Green, 
+                                            Brushes.DarkTurquoise, 
+                                            Brushes.Turquoise };
+
         public static Brush[] BrushSet6 = { Brushes.Black, Brushes.White, Brushes.Black, Brushes.White };
+
+        //Node Brushes Dark.
+        public static Brush[] BrushSet1Dark = { Brushes.DarkRed,
+                                                Brushes.DeepPink,
+                                                Brushes.DarkBlue,
+                                                Brushes.Blue };
+
+        public static Brush[] BrushSet2Dark = { Brushes.Red,
+                                                Brushes.DarkOrange,
+                                                Brushes.Purple,
+                                                Brushes.MediumPurple };
+
+        public static Brush[] BrushSet3Dark = { Brushes.Orange,
+                                                Brushes.YellowGreen,
+                                                Brushes.DarkBlue,
+                                                Brushes.DarkMagenta };
+
+        public static Brush[] BrushSet4Dark = { Brushes.Brown,
+                                                Brushes.RosyBrown,
+                                                Brushes.DarkBlue,
+                                                Brushes.Blue };
+
+        public static Brush[] BrushSet5Dark = { Brushes.DarkGray,
+                                                Brushes.Gray,
+                                                Brushes.DarkCyan,
+                                                Brushes.Cyan };
+
+        public static Brush[] BrushSet6Dark = { Brushes.White, Brushes.Black, Brushes.White, Brushes.Black };
 
         private AppInfoSingleton()
         {
@@ -59,9 +109,6 @@ namespace TreeGPDesigner
                 return instance;
             }
         }
-
-        
-        
 
         //Current view model
         public event Action CurrentViewModelChanged;
@@ -158,80 +205,137 @@ namespace TreeGPDesigner
             CurrentNavButtonColorChanged?.Invoke();
         }
 
-        //Current function node outline brush
-        public event Action CurrentFunctionNodeOutlineBrushChanged;
-        private Brush? currentFunctionNodeOutlineBrush;
+        //Current brush set.
+        public event Action CurrentBrushSetChanged;
+        private Brush[]? currentBrushSet;
 
-        public Brush? CurrentFunctionNodeOutlineBrush
+        public Brush[]? CurrentBrushSet
         {
-            get => currentFunctionNodeOutlineBrush;
+            get => currentBrushSet;
             set
             {
-                currentFunctionNodeOutlineBrush = value;
-                OnCurrentFunctionNodeOutlineBrushChanged();
+                currentBrushSet = value;
+                OnCurrentBrushSetChanged();
             }
         }
 
-        private void OnCurrentFunctionNodeOutlineBrushChanged()
+        private void OnCurrentBrushSetChanged()
         {
-            CurrentFunctionNodeOutlineBrushChanged?.Invoke();
+            CurrentBrushSetChanged?.Invoke();
         }
 
-        //Current function node background brush.
-        public event Action CurrentFunctionNodeBackgroundBrushChanged;
-        private Brush? currentFunctionNodeBackgroundBrush;
+        //Current brush set 1.
+        public event Action CurrentBrushSet1Changed;
+        private Brush[]? currentBrushSet1;
 
-        public Brush? CurrentFunctionNodeBackgroundBrush
+        public Brush[]? CurrentBrushSet1
         {
-            get => currentFunctionNodeBackgroundBrush;
+            get => currentBrushSet1;
             set
             {
-                currentFunctionNodeBackgroundBrush = value;
-                OnCurrentFunctionNodeBackgroundBrushChanged();
+                currentBrushSet1 = value;
+                OnCurrentBrushSet1Changed();
             }
         }
 
-        private void OnCurrentFunctionNodeBackgroundBrushChanged()
+        private void OnCurrentBrushSet1Changed()
         {
-            CurrentFunctionNodeBackgroundBrushChanged?.Invoke();
+            CurrentBrushSet1Changed?.Invoke();
         }
 
-        //Current terminal node outline brush.
-        public event Action CurrentTerminalNodeOutlineBrushChanged;
-        private Brush? currentTerminalNodeOutlineBrush;
+        //Current brush set 2.
+        public event Action CurrentBrushSet2Changed;
+        private Brush[]? currentBrushSet2;
 
-        public Brush? CurrentTerminalNodeOutlineBrush
+        public Brush[]? CurrentBrushSet2
         {
-            get => currentTerminalNodeOutlineBrush;
+            get => currentBrushSet2;
             set
             {
-                currentTerminalNodeOutlineBrush = value;
-                OnCurrentTerminalNodeOutlineBrushChanged();
+                currentBrushSet2 = value;
+                OnCurrentBrushSet2Changed();
             }
         }
 
-        private void OnCurrentTerminalNodeOutlineBrushChanged()
+        private void OnCurrentBrushSet2Changed()
         {
-            CurrentTerminalNodeOutlineBrushChanged?.Invoke();
+            CurrentBrushSet2Changed?.Invoke();
         }
 
-        //Current terminal node background brush
-        public event Action CurrentTerminalNodeBackgroundBrushChanged;
-        private Brush? currentTerminalNodeBackgroundBrush;
+        //Current brush set 3.
+        public event Action CurrentBrushSet3Changed;
+        private Brush[]? currentBrushSet3;
 
-        public Brush? CurrentTerminalNodeBackgroundBrush
+        public Brush[]? CurrentBrushSet3
         {
-            get => currentTerminalNodeBackgroundBrush;
+            get => currentBrushSet3;
             set
             {
-                currentTerminalNodeBackgroundBrush = value;
-                OnCurrentTerminalNodeBackgroundBrushChanged();
+                currentBrushSet3 = value;
+                OnCurrentBrushSet3Changed();
             }
         }
 
-        private void OnCurrentTerminalNodeBackgroundBrushChanged()
+        private void OnCurrentBrushSet3Changed()
         {
-            CurrentTerminalNodeBackgroundBrushChanged?.Invoke();
+            CurrentBrushSet3Changed?.Invoke();
+        }
+
+        //Current brush set 4.
+        public event Action CurrentBrushSet4Changed;
+        private Brush[]? currentBrushSet4;
+
+        public Brush[]? CurrentBrushSet4
+        {
+            get => currentBrushSet4;
+            set
+            {
+                currentBrushSet4 = value;
+                OnCurrentBrushSet4Changed();
+            }
+        }
+
+        private void OnCurrentBrushSet4Changed()
+        {
+            CurrentBrushSet4Changed?.Invoke();
+        }
+
+        //Current brush set 5.
+        public event Action CurrentBrushSet5Changed;
+        private Brush[]? currentBrushSet5;
+
+        public Brush[]? CurrentBrushSet5
+        {
+            get => currentBrushSet5;
+            set
+            {
+                currentBrushSet5 = value;
+                OnCurrentBrushSet5Changed();
+            }
+        }
+
+        private void OnCurrentBrushSet5Changed()
+        {
+            CurrentBrushSet5Changed?.Invoke();
+        }
+
+        //Current brush set 6.
+        public event Action CurrentBrushSet6Changed;
+        private Brush[]? currentBrushSet6;
+
+        public Brush[]? CurrentBrushSet6
+        {
+            get => currentBrushSet6;
+            set
+            {
+                currentBrushSet6 = value;
+                OnCurrentBrushSet6Changed();
+            }
+        }
+
+        private void OnCurrentBrushSet6Changed()
+        {
+            CurrentBrushSet6Changed?.Invoke();
         }
 
         //Current toggle button
@@ -312,20 +416,30 @@ namespace TreeGPDesigner
         }
 
         //Get tree plot function which makes a list of function node and terminal node graphic items based on the trees positons.
-        public static ObservableCollection<NodePlot> GetTreePlot(ObservableCollection<NodePlot> treePlot, Node node, Brush functionOutlineBrush, Brush functionBackgroundBrush, 
-            Brush terminalOutlineBrush, Brush terminalBackgroundBrush)
+        public static ObservableCollection<NodePlot> GetTreePlot(ObservableCollection<NodePlot> treePlot, Node node, Brush[] brushSet)
         {
+            Brush symbolColour;
+
+            if (Properties.Settings.Default.SettingsMode)
+            {
+                symbolColour = Brushes.Black;
+            }
+            else
+            {
+                symbolColour = Brushes.White;
+            }
+
             if (node.GetType() == typeof(FunctionNode))
             {
                 if (node.Parent == null)
                 {
-                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, functionBackgroundBrush, functionOutlineBrush, new CornerRadius(50), node.Symbol, 0, 0, 0, 0);
+                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, brushSet[1], brushSet[0], new CornerRadius(50), node.Symbol, 0, 0, 0, 0, symbolColour);
                     treePlot.Add(nodePlot);
                 }
                 else
                 {
-                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, functionBackgroundBrush, functionOutlineBrush, new CornerRadius(50), node.Symbol,
-                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25);
+                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, brushSet[1], brushSet[0], new CornerRadius(50), node.Symbol,
+                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25, symbolColour);
                     treePlot.Add(nodePlot);
                 }
             }
@@ -333,20 +447,20 @@ namespace TreeGPDesigner
             {
                 if (node.Parent == null)
                 {
-                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, terminalBackgroundBrush, terminalOutlineBrush, new CornerRadius(0), node.Symbol, 0, 0, 0, 0);
+                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, brushSet[3], brushSet[2], new CornerRadius(0), node.Symbol, 0, 0, 0, 0, symbolColour);
                     treePlot.Add(nodePlot);
                 }
                 else
                 {
-                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, terminalBackgroundBrush, terminalOutlineBrush, new CornerRadius(0), node.Symbol,
-                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25);
+                    NodePlot nodePlot = new NodePlot(node.XPos * 100, node.YPos * 100, 50, 50, brushSet[3], brushSet[2], new CornerRadius(0), node.Symbol,
+                        (node.XPos * 100) + 25, (node.YPos * 100) + 25, (node.Parent.XPos * 100) + 25, (node.Parent.YPos * 100) + 25, symbolColour);
                     treePlot.Add(nodePlot);
                 }
             }
 
             foreach (Node childNode in node.ChildNodes)
             {
-                GetTreePlot(treePlot, childNode, functionOutlineBrush, functionBackgroundBrush, terminalOutlineBrush, terminalBackgroundBrush);
+                GetTreePlot(treePlot, childNode, brushSet);
             }
 
             return treePlot;
