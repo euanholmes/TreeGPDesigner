@@ -27,6 +27,12 @@ namespace TreeGPDesigner
         public static Brush DarkNormalButton = (Brush)new BrushConverter().ConvertFrom("#044343");
         public static Brush LightNavButton = Brushes.LightGray;
         public static Brush DarkNavButton = Brushes.Gray;
+        public static Brush[] BrushSet1 = { Brushes.Red, Brushes.Pink, Brushes.Blue, Brushes.LightBlue };
+        public static Brush[] BrushSet2 = { Brushes.DarkOrange, Brushes.Orange, Brushes.Purple, Brushes.MediumPurple };
+        public static Brush[] BrushSet3 = { Brushes.Yellow, Brushes.LightYellow, Brushes.Blue, Brushes.Magenta };
+        public static Brush[] BrushSet4 = { Brushes.Brown, Brushes.RosyBrown, Brushes.DarkBlue, Brushes.Blue };
+        public static Brush[] BrushSet5 = { Brushes.DarkGreen, Brushes.Green, Brushes.DarkTurquoise, Brushes.Turquoise };
+        public static Brush[] BrushSet6 = { Brushes.Black, Brushes.White, Brushes.Black, Brushes.White };
 
         private AppInfoSingleton()
         {
@@ -74,25 +80,6 @@ namespace TreeGPDesigner
         private void OnCurrentViewModelChanged()
         {
             CurrentViewModelChanged?.Invoke();
-        }
-
-        //Which current radio button isChecked (1 - 6)
-        public event Action CurrentRadioButtonCheckChanged;
-        private int? currentRadioButtonCheck;
-
-        public int? CurrentRadioButtonCheck
-        {
-            get => currentRadioButtonCheck;
-            set
-            {
-                currentRadioButtonCheck = value;
-                OnCurrentRadioButtonCheckChanged();
-            }
-        }
-
-        private void OnCurrentRadioButtonCheckChanged()
-        {
-            CurrentRadioButtonCheckChanged?.Invoke();
         }
 
         //Current Panel1 Colour

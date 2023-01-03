@@ -26,7 +26,7 @@ namespace TreeGPDesigner.MVVM.View
             InitializeComponent();
             DataContext = new HomeViewModel();
 
-            ChangeRadioButtonsIsChecked(AppInfoSingleton.Instance.CurrentRadioButtonCheck);
+            ChangeRadioButtonsIsChecked(Properties.Settings.Default.SettingsRadioButton);
 
             //Pan and zoom code.
             TransformGroup transformGroup = new TransformGroup();

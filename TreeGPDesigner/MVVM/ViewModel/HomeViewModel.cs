@@ -98,12 +98,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ToggleButtonSource)));
         }
 
-        public int? RadioButtonCheck => AppInfoSingleton.Instance.CurrentRadioButtonCheck;
-        private void OnCurrentRadioButtonCheckChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RadioButtonCheck)));
-        }
-
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand ToggleButtonCommand { get; }
         public ICommand RadioButton1Command { get; }
@@ -114,7 +108,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand RadioButton6Command { get; }
 
         public Node DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
-        public bool LightMode = true;
         
 
         public HomeViewModel()
@@ -135,7 +128,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             //Viewmodel Specific variables.
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
-            AppInfoSingleton.Instance.CurrentRadioButtonCheckChanged += OnCurrentRadioButtonCheckChanged;
 
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             ToggleButtonCommand = new RelayCommand(ToggleButtonLightDarkMode);
@@ -161,7 +153,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void ToggleButtonLightDarkMode()
         {
-            if (LightMode)
+            if (Properties.Settings.Default.SettingsMode)
             {
                 AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon-inverted.png"));
                 AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/Images/zoom-pan-icon-inverted.png"));
@@ -171,7 +163,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 AppInfoSingleton.Instance.CurrentPanel2Color = AppInfoSingleton.DarkPanel2;
                 AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.DarkNormalButton;
                 AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.DarkNavButton;
-                LightMode = false;
+                Properties.Settings.Default.SettingsMode = false;
+                Properties.Settings.Default.Save();
             }
             else
             {
@@ -183,7 +176,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 AppInfoSingleton.Instance.CurrentPanel2Color = AppInfoSingleton.LightPanel2;
                 AppInfoSingleton.Instance.CurrentNormalButtonColor = AppInfoSingleton.LightNormalButton;
                 AppInfoSingleton.Instance.CurrentNavButtonColor = AppInfoSingleton.LightNavButton;
-                LightMode = true;
+                Properties.Settings.Default.SettingsMode = true;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -194,42 +188,47 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void RadioButton1()
         {
-            ChangeBrushes(Brushes.Red, Brushes.Pink, Brushes.Blue, Brushes.LightBlue);
-            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 1;
+            ChangeBrushes(AppInfoSingleton.BrushSet1);
+            Properties.Settings.Default.SettingsRadioButton = 1;
+            Properties.Settings.Default.Save();
         }
         public void RadioButton2()
         {
-            ChangeBrushes(Brushes.DarkOrange, Brushes.Orange, Brushes.Purple, Brushes.MediumPurple);
-            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 2;
+            ChangeBrushes(AppInfoSingleton.BrushSet2);
+            Properties.Settings.Default.SettingsRadioButton = 2;
+            Properties.Settings.Default.Save();
         }
         public void RadioButton3()
         {
-            ChangeBrushes(Brushes.Yellow, Brushes.LightYellow, Brushes.Blue, Brushes.Magenta);
-            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 3;
+            ChangeBrushes(AppInfoSingleton.BrushSet3);
+            Properties.Settings.Default.SettingsRadioButton = 3;
+            Properties.Settings.Default.Save();
         }
         public void RadioButton4()
         {
-            ChangeBrushes(Brushes.Brown, Brushes.RosyBrown, Brushes.DarkBlue, Brushes.Blue);
-            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 4;
+            ChangeBrushes(AppInfoSingleton.BrushSet4);
+            Properties.Settings.Default.SettingsRadioButton = 4;
+            Properties.Settings.Default.Save();
         }
         public void RadioButton5()
         {
-            ChangeBrushes(Brushes.DarkGreen, Brushes.Green, Brushes.DarkTurquoise, Brushes.Turquoise);
-            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 5;
+            ChangeBrushes(AppInfoSingleton.BrushSet5);
+            Properties.Settings.Default.SettingsRadioButton = 5;
+            Properties.Settings.Default.Save();
         }
         public void RadioButton6()
         {
-            ChangeBrushes(Brushes.Black, Brushes.White, Brushes.Black, Brushes.White);
-            AppInfoSingleton.Instance.CurrentRadioButtonCheck = 6;
+            ChangeBrushes(AppInfoSingleton.BrushSet6);
+            Properties.Settings.Default.SettingsRadioButton = 6;
+            Properties.Settings.Default.Save();
         }
 
-        public void ChangeBrushes(Brush newFunctionNodeOutlineBrush, Brush newFunctionNodeBackgroundBrush, Brush newTerminalNodeOutlineBrush,
-            Brush newTerminalNodeBackgroundBrush)
+        public void ChangeBrushes(Brush[] brushSet)
         {
-            AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush = newFunctionNodeOutlineBrush;
-            AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush = newFunctionNodeBackgroundBrush;
-            AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush = newTerminalNodeOutlineBrush;
-            AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush = newTerminalNodeBackgroundBrush;
+            AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush = brushSet[0];
+            AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush = brushSet[1];
+            AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush = brushSet[2];
+            AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush = brushSet[3];
             DisplayTreePlot.Clear();
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, FunctionNodeOutlineBrush, FunctionNodeBackgroundBrush,
                 TerminalNodeOutlineBrush, TerminalNodeBackgroundBrush);
