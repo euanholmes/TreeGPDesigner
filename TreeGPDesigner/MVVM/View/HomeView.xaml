@@ -49,9 +49,9 @@
             </Grid.ColumnDefinitions>
 
             <Viewbox Grid.Column="1">
-                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Command="{Binding ToggleButtonCommand}" Background="Transparent" BorderThickness="0">
+                <Button x:Name="ToggleButton"  Style="{StaticResource ToggleButtonStyle}" Command="{Binding ToggleButtonCommand}" Background="Transparent" BorderThickness="0">
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding ToggleButtonSource}"/>
-                </ToggleButton>
+                </Button>
             </Viewbox>
         </Grid>
         
@@ -161,11 +161,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Viewbox Margin="3" Grid.Column="0">
+                                <Viewbox Margin="5" Grid.Column="0">
                                     <Ellipse Width="45" Height="45" Fill="Pink" Stroke="Red" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
-                                <Viewbox Margin="3" Grid.Column="1">
+                                <Viewbox Margin="5" Grid.Column="1">
                                     <Rectangle Stroke="Blue" StrokeThickness="2" Width="45" Height="45" Fill="LightBlue"/>
                                 </Viewbox>
 
@@ -183,11 +183,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Viewbox Margin="3" Grid.Column="0">
+                                <Viewbox Margin="5" Grid.Column="0">
                                     <Ellipse Width="45" Height="45" Fill="Orange" Stroke="DarkOrange" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
-                                <Viewbox Margin="3" Grid.Column="1">
+                                <Viewbox Margin="5" Grid.Column="1">
                                     <Rectangle Stroke="Purple" StrokeThickness="2" Width="45" Height="45" Fill="MediumPurple"/>
                                 </Viewbox>
 
@@ -205,11 +205,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Viewbox Margin="3" Grid.Column="0">
+                                <Viewbox Margin="5" Grid.Column="0">
                                     <Ellipse Width="45" Height="45" Fill="LightYellow" Stroke="Yellow" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
-                                <Viewbox Margin="3" Grid.Column="1">
+                                <Viewbox Margin="5" Grid.Column="1">
                                     <Rectangle Stroke="blue" StrokeThickness="2" Width="45" Height="45" Fill="Magenta"/>
                                 </Viewbox>
 
@@ -227,11 +227,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Viewbox Margin="3" Grid.Column="0">
+                                <Viewbox Margin="5" Grid.Column="0">
                                     <Ellipse Width="45" Height="45" Fill="RosyBrown" Stroke="Brown" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
-                                <Viewbox Margin="3" Grid.Column="1">
+                                <Viewbox Margin="5" Grid.Column="1">
                                     <Rectangle Stroke="DarkBlue" StrokeThickness="2" Width="45" Height="45" Fill="Blue"/>
                                 </Viewbox>
 
@@ -249,11 +249,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Viewbox Margin="3" Grid.Column="0">
+                                <Viewbox Margin="5" Grid.Column="0">
                                     <Ellipse Width="45" Height="45" Fill="Green" Stroke="DarkGreen" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
-                                <Viewbox Margin="3" Grid.Column="1">
+                                <Viewbox Margin="5" Grid.Column="1">
                                     <Rectangle Stroke="DarkTurquoise" StrokeThickness="2" Width="45" Height="45" Fill="Turquoise"/>
                                 </Viewbox>
 
@@ -271,11 +271,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Viewbox Margin="3" Grid.Column="0">
+                                <Viewbox Margin="5" Grid.Column="0">
                                     <Ellipse Width="45" Height="45" Fill="White" Stroke="Black" StrokeThickness="2" Stretch="Uniform"></Ellipse>
                                 </Viewbox>
 
-                                <Viewbox Margin="3" Grid.Column="1">
+                                <Viewbox Margin="5" Grid.Column="1">
                                     <Rectangle Stroke="Black" StrokeThickness="2" Width="45" Height="45" Fill="White"/>
                                 </Viewbox>
 

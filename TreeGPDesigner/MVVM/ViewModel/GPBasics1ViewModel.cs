@@ -11,49 +11,46 @@ using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPBasics1ViewModel : ObservableObject, INotifyPropertyChanged
+    public partial class GPBasics1ViewModel : ObservableObject
     {
-        public new event PropertyChangedEventHandler? PropertyChanged;
+        //Common Variables
+        [ObservableProperty]
+        private Brush textColour = AppInfoSingleton.Instance.CurrentText;
 
-        public Brush? TextColour => AppInfoSingleton.Instance.CurrentText;
-        public Brush? FunctionNodeOutlineBrush => AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush;
-        public Brush? FunctionNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush;
-        public Brush? TerminalNodeOutlineBrush => AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
-        public Brush? TerminalNodeBackgroundBrush => AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
+        [ObservableProperty]
+        private Brush normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
 
-        private void OnCurrentTextChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextColour)));
-        }
-        private void OnCurrentFunctionNodeOutlineBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeOutlineBrush)));
-        }
-        private void OnCurrentFunctionNodeBackgroundBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FunctionNodeBackgroundBrush)));
-        }
-        private void OnCurrentTerminalNodeOutlineBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeOutlineBrush)));
-        }
-        private void OnCurrentTerminalNodeBackgroundBrushChanged()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TerminalNodeBackgroundBrush)));
-        }
+        [ObservableProperty]
+        private Brush navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
+
+        [ObservableProperty]
+        private Brush panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
+
+        [ObservableProperty]
+        private Brush panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
+
+
+        //Tree Drawing Variables
+        [ObservableProperty]
+        private Brush functionNodeOutlineBrush = AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrush;
+
+        [ObservableProperty]
+        private Brush functionNodeBackgroundBrush = AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrush;
+
+        [ObservableProperty]
+        private Brush terminalNodeOutlineBrush = AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrush;
+
+        [ObservableProperty]
+        private Brush terminalNodeBackgroundBrush = AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrush;
+
+        [ObservableProperty]
+        private ImageSource zoomIconSource = AppInfoSingleton.Instance.CurrentZoomIcon;
 
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavTutorialsMenuCommand { get; }
 
-
         public GPBasics1ViewModel()
         {
-            AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
-            AppInfoSingleton.Instance.CurrentFunctionNodeOutlineBrushChanged += OnCurrentFunctionNodeOutlineBrushChanged;
-            AppInfoSingleton.Instance.CurrentFunctionNodeBackgroundBrushChanged += OnCurrentFunctionNodeBackgroundBrushChanged;
-            AppInfoSingleton.Instance.CurrentTerminalNodeOutlineBrushChanged += OnCurrentTerminalNodeOutlineBrushChanged;
-            AppInfoSingleton.Instance.CurrentTerminalNodeBackgroundBrushChanged += OnCurrentTerminalNodeBackgroundBrushChanged;
-
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
         }

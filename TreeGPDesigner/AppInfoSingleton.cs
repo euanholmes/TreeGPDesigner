@@ -266,6 +266,7 @@ namespace TreeGPDesigner
             CurrentModeToggleButtonChanged?.Invoke();
         }
 
+
         //Current zoom icon
         public event Action CurrentZoomIconChanged;
         private ImageSource? currentZoomIcon;

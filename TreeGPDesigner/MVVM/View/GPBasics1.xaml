@@ -23,11 +23,11 @@
 
         <!-- Tutorial Title -->
         <Viewbox Grid.Row="0" Grid.Column="1">
-            <TextBlock Foreground="{Binding TextColour}" FontWeight="Bold"  Text="GP Basics - Function and Terminal Nodes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics - Function and Terminal Nodes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Tutorial Panel -->
-        <Border Background="#f5f5f5" Grid.Row="2" Grid.Column="1">
+        <Border Style="{DynamicResource Panel2}" Grid.Row="2" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -36,9 +36,9 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Information Panel -->
-                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="10 10 5 10" Background="White">
-                    <Viewbox Margin="5" VerticalAlignment="Top">
-                        <TextBlock>
+                <Border Style="{DynamicResource Panel1}" Grid.Column="0" Margin="10 10 5 10">
+                    <Viewbox Margin="10" VerticalAlignment="Top">
+                        <TextBlock Style="{DynamicResource RegularText}">
                             Genetic programming is the automatic<LineBreak/>
                             generation of programs through <LineBreak/> 
                             evolutionary functions such as crossover,<LineBreak/>  
@@ -61,6 +61,8 @@
                             <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
                             Try out selecting different function, <LineBreak/> 
                             terminal and root nodes and see the <LineBreak/> 
                             different program trees you can generate.
@@ -77,7 +79,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Function Nodes -->
-                    <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="5 10 5 5" Background="White">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="0" Margin="5 10 5 5">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="0.5*"/>
@@ -87,7 +89,7 @@
 
                             <!-- Function Nodes Title-->
                             <Viewbox Grid.Row="0">
-                                <TextBlock FontWeight="DemiBold" Text="Function Nodes"/>
+                                <TextBlock Style="{DynamicResource SubTitleText}"  Text="Function Nodes"/>
                             </Viewbox>
 
                             <!-- First Row of Function Nodes-->
@@ -104,12 +106,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -120,12 +122,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -136,12 +138,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="/"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="/"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -161,12 +163,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -177,12 +179,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="*"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="*"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -193,12 +195,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="ABS"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="ABS"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -207,7 +209,7 @@
                     </Border>
 
                     <!-- Terminal Nodes -->
-                    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="5 5 5 5" Background="White">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="1" Margin="5 5 5 5">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="0.5*"/>
@@ -217,7 +219,7 @@
 
                             <!-- Terminal Nodes Title-->
                             <Viewbox Grid.Row="0">
-                                <TextBlock FontWeight="DemiBold" Text="Terminal Nodes"/>
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Terminal Nodes"/>
                             </Viewbox>
 
                             <!-- First Row of Terminal Nodes-->
@@ -234,12 +236,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-1"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-1"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -250,12 +252,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -266,12 +268,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="34"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="34"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -291,12 +293,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -307,12 +309,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Y"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Y"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -323,12 +325,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AB"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AB"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -337,7 +339,7 @@
                     </Border>
 
                     <!-- Root Nodes -->
-                    <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" Margin="5 5 5 10" Background="White">
+                    <Border Grid.Row="2" Style="{DynamicResource Panel1}" Margin="5 5 5 10">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="0.5*"/>
@@ -347,7 +349,7 @@
 
                             <!-- Root Nodes Title-->
                             <Viewbox Grid.Row="0">
-                                <TextBlock FontWeight="DemiBold" Text="Root Nodes"/>
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Root Nodes"/>
                             </Viewbox>
 
                             <!-- First Row of Root Nodes-->
@@ -364,12 +366,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -380,12 +382,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -396,12 +398,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">="/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">="/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -421,12 +423,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding FunctionNodeBackgroundBrush}"  BorderBrush="{Binding FunctionNodeOutlineBrush}" BorderThickness="2" CornerRadius="50">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -437,12 +439,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -453,12 +455,12 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Viewbox Margin="12" Grid.Column="0">
-                                        <CheckBox/>
+                                    <Viewbox Margin="8" Grid.Column="0">
+                                        <CheckBox Style="{DynamicResource CheckBox}"/>
                                     </Viewbox>
                                     <Viewbox Grid.Column="1">
                                         <Border Width="45" Height="45" Background="{Binding TerminalNodeBackgroundBrush}"  BorderBrush="{Binding TerminalNodeOutlineBrush}" BorderThickness="2" CornerRadius="0">
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
+                                            <TextBlock FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
                                         </Border>
                                     </Viewbox>
                                 </Grid>
@@ -475,9 +477,9 @@
                     </Grid.RowDefinitions>
 
                     <!-- Display Tree-->
-                    <Border x:Name="treeBorder" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="5 10 10 0" Background="White">
+                    <Border x:Name="treeBorder" Style="{DynamicResource Panel1}" Grid.Row="0" Margin="5 10 10 0">
                         <Grid>
-                            <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="pack://application:,,,/Images/zoom-pan-icon.png"/>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
 
                             <Canvas Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="treeCanvas">
                                 <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
@@ -519,7 +521,7 @@
 
                     <!-- Generate Tree Button-->
                     <Viewbox Margin="25" Grid.Row="1">
-                        <Button Background="#a5e8b4" Padding="8, 2" Content="Generate Tree"/>
+                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Generate Tree"/>
                     </Viewbox>
                 </Grid>
             </Grid>
@@ -536,14 +538,14 @@
             <!-- Main Menu and Tutorials Menu Navigation Buttons-->
             <Viewbox Grid.Column="0">
                 <StackPanel Orientation="Horizontal" >
-                    <Button Margin="0 0 2.5 0" Padding="8, 2" Command="{Binding NavHomeMenuCommand}" Content="Main Menu"/>
-                    <Button Margin="2.5 0 0 0" Padding="8, 2" Command="{Binding NavTutorialsMenuCommand}" Content="Tutorials Menu"/>
+                    <Button Style="{DynamicResource NavButtonStyle}" Margin="0 0 2.5 0" Command="{Binding NavHomeMenuCommand}" Content="Main Menu"/>
+                    <Button Style="{DynamicResource NavButtonStyle}" Margin="2.5 0 0 0" Command="{Binding NavTutorialsMenuCommand}" Content="Tutorials Menu"/>
                 </StackPanel>
             </Viewbox>
 
             <!-- Next Tutorial Navigation Button-->
             <Viewbox Margin="15" Grid.Column="1">
-                <Button Background="#a5e8b4" Padding="8, 2" Content="Next"/>
+                <Button Style="{DynamicResource NormalButtonStyle}" Content="Next"/>
             </Viewbox>
         </Grid>
     </Grid>
