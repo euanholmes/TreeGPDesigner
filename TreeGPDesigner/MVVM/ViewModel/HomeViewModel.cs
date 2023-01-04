@@ -110,7 +110,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BrushSet6)));
         }
 
-
         public ImageSource? ToggleButtonSource => AppInfoSingleton.Instance.CurrentModeToggleButton;
         private void OnCurrentToggleModeButtonChanged()
         {
@@ -126,7 +125,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand RadioButton5Command { get; }
         public ICommand RadioButton6Command { get; }
 
-        public Node DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
+        public Node? DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
         
 
         public HomeViewModel()

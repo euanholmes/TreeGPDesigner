@@ -29,7 +29,7 @@
         </Viewbox>
 
         <!-- Tutorials -->
-        <Border Style="{DynamicResource Panel1}" Grid.Row="2" Grid.Column="1">
+        <Border Style="{DynamicResource Panel2}" Grid.Row="2" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -47,7 +47,7 @@
                             <ColumnDefinition Width="2.5*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Style="{DynamicResource Panel2}" Grid.Column="0" Margin="15">
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="0" Margin="15">
                             <Viewbox>
                                 <TextBlock Style="{DynamicResource SubTitleText}" TextAlignment="Center" Margin="10 0 10 0">
                                 Genetic <LineBreak/>
@@ -61,7 +61,7 @@
                             <Button Style="{DynamicResource NormalButtonStyle}" Command="{Binding NavGPBasics1Command}" Margin="0 10 0 10" Content="Start"/>
                         </Viewbox>
 
-                        <Border Style="{DynamicResource Panel2}" Grid.Column="2" Margin="15">
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="2" Margin="15">
                             <Viewbox VerticalAlignment="Center">
                                 <TextBlock Style="{DynamicResource RegularText}" Margin="10 0 10 0">
                                 Introduction to tree based genetic programming. <LineBreak/> 
@@ -82,7 +82,7 @@
                             <ColumnDefinition Width="2.5*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Style="{DynamicResource Panel2}" Grid.Column="0" Margin="15">
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="0" Margin="15">
                             <Viewbox>
                                 <TextBlock Style="{DynamicResource SubTitleText}" TextAlignment="Center" Margin="10 0 10 0">
                                 Genetic <LineBreak/>
@@ -96,7 +96,7 @@
                             <Button Style="{DynamicResource NormalButtonStyle}" Margin="10 10 10 10" Content="Start"/>
                         </Viewbox>
 
-                        <Border Style="{DynamicResource Panel2}" Grid.Column="2" Margin="15">
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="2" Margin="15">
                             <Viewbox VerticalAlignment="Center">
                                 <TextBlock Style="{DynamicResource RegularText}" Margin="10 0 10 0">
                                 Walkthrough of starting a GP run through the app <LineBreak/> 
@@ -116,7 +116,7 @@
                             <ColumnDefinition Width="2.5*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Style="{DynamicResource Panel2}" Grid.Column="0" Margin="15">
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="0" Margin="15">
                             <Viewbox>
                                 <TextBlock Style="{DynamicResource SubTitleText}" TextAlignment="Center" Margin="10 0 10 0">
                                 Custom Nodes <LineBreak/>
@@ -129,7 +129,7 @@
                             <Button Style="{DynamicResource NormalButtonStyle}" Margin="10 10 10 10" Content="Start"/>
                         </Viewbox>
 
-                        <Border Style="{DynamicResource Panel2}" Grid.Column="2" Margin="15">
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="2" Margin="15">
                             <Viewbox VerticalAlignment="Center">
                                 <TextBlock Style="{DynamicResource RegularText}" Margin="10 0 10 0">
                                 Walkthrough of how to use the custom node tools which <LineBreak/>

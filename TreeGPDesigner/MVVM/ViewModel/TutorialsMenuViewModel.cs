@@ -14,19 +14,19 @@ namespace TreeGPDesigner.MVVM.ViewModel
     public partial class TutorialsMenuViewModel : ObservableObject
     {
         [ObservableProperty]
-        private Brush textColour = AppInfoSingleton.Instance.CurrentText;
+        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
 
         [ObservableProperty]
-        private Brush normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
+        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
 
         [ObservableProperty]
-        private Brush navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
+        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
 
         [ObservableProperty]
-        private Brush panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
+        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
 
         [ObservableProperty]
-        private Brush panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
+        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavGPBasics1Command { get; }

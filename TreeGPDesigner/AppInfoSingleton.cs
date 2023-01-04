@@ -17,85 +17,75 @@ namespace TreeGPDesigner
         private static AppInfoSingleton instance = null;
 
         //Theme Brushes.
-        public static LinearGradientBrush LightBackground = new();
-        public static LinearGradientBrush DarkBackground = new();
-        public static Brush LightPanel1 = (Brush)new BrushConverter().ConvertFrom("#DEF5E5");
-        public static Brush DarkPanel1 = (Brush)new BrushConverter().ConvertFrom("#3C6562");
-        public static Brush LightPanel2 = (Brush)new BrushConverter().ConvertFrom("#C0EEE4");
-        public static Brush DarkPanel2 = (Brush)new BrushConverter().ConvertFrom("#133B5C");
+        public static Brush LightBackground = (Brush)new BrushConverter().ConvertFrom("#FFFFFF");
+        public static Brush DarkBackground = (Brush)new BrushConverter().ConvertFrom("#121212");
+        public static Brush LightPanel1 = (Brush)new BrushConverter().ConvertFrom("#f2f3f5");
+        public static Brush DarkPanel1 = (Brush)new BrushConverter().ConvertFrom("#2e2e2e");
+        public static Brush LightPanel2 = (Brush)new BrushConverter().ConvertFrom("#e3e5e8");
+        public static Brush DarkPanel2 = (Brush)new BrushConverter().ConvertFrom("#1b1b1b");
         public static Brush LightNormalButton = (Brush)new BrushConverter().ConvertFrom("#a5e8b4");
         public static Brush DarkNormalButton = (Brush)new BrushConverter().ConvertFrom("#044343");
         public static Brush LightNavButton = Brushes.LightGray;
         public static Brush DarkNavButton = Brushes.Gray;
 
         //Node Brushes.
-        public static Brush[] BrushSet1 = { Brushes.Red, 
+        public static Brush[]? BrushSet1 = { Brushes.Red, 
                                             Brushes.Pink, 
                                             Brushes.Blue, 
                                             Brushes.LightBlue };
 
-        public static Brush[] BrushSet2 = { (Brush)new BrushConverter().ConvertFrom("#E66100"), 
+        public static Brush[]? BrushSet2 = { (Brush)new BrushConverter().ConvertFrom("#E66100"), 
                                             Brushes.Orange,
                                             (Brush)new BrushConverter().ConvertFrom("#5D3A9B"), 
                                             Brushes.MediumPurple };
 
-        public static Brush[] BrushSet3 = { Brushes.Yellow, 
+        public static Brush[]? BrushSet3 = { Brushes.Yellow, 
                                             Brushes.LightYellow, 
                                             Brushes.Blue, 
                                             Brushes.Magenta };
 
-        public static Brush[] BrushSet4 = { Brushes.Brown, 
+        public static Brush[]? BrushSet4 = { Brushes.Brown, 
                                             Brushes.RosyBrown, 
                                             Brushes.DarkBlue, 
                                             Brushes.Blue };
 
-        public static Brush[] BrushSet5 = { Brushes.DarkGreen, 
+        public static Brush[]? BrushSet5 = { Brushes.DarkGreen, 
                                             Brushes.Green, 
                                             Brushes.DarkTurquoise, 
                                             Brushes.Turquoise };
 
-        public static Brush[] BrushSet6 = { Brushes.Black, Brushes.White, Brushes.Black, Brushes.White };
+        public static Brush[]? BrushSet6 = { Brushes.Black, Brushes.White, Brushes.Black, Brushes.White };
 
         //Node Brushes Dark.
-        public static Brush[] BrushSet1Dark = { Brushes.DarkRed,
+        public static Brush[]? BrushSet1Dark = { Brushes.DarkRed,
                                                 Brushes.DeepPink,
                                                 Brushes.DarkBlue,
                                                 Brushes.Blue };
 
-        public static Brush[] BrushSet2Dark = { Brushes.Red,
+        public static Brush[]? BrushSet2Dark = { Brushes.Red,
                                                 Brushes.DarkOrange,
                                                 Brushes.Purple,
                                                 Brushes.MediumPurple };
 
-        public static Brush[] BrushSet3Dark = { Brushes.Orange,
+        public static Brush[]? BrushSet3Dark = { Brushes.Orange,
                                                 Brushes.YellowGreen,
                                                 Brushes.DarkBlue,
                                                 Brushes.DarkMagenta };
 
-        public static Brush[] BrushSet4Dark = { Brushes.Brown,
+        public static Brush[]? BrushSet4Dark = { Brushes.Brown,
                                                 Brushes.RosyBrown,
                                                 Brushes.DarkBlue,
                                                 Brushes.Blue };
 
-        public static Brush[] BrushSet5Dark = { Brushes.DarkGray,
+        public static Brush[]? BrushSet5Dark = { Brushes.DarkGray,
                                                 Brushes.Gray,
                                                 Brushes.DarkCyan,
                                                 Brushes.Cyan };
 
-        public static Brush[] BrushSet6Dark = { Brushes.White, Brushes.Black, Brushes.White, Brushes.Black };
+        public static Brush[]? BrushSet6Dark = { Brushes.White, Brushes.Black, Brushes.White, Brushes.Black };
 
         private AppInfoSingleton()
         {
-            LightBackground.StartPoint = new Point(0, 0);
-            LightBackground.EndPoint = new Point(1, 1);
-            LightBackground.GradientStops.Add(new GradientStop(Colors.White, 0.0));
-            LightBackground.GradientStops.Add(new GradientStop(Colors.WhiteSmoke, 1.0));
-
-            DarkBackground.StartPoint = new Point(0, 0);
-            DarkBackground.EndPoint = new Point(1, 1);
-            DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#395B64"), 0.0));
-            DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#3F4E4F"), 0.5));
-            DarkBackground.GradientStops.Add(new GradientStop((Color)new ColorConverter().ConvertFrom("#2C3639"), 1.0));
         }
 
         public static AppInfoSingleton Instance
