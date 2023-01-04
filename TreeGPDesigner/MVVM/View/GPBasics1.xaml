@@ -9,8 +9,9 @@
     <!-- Tutorials Menu Grid -->
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
             <RowDefinition Height="0.75*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.25*"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
@@ -22,12 +23,12 @@
         </Grid.ColumnDefinitions>
 
         <!-- Tutorial Title -->
-        <Viewbox Grid.Row="0" Grid.Column="1">
+        <Viewbox Grid.Row="1" Grid.Column="1">
             <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics - Function and Terminal Nodes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Tutorial Panel -->
-        <Border Style="{DynamicResource Panel2}" Grid.Row="2" Grid.Column="1">
+        <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -56,10 +57,12 @@
                             are placed at the end of a branch and have<LineBreak/>  
                             no operands or nodes below them. Root nodes<LineBreak/>  
                             appear at the top of a tree and can be <LineBreak/> 
-                            function or terminal nodes.<LineBreak/> 
-                            <LineBreak/>
-                            <LineBreak/>
-                            <LineBreak/>
+                            function or terminal nodes depending on<LineBreak/> 
+                            the GP application. The function nodes you<LineBreak/>
+                            use are called your "function set" and the<LineBreak/>
+                            terminal nodes you use are called your <LineBreak/>
+                            "terminal set." Both these sets together<LineBreak/>
+                            make up your "primitive set."
                             <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>
@@ -115,7 +118,7 @@
                                         </Grid.RowDefinitions>
                                         
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox IsChecked="True" Command="{Binding FunctionNodeCheckBoxCommand}" CommandParameter="0" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
                                     
@@ -141,7 +144,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox IsChecked="True" Command="{Binding FunctionNodeCheckBoxCommand}" CommandParameter="1" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
                                     
@@ -167,7 +170,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding FunctionNodeCheckBoxCommand}" CommandParameter="2" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -202,7 +205,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding FunctionNodeCheckBoxCommand}" CommandParameter="3" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -228,7 +231,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding FunctionNodeCheckBoxCommand}" CommandParameter="4" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -254,7 +257,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding FunctionNodeCheckBoxCommand}" CommandParameter="5" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -305,7 +308,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox IsChecked="True" Command="{Binding TerminalNodeCheckBoxCommand}" CommandParameter="0" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -331,7 +334,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox IsChecked="True" Command="{Binding TerminalNodeCheckBoxCommand}" CommandParameter="1" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -357,7 +360,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding TerminalNodeCheckBoxCommand}" CommandParameter="2" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -392,7 +395,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding TerminalNodeCheckBoxCommand}" CommandParameter="3" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -418,7 +421,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding TerminalNodeCheckBoxCommand}" CommandParameter="4" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -444,7 +447,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding TerminalNodeCheckBoxCommand}" CommandParameter="5" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -495,7 +498,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox IsChecked="True" Command="{Binding RootNodeCheckBoxCommand}" CommandParameter="0" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -521,7 +524,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox IsChecked="True" Command="{Binding RootNodeCheckBoxCommand}" CommandParameter="1" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -547,7 +550,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding RootNodeCheckBoxCommand}" CommandParameter="2" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -582,7 +585,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding RootNodeCheckBoxCommand}" CommandParameter="3" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -608,7 +611,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding RootNodeCheckBoxCommand}" CommandParameter="4" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 
@@ -634,7 +637,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1">
-                                            <CheckBox Style="{DynamicResource CheckBox}"/>
+                                            <CheckBox Command="{Binding RootNodeCheckBoxCommand}" CommandParameter="5" Style="{DynamicResource CheckBox}"/>
                                         </Viewbox>
                                     </Grid>
 

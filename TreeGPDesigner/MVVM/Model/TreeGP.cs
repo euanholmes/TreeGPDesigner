@@ -67,21 +67,41 @@ namespace TreeGPDesigner.MVVM.Model
         {
             int randomNum = random.Next(1, 3);
 
-            if (randomNum == 1 && terminalRootNodes.Count > 0)
+            if (TerminalRootNodes.Count == 0 && FunctionRootNodes.Count == 0)
             {
-                TerminalNode randomTerminalRootNode = TerminalRootNodes[random.Next(0, TerminalRootNodes.Count)];
-                TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands,
-                    randomTerminalRootNode.Value, randomTerminalRootNode.DataNeeded);
-                return terminalRootNode;
+                return null;
             }
-            else if (functionRootNodes.Count > 0)
+            else if(TerminalRootNodes.Count == 0 && FunctionRootNodes.Count > 0)
             {
                 FunctionNode randomFunctionRootNode = FunctionRootNodes[random.Next(0, FunctionRootNodes.Count)];
                 FunctionNode functionRootNode = new FunctionNode(randomFunctionRootNode.Symbol, randomFunctionRootNode.NoOperands,
                     randomFunctionRootNode.Function, randomFunctionRootNode.BooleanFunction);
                 return functionRootNode;
             }
-            return null;
+            else if(TerminalRootNodes.Count > 0 && FunctionRootNodes.Count == 0)
+            {
+                TerminalNode randomTerminalRootNode = TerminalRootNodes[random.Next(0, TerminalRootNodes.Count)];
+                TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands,
+                    randomTerminalRootNode.Value, randomTerminalRootNode.DataNeeded);
+                return terminalRootNode;
+            }
+            else
+            {
+                if (randomNum == 1)
+                {
+                    TerminalNode randomTerminalRootNode = TerminalRootNodes[random.Next(0, TerminalRootNodes.Count)];
+                    TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands,
+                        randomTerminalRootNode.Value, randomTerminalRootNode.DataNeeded);
+                    return terminalRootNode;
+                }
+                else
+                {
+                    FunctionNode randomFunctionRootNode = FunctionRootNodes[random.Next(0, FunctionRootNodes.Count)];
+                    FunctionNode functionRootNode = new FunctionNode(randomFunctionRootNode.Symbol, randomFunctionRootNode.NoOperands,
+                        randomFunctionRootNode.Function, randomFunctionRootNode.BooleanFunction);
+                    return functionRootNode;
+                }
+            }
         }
 
         public Node FullTree(Node node, int depth)
@@ -113,7 +133,7 @@ namespace TreeGPDesigner.MVVM.Model
 
         public Node GrowTree(Node node, int depth)
         {
-            if (depth < 1)
+            if (depth < 1 || node == null)
             {
             }
             else if (depth == 1)
