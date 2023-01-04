@@ -657,7 +657,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Display Tree-->
-                    <Border x:Name="treeBorder" Style="{DynamicResource Panel1}" Grid.Row="0" Margin="5 10 10 0">
+                    <Border x:Name="treeBorder" Style="{DynamicResource Panel1}" ClipToBounds="true" Grid.Row="0" Margin="5 10 10 0">
                         <Grid>
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
 
@@ -670,7 +670,7 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="Black" StrokeThickness="2"/>
+                                            <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="{Binding SymbolColour}" StrokeThickness="2"/>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -690,7 +690,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
-                                                <TextBlock Text="{Binding Symbol}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </Border>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -701,7 +701,7 @@
 
                     <!-- Generate Tree Button-->
                     <Viewbox Margin="25" Grid.Row="1">
-                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Generate Tree"/>
+                        <Button Command="{Binding GenerateTreeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Generate Tree"/>
                     </Viewbox>
                 </Grid>
             </Grid>
