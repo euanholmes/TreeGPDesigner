@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner
@@ -28,6 +29,9 @@ namespace TreeGPDesigner
         public static Brush LightNavButton = Brushes.LightGray;
         public static Brush DarkNavButton = Brushes.Gray;
 
+        public static LinearGradientBrush RainbowBrush = new();
+        public static LinearGradientBrush LightRainbowBrush = new();
+
         //Node Brushes.
         public static Brush[]? BrushSet1 = { Brushes.Red, 
                                             Brushes.Pink, 
@@ -39,22 +43,22 @@ namespace TreeGPDesigner
                                             (Brush)new BrushConverter().ConvertFrom("#5D3A9B"), 
                                             Brushes.MediumPurple };
 
-        public static Brush[]? BrushSet3 = { Brushes.Yellow, 
-                                            Brushes.LightYellow, 
+        public static Brush[]? BrushSet3 = { Brushes.Orange, 
+                                            Brushes.Yellow, 
                                             Brushes.Blue, 
                                             Brushes.Magenta };
 
-        public static Brush[]? BrushSet4 = { Brushes.Brown, 
-                                            Brushes.RosyBrown, 
-                                            Brushes.DarkBlue, 
-                                            Brushes.Blue };
-
-        public static Brush[]? BrushSet5 = { Brushes.DarkGreen, 
-                                            Brushes.Green, 
-                                            Brushes.DarkTurquoise, 
+        public static Brush[]? BrushSet4 = { Brushes.DarkGreen,
+                                            Brushes.LightGreen,
+                                            Brushes.DarkCyan,
                                             Brushes.Turquoise };
 
-        public static Brush[]? BrushSet6 = { Brushes.Black, Brushes.White, Brushes.Black, Brushes.White };
+        public static Brush[]? BrushSet5 = { Brushes.Black, Brushes.White, Brushes.Black, Brushes.White };
+
+        public static Brush[]? BrushSet6 = { RainbowBrush,
+                                            new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/sunflowers.jpg"))),
+                                            RainbowBrush,
+                                            new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/the-bedroom-at-arles.jpg")))};
 
         //Node Brushes Dark.
         public static Brush[]? BrushSet1Dark = { Brushes.DarkRed,
@@ -72,20 +76,39 @@ namespace TreeGPDesigner
                                                 Brushes.DarkBlue,
                                                 Brushes.DarkMagenta };
 
-        public static Brush[]? BrushSet4Dark = { Brushes.Brown,
-                                                Brushes.RosyBrown,
-                                                Brushes.DarkBlue,
-                                                Brushes.Blue };
+        public static Brush[]? BrushSet4Dark = { Brushes.DarkOliveGreen,
+                                                Brushes.DarkSeaGreen,
+                                                Brushes.Aquamarine,
+                                                Brushes.DarkCyan };
 
-        public static Brush[]? BrushSet5Dark = { Brushes.DarkGray,
-                                                Brushes.Gray,
-                                                Brushes.DarkCyan,
-                                                Brushes.Cyan };
+        public static Brush[]? BrushSet5Dark = { Brushes.White, Brushes.Black, Brushes.White, Brushes.Black  };
 
-        public static Brush[]? BrushSet6Dark = { Brushes.White, Brushes.Black, Brushes.White, Brushes.Black };
+        public static Brush[]? BrushSet6Dark = { LightRainbowBrush,
+                                                 new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/starry-night.jpg"))),
+                                                 LightRainbowBrush,
+                                                 new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/the-starry-night-over-the-rhone.jpg")))};
 
         private AppInfoSingleton()
         {
+            RainbowBrush.StartPoint = new Point(0, 0);
+            RainbowBrush.EndPoint = new Point(1, 1);
+            RainbowBrush.GradientStops.Add(new GradientStop(Colors.Red, 0));
+            RainbowBrush.GradientStops.Add(new GradientStop(Colors.Orange, 0.2));
+            RainbowBrush.GradientStops.Add(new GradientStop(Colors.Yellow, 0.4));
+            RainbowBrush.GradientStops.Add(new GradientStop(Colors.Green, 0.6));
+            RainbowBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.75));
+            RainbowBrush.GradientStops.Add(new GradientStop(Colors.Indigo, 0.875));
+            RainbowBrush.GradientStops.Add(new GradientStop(Colors.Violet, 1));
+
+            LightRainbowBrush.StartPoint = new Point(0, 0);
+            LightRainbowBrush.EndPoint = new Point(1, 1);
+            LightRainbowBrush.GradientStops.Add(new GradientStop(Colors.Pink, 0));
+            LightRainbowBrush.GradientStops.Add(new GradientStop(Colors.OrangeRed, 0.2));
+            LightRainbowBrush.GradientStops.Add(new GradientStop(Colors.Yellow, 0.4));
+            LightRainbowBrush.GradientStops.Add(new GradientStop(Colors.LightGreen, 0.6));
+            LightRainbowBrush.GradientStops.Add(new GradientStop(Colors.LightBlue, 0.75));
+            LightRainbowBrush.GradientStops.Add(new GradientStop(Colors.PeachPuff, 0.875));
+            LightRainbowBrush.GradientStops.Add(new GradientStop(Colors.Purple, 1));
         }
 
         public static AppInfoSingleton Instance

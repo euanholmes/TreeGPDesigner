@@ -24,6 +24,10 @@
     <None Remove="Images\dark-mode-toggle-icon.png" />
     <None Remove="Images\light-mode-toggle-icon.png" />
     <None Remove="Images\PanZoom2.png" />
+    <None Remove="Images\starry-night.jpg" />
+    <None Remove="Images\sunflowers.jpg" />
+    <None Remove="Images\the-bedroom-at-arles.jpg" />
+    <None Remove="Images\the-starry-night-over-the-rhone.jpg" />
     <None Remove="Images\zoom-pan-icon-inverted.png" />
     <None Remove="Images\zoom-pan-icon.png" />
   </ItemGroup>
@@ -49,6 +53,10 @@
     <Resource Include="Images\dark-mode-toggle-icon.png" />
     <Resource Include="Images\light-mode-toggle-icon.png" />
     <Resource Include="Images\PanZoom2.png" />
+    <Resource Include="Images\starry-night.jpg" />
+    <Resource Include="Images\sunflowers.jpg" />
+    <Resource Include="Images\the-bedroom-at-arles.jpg" />
+    <Resource Include="Images\the-starry-night-over-the-rhone.jpg" />
     <Resource Include="Images\zoom-pan-icon-inverted.png" />
     <Resource Include="Images\zoom-pan-icon.png" />
   </ItemGroup>
