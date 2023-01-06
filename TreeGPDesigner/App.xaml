@@ -55,6 +55,34 @@
                 <view:GPR2SelectWrapper/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:GPR3SelectFitnessFunctionViewModel}">
+                <view:GPR3SelectFitnessFunction/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPR4SelectNodesViewModel}">
+                <view:GPR4SelectNodes/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPR5SelectTrainingDataViewModel}">
+                <view:GPR5SelectTrainingData/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPR6SelectTreeGrowingMethodViewModel}">
+                <view:GPR6SelectTreeGrowingMethod/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPR7SelectSelectionMethodViewModel}">
+                <view:GPR7SelectSelectionMethod/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPR8FinalSettingsViewModel}">
+                <view:GPR8FinalSettings/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPR9MainScreenViewModel}">
+                <view:GPR9MainScreen/>
+            </DataTemplate>
+
 
             <!-- Custom Fonts -->
             <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>

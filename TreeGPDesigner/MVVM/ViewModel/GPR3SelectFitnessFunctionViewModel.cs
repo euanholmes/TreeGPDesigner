@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR2SelectWrapperViewModel : ObservableObject
+    public partial class GPR3SelectFitnessFunctionViewModel : ObservableObject
     {
         //Common Variables
         [ObservableProperty]
@@ -33,7 +33,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NavNextCommand { get; }
         public ICommand NavBackCommand { get; }
 
-        public GPR2SelectWrapperViewModel()
+        public GPR3SelectFitnessFunctionViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
@@ -47,12 +47,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void NavNext()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPR3SelectFitnessFunctionViewModel();
+            AppInfoSingleton.Instance.CurrentViewModel = new GPR4SelectNodesViewModel();
         }
 
         public void NavBack()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPR1GPTemplateMenuViewModel();
+            AppInfoSingleton.Instance.CurrentViewModel = new GPR2SelectWrapperViewModel();
         }
     }
 }

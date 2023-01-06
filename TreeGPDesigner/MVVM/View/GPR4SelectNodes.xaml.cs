@@ -17,14 +17,14 @@ using TreeGPDesigner.MVVM.ViewModel;
 namespace TreeGPDesigner.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for GPR2SelectWrapper.xaml
+    /// Interaction logic for GPR4SelectNodes.xaml
     /// </summary>
-    public partial class GPR2SelectWrapper : UserControl
+    public partial class GPR4SelectNodes : UserControl
     {
-        public GPR2SelectWrapper()
+        public GPR4SelectNodes()
         {
             InitializeComponent();
-            DataContext = new GPR2SelectWrapperViewModel();
+            DataContext = new GPR4SelectNodesViewModel();
         }
     }
 }
