@@ -49,12 +49,20 @@
             </Viewbox>
 
             <!-- Next/Previous Tutorial Navigation Buttons-->
-            <Viewbox Margin="15" Grid.Column="1">
-                <StackPanel Orientation="Horizontal">
-                    <Button Command="{Binding NavPreviousCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 0 2.5 0" Content="Previous"/>
-                    <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Next"/>
-                </StackPanel>
-            </Viewbox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.4*"/>
+                </Grid.RowDefinitions>
+
+                <Viewbox Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Command="{Binding NavPreviousCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 0 2.5 0" Content="Back"/>
+                        <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Next"/>
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

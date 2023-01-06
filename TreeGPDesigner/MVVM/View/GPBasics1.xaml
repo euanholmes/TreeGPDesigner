@@ -656,7 +656,9 @@
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="4*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="0.2*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Display Tree-->
@@ -703,7 +705,7 @@
                     </Border>
 
                     <!-- Generate Tree Button-->
-                    <Viewbox Margin="25" Grid.Row="1">
+                    <Viewbox Grid.Row="2">
                         <Button Command="{Binding GenerateTreeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Generate Tree"/>
                     </Viewbox>
                 </Grid>
@@ -727,9 +729,19 @@
             </Viewbox>
 
             <!-- Next Tutorial Navigation Button-->
-            <Viewbox Margin="15" Grid.Column="1">
-                <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Next"/>
-            </Viewbox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.4*"/>
+                </Grid.RowDefinitions>
+
+                <Viewbox Grid.Row="1">
+                    <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Next"/>
+                </Viewbox>
+            </Grid>
+            
+            
         </Grid>
     </Grid>
 </UserControl>

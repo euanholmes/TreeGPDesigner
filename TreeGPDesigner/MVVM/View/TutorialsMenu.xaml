@@ -74,7 +74,7 @@
                     </Grid>
                 </Border>
 
-                <!-- Starting a GP Run Tutorial -->
+                <!-- Genetic Programming Basics 2 Tutorial -->
                 <Border Grid.Row="1" BorderBrush="{Binding TextColour}" BorderThickness="0 0 0 1">
                     <Grid >
                         <Grid.ColumnDefinitions>

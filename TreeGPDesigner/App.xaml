@@ -47,6 +47,14 @@
                 <view:GPBasics6/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:GPR1GPTemplateMenuViewModel}">
+                <view:GPR1GPTemplateMenu/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPR2SelectWrapperViewModel}">
+                <view:GPR2SelectWrapper/>
+            </DataTemplate>
+
 
             <!-- Custom Fonts -->
             <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>
