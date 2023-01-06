@@ -67,7 +67,7 @@
                                 <TextBlock Style="{DynamicResource RegularText}" Margin="10 0 10 0">
                                 Introduction to tree based genetic programming. <LineBreak/> 
                                 Interactive tutorials about terminal and function nodes.<LineBreak/> 
-                                Tree growing methods, selection, crossover and mutation.
+                                Tree growing methods and fitness functions.
                                 </TextBlock>
                             </Viewbox>
                         </Border>
@@ -94,14 +94,15 @@
                         </Border>
 
                         <Viewbox Grid.Column="1" Margin="15">
-                            <Button Style="{DynamicResource NormalButtonStyle}" Margin="10 10 10 10" Content="Start"/>
+                            <Button Command="{Binding NavGPBasics2Command}" Style="{DynamicResource NormalButtonStyle}" Margin="10 10 10 10" Content="Start"/>
                         </Viewbox>
 
                         <Border Style="{DynamicResource Panel1}" Grid.Column="2" Margin="15">
                             <Viewbox VerticalAlignment="Center">
                                 <TextBlock Style="{DynamicResource RegularText}" Margin="10 0 10 0">
-                                Walkthrough of starting a GP run through the app <LineBreak/> 
-                                using the bin packing template.
+                                Introduction to genetic functions that can be applied <LineBreak/> 
+                                to a population. Including different selection methods,<LineBreak/> 
+                                mutation and crossover.
                                 </TextBlock>
                             </Viewbox>
                         </Border>

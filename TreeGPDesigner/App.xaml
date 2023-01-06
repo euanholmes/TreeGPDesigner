@@ -27,6 +27,26 @@
                 <view:GPBasics1/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:GPBasics2ViewModel}">
+                <view:GPBasics2/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPBasics3ViewModel}">
+                <view:GPBasics3/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPBasics4ViewModel}">
+                <view:GPBasics4/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPBasics5ViewModel}">
+                <view:GPBasics5/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:GPBasics6ViewModel}">
+                <view:GPBasics6/>
+            </DataTemplate>
+
 
             <!-- Custom Fonts -->
             <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>

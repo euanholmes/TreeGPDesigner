@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
-    <!-- Tutorials Menu Grid -->
+    <!-- GP Basics 1-1 Grid -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
@@ -22,9 +22,9 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Tutorial Title -->
+        <!-- GP Basics 1-1 Title -->
         <Viewbox Grid.Row="1" Grid.Column="1">
-            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics - Function and Terminal Nodes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 1-1: Function and Terminal Nodes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Tutorial Panel -->
@@ -728,7 +728,7 @@
 
             <!-- Next Tutorial Navigation Button-->
             <Viewbox Margin="15" Grid.Column="1">
-                <Button Style="{DynamicResource NormalButtonStyle}" Content="Next"/>
+                <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Next"/>
             </Viewbox>
         </Grid>
     </Grid>

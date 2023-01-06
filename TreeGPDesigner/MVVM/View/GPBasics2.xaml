@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="TreeGPDesigner.MVVM.View.GPBasics2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="960">
+    <!-- GP Basics 1-2 Grid -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- GP Basics 1-2 Title -->
+        <Viewbox Grid.Row="1" Grid.Column="1">
+            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 1-2: Tree Growing Methods" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Viewbox>
+
+        <!-- Tutorial Panel -->
+        <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
+            
+        </Border>
+
+        <!--Navigation Buttons-->
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Main Menu and Tutorials Menu Navigation Buttons-->
+            <Viewbox Grid.Column="0">
+                <StackPanel Orientation="Horizontal" >
+                    <Button Style="{DynamicResource NavButtonStyle}" Margin="0 0 2.5 0" Command="{Binding NavHomeMenuCommand}" Content="Main Menu"/>
+                    <Button Style="{DynamicResource NavButtonStyle}" Margin="2.5 0 0 0" Command="{Binding NavTutorialsMenuCommand}" Content="Tutorials Menu"/>
+                </StackPanel>
+            </Viewbox>
+
+            <!-- Next/Previous Tutorial Navigation Buttons-->
+            <Viewbox Margin="15" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding NavPreviousCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 0 2.5 0" Content="Previous"/>
+                    <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Next"/>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>

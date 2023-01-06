@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +10,9 @@ using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class TutorialsMenuViewModel : ObservableObject
+    public partial class GPBasics4ViewModel : ObservableObject
     {
+        //Common Variables
         [ObservableProperty]
         private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
 
@@ -28,30 +28,32 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
+        //Commands
         public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavGPBasics1Command { get; }
-        public ICommand NavGPBasics2Command { get; }
+        public ICommand NavTutorialsMenuCommand { get; }
+        public ICommand NavNextCommand { get; }
 
-        public TutorialsMenuViewModel()
+        public GPBasics4ViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
-            NavGPBasics1Command = new RelayCommand(NavGPBasics1);
-            NavGPBasics2Command = new RelayCommand(NavGPBasics2);
+            NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
+            NavNextCommand = new RelayCommand(NavNext);
         }
 
+        //Navigation Functions
         public void NavHomeMenu()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
         }
 
-        public void NavGPBasics1()
+        public void NavTutorialsMenu()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics1ViewModel();
+            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
         }
 
-        public void NavGPBasics2()
+        public void NavNext()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics4ViewModel();
+            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics5ViewModel();
         }
     }
 }

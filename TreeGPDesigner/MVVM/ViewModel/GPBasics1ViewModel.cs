@@ -52,6 +52,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //Commands
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavTutorialsMenuCommand { get; }
+        public ICommand NavNextCommand { get; }
         public ICommand GenerateTreeCommand { get; }
         public ICommand FunctionNodeCheckBoxCommand { get; set; }
         public ICommand TerminalNodeCheckBoxCommand { get; set; }
@@ -86,6 +87,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
+            NavNextCommand = new RelayCommand(NavNext);
             GenerateTreeCommand = new RelayCommand(GenerateTree);
 
             FunctionNodeCheckBoxCommand = new RelayCommand<string>(param => FunctionNodeCheckBox(param));
@@ -104,6 +106,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void NavTutorialsMenu()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
+        }
+
+        public void NavNext()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics2ViewModel();
         }
 
         //Functions
