@@ -320,7 +320,7 @@
                             <TextBlock Style="{DynamicResource RegularText}">
                             All grow: All trees<LineBreak/> 
                             will be grown with <LineBreak/>
-                            the grow method.
+                            the grow method.<LineBreak/>
                             </TextBlock>
                         </Viewbox>
                     </Border>
@@ -449,7 +449,7 @@
                             <TextBlock Style="{DynamicResource RegularText}">
                             All full: All trees<LineBreak/> 
                             will be grown with <LineBreak/>
-                            the full method.
+                            the full method.<LineBreak/>
                             </TextBlock>
                         </Viewbox>
                     </Border>

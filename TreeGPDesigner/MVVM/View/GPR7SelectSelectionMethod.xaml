@@ -30,7 +30,288 @@
         <!-- Select Selection Method Panel -->
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Tournament Selection Grid -->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Tournament Selection Diagram -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                        <Viewbox>
+                            <Grid Margin="10">
+                                <Grid>
+                                    <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                    <Line X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                    <Line X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                    <Line X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
 
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="32" X2="127.75" Y2="55"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="55" X2="59.5" Y2="55"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="55" X2="196" Y2="55"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="55" X2="196" Y2="87"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="111.48" X2="196" Y2="138.98"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="59.5" Y1="55" X2="59.5" Y2="87"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="59.5" Y1="111.48" X2="59.5" Y2="138.98"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="60" Y1="138.98" X2="25" Y2="138.98"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="60" Y1="138.98" X2="95" Y2="138.98"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25" Y1="138.98" X2="25" Y2="166"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="95" Y1="138.98" X2="95" Y2="166"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="138.98" X2="162" Y2="138.98"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="138.98" X2="229.5" Y2="138.98"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="162" Y1="138.98" X2="162" Y2="166"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="229.5" Y1="138.98" X2="229.5" Y2="166"/>
+
+                                </Grid>
+
+                                <!-- Nodes -->
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="2*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Viewbox Grid.Row="0" Grid.Column="2">
+                                            <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                        </Viewbox>
+                                    </Grid>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                            <ColumnDefinition Width="0.33333*"/>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+
+                                        <Viewbox Grid.Row="2" Grid.Column="1">
+                                            <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="2" Grid.Column="5">
+                                            <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                        </Viewbox>
+                                    </Grid>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.333333*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.333333*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.333333*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1" Grid.Column="0">
+                                            <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="1" Grid.Column="2">
+                                            <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="1" Grid.Column="4">
+                                            <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="1" Grid.Column="6">
+                                            <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                        </Viewbox>
+                                    </Grid>
+                                </Grid>
+
+
+
+
+                            </Grid>
+                        </Viewbox>
+                    </Border>
+                    
+                    <!-- Tournament Selection Information -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <Viewbox Margin="10">
+                            <TextBlock Style="{DynamicResource RegularText}">
+                                Tournament: Programs are stacked <LineBreak/>
+                                against each other with the winner <LineBreak/>
+                                of each tournament being selected.<LineBreak/>
+                                <LineBreak/>
+                            </TextBlock>
+                        </Viewbox>
+                    </Border>
+                    
+                    <!-- Tournament Selection Radio Button -->
+                    <Viewbox Grid.Row="5">
+                        <RadioButton Foreground="{Binding TextColour}" IsChecked="True" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
+                    </Viewbox>
+
+                </Grid>
+                
+                <!-- Fitness Proportionate Selection Grid -->
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Fitness Proportionate Selection Diagram -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                        <Viewbox>
+                            <Grid Margin="10">
+                                <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                <Line X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                <Line X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                <Line X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                <Polygon Points="127.5,99.35 127.5,178.7 157.87,172.6" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 157.87,172.6 183.61,155.46" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 183.61,155.46 200.81,129.72" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 200.81,129.72 206.85,99.35" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 206.85,99.35 200.81,68.98" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 200.81,68.98 183.61,43.24" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 183.61,43.24 157.87,26.04" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 157.87,26.04 127.5,20" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 127.5,20 97.13,26.04" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 97.13,26.04 71.39,43.24" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 71.39,43.24 54.19,68.98" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 54.19,68.98 48.15,99.35" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 48.15,99.35 54.19,68.98" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 54.19,68.98 48.15,99.35" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 48.15,99.35 54.19,129.72" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 54.19,129.72 71.39,155.46" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 71.39,155.46 97.13,172.66" Fill="{Binding TextColour}" Stroke="{Binding TextColour}"/>
+                                <Polygon Points="127.5,99.35 97.13,172.66 127.5,178.7" Stroke="{Binding TextColour}"/>
+                            </Grid>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Fitness Proportionate Selection Information -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <Viewbox Margin="10">
+                            <TextBlock Style="{DynamicResource RegularText}">
+                                Fitness Proportionate: Programs are<LineBreak/>
+                                assigned a probability based on their<LineBreak/>
+                                fitness then a roulette system using<LineBreak/>
+                                these probabilities decides which <LineBreak/>
+                                programs will be selected.
+                            </TextBlock>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Fitness Proportionate Selection Radio Button -->
+                    <Viewbox Grid.Row="5">
+                        <RadioButton Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
+                    </Viewbox>
+                </Grid>
+
+                <!-- Truncation Selection Grid -->
+                <Grid Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Truncation Selection Diagram -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                        <Viewbox>
+                            <Grid Margin="10">
+                                <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                <Line X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                <Line X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                <Line X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                <Line StrokeDashArray="2, 4" Stroke="{Binding TextColour}" X1="0" Y1="55" X2="255.5" Y2="55"/>
+
+                                <StackPanel>
+                                    <StackPanel.Resources>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Margin" Value="2"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Width="50" Height="10"/>
+                                    <Rectangle Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                    <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                </StackPanel>
+                            </Grid>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Truncation Selection Information -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <Viewbox Margin="10">
+                            <TextBlock Style="{DynamicResource RegularText}">
+                                Truncation: The population of <LineBreak/>
+                                programs is ranked by fitness<LineBreak/>
+                                then a proportion of programs <LineBreak/>
+                                are selected.<LineBreak/>
+                            </TextBlock>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Truncation Selection Radio Button -->
+                    <Viewbox Grid.Row="5">
+                        <RadioButton Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
+                    </Viewbox>
+                </Grid>
             </Grid>
         </Border>
 
