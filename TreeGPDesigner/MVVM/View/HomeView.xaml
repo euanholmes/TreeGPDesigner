@@ -87,46 +87,70 @@
 
             <Border Style="{DynamicResource Panel1}" x:Name="mainBorder" ClipToBounds="true"  Grid.Column="0">
                 <Grid>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Canvas Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="mainContainerCanvas">
-                        <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <Canvas IsItemsHost="true"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="{Binding SymbolColour}" StrokeThickness="2"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="8*"/>
+                        </Grid.RowDefinitions>
 
-                        <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <Canvas IsItemsHost="True"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemContainerStyle>
-                                <Style>
-                                    <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                                    <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                                </Style>
-                            </ItemsControl.ItemContainerStyle>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
-                                        <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </Canvas>
+                        <Viewbox Grid.Row="1" Grid.Column="0">
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
+                        </Viewbox>
+                    </Grid>
+                    
+                    <Viewbox>
+                        <Grid>
+                            <Grid>
+                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="344.68"/>
+                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="437.14" Y2="0"/>
+                                <Line StrokeThickness="0" Stroke="Black" X1="437.14" Y1="0" X2="437.14" Y2="344.68"/>
+                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="344.68" X2="437.14" Y2="344.68"/>
+                            </Grid>
+
+                            <Canvas Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="mainContainerCanvas">
+                                <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas IsItemsHost="true"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="{Binding SymbolColour}" StrokeThickness="2"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemContainerStyle>
+                                        <Style>
+                                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                        </Style>
+                                    </ItemsControl.ItemContainerStyle>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
+                                                <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Canvas>
+                        </Grid>
+                    </Viewbox>
                 </Grid>
-                
-                
             </Border>
 
             <Grid Grid.Column="1">
