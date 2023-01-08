@@ -28,6 +28,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
+        //Tree Variables
+        [ObservableProperty]
+        private Brush[]? brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
+
         //Commands
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavNextCommand { get; }

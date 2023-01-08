@@ -30,7 +30,100 @@
         <!-- Select Nodes Panel -->
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
                 
+                <!-- Function Nodes Grid -->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Function Nodes Title-->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock Style="{DynamicResource SubTitleText}" Text="Function Nodes"/>
+                    </Viewbox>
+                    
+                    <!-- Function Nodes Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        
+                    </Border>
+                    
+                    <!-- Add Function Nodes Button -->
+                    <Viewbox Grid.Row="5">
+                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Add Function Node"/>
+                    </Viewbox>
+                </Grid>
+
+                <!-- Terminal Nodes Grid -->
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Terminal Nodes Title-->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock Style="{DynamicResource SubTitleText}" Text="Terminal Nodes"/>
+                    </Viewbox>
+
+                    <!-- Terminal Nodes Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+
+                    </Border>
+
+                    <!-- Add Terminal Nodes Button -->
+                    <Viewbox Grid.Row="5">
+                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Add Terminal Node"/>
+                    </Viewbox>
+                </Grid>
+
+                <!-- Root Nodes Grid -->
+                <Grid Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Root Nodes Title-->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock Style="{DynamicResource SubTitleText}" Text="Root Nodes"/>
+                    </Viewbox>
+
+                    <!-- Root Nodes Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+
+                    </Border>
+
+                    <!-- Add Root Nodes Button -->
+                    <Viewbox Grid.Row="5">
+                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Add Root Node"/>
+                    </Viewbox>
+                </Grid>
+
             </Grid>
         </Border>
 

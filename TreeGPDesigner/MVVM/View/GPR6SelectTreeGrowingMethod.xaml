@@ -30,6 +30,435 @@
         <!-- Select Tree Growing Method Panel -->
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Ramped Half And Half Method Grid -->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Ramped Half And Half Display -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                        <Grid Margin="10">
+
+                            <Viewbox>
+                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="0" Y1="100" X2="100" Y2="0"/>
+                            </Viewbox>
+                            
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Grow Method Tree -->
+                                <Border Style="{DynamicResource Panel1}" Grid.Row="0" Grid.Column="0">
+                                    <Viewbox>
+                                        <Grid Margin="10">
+                                            <!-- Lines -->
+                                            <Grid>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="76.65" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="178.85" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                            </Grid>
+
+                                            <!-- Nodes -->
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Viewbox Grid.Row="0" Grid.Column="2">
+                                                    <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="2" Grid.Column="1">
+                                                    <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="2" Grid.Column="3">
+                                                    <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="4" Grid.Column="0">
+                                                    <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="4" Grid.Column="2">
+                                                    <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                </Viewbox>
+                                            </Grid>
+                                        </Grid>
+                                    </Viewbox>
+                                </Border>
+
+                                <!-- Full Method Tree -->
+                                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="1">
+                                    <Viewbox>
+                                        <Grid Margin="10">
+                                            <!-- Lines -->
+                                            <Grid>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="63.875" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="191.625" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="59.61" Y2="99.35"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="93.68" Y1="178.3" X2="59.61" Y2="99.35"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="161.82" Y1="178.3" X2="195.88" Y2="99.35"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="230" Y1="178.3" X2="195.88" Y2="99.35"/>
+                                            </Grid>
+
+                                            <!-- Nodes -->
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="2*"/>
+                                                    <RowDefinition Height="2*"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Viewbox Grid.Row="0" Grid.Column="2">
+                                                        <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                    </Viewbox>
+                                                </Grid>
+
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="0.66666*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="0.66666*"/>
+                                                        <ColumnDefinition Width="0.33333*"/>
+                                                        <ColumnDefinition Width="0.66666*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="0.66666*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+
+
+                                                    <Viewbox Grid.Row="2" Grid.Column="1">
+                                                        <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                    </Viewbox>
+                                                    <Viewbox Grid.Row="2" Grid.Column="5">
+                                                        <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                    </Viewbox>
+                                                </Grid>
+
+                                                <Grid Grid.Row="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="0.333333*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="0.333333*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="0.333333*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Viewbox Grid.Row="1" Grid.Column="0">
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                    </Viewbox>
+                                                    <Viewbox Grid.Row="1" Grid.Column="2">
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                    </Viewbox>
+                                                    <Viewbox Grid.Row="1" Grid.Column="4">
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                    </Viewbox>
+                                                    <Viewbox Grid.Row="1" Grid.Column="6">
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                    </Viewbox>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Viewbox>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Ramped Half And Half Information Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <Viewbox Margin="10">
+                            <TextBlock Style="{DynamicResource RegularText}">
+                            Ramped Half and Half:<LineBreak/> 
+                            The trees will be grown<LineBreak/>
+                            with the ramped half<LineBreak/>
+                            and half method.
+                            </TextBlock>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Ramped Half And Half Radio Button -->
+                    <Viewbox Grid.Row="5">
+                        <RadioButton Foreground="{Binding TextColour}" IsChecked="True" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
+                    </Viewbox>
+                </Grid>
+
+                <!-- Grow Method Grid -->
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Grow Method Tree -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                        <Viewbox>
+                            <Grid Margin="10">
+                                <!-- Lines -->
+                                <Grid>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="76.65" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="178.85" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                </Grid>
+
+                                <!-- Nodes -->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Viewbox Grid.Row="0" Grid.Column="2">
+                                        <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Row="2" Grid.Column="1">
+                                        <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Row="2" Grid.Column="3">
+                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Row="4" Grid.Column="0">
+                                        <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                    </Viewbox>
+                                    <Viewbox Grid.Row="4" Grid.Column="2">
+                                        <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Grow Method Information Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <Viewbox Margin="10">
+                            <TextBlock Style="{DynamicResource RegularText}">
+                            All grow: All trees<LineBreak/> 
+                            will be grown with <LineBreak/>
+                            the grow method.
+                            </TextBlock>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Grow Method Radio Button -->
+                    <Viewbox Grid.Row="5">
+                        <RadioButton Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
+                    </Viewbox>
+                </Grid>
+
+                <!-- Full Method Grid -->
+                <Grid Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Full Method Tree -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                        <Viewbox>
+                            <Grid Margin="10">
+                                <!-- Lines -->
+                                <Grid>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                    <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="63.875" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="191.625" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="59.61" Y2="99.35"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="93.68" Y1="178.3" X2="59.61" Y2="99.35"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="161.82" Y1="178.3" X2="195.88" Y2="99.35"/>
+                                    <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="230" Y1="178.3" X2="195.88" Y2="99.35"/>
+                                </Grid>
+
+                                <!-- Nodes -->
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="2*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Viewbox Grid.Row="0" Grid.Column="2">
+                                            <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                        </Viewbox>
+                                    </Grid>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                            <ColumnDefinition Width="0.33333*"/>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.66666*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+
+                                        <Viewbox Grid.Row="2" Grid.Column="1">
+                                            <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="2" Grid.Column="5">
+                                            <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                        </Viewbox>
+                                    </Grid>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.333333*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.333333*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.333333*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="1" Grid.Column="0">
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="1" Grid.Column="2">
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="1" Grid.Column="4">
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="1" Grid.Column="6">
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        </Viewbox>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Full Method Information Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <Viewbox Margin="10">
+                            <TextBlock Style="{DynamicResource RegularText}">
+                            All full: All trees<LineBreak/> 
+                            will be grown with <LineBreak/>
+                            the full method.
+                            </TextBlock>
+                        </Viewbox>
+                    </Border>
+
+                    <!-- Full Method Radio Button -->
+                    <Viewbox Grid.Row="5">
+                        <RadioButton Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
+                    </Viewbox>
+                </Grid>
 
             </Grid>
         </Border>
