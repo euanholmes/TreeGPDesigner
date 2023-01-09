@@ -142,6 +142,25 @@ namespace TreeGPDesigner
             CurrentViewModelChanged?.Invoke();
         }
 
+        //Current GP Template
+        public event Action CurrentTemplateChanged;
+        private TreeGP? currentTemplate;
+
+        public TreeGP? CurrentTemplate
+        {
+            get => currentTemplate;
+            set
+            {
+                currentTemplate = value;
+                OnCurrentTemplateChanged();
+            }
+        }
+
+        private void OnCurrentTemplateChanged()
+        {
+            CurrentTemplateChanged.Invoke();
+        }
+
         //Current Panel1 Colour
         public event Action CurrentPanel1ColorChanged;
         private Brush? currentPanel1Color;

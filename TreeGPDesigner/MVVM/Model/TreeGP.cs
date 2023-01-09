@@ -15,6 +15,8 @@ namespace TreeGPDesigner.MVVM.Model
         private List<Node> generation = new List<Node>();
         private List<Node> geneticFunctionPool = new List<Node>();
         private static Random random = new Random();
+        private List<FunctionModel> wrappersUI;
+        private int currentWrapper = 0;
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -22,6 +24,8 @@ namespace TreeGPDesigner.MVVM.Model
         public List<TerminalNode> TerminalRootNodes { get => terminalRootNodes; set => terminalRootNodes = value; }
         public List<Node> Generation { get => generation; set => generation = value; }
         public List<Node> GeneticFunctionPool { get => geneticFunctionPool; set => geneticFunctionPool = value; }
+        public List<FunctionModel> WrappersUI { get => wrappersUI; set => wrappersUI = value; }
+        public int CurrentWrapper { get => currentWrapper; set => currentWrapper = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {
@@ -396,6 +400,16 @@ namespace TreeGPDesigner.MVVM.Model
             Generation.RemoveRange(selectionNumber, Generation.Count - selectionNumber);
             GeneticFunctionPool = new List<Node>(Generation);
             Generation.Clear();
+        }
+
+        public void FitnessProportionateSelection(int selectionNumber)
+        {
+            TruncationSelection(selectionNumber);
+        }
+
+        public void TournamentSelection(int selectionNumber)
+        {
+            TruncationSelection(selectionNumber);
         }
 
         public void ApplyGeneticFunctions(int crossoverNumber, int mutationNumber, int maxDepth)

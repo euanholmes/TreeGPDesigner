@@ -50,7 +50,7 @@
                     
                     <!-- Previous Wrapper Button -->
                     <Viewbox Grid.Column="1">
-                        <Button>
+                        <Button Command="{Binding PreviousWrapperCommand}">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
@@ -68,12 +68,12 @@
                     
                     <!-- Current Wrapper Title -->
                     <Viewbox Grid.Column="2">
-                        <TextBlock Style="{DynamicResource SubTitleText}" Text="Example Wrapper"/>
+                        <TextBlock Style="{DynamicResource SubTitleText}" Text="{Binding WrapperName}"/>
                     </Viewbox>
                     
                     <!-- Next Wrapper Button -->
                     <Viewbox Grid.Column="3">
-                        <Button>
+                        <Button Command="{Binding NextWrapperCommand}">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
@@ -102,12 +102,16 @@
 
                     <!-- Wrapper Code -->
                     <Border Style="{DynamicResource Panel1}" Grid.Column="1">
-
+                        <Viewbox>
+                            <Image Source="{Binding WrapperImage}"/>
+                        </Viewbox>
                     </Border>
 
                     <!-- Wrapper Information -->
                     <Border Style="{DynamicResource Panel1}" Grid.Column="3">
-
+                        <Viewbox Margin="10">
+                            <TextBlock Text="{Binding WrapperInfo}" Style="{DynamicResource RegularText}"/>
+                        </Viewbox>
                     </Border>
                 </Grid>
             </Grid>
