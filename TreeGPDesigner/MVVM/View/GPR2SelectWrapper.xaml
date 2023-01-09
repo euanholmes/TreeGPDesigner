@@ -50,7 +50,7 @@
                     
                     <!-- Previous Wrapper Button -->
                     <Viewbox Grid.Column="1">
-                        <Button Command="{Binding PreviousWrapperCommand}">
+                        <Button Command="{Binding PreviousWrapperCommand}" Cursor="Hand">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
@@ -73,7 +73,7 @@
                     
                     <!-- Next Wrapper Button -->
                     <Viewbox Grid.Column="3">
-                        <Button Command="{Binding NextWrapperCommand}">
+                        <Button Command="{Binding NextWrapperCommand}" Cursor="Hand">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
@@ -103,7 +103,7 @@
                     <!-- Wrapper Code -->
                     <Border Style="{DynamicResource Panel1}" Grid.Column="1">
                         <Viewbox>
-                            <Image Source="{Binding WrapperImage}"/>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding WrapperImage}"/>
                         </Viewbox>
                     </Border>
 

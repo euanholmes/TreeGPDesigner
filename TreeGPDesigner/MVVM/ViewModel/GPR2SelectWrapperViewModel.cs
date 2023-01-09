@@ -92,13 +92,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             if (AppInfoSingleton.Instance.CurrentTemplate.CurrentWrapper == wrappers.Count - 1)
             {
-                //CurrentWrapper = 0;
                 AppInfoSingleton.Instance.CurrentTemplate.CurrentWrapper = 0;
             }
             else
             {
                 AppInfoSingleton.Instance.CurrentTemplate.CurrentWrapper++;
-                //CurrentWrapper++;
             }
             SetWrapperUI();
         }

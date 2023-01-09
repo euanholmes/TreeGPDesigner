@@ -13,14 +13,42 @@ namespace TreeGPDesigner.MVVM.Model
     public class BinPackingTemplate : TreeGP
     {
         private List<FunctionModel> BPWrappersUI = new List<FunctionModel>() 
-        { new FunctionModel("BP Offline Wrapper", "This is a wrapper for \n offline bin packing problems.", 
-            new BitmapImage(new Uri("pack://application:,,,/Images/BPOfflineWrapperImage.png"))),
-        new FunctionModel("BP Online Wrapper", "This is a wrapper for online bin packing problems.",
-            new BitmapImage(new Uri("pack://application:,,,/Images/BPOnlineWrapper.png")))};
+        { new FunctionModel("BP Offline Wrapper", "This is a wrapper for \n" +
+                                                  "offline bin packing problems.\n" +
+                                                  "Items are taken in and sorted\n" +
+                                                  "in descending order, then the\n" +
+                                                  "program tree solution will\n" +
+                                                  "decide whether to pack the item\n" +
+                                                  "into a bin or not.", 
+                            new BitmapImage(new Uri("pack://application:,,,/Images/BPOfflineWrapperImage.png"))),
+
+          new FunctionModel("BP Online Wrapper",  "This is a wrapper for\n" +
+                                                  "online bin packing problems.\n" +
+                                                  "Items are not pre sorted and\n" +
+                                                  "are given to the solution tree\n" +
+                                                  "as is to evaluate.",
+                            new BitmapImage(new Uri("pack://application:,,,/Images/BPOnlineWrapper.png")))
+        };
+
+        private List<FunctionModel> BPFitnessFunctionsUI = new List<FunctionModel>()
+        { new FunctionModel("Fitness Function 1", "This is a fitness function\n" +
+                                                  "which rewards solutions that\n" +
+                                                  "pack items into bins with the\n" +
+                                                  "lower number of bins being\n" +
+                                                  "awarded higher fitness scores.",
+                            new BitmapImage(new Uri("pack://application:,,,/Images/FitnessFunctionOne.png"))),
+
+          new FunctionModel("Fitness Function 2", "This is a fitness function\n" +
+                                                  "that builds on fitness\n" +
+                                                  "function one by also\n" +
+                                                  "rewarding bin fill percentage.",
+              new BitmapImage(new Uri("pack://application:,,,/Images/FitnessFunctionTwo.png")))
+        };
 
         public BinPackingTemplate()
         {
             WrappersUI = BPWrappersUI;
+            FitnessFunctionsUI = BPFitnessFunctionsUI;
         }
 
         public Node MakeFFDTree()

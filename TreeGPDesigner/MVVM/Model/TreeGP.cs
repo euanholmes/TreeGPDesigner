@@ -16,7 +16,9 @@ namespace TreeGPDesigner.MVVM.Model
         private List<Node> geneticFunctionPool = new List<Node>();
         private static Random random = new Random();
         private List<FunctionModel> wrappersUI;
+        private List<FunctionModel> fitnessFunctionsUI;
         private int currentWrapper = 0;
+        private int currentFitnessFunction = 0;
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -26,6 +28,8 @@ namespace TreeGPDesigner.MVVM.Model
         public List<Node> GeneticFunctionPool { get => geneticFunctionPool; set => geneticFunctionPool = value; }
         public List<FunctionModel> WrappersUI { get => wrappersUI; set => wrappersUI = value; }
         public int CurrentWrapper { get => currentWrapper; set => currentWrapper = value; }
+        public List<FunctionModel> FitnessFunctionsUI { get => fitnessFunctionsUI; set => fitnessFunctionsUI = value; }
+        public int CurrentFitnessFunction { get => currentFitnessFunction; set => currentFitnessFunction = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {

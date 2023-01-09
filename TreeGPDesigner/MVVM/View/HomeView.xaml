@@ -85,7 +85,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Style="{DynamicResource Panel1}" x:Name="mainBorder" ClipToBounds="true"  Grid.Column="0">
+            <Border Cursor="Hand" Style="{DynamicResource Panel1}" x:Name="mainBorder" ClipToBounds="true"  Grid.Column="0">
                 <Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
