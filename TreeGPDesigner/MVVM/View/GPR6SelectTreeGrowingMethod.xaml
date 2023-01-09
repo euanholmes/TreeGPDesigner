@@ -72,7 +72,7 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Grow Method Tree -->
-                                <Border Style="{DynamicResource Panel1}" Grid.Row="0" Grid.Column="0">
+                                <Border Style="{DynamicResource Panel1}" Grid.Row="0">
                                     <Viewbox>
                                         <Grid Margin="10">
                                             <!-- Lines -->
@@ -99,11 +99,11 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="0.83333*"/>
+                                                    <RowDefinition Height="0.25*"/>
+                                                    <RowDefinition Height="0.83333*"/>
+                                                    <RowDefinition Height="0.25*"/>
+                                                    <RowDefinition Height="0.83333*"/>
                                                 </Grid.RowDefinitions>
 
                                                 <Viewbox Grid.Row="0" Grid.Column="2">
@@ -113,13 +113,13 @@
                                                     <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
                                                 </Viewbox>
                                                 <Viewbox Grid.Row="2" Grid.Column="3">
-                                                    <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                    <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                                 </Viewbox>
                                                 <Viewbox Grid.Row="4" Grid.Column="0">
-                                                    <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                    <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                                 </Viewbox>
                                                 <Viewbox Grid.Row="4" Grid.Column="2">
-                                                    <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                    <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                                 </Viewbox>
                                             </Grid>
                                         </Grid>
@@ -209,16 +209,16 @@
                                                     </Grid.RowDefinitions>
 
                                                     <Viewbox Grid.Row="1" Grid.Column="0">
-                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                                     </Viewbox>
                                                     <Viewbox Grid.Row="1" Grid.Column="2">
-                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                                     </Viewbox>
                                                     <Viewbox Grid.Row="1" Grid.Column="4">
-                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                                     </Viewbox>
                                                     <Viewbox Grid.Row="1" Grid.Column="6">
-                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                                     </Viewbox>
                                                 </Grid>
                                             </Grid>
@@ -287,11 +287,11 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="0.83333*"/>
+                                        <RowDefinition Height="0.25*"/>
+                                        <RowDefinition Height="0.83333*"/>
+                                        <RowDefinition Height="0.25*"/>
+                                        <RowDefinition Height="0.83333*"/>
                                     </Grid.RowDefinitions>
 
                                     <Viewbox Grid.Row="0" Grid.Column="2">
@@ -301,13 +301,13 @@
                                         <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
                                     </Viewbox>
                                     <Viewbox Grid.Row="2" Grid.Column="3">
-                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                     </Viewbox>
                                     <Viewbox Grid.Row="4" Grid.Column="0">
-                                        <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                     </Viewbox>
                                     <Viewbox Grid.Row="4" Grid.Column="2">
-                                        <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                     </Viewbox>
                                 </Grid>
                             </Grid>
@@ -426,16 +426,16 @@
                                         </Grid.RowDefinitions>
 
                                         <Viewbox Grid.Row="1" Grid.Column="0">
-                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1" Grid.Column="2">
-                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1" Grid.Column="4">
-                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1" Grid.Column="6">
-                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
                                         </Viewbox>
                                     </Grid>
                                 </Grid>

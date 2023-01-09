@@ -30,7 +30,267 @@
         <!-- Final Settings Panel -->
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Enter Run Name -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <Border Style="{DynamicResource Panel1}" Grid.Column="1">
+                        <Viewbox>
+                            <TextBox FontFamily="{StaticResource RobotoLightItalic}" Text="My bin packing run">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="{x:Type TextBox}">
+                                        <Grid>
+                                            <Rectangle StrokeThickness="0"/>
+                                            <TextBox SelectionBrush="{Binding NormalButtonColour}" CaretBrush="{Binding TextColour}" Foreground="{Binding TextColour}" Background="Transparent" Margin="1" Text="{TemplateBinding Text}" BorderThickness="0"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                        </Viewbox>
+                    </Border>
+                </Grid>
+                
+                <!-- Population Count and Selection% Grid -->
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Population Count Panel -->
+                    <Border Grid.Column="1" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Population Count Information -->
+                            <Viewbox Grid.Column="1" Grid.Row="1">
+                                <TextBlock Style="{DynamicResource RegularText}">
+                                    This will set the amount<LineBreak/>
+                                    of program trees in each<LineBreak/>
+                                    generation.<LineBreak/>
+                                </TextBlock>
+                            </Viewbox>
+
+                            <Grid Grid.Column="3" Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Population Count Title-->
+                                <Viewbox>
+                                    <TextBlock TextAlignment="Center" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
+                                        Population <LineBreak/> 
+                                        Count:
+                                    </TextBlock>
+                                </Viewbox>
+
+                                <!-- Population Count TextBox-->
+                                <Viewbox Grid.Row="1">
+                                    <TextBox FontFamily="{StaticResource RobotoRegular}"  Text="100" Width="100" TextAlignment="Center" Height="25">
+                                        <TextBox.Template>
+                                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                                <Grid>
+                                                    <Border Background="{Binding Panel2Colour}" BorderBrush="{Binding Panel2Colour}" CornerRadius="10" BorderThickness="1"/>
+                                                    <TextBox BorderThickness="0" Text="100" VerticalContentAlignment="Center" SelectionBrush="{Binding NormalButtonColour}" CaretBrush="{Binding TextColour}" Foreground="{Binding TextColour}" Background="Transparent" Margin="1"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </TextBox.Template>
+                                    </TextBox>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Selection % Panel-->
+                    <Border Grid.Column="3" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="2.7*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Selection % Text -->
+                            <Viewbox Grid.Row="1" Grid.Column="1">
+                                <TextBlock Style="{DynamicResource RegularText}">
+                                    This will set the amount of programs<LineBreak/>
+                                    that are selected from a generation<LineBreak/>
+                                    to have genetic functions applied to.
+                                </TextBlock>
+                            </Viewbox>
+                            
+                            <!-- Current Selection % -->
+                            <Viewbox Grid.Row="3" Grid.Column="1">
+                                <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
+                                    Selection % = 34%
+                                </TextBlock>
+                            </Viewbox>
+                            
+                            <!-- Selection % Slider -->
+                            <Viewbox Grid.Row="5" Grid.Column="1">
+                                <Slider IsSnapToTickEnabled="True" Value="34" Width="300" TickFrequency="1" Maximum="100">
+
+                                </Slider>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Max Depth and Genetic Function % Grid -->
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Max Depth Panel -->
+                    <Border Grid.Column="1" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Max Depth Information -->
+                            <Viewbox Grid.Column="1" Grid.Row="1">
+                                <TextBlock Style="{DynamicResource RegularText}">
+                                    This will be the max depth<LineBreak/>
+                                    of each tree. Increasing <LineBreak/>
+                                    this depth will exponentially<LineBreak/>
+                                    increase the number of  <LineBreak/>
+                                    nodes on each tree.
+                                </TextBlock>
+                            </Viewbox>
+
+                            <Grid Grid.Column="3" Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Max Depth Title-->
+                                <Viewbox>
+                                    <TextBlock Foreground="{Binding TextColour}" Text="Max Depth:" FontFamily="{StaticResource RobotoBold}"/>
+                                </Viewbox>
+
+                                <!-- Max Depth TextBox-->
+                                <Viewbox Grid.Row="1">
+                                    <TextBox FontFamily="{StaticResource RobotoRegular}"  Text="100" Width="100" TextAlignment="Center" Height="25">
+                                        <TextBox.Template>
+                                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                                <Grid>
+                                                    <Border Background="{Binding Panel2Colour}" BorderBrush="{Binding Panel2Colour}" CornerRadius="10" BorderThickness="1"/>
+                                                    <TextBox BorderThickness="0" Text="3" VerticalContentAlignment="Center" SelectionBrush="{Binding NormalButtonColour}" CaretBrush="{Binding TextColour}" Foreground="{Binding TextColour}" Background="Transparent" Margin="1"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </TextBox.Template>
+                                    </TextBox>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Genetic Function % Panel-->
+                    <Border Grid.Column="3" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="2.7*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Genetic Function % % Text -->
+                            <Viewbox Grid.Row="1" Grid.Column="1">
+                                <TextBlock Style="{DynamicResource RegularText}">
+                                    This will set the amount of programs<LineBreak/>
+                                    in the genetic function pool that<LineBreak/>
+                                    either mutate or crossover.
+                                </TextBlock>
+                            </Viewbox>
+
+                            <!-- Current Genetic Function % % -->
+                            <Viewbox Grid.Row="3" Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="0 0 5 0" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
+                                    Mutation % = 10%
+                                    </TextBlock>
+                                    <TextBlock Margin="5 0 0 0" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
+                                    Crossover % = 90%
+                                    </TextBlock>
+                                </StackPanel>
+                            </Viewbox>
+
+                            <!-- Genetic Function % % Slider -->
+                            <Viewbox Grid.Row="5" Grid.Column="1">
+                                <Slider IsSnapToTickEnabled="True" Value="10" Width="300" TickFrequency="1" Maximum="100">
+
+                                </Slider>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
         </Border>
 
