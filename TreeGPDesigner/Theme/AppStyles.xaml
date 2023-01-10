@@ -183,6 +183,18 @@
         </Setter>
     </Style>
 
+    <Style x:Key="SettingsTextBox" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="{DynamicResource RobotoRegular}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SelectionBrush" Value="{Binding NormalButtonColour}"/>
+        <Setter Property="CaretBrush" Value="{Binding TextColour}"/>
+        <Setter Property="Foreground" Value="{Binding TextColour}"/>
+        <Setter Property="Background" Value="{Binding Panel2Colour}"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
+
 
 
 </ResourceDictionary>

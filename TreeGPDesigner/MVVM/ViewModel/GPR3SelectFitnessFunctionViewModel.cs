@@ -41,12 +41,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private ImageSource fitnessFunctionImage;
 
         private List<FunctionModel> fitnessFunctions;
-        public event PropertyChangedEventHandler? PropertyChanged2;
-        public TreeGP? CurrentTemplate => AppInfoSingleton.Instance.CurrentTemplate;
-        private void OnCurrentTemplateChanged()
-        {
-            PropertyChanged2?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentTemplate)));
-        }
 
         //Commands
         public ICommand NavHomeMenuCommand { get; }
@@ -55,10 +49,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NextFitnessFunctionCommand { get; }
         public ICommand PreviousFitnessFunctionCommand { get; }
 
+        //Constructor
         public GPR3SelectFitnessFunctionViewModel()
         {
-            AppInfoSingleton.Instance.CurrentTemplateChanged += OnCurrentTemplateChanged;
-
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
@@ -66,7 +59,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NextFitnessFunctionCommand = new RelayCommand(NextFitnessFunction);
             PreviousFitnessFunctionCommand = new RelayCommand(PreviousFitnessFunction);
 
-            fitnessFunctions = CurrentTemplate.FitnessFunctionsUI;
+            fitnessFunctions = AppInfoSingleton.Instance.CurrentTemplate.FitnessFunctionsUI;
             SetFitnessFunctionUI();
         }
 

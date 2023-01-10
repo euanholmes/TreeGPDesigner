@@ -21,6 +21,11 @@ namespace TreeGPDesigner.MVVM.Model
         private int currentFitnessFunction = 0;
         private int currentTreeGrowingMethod = 0;
         private int currentSelectionMethod = 0;
+        private int currentPopulationCount = 100;
+        private int currentMaxDepth = 3;
+        private int currentSelectionPercent = 34;
+        private int currentMutationPercent = 10;
+        private int currentCrossoverPercent = 90;
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -34,6 +39,11 @@ namespace TreeGPDesigner.MVVM.Model
         public int CurrentFitnessFunction { get => currentFitnessFunction; set => currentFitnessFunction = value; }
         public int CurrentTreeGrowingMethod { get => currentTreeGrowingMethod; set => currentTreeGrowingMethod = value; }
         public int CurrentSelectionMethod { get => currentSelectionMethod; set => currentSelectionMethod = value; }
+        public int CurrentPopulationCount { get => currentPopulationCount; set => currentPopulationCount = value; }
+        public int CurrentMaxDepth { get => currentMaxDepth; set => currentMaxDepth = value; }
+        public int CurrentSelectionPercent { get => currentSelectionPercent; set => currentSelectionPercent = value; }
+        public int CurrentMutationPercent { get => currentMutationPercent; set => currentMutationPercent = value; }
+        public int CurrentCrossoverPercent { get => currentCrossoverPercent; set => currentCrossoverPercent = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {

@@ -13,7 +13,7 @@ using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR2SelectWrapperViewModel : ObservableObject, INotifyPropertyChanged
+    public partial class GPR2SelectWrapperViewModel : ObservableObject
     {
         //Common Variables
         [ObservableProperty]
@@ -42,12 +42,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private ImageSource wrapperImage;
 
         private List<FunctionModel> wrappers;
-        public event PropertyChangedEventHandler? PropertyChanged2;
-        public TreeGP? CurrentTemplate => AppInfoSingleton.Instance.CurrentTemplate;
-        private void OnCurrentTemplateChanged()
-        {
-            PropertyChanged2?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentTemplate)));
-        }
 
         //Commands
         public ICommand NavHomeMenuCommand { get; }
@@ -56,10 +50,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NextWrapperCommand { get; }
         public ICommand PreviousWrapperCommand { get; }
 
+        //Constructor
         public GPR2SelectWrapperViewModel()
         {
-            AppInfoSingleton.Instance.CurrentTemplateChanged += OnCurrentTemplateChanged;
-
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
@@ -67,7 +60,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NextWrapperCommand = new RelayCommand(NextWrapper);
             PreviousWrapperCommand = new RelayCommand(PreviousWrapper);
 
-            wrappers = CurrentTemplate.WrappersUI;
+            wrappers = AppInfoSingleton.Instance.CurrentTemplate.WrappersUI;
             SetWrapperUI(); 
         }
 

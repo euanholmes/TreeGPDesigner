@@ -33,6 +33,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NavStartRunCommand { get; }
         public ICommand NavBackCommand { get; }
 
+        //Final Settings Variables
+        [ObservableProperty]
+        private string populationCount = AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount.ToString();
+
+        [ObservableProperty]
+        private string maxDepth = AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth.ToString();
+
+        //Constructor
         public GPR8FinalSettingsViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
@@ -40,6 +48,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavBackCommand = new RelayCommand(NavBack);
         }
 
+        //Navigation Functions
         public void NavHomeMenu()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
