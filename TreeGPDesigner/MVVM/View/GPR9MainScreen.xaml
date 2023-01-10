@@ -24,7 +24,7 @@
 
         <!-- Main Screen Title -->
         <Viewbox Grid.Row="1" Grid.Column="1">
-            <TextBlock Style="{DynamicResource TitleText}"  Text="Bin Packing Run #1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Style="{DynamicResource TitleText}"  Text="{Binding RunTitleSetting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Main Screen Grid -->
@@ -42,30 +42,40 @@
             <!-- Algorithms and Settings Panel -->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.5*"/>
                     <RowDefinition Height="5*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1*"/>
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Known Algorithms Title-->
-                <Viewbox Grid.Row="0">
-                    <TextBlock Style="{DynamicResource SubTitleText}" Text="Known Algorithms"/>
+                <Viewbox Grid.Row="2">
+                    <TextBlock Style="{DynamicResource SubTitleText}">
+                        Known 
+                        Algorithms
+                    </TextBlock>
                 </Viewbox>
                 
                 <!-- Known Algorithms Panel-->
-                <Border Grid.Row="1" Style="{DynamicResource Panel2}">
-
-                </Border>
-                
-                <!-- Settings Title-->
-                <Viewbox Grid.Row="2">
-                    <TextBlock Style="{DynamicResource SubTitleText}" Text="Settings"/>
-                </Viewbox>
-                
-                <!-- Settings Panel -->
                 <Border Grid.Row="3" Style="{DynamicResource Panel2}">
 
+                </Border>
+
+                <!-- Settings Panel -->
+                <Border Grid.Row="1" Style="{DynamicResource Panel2}">
+                    <Viewbox Margin="10">
+                        <StackPanel>
+                            <TextBlock Text="{Binding WrapperSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding PopulationCountSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding MaxDepthSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding TreeGrowingMethodSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding FitnessFunctionSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding SelectionMethodSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding SelectionPercentSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding MutationPercentSetting}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Text="{Binding CrossoverPercentSetting}" Style="{DynamicResource RegularText}"/>
+                        </StackPanel>
+                    </Viewbox>
                 </Border>
                 
             </Grid>

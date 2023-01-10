@@ -26,9 +26,9 @@ namespace TreeGPDesigner.MVVM.View
         public GPR8FinalSettings()
         {
             InitializeComponent();
-            selectionSliderTitle.Text = "Selection % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent + "%";
-            mutationTitle.Text = "Mutation % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent + "%";
-            crossoverTitle.Text = "Crossover % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent + "%";
+            selectionSliderTitle.Text = "Selection = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent + "%";
+            mutationTitle.Text = "Mutation = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent + "%";
+            crossoverTitle.Text = "Crossover = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent + "%";
             FocusManager.SetFocusedElement(this, runTitle);
             DataContext = new GPR8FinalSettingsViewModel();
         }

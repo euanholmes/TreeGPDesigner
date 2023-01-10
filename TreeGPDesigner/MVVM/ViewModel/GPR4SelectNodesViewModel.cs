@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
+using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
@@ -33,6 +34,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NavNextCommand { get; }
         public ICommand NavBackCommand { get; }
 
+        //Select Nodes Variables
+        [ObservableProperty]
+        private List<FunctionNode> functionNodes = AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes;
+
+        //Constructor
         public GPR4SelectNodesViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
@@ -40,6 +46,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavBackCommand = new RelayCommand(NavBack);
         }
 
+        //Navigation Functions
         public void NavHomeMenu()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();

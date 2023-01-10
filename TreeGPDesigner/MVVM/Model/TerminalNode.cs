@@ -17,6 +17,12 @@ namespace TreeGPDesigner.MVVM.Model
             this.dataNeeded = dataNeeded;
         }
 
+        public TerminalNode(string symbol, int noOperands, string nodeDescription, int value, bool dataNeeded) : base(symbol, noOperands, nodeDescription)
+        {
+            this.value = value;
+            this.dataNeeded = dataNeeded;
+        }
+
         public TerminalNode(string symbol, bool root, int[] data, int noOperands, float fitness, bool notFailedYet,
             int value, bool dataNeeded) : base(symbol, root, data, noOperands, fitness, notFailedYet)
         {

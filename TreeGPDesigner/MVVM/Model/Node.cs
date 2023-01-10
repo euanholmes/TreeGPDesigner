@@ -23,6 +23,7 @@ namespace TreeGPDesigner.MVVM.Model
         private Node parent = null;
         private float fitness = 0;
         private bool notFailedYet = true;
+        private string nodeDescription;
 
         public Node(string symbol, int noOperands)
         {
@@ -35,6 +36,13 @@ namespace TreeGPDesigner.MVVM.Model
             this.symbol = symbol;
             this.noOperands = noOperands;
             this.root = root;
+        }
+
+        public Node(string symbol, int noOperands, string nodeDescription)
+        {
+            this.symbol = symbol;
+            this.noOperands = noOperands;
+            this.nodeDescription = nodeDescription;
         }
 
         public Node(string symbol, bool root, int[] data, int noOperands, float fitness, bool notFailedYet)
@@ -162,5 +170,6 @@ namespace TreeGPDesigner.MVVM.Model
         public float Width { get => width; set => width = value; }
         public float Fitness { get => fitness; set => fitness = value; }
         public bool NotFailedYet { get => notFailedYet; set => notFailedYet = value; }
+        public string NodeDescription { get => nodeDescription; set => nodeDescription = value; }
     }
 }

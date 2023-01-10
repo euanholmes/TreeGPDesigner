@@ -59,7 +59,49 @@
                     
                     <!-- Function Nodes Panel -->
                     <Border Style="{DynamicResource Panel1}" Grid.Row="3">
-                        
+                 <!--     <ListView ItemsSource="{Binding FunctionNodes}" Margin="10" Background="Transparent">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Node" DisplayMemberBinding="{Binding Symbol}"/>
+                                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding NodeDescription}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView> -->
+                  <!--     <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding FunctionNodes}" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Node" Binding="{Binding Symbol}" Width="*"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding NodeDescription}" Width="*"/>
+                                <DataGridCheckBoxColumn Header="Added" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid> -->
+                        <ScrollViewer Margin="10">
+                            <ItemsControl ItemsSource="{Binding FunctionNodes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border>
+                                            <Viewbox>
+                                                <Grid Height="46.28">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="30" Width="30" Height="30">
+                                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Symbol}"/>
+                                                    </Border>
+
+
+                                                    
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" Grid.Column="1" Text="{Binding NodeDescription}"/>
+                                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>
+                                                </Grid>
+                                            </Viewbox>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
                     </Border>
                     
                     <!-- Add Function Nodes Button -->

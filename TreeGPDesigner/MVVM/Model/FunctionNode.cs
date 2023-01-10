@@ -17,6 +17,13 @@ namespace TreeGPDesigner.MVVM.Model
             this.booleanFunction = booleanFunction;
         }
 
+        //node description constructor
+        public FunctionNode(string symbol, int noOperands, string nodeDescription, Func<int[], int> function, bool booleanFunction) : base(symbol, noOperands, nodeDescription)
+        {
+            this.function = function;
+            this.booleanFunction = booleanFunction;
+        }
+
         public FunctionNode(string symbol, bool root, int[] data, int noOperands, float fitness, bool notFailedYet,
             Func<int[], int> function, bool booleanFunction) : base(symbol, root, data, noOperands, fitness, notFailedYet)
         {
