@@ -50,16 +50,7 @@
 
                     <Border Style="{DynamicResource Panel1}" Grid.Column="1">
                         <Viewbox>
-                            <TextBox FontFamily="{StaticResource RobotoLightItalic}" Text="My bin packing run">
-                                <TextBox.Template>
-                                    <ControlTemplate TargetType="{x:Type TextBox}">
-                                        <Grid>
-                                            <Rectangle StrokeThickness="0"/>
-                                            <TextBox SelectionBrush="{Binding NormalButtonColour}" CaretBrush="{Binding TextColour}" Foreground="{Binding TextColour}" Background="Transparent" Margin="1" Text="{TemplateBinding Text}" BorderThickness="0"/>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </TextBox.Template>
-                            </TextBox>
+                            <TextBox  SelectionBrush="{Binding NormalButtonColour}" CaretBrush="{Binding TextColour}" Foreground="{Binding TextColour}" Background="Transparent" Margin="1" BorderThickness="0" x:Name="runTitle" TextChanged="RunNameChanged" FontFamily="{StaticResource RobotoLightItalic}" Text="{Binding RunName}"/>
                         </Viewbox>
                     </Border>
                 </Grid>
@@ -152,15 +143,13 @@
                             
                             <!-- Current Selection % -->
                             <Viewbox Grid.Row="3" Grid.Column="1">
-                                <TextBlock Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
-                                    Selection % = 34%
-                                </TextBlock>
+                                <TextBlock x:Name="selectionSliderTitle" Text="Selection %" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}"/>
                             </Viewbox>
                             
                             <!-- Selection % Slider -->
                             <Viewbox Grid.Row="5" Grid.Column="1">
-                                <Slider IsSnapToTickEnabled="True" Value="34" Width="300" TickFrequency="1" Maximum="100">
-
+                                <Slider x:Name="selectionSlider" Value="{Binding SelectionSliderValue}" ValueChanged="SelectionSliderChanged" IsSnapToTickEnabled="True" Width="300" TickFrequency="1" Minimum="0" Maximum="100">
+                                    
                                 </Slider>
                             </Viewbox>
                         </Grid>
@@ -255,10 +244,10 @@
                             <!-- Current Genetic Function % % -->
                             <Viewbox Grid.Row="3" Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="0 0 5 0" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
+                                    <TextBlock x:Name="mutationTitle" Margin="0 0 5 0" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
                                     Mutation % = 10%
                                     </TextBlock>
-                                    <TextBlock Margin="5 0 0 0" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
+                                    <TextBlock x:Name="crossoverTitle" Margin="5 0 0 0" Foreground="{Binding TextColour}" FontFamily="{StaticResource RobotoBold}">
                                     Crossover % = 90%
                                     </TextBlock>
                                 </StackPanel>
@@ -266,7 +255,7 @@
 
                             <!-- Genetic Function % % Slider -->
                             <Viewbox Grid.Row="5" Grid.Column="1">
-                                <Slider IsSnapToTickEnabled="True" Value="10" Width="300" TickFrequency="1" Maximum="100">
+                                <Slider x:Name="mutationCrossoverSlider" ValueChanged="MutationCrossoverSliderChanged" IsSnapToTickEnabled="True" Value="{Binding MutationCrossoverSliderValue}" Width="300" TickFrequency="1" Minimum="0" Maximum="100">
 
                                 </Slider>
                             </Viewbox>

@@ -35,10 +35,19 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         //Final Settings Variables
         [ObservableProperty]
+        private string runName = AppInfoSingleton.Instance.CurrentTemplate.CurrentRunName;
+
+        [ObservableProperty]
         private string populationCount = AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount.ToString();
 
         [ObservableProperty]
         private string maxDepth = AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth.ToString();
+
+        [ObservableProperty]
+        private int selectionSliderValue = AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent;
+
+        [ObservableProperty]
+        private int mutationCrossoverSliderValue = AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent;
 
         //Constructor
         public GPR8FinalSettingsViewModel()

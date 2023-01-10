@@ -26,6 +26,10 @@ namespace TreeGPDesigner.MVVM.View
         public GPR8FinalSettings()
         {
             InitializeComponent();
+            selectionSliderTitle.Text = "Selection % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent + "%";
+            mutationTitle.Text = "Mutation % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent + "%";
+            crossoverTitle.Text = "Crossover % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent + "%";
+            FocusManager.SetFocusedElement(this, runTitle);
             DataContext = new GPR8FinalSettingsViewModel();
         }
 
@@ -39,6 +43,11 @@ namespace TreeGPDesigner.MVVM.View
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled =!IsTextAllowed(e.Text);
+        }
+
+        private void RunNameChanged(object sender, TextChangedEventArgs e)
+        {
+            AppInfoSingleton.Instance.CurrentTemplate.CurrentRunName = runTitle.Text;
         }
 
         private void PopulationCountChanged(object sender, TextChangedEventArgs e)
@@ -63,6 +72,20 @@ namespace TreeGPDesigner.MVVM.View
             {
                 AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth = maxDepthInt;
             }
+        }
+
+        private void SelectionSliderChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent = (int)selectionSlider.Value;
+            selectionSliderTitle.Text = "Selection % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent + "%";
+        }
+
+        private void MutationCrossoverSliderChanged(object sender , RoutedPropertyChangedEventArgs<double> e)
+        {
+            AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent = (int)mutationCrossoverSlider.Value;
+            AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent = 100 - AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent;
+            mutationTitle.Text = "Mutation % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent + "%";
+            crossoverTitle.Text = "Crossover % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent + "%";
         }
     }
 }
