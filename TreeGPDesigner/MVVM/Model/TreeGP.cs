@@ -19,6 +19,8 @@ namespace TreeGPDesigner.MVVM.Model
         private List<FunctionModel> fitnessFunctionsUI;
         private int currentWrapper = 0;
         private int currentFitnessFunction = 0;
+        private int currentTreeGrowingMethod = 0;
+        private int currentSelectionMethod = 0;
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -30,6 +32,8 @@ namespace TreeGPDesigner.MVVM.Model
         public int CurrentWrapper { get => currentWrapper; set => currentWrapper = value; }
         public List<FunctionModel> FitnessFunctionsUI { get => fitnessFunctionsUI; set => fitnessFunctionsUI = value; }
         public int CurrentFitnessFunction { get => currentFitnessFunction; set => currentFitnessFunction = value; }
+        public int CurrentTreeGrowingMethod { get => currentTreeGrowingMethod; set => currentTreeGrowingMethod = value; }
+        public int CurrentSelectionMethod { get => currentSelectionMethod; set => currentSelectionMethod = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {

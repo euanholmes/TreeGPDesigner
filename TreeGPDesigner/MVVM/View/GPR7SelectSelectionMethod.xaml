@@ -179,7 +179,7 @@
                     
                     <!-- Tournament Selection Radio Button -->
                     <Viewbox Grid.Row="5">
-                        <RadioButton Foreground="{Binding TextColour}" IsChecked="True" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
+                        <RadioButton IsChecked="{Binding RadioButton1IsChecked}" Command="{Binding SetSelectionMethodCommand}" CommandParameter="0" Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
 
                 </Grid>
@@ -242,7 +242,7 @@
 
                     <!-- Fitness Proportionate Selection Radio Button -->
                     <Viewbox Grid.Row="5">
-                        <RadioButton Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
+                        <RadioButton IsChecked="{Binding RadioButton2IsChecked}" Command="{Binding SetSelectionMethodCommand}" CommandParameter="1" Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
 
@@ -309,7 +309,7 @@
 
                     <!-- Truncation Selection Radio Button -->
                     <Viewbox Grid.Row="5">
-                        <RadioButton Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
+                        <RadioButton IsChecked="{Binding RadioButton3IsChecked}" Command="{Binding SetSelectionMethodCommand}" CommandParameter="2" Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
             </Grid>

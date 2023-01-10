@@ -12,7 +12,7 @@ using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR1GPTemplateMenuViewModel : ObservableObject, INotifyPropertyChanged
+    public partial class GPR1GPTemplateMenuViewModel : ObservableObject
     {
         //Common Variables
         [ObservableProperty]
@@ -34,14 +34,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavSelectCommand { get; }
 
-        //
-        public new event PropertyChangedEventHandler? PropertyChanged;
+        //GP Template Menu variables
+        public new event PropertyChangedEventHandler? PropertyChanged2;
         public TreeGP? CurrentTemplate => AppInfoSingleton.Instance.CurrentTemplate;
         private void OnCurrentTemplateChanged()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentTemplate)));
+            PropertyChanged2?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentTemplate)));
         }
 
+        //Constructor
         public GPR1GPTemplateMenuViewModel()
         {
             AppInfoSingleton.Instance.CurrentTemplateChanged += OnCurrentTemplateChanged;
@@ -50,6 +51,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavSelectCommand = new RelayCommand(NavSelect);
         }
 
+        //Navigation Functions
         public void NavHomeMenu()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();

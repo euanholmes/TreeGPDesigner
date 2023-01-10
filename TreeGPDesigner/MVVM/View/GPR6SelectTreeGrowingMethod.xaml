@@ -243,7 +243,7 @@
 
                     <!-- Ramped Half And Half Radio Button -->
                     <Viewbox Grid.Row="5">
-                        <RadioButton Foreground="{Binding TextColour}" IsChecked="True" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
+                        <RadioButton IsChecked="{Binding RadioButton1IsChecked}" Command="{Binding SetTreeGrowingMethodCommand}" CommandParameter="0" Foreground="{Binding TextColour}"  GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
 
@@ -327,7 +327,7 @@
 
                     <!-- Grow Method Radio Button -->
                     <Viewbox Grid.Row="5">
-                        <RadioButton Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
+                        <RadioButton IsChecked="{Binding RadioButton2IsChecked}" Command="{Binding SetTreeGrowingMethodCommand}" CommandParameter="1" Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
 
@@ -456,7 +456,7 @@
 
                     <!-- Full Method Radio Button -->
                     <Viewbox Grid.Row="5">
-                        <RadioButton Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
+                        <RadioButton IsChecked="{Binding RadioButton3IsChecked}" Command="{Binding SetTreeGrowingMethodCommand}" CommandParameter="2" Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
 
