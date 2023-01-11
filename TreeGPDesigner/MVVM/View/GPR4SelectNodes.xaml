@@ -59,26 +59,11 @@
                     
                     <!-- Function Nodes Panel -->
                     <Border Style="{DynamicResource Panel1}" Grid.Row="3">
-                 <!--     <ListView ItemsSource="{Binding FunctionNodes}" Margin="10" Background="Transparent">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Node" DisplayMemberBinding="{Binding Symbol}"/>
-                                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding NodeDescription}"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView> -->
-                  <!--     <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding FunctionNodes}" Margin="10">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Node" Binding="{Binding Symbol}" Width="*"/>
-                                <DataGridTextColumn Header="Description" Binding="{Binding NodeDescription}" Width="*"/>
-                                <DataGridCheckBoxColumn Header="Added" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid> -->
                         <ScrollViewer Margin="10">
-                            <ItemsControl ItemsSource="{Binding FunctionNodes}">
+                            <ItemsControl ItemsSource="{Binding SelectFunctionNodes}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border>
+                                        <Border Margin="0 0 0 10" Background="{Binding BackgroundColour}" CornerRadius="10">
                                             <Viewbox>
                                                 <Grid Height="46.28">
                                                     <Grid.ColumnDefinitions>
@@ -87,14 +72,16 @@
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
 
-                                                    <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="30" Width="30" Height="30">
-                                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Symbol}"/>
+                                                    <!-- Node -->
+                                                    <Border Background="{Binding NodeFill}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="0" BorderBrush="{Binding NodeOutline}" BorderThickness="2" CornerRadius="{Binding CornerRadius}" Width="30" Height="30">
+                                                        <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}"/>
                                                     </Border>
 
-
+                                                    <!-- Description -->
+                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="1" Text="{Binding NodeDescription}"/>
                                                     
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" Grid.Column="1" Text="{Binding NodeDescription}"/>
-                                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>
+                                                    <!-- CheckBox -->
+                                                    <CheckBox Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>
                                                 </Grid>
                                             </Viewbox>
                                         </Border>
