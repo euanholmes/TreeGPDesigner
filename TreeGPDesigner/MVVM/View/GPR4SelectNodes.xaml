@@ -116,7 +116,36 @@
 
                     <!-- Terminal Nodes Panel -->
                     <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <ScrollViewer Margin="10">
+                            <ItemsControl ItemsSource="{Binding SelectTerminalNodes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="0 0 0 10" Background="{Binding BackgroundColour}" CornerRadius="10">
+                                            <Viewbox>
+                                                <Grid Height="46.28">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
 
+                                                    <!-- Node -->
+                                                    <Border Background="{Binding NodeFill}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="0" BorderBrush="{Binding NodeOutline}" BorderThickness="2" CornerRadius="{Binding CornerRadius}" Width="30" Height="30">
+                                                        <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}"/>
+                                                    </Border>
+
+                                                    <!-- Description -->
+                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="1" Text="{Binding NodeDescription}"/>
+
+                                                    <!-- CheckBox -->
+                                                    <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>
+                                                </Grid>
+                                            </Viewbox>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
                     </Border>
 
                     <!-- Add Terminal Nodes Button -->
@@ -144,7 +173,36 @@
 
                     <!-- Root Nodes Panel -->
                     <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                        <ScrollViewer Margin="10">
+                            <ItemsControl ItemsSource="{Binding SelectRootNodes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="0 0 0 10" Background="{Binding BackgroundColour}" CornerRadius="10">
+                                            <Viewbox>
+                                                <Grid Height="46.28">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
 
+                                                    <!-- Node -->
+                                                    <Border Background="{Binding NodeFill}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="0" BorderBrush="{Binding NodeOutline}" BorderThickness="2" CornerRadius="{Binding CornerRadius}" Width="30" Height="30">
+                                                        <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}"/>
+                                                    </Border>
+
+                                                    <!-- Description -->
+                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="1" Text="{Binding NodeDescription}"/>
+
+                                                    <!-- CheckBox -->
+                                                    <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>
+                                                </Grid>
+                                            </Viewbox>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
                     </Border>
 
                     <!-- Add Root Nodes Button -->

@@ -48,7 +48,22 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private List<FunctionNode> functionNodes = AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes;
 
         [ObservableProperty]
+        private List<TerminalNode> terminalNodes = AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes;
+
+        [ObservableProperty]
+        private List<FunctionNode> functionRootNodes = AppInfoSingleton.Instance.CurrentTemplate.FunctionRootNodes;
+
+        [ObservableProperty]
+        private List<TerminalNode> terminalRootNodes = AppInfoSingleton.Instance.CurrentTemplate.TerminalRootNodes;
+
+        [ObservableProperty]
         private List<SelectNode> selectFunctionNodes = new List<SelectNode>();
+
+        [ObservableProperty]
+        private List<SelectNode> selectTerminalNodes = new List<SelectNode>();
+
+        [ObservableProperty]
+        private List<SelectNode> selectRootNodes = new List<SelectNode>();
 
         //Constructor
         public GPR4SelectNodesViewModel()
@@ -57,7 +72,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
 
-            GetSelectFunctionNodes();
+            GetSelectNodes();
         }
 
         //Navigation Functions
@@ -76,13 +91,31 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new GPR3SelectFitnessFunctionViewModel();
         }
 
-        //Select Nodes Functions
-        public void GetSelectFunctionNodes()
+        //Select Nodes Function
+        public void GetSelectNodes()
         {
             foreach (FunctionNode node in FunctionNodes)
             {
                 SelectFunctionNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[0], BrushSet[1], TextColour, new CornerRadius(30), Background, NormalButtonColour,
                     FunctionNodes.IndexOf(node).ToString(), node.IsSelected, "function"));
+            }
+
+            foreach (TerminalNode node in TerminalNodes)
+            {
+                SelectTerminalNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[2], BrushSet[3], TextColour, new CornerRadius(0), Background, NormalButtonColour,
+                    TerminalNodes.IndexOf(node).ToString(), node.IsSelected, "terminal"));
+            }
+
+            foreach (FunctionNode node in FunctionRootNodes)
+            {
+                SelectRootNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[0], BrushSet[1], TextColour, new CornerRadius(30), Background, NormalButtonColour,
+                    FunctionRootNodes.IndexOf(node).ToString(), node.IsSelected, "rootFunction"));
+            }
+
+            foreach (TerminalNode node in TerminalRootNodes)
+            {
+                SelectRootNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[2], BrushSet[3], TextColour, new CornerRadius(0), Background, NormalButtonColour,
+                    TerminalRootNodes.IndexOf(node).ToString(), node.IsSelected, "rootTerminal"));
             }
         }
     }
@@ -146,6 +179,39 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 else
                 {
                     AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes[nodeNumInt].IsSelected = false;
+                }
+            }
+            else if (FunctionType == "terminal")
+            {
+                if (AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes[nodeNumInt].IsSelected == false)
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes[nodeNumInt].IsSelected = true;
+                }
+                else
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes[nodeNumInt].IsSelected = false;
+                }
+            }
+            else if(FunctionType == "rootFunction")
+            {
+                if (AppInfoSingleton.Instance.CurrentTemplate.FunctionRootNodes[nodeNumInt].IsSelected == false)
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.FunctionRootNodes[nodeNumInt].IsSelected = true;
+                }
+                else
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.FunctionRootNodes[nodeNumInt].IsSelected = false;
+                }
+            }
+            else if (FunctionType == "rootTerminal")
+            {
+                if (AppInfoSingleton.Instance.CurrentTemplate.TerminalRootNodes[nodeNumInt].IsSelected == false)
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.TerminalRootNodes[nodeNumInt].IsSelected = true;
+                }
+                else
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.TerminalRootNodes[nodeNumInt].IsSelected = false;
                 }
             }
         }

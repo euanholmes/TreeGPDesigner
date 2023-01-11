@@ -117,6 +117,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void GenerateTree()
         {
             BinPackingTemplate bpTemplate = new();
+            bpTemplate.FunctionNodes.Clear();
+            bpTemplate.TerminalNodes.Clear();
+            bpTemplate.FunctionRootNodes.Clear();
+            bpTemplate.TerminalRootNodes.Clear();
             AddSelectedNodes(bpTemplate);
 
             if ((bpTemplate.TerminalNodes.Count == 0 && SelectedRootNodes[4] == false && SelectedRootNodes[5] == false) ||
