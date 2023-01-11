@@ -27,6 +27,8 @@ namespace TreeGPDesigner.MVVM.Model
         private int currentMutationPercent = 10;
         private int currentCrossoverPercent = 90;
         private string currentRunName = "My GP Run";
+        private List<string> datasetUI;
+        private List<bool> currentDatasets = new List<bool>();
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -46,6 +48,8 @@ namespace TreeGPDesigner.MVVM.Model
         public int CurrentMutationPercent { get => currentMutationPercent; set => currentMutationPercent = value; }
         public int CurrentCrossoverPercent { get => currentCrossoverPercent; set => currentCrossoverPercent = value; }
         public string CurrentRunName { get => currentRunName; set => currentRunName = value; }
+        public List<string> DatasetUI { get => datasetUI; set => datasetUI = value; }
+        public List<bool> CurrentDatasets { get => currentDatasets; set => currentDatasets = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {

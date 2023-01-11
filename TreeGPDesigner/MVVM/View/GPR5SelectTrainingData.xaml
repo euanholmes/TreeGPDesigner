@@ -44,7 +44,30 @@
                 
                 <!-- Training Data Panel-->
                 <Border Style="{DynamicResource Panel1}" Grid.Column="1" Grid.Row="1" >
+                    <ScrollViewer Margin="10">
+                        <ItemsControl ItemsSource="{Binding Datasets}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="0 0 0 10" Background="{Binding BackgroundColour}" CornerRadius="10">
+                                        <Viewbox>
+                                            <Grid Height="25">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
 
+                                                <!-- Dataset -->
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="0" Text="{Binding DatasetInfo}"/>
+
+                                                <!-- CheckBox -->
+                                                <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="1"/>
+                                            </Grid>
+                                        </Viewbox>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </Border>
             </Grid>
         </Border>

@@ -45,10 +45,27 @@ namespace TreeGPDesigner.MVVM.Model
               new BitmapImage(new Uri("pack://application:,,,/Images/FitnessFunctionTwo.png")))
         };
 
+        private List<string> BPDatasetsUI = new List<string>()
+        {
+            "Random Dataset 1 (10 problems)       ",
+            "Random Dataset 2 (50 problems)       ",
+            "Random Dataset 3 (100 problems)      ",
+            "Random Dataset 4 (200 problems)      ",
+            "Random Dataset 5 (500 problems)      "
+        };
+
         public BinPackingTemplate()
         {
             WrappersUI = BPWrappersUI;
             FitnessFunctionsUI = BPFitnessFunctionsUI;
+            DatasetUI = BPDatasetsUI;
+
+            CurrentDatasets.Add(true);
+
+            for (int i = 1; i < DatasetUI.Count; i++)
+            {
+                CurrentDatasets.Add(false);
+            }
 
             AddFunctionNode(new FunctionNode("<=", 2,  "Less Than or Equal To   ", true, a => a[0] <= a[1] ? 1 : 0, true));
             AddFunctionNode(new FunctionNode("+", 2,   "Addition                ", true, a => a[0] + a[1], false));
