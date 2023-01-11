@@ -29,6 +29,7 @@ namespace TreeGPDesigner.MVVM.Model
         private string currentRunName = "My GP Run";
         private List<string> datasetUI;
         private List<bool> currentDatasets = new List<bool>();
+        private List<Node> knownAlgorithms = new List<Node>();
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -50,6 +51,7 @@ namespace TreeGPDesigner.MVVM.Model
         public string CurrentRunName { get => currentRunName; set => currentRunName = value; }
         public List<string> DatasetUI { get => datasetUI; set => datasetUI = value; }
         public List<bool> CurrentDatasets { get => currentDatasets; set => currentDatasets = value; }
+        public List<Node> KnownAlgorithms { get => knownAlgorithms; set => knownAlgorithms = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {

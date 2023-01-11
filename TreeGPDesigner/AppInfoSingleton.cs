@@ -161,6 +161,63 @@ namespace TreeGPDesigner
             CurrentTemplateChanged.Invoke();
         }
 
+        //Main Screen DisplayTree
+        public event Action MainDisplayTreeChanged;
+        private ObservableCollection<NodePlot>? mainDisplayTree;
+
+        public ObservableCollection<NodePlot>? MainDisplayTree
+        {
+            get => mainDisplayTree;
+            set
+            {
+                mainDisplayTree = value;
+                OnMainDisplayTreeChanged();
+            }
+        }
+
+        private void OnMainDisplayTreeChanged()
+        {
+            MainDisplayTreeChanged.Invoke();
+        }
+
+       /* //Main Screen Canvas Width
+        public event Action MainCanvasWidthChanged;
+        private float? mainCanvasWidth;
+
+        public float? MainCanvasWidth
+        {
+            get => mainCanvasWidth;
+            set
+            {
+                mainCanvasWidth = value;
+                OnMainCanvasWidthChanged();
+            }
+        }
+
+        private void OnMainCanvasWidthChanged()
+        {
+            MainCanvasWidthChanged.Invoke();
+        }
+
+        //Main Screen Canvas Height
+        public event Action MainCanvasHeightChanged;
+        private float? mainCanvasHeight;
+
+        public float? MainCanvasHeight
+        {
+            get => mainCanvasHeight;
+            set
+            {
+                mainCanvasHeight = value;
+                OnMainCanvasHeightChanged();
+            }
+        }
+
+        private void OnMainCanvasHeightChanged()
+        {
+            MainCanvasHeightChanged.Invoke();
+        }*/
+
         //Current Panel1 Colour
         public event Action CurrentPanel1ColorChanged;
         private Brush? currentPanel1Color;

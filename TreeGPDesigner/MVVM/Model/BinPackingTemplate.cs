@@ -82,6 +82,15 @@ namespace TreeGPDesigner.MVVM.Model
             AddRootNode(new FunctionNode(">=", 2,      "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0, true));
             AddRootNode(new FunctionNode(">", 2,       "Greater Than            ", true, a => a[0] > a[1] ? 1 : 0, true));
             AddRootNode(new FunctionNode("<", 2,       "Less Than               ", true, a => a[0] < a[1] ? 1 : 0, true));
+
+            Node FFDTree = MakeFFDTree();
+            KnownAlgorithms.Add(FFDTree);
+            KnownAlgorithms.Add(FFDTree);
+            KnownAlgorithms.Add(FFDTree);
+            KnownAlgorithms.Add(FFDTree);
+            KnownAlgorithms.Add(FFDTree);
+            KnownAlgorithms.Add(FFDTree);
+            KnownAlgorithms.Add(FFDTree);
         }
 
         public Node MakeFFDTree()
@@ -91,6 +100,8 @@ namespace TreeGPDesigner.MVVM.Model
             FFDTree.ChildNodes.Add(new TerminalNode("BC", 0, 2, true));
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, 0, true));
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("LI", 0, 1, true));
+
+            FFDTree.Name = "First Fit Descending";
 
             return FFDTree;
         }

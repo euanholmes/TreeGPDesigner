@@ -32,9 +32,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.2*"/>
                 <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.2*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
@@ -58,7 +58,33 @@
                 
                 <!-- Known Algorithms Panel-->
                 <Border Grid.Row="3" Style="{DynamicResource Panel2}">
+                    <ScrollViewer Margin="10">
+                        <ItemsControl ItemsSource="{Binding KnownAlgorithmTrees}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding DisplayTreeCommand}" CommandParameter="{Binding DisplayTreeParameter}" Style="{DynamicResource TreeButtonStyle}" Margin="0 0 0 10">
+                                        <Viewbox>
+                                            <Grid Height="40">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
 
+                                                <!-- Algorithm Name -->
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="2" Text="{Binding Name}"/>
+
+                                                <!-- Colour Indicator and Fitness -->
+                                                <Border VerticalAlignment="Center" Grid.Column="0" Width="20" Height="50" Background="{Binding ColourIndicator}">
+                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Text="{Binding Fitness}"/>
+                                                </Border>
+                                            </Grid>
+                                        </Viewbox>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </Border>
 
                 <!-- Settings Panel -->
@@ -98,8 +124,72 @@
                     </Grid.RowDefinitions>
 
                     <!-- Current Tree -->
-                    <Border Grid.Column="1" Grid.Row="1" Style="{DynamicResource Panel1}">
-                        
+                    <Border x:Name="treeBorder" Cursor="Hand" ClipToBounds="true" Grid.Column="1" Grid.Row="1" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="8*"/>
+                                </Grid.RowDefinitions>
+
+                                <Viewbox Grid.Row="1" Grid.Column="0">
+                                    <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
+                                </Viewbox>
+                            </Grid>
+
+                            <Viewbox>
+                                <Grid>
+                                    <Grid>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="311.49"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="370.71" Y2="0"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="370.71" Y1="0" X2="370.71" Y2="311.49"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="311.49" X2="370.71" Y2="311.49"/>
+                                    </Grid>
+
+                                    <Canvas Height="250" Width="250" x:Name="treeCanvas">
+                                        <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Canvas IsItemsHost="true"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="{Binding SymbolColour}" StrokeThickness="2"/>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+
+                                        <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Canvas IsItemsHost="True"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style>
+                                                    <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                                    <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
+                                                        <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Canvas>
+                                </Grid>
+                            </Viewbox>
+                        </Grid>
                     </Border>
                     
                     <!-- Print Buttons -->

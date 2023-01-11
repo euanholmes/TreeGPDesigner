@@ -25,6 +25,7 @@ namespace TreeGPDesigner.MVVM.Model
         private bool notFailedYet = true;
         private string nodeDescription;
         private bool isSelected;
+        private string name;
 
         public Node(string symbol, int noOperands)
         {
@@ -174,5 +175,6 @@ namespace TreeGPDesigner.MVVM.Model
         public bool NotFailedYet { get => notFailedYet; set => notFailedYet = value; }
         public string NodeDescription { get => nodeDescription; set => nodeDescription = value; }
         public bool IsSelected { get => isSelected; set => isSelected = value; }
+        public string Name { get => name; set => name = value; }
     }
 }

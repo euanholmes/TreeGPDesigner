@@ -161,9 +161,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
                 TreeDrawingAlgorithm.CalculateNodePositions(DisplayTree);
                 DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, BrushSet);
-                CanvasHeight = DisplayTree.Height * 100 / (float)0.75;
-                CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
-            } 
+                //CanvasHeight = (DisplayTree.Height * 100) + 100 / (float)0.75;
+                //CanvasWidth = (DisplayTree.Width * 100) + 100 / (float)0.75;
+                CanvasHeight = (DisplayTree.Height * 100) + 100;
+                CanvasWidth = (DisplayTree.Width * 100) + 100;
+            }
         }
 
         public void AddSelectedNodes(BinPackingTemplate bp)
