@@ -18,7 +18,7 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         //node description constructor
-        public FunctionNode(string symbol, int noOperands, string nodeDescription, Func<int[], int> function, bool booleanFunction) : base(symbol, noOperands, nodeDescription)
+        public FunctionNode(string symbol, int noOperands, string nodeDescription, bool isSelected, Func<int[], int> function, bool booleanFunction) : base(symbol, noOperands, nodeDescription, isSelected)
         {
             this.function = function;
             this.booleanFunction = booleanFunction;

@@ -24,6 +24,7 @@ namespace TreeGPDesigner.MVVM.Model
         private float fitness = 0;
         private bool notFailedYet = true;
         private string nodeDescription;
+        private bool isSelected;
 
         public Node(string symbol, int noOperands)
         {
@@ -38,11 +39,12 @@ namespace TreeGPDesigner.MVVM.Model
             this.root = root;
         }
 
-        public Node(string symbol, int noOperands, string nodeDescription)
+        public Node(string symbol, int noOperands, string nodeDescription, bool isSelected)
         {
             this.symbol = symbol;
             this.noOperands = noOperands;
             this.nodeDescription = nodeDescription;
+            IsSelected = isSelected;
         }
 
         public Node(string symbol, bool root, int[] data, int noOperands, float fitness, bool notFailedYet)
@@ -171,5 +173,6 @@ namespace TreeGPDesigner.MVVM.Model
         public float Fitness { get => fitness; set => fitness = value; }
         public bool NotFailedYet { get => notFailedYet; set => notFailedYet = value; }
         public string NodeDescription { get => nodeDescription; set => nodeDescription = value; }
+        public bool IsSelected { get => isSelected; set => isSelected = value; }
     }
 }

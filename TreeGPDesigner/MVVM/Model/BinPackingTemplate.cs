@@ -50,21 +50,21 @@ namespace TreeGPDesigner.MVVM.Model
             WrappersUI = BPWrappersUI;
             FitnessFunctionsUI = BPFitnessFunctionsUI;
 
-            AddFunctionNode(new FunctionNode("<=", 2,  "Less Than or Equal To   ", a => a[0] <= a[1] ? 1 : 0, true));
-            AddFunctionNode(new FunctionNode("+", 2,   "Addition                ", a => a[0] + a[1], false));
-            AddFunctionNode(new FunctionNode("-", 3,   "Subtraction             ", a => a[0] - a[1], false));
-            AddFunctionNode(new FunctionNode("*", 2,   "Multiplication          ", a => a[0] * a[1], false));
-            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs                ", a => Math.Abs(a[0]), false));
-            AddFunctionNode(new FunctionNode("++", 3,  "3 Operand Addition      ", a => a[0] + a[1] + a[2], false));
-            AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight      ", 0, true));
-            AddTerminalNode(new TerminalNode("CI", 0,  "Current Item            ", 1, true));
-            AddTerminalNode(new TerminalNode("BC", 0,  "Bin Capacity            ", 2, true));
-            AddTerminalNode(new TerminalNode("-1", 0,  "-1                      ", -1, false));
-            AddTerminalNode(new TerminalNode("1", 0,   "1                       ", 1, false));
-            AddRootNode(new FunctionNode("<=", 2,      "Less Than or Equal To   ", a => a[0] <= a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode(">=", 2,      "Greater Than or Equal To", a => a[0] >= a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode(">", 2,       "Greater Than            ", a => a[0] > a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode("<", 2,       "Less Than               ", a => a[0] < a[1] ? 1 : 0, true));
+            AddFunctionNode(new FunctionNode("<=", 2,  "Less Than or Equal To   ", true, a => a[0] <= a[1] ? 1 : 0, true));
+            AddFunctionNode(new FunctionNode("+", 2,   "Addition                ", true, a => a[0] + a[1], false));
+            AddFunctionNode(new FunctionNode("-", 3,   "Subtraction             ", true, a => a[0] - a[1], false));
+            AddFunctionNode(new FunctionNode("*", 2,   "Multiplication          ", true, a => a[0] * a[1], false));
+            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs                ", true, a => Math.Abs(a[0]), false));
+            AddFunctionNode(new FunctionNode("++", 3,  "3 Operand Addition      ", true, a => a[0] + a[1] + a[2], false));
+            AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight      ", true, 0, true));
+            AddTerminalNode(new TerminalNode("CI", 0,  "Current Item            ", true, 1, true));
+            AddTerminalNode(new TerminalNode("BC", 0,  "Bin Capacity            ", true, 2, true));
+            AddTerminalNode(new TerminalNode("-1", 0,  "-1                      ", true, -1, false));
+            AddTerminalNode(new TerminalNode("1", 0,   "1                       ", true, 1, false));
+            AddRootNode(new FunctionNode("<=", 2,      "Less Than or Equal To   ", true, a => a[0] <= a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode(">=", 2,      "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode(">", 2,       "Greater Than            ", true, a => a[0] > a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode("<", 2,       "Less Than               ", true, a => a[0] < a[1] ? 1 : 0, true));
         }
 
         public Node MakeFFDTree()

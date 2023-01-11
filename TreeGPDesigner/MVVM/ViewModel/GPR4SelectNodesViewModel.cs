@@ -82,7 +82,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             foreach (FunctionNode node in FunctionNodes)
             {
                 SelectFunctionNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[0], BrushSet[1], TextColour, new CornerRadius(30), Background, NormalButtonColour,
-                    FunctionNodes.IndexOf(node).ToString()));
+                    FunctionNodes.IndexOf(node).ToString(), node.IsSelected, "function"));
             }
         }
     }
@@ -99,9 +99,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private Brush? normalButtonColour;
         private ICommand checkBoxCommand;
         private string? checkBoxCommandParameter;
+        private bool? isSelected;
+        private string? functionType;
 
-        public SelectNode(string? symbol, string? nodeDescription, Brush? nodeOutline, Brush? nodeFill, Brush? textColour, CornerRadius? cornerRadius, Brush? backgroundColour, 
-            Brush? normalButtonColour, string? checkBoxCommandParameter)
+        public SelectNode(string? symbol, string? nodeDescription, Brush? nodeOutline, Brush? nodeFill, Brush? textColour, CornerRadius? cornerRadius, Brush? backgroundColour,
+            Brush? normalButtonColour, string? checkBoxCommandParameter, bool? isSelected, string? functionType)
         {
             this.symbol = symbol;
             this.nodeDescription = nodeDescription;
@@ -112,6 +114,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             this.backgroundColour = backgroundColour;
             this.normalButtonColour = normalButtonColour;
             this.checkBoxCommandParameter = checkBoxCommandParameter;
+            this.isSelected = isSelected;
+            this.functionType = functionType;
+
             this.checkBoxCommand = new RelayCommand<string>(param => CheckBox(param));
         }
 
@@ -125,11 +130,24 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand CheckBoxCommand { get => checkBoxCommand; set => checkBoxCommand = value; }
         public string? NodeDescription { get => nodeDescription; set => nodeDescription = value; }
         public string? CheckBoxCommandParameter { get => checkBoxCommandParameter; set => checkBoxCommandParameter = value; }
+        public bool? IsSelected { get => isSelected; set => isSelected = value; }
+        public string? FunctionType { get => functionType; set => functionType = value; }
 
         public void CheckBox(string nodeNumString)
         {
             int nodeNumInt = Convert.ToInt32(nodeNumString);
-            Trace.WriteLine(nodeNumInt);
+
+            if (FunctionType == "function")
+            {
+                if (AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes[nodeNumInt].IsSelected == false)
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes[nodeNumInt].IsSelected = true;
+                }
+                else
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes[nodeNumInt].IsSelected = false;
+                }
+            }
         }
     }
 }
