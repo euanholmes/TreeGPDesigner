@@ -431,7 +431,7 @@ namespace TreeGPDesigner.MVVM.Model
         {
             int selectionNum = (int)Math.Floor((CurrentSelectionPercent / 100d) * CurrentPopulationCount);
 
-            Trace.WriteLine($"Selection Num = {selectionNum}, CurrentSelectionPercent = {CurrentSelectionPercent}, CurrentPopulationCount = {CurrentPopulationCount}");
+            //Trace.WriteLine($"Selection Num = {selectionNum}, CurrentSelectionPercent = {CurrentSelectionPercent}, CurrentPopulationCount = {CurrentPopulationCount}");
 
             if (selectionNum < 2)
             {
@@ -590,7 +590,6 @@ namespace TreeGPDesigner.MVVM.Model
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
             Generation.RemoveRange(selectionNumber, Generation.Count - selectionNumber);
             GeneticFunctionPool = new List<Node>(Generation);
-            Trace.WriteLine($"Genetic function pool count = {GeneticFunctionPool.Count}");
             Generation.Clear();
         }
 

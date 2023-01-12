@@ -201,29 +201,30 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
                 if (CurrentGeneration[i].Name != null)
                 {
-                    Trace.WriteLine("not null!!!!!!");
-                    treeName = currentGeneration[i].Name;
+                    treeName = CurrentGeneration[i].Name;
                 }
                 else
                 {
                     treeName = "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1);
                 }
 
-                Trace.WriteLine($"Lowest Known Algorithm Fitness = {AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness}");
+                CurrentGeneration[i].Name = treeName;
+
+                //Trace.WriteLine($"Lowest Known Algorithm Fitness = {AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness}");
 
                 if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness)
                 {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, treeName,
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
                     CurrentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false));
                 }
                 else if (CurrentGeneration[i].NotFailedYet)
                 {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, treeName,
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
                     CurrentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false));
                 }
                 else
                 {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, treeName,
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
                     CurrentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false));
                 }
             }
