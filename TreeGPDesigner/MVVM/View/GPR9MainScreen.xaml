@@ -211,7 +211,7 @@
 
                 <!-- Current Generation Title-->
                 <Viewbox Grid.Row="0">
-                    <TextBlock Style="{DynamicResource SubTitleText}" Text="Generation #3"/>
+                    <TextBlock Style="{DynamicResource SubTitleText}" Text="{Binding GenerationNumber}"/>
                 </Viewbox>
 
                 <!-- Current Generation Panel-->

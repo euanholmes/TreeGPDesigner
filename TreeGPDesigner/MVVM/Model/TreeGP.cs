@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,14 +108,14 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 return null;
             }
-            else if(TerminalRootNodes.Count == 0 && FunctionRootNodes.Count > 0)
+            else if (TerminalRootNodes.Count == 0 && FunctionRootNodes.Count > 0)
             {
                 FunctionNode randomFunctionRootNode = FunctionRootNodes[random.Next(0, FunctionRootNodes.Count)];
                 FunctionNode functionRootNode = new FunctionNode(randomFunctionRootNode.Symbol, randomFunctionRootNode.NoOperands,
                     randomFunctionRootNode.Function, randomFunctionRootNode.BooleanFunction);
                 return functionRootNode;
             }
-            else if(TerminalRootNodes.Count > 0 && FunctionRootNodes.Count == 0)
+            else if (TerminalRootNodes.Count > 0 && FunctionRootNodes.Count == 0)
             {
                 TerminalNode randomTerminalRootNode = TerminalRootNodes[random.Next(0, TerminalRootNodes.Count)];
                 TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands,
@@ -386,6 +387,71 @@ namespace TreeGPDesigner.MVVM.Model
             GetLowestKnownAlgorithmFitness();
         }
 
+        public void GetNextGeneration()
+        {
+            Selection();
+
+            int mutationNum = (int)Math.Floor((CurrentMutationPercent / 100d) * GeneticFunctionPool.Count);
+            int crossoverNum = (int)Math.Floor((CurrentCrossoverPercent / 100d) * GeneticFunctionPool.Count);
+
+            if ((mutationNum + crossoverNum) < CurrentPopulationCount)
+            {
+                while ((mutationNum + crossoverNum) < CurrentPopulationCount)
+                {
+                    crossoverNum++;
+                }
+            }
+            else if ((mutationNum + crossoverNum) > CurrentPopulationCount)
+            {
+                while ((mutationNum + crossoverNum) > CurrentPopulationCount)
+                {
+                    if (crossoverNum != 0)
+                    {
+                        crossoverNum--;
+                    }
+                    else if (mutationNum != 0)
+                    {
+                        mutationNum--;
+                    }
+                    else
+                    {
+                        crossoverNum = CurrentPopulationCount;
+                    }
+                }
+            }
+
+            ApplyGeneticFunctions(crossoverNum, mutationNum, CurrentMaxDepth);
+            GetPopulationFitness();
+            SortGenerationByFitness();
+            GetLowestKnownAlgorithmFitness();
+            currentGenerationNum++;
+        }
+
+        public void Selection()
+        {
+            int selectionNum = (int)Math.Floor((CurrentSelectionPercent / 100d) * CurrentPopulationCount);
+
+            Trace.WriteLine($"Selection Num = {selectionNum}, CurrentSelectionPercent = {CurrentSelectionPercent}, CurrentPopulationCount = {CurrentPopulationCount}");
+
+            if (selectionNum < 2)
+            {
+                selectionNum = 2;
+            }
+
+            if (currentSelectionMethod == 0)
+            {
+                TournamentSelection(selectionNum);
+            }
+            else if (currentSelectionMethod == 1)
+            {
+                FitnessProportionateSelection(selectionNum);
+            }
+            else
+            {
+                TruncationSelection(selectionNum);
+            }
+        }
+
         public void SortGenerationByFitness()
         {
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
@@ -465,9 +531,21 @@ namespace TreeGPDesigner.MVVM.Model
             int mutationNodeDepth = random.Next(1, node.Height + 1);
             Node mutationNode = GetRandomChildNodeAtDepthLevelDown(node, mutationNodeDepth);
             Node newNode;
-            int mutateDepth = random.Next(1, maxDepth - mutationNodeDepth + 1);
 
-            if (mutationNode.Height == 0 || mutationNodeDepth == maxDepth)
+            int mutateDepth;
+
+            if (maxDepth - mutationNodeDepth + 1 < 1)
+            {
+                mutateDepth = 0;
+            }
+            else
+            {
+                mutateDepth = random.Next(1, maxDepth - mutationNodeDepth + 1);
+            }
+
+
+
+            if (mutationNode.Height == 0 || mutationNodeDepth == maxDepth || mutateDepth == 0)
             {
                 newNode = GetRandomTerminalNode();
             }
@@ -512,6 +590,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
             Generation.RemoveRange(selectionNumber, Generation.Count - selectionNumber);
             GeneticFunctionPool = new List<Node>(Generation);
+            Trace.WriteLine($"Genetic function pool count = {GeneticFunctionPool.Count}");
             Generation.Clear();
         }
 
@@ -589,13 +668,13 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 FunctionNode functionNode = (FunctionNode)node;
                 copiedNode = new FunctionNode(functionNode.Symbol, functionNode.Root, functionNode.Data, functionNode.NoOperands, functionNode.Fitness,
-                    functionNode.NotFailedYet, functionNode.Function, functionNode.BooleanFunction);
+                    true, functionNode.Function, functionNode.BooleanFunction);
             }
             else
             {
                 TerminalNode terminalNode = (TerminalNode)node;
                 copiedNode = new TerminalNode(terminalNode.Symbol, terminalNode.Root, terminalNode.Data, terminalNode.NoOperands, terminalNode.Fitness,
-                    terminalNode.NotFailedYet, terminalNode.Value, terminalNode.DataNeeded);
+                    true, terminalNode.Value, terminalNode.DataNeeded);
             }
 
             foreach (Node childNode in node.ChildNodes)

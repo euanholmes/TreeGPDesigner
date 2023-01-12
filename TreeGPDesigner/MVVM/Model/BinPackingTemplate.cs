@@ -271,15 +271,38 @@ namespace TreeGPDesigner.MVVM.Model
             List<int> testItems = new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 };
             int testBinCapacity = 60;
 
-            foreach (Node node in Generation)
+            if (CurrentFitnessFunction == 0)
             {
-                FitnessFunctionOne(node, testItems, testBinCapacity);
-            }
+                foreach (Node node in Generation)
+                {
+                    node.Fitness = 0;
+                    node.NotFailedYet = true;
+                    FitnessFunctionOne(node, testItems, testBinCapacity);
+                }
 
-            foreach (Node node in KnownAlgorithms)
-            {
-                FitnessFunctionOne(node, testItems, testBinCapacity);
+                foreach (Node node in KnownAlgorithms)
+                {
+                    node.Fitness = 0;
+                    node.NotFailedYet = true;
+                    FitnessFunctionOne(node, testItems, testBinCapacity);
+                }
             }
+            else
+            {
+                foreach (Node node in Generation)
+                {
+                    node.Fitness = 0;
+                    node.NotFailedYet = true;
+                    FitnessFunctionTwo(node, testItems, testBinCapacity);
+                }
+
+                foreach (Node node in KnownAlgorithms)
+                {
+                    node.Fitness = 0;
+                    node.NotFailedYet = true;
+                    FitnessFunctionTwo(node, testItems, testBinCapacity);
+                }
+            } 
         }
 
         public void MakeAllFitnessPositive()

@@ -57,6 +57,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         //Final Screen Variables
         [ObservableProperty]
+        private string generationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
+
+        [ObservableProperty]
         private string runTitleSetting;
 
         [ObservableProperty]
@@ -91,10 +94,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         private List<Node> knownAlgorithms = AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms;
 
+        [ObservableProperty]
         private List<Node> currentGeneration = new();
 
         [ObservableProperty]
-        private List<Tree> generationTrees = new();
+        private ObservableCollection<Tree> generationTrees = new();
 
         //Constructor
         public GPR9MainScreenViewModel()
@@ -168,32 +172,52 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void GetNextGeneration()
         {
-
+            AppInfoSingleton.Instance.CurrentTemplate.GetNextGeneration();
+            CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
+            GenerationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
+            GetGenerationTrees();
         }
 
         public void GetInitialPopulation()
         {
             AppInfoSingleton.Instance.CurrentTemplate.GetInitialPopulation();
-            currentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
+            CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
+            GetGenerationTrees();
+        }
 
-            Trace.WriteLine(AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness);
-
-            for (int i = 0; i < currentGeneration.Count; i++)
+        public void GetGenerationTrees()
+        {
+            GenerationTrees.Clear();
+            for (int i = 0; i < CurrentGeneration.Count; i++)
             {
-                if (currentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness/2)
+                string treeName;
+
+                if (CurrentGeneration[i].Name != null)
                 {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1),
-                    currentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false));
-                }
-                else if (currentGeneration[i].NotFailedYet)
-                {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1),
-                    currentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false));
+                    Trace.WriteLine("not null!!!!!!");
+                    treeName = currentGeneration[i].Name;
                 }
                 else
                 {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1),
-                    currentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false));
+                    treeName = "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1);
+                }
+
+                Trace.WriteLine($"Lowest Known Algorithm Fitness = {AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness}");
+
+                if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness)
+                {
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, treeName,
+                    CurrentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false));
+                }
+                else if (CurrentGeneration[i].NotFailedYet)
+                {
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, treeName,
+                    CurrentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false));
+                }
+                else
+                {
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, treeName,
+                    CurrentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false));
                 }
             }
         }
