@@ -72,10 +72,10 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <!-- Algorithm Name -->
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="2" Text="{Binding Name}"/>
+                                                <TextBlock Width="100" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="2" Text="{Binding Name}"/>
 
                                                 <!-- Colour Indicator and Fitness -->
-                                                <Border VerticalAlignment="Center" Grid.Column="0" Width="20" Height="50" Background="{Binding ColourIndicator}">
+                                                <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding ColourIndicator}">
                                                     <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Text="{Binding Fitness}"/>
                                                 </Border>
                                             </Grid>
@@ -216,7 +216,33 @@
 
                 <!-- Current Generation Panel-->
                 <Border Grid.Row="1" Style="{DynamicResource Panel2}">
+                    <ScrollViewer Margin="10">
+                        <ItemsControl ItemsSource="{Binding GenerationTrees}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding DisplayTreeCommand}" CommandParameter="{Binding DisplayTreeParameter}" Style="{DynamicResource TreeButtonStyle}" Margin="0 0 0 10">
+                                        <Viewbox>
+                                            <Grid Height="40">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
 
+                                                <!-- Algorithm Name -->
+                                                <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="2" Text="{Binding Name}"/>
+
+                                                <!-- Colour Indicator and Fitness -->
+                                                <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding ColourIndicator}">
+                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Text="{Binding Fitness}"/>
+                                                </Border>
+                                            </Grid>
+                                        </Viewbox>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </Border>
             </Grid>
 

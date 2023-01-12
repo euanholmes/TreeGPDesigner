@@ -31,14 +31,14 @@ namespace TreeGPDesigner.MVVM.Model
         };
 
         private List<FunctionModel> BPFitnessFunctionsUI = new List<FunctionModel>()
-        { new FunctionModel("Fitness Function 1", "This is a fitness function\n" +
+        { new FunctionModel("Minimum Bins", "This is a fitness function\n" +
                                                   "which rewards solutions that\n" +
                                                   "pack items into bins with the\n" +
                                                   "lower number of bins being\n" +
                                                   "awarded higher fitness scores.",
                             new BitmapImage(new Uri("pack://application:,,,/Images/FitnessFunctionOne.png"))),
 
-          new FunctionModel("Fitness Function 2", "This is a fitness function\n" +
+          new FunctionModel("Minimum Bins + Bin Fill%", "This is a fitness function\n" +
                                                   "that builds on fitness\n" +
                                                   "function one by also\n" +
                                                   "rewarding bin fill percentage.",
@@ -85,12 +85,6 @@ namespace TreeGPDesigner.MVVM.Model
 
             Node FFDTree = MakeFFDTree();
             KnownAlgorithms.Add(FFDTree);
-            KnownAlgorithms.Add(FFDTree);
-            KnownAlgorithms.Add(FFDTree);
-            KnownAlgorithms.Add(FFDTree);
-            KnownAlgorithms.Add(FFDTree);
-            KnownAlgorithms.Add(FFDTree);
-            KnownAlgorithms.Add(FFDTree);
         }
 
         public Node MakeFFDTree()
@@ -101,7 +95,7 @@ namespace TreeGPDesigner.MVVM.Model
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, 0, true));
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("LI", 0, 1, true));
 
-            FFDTree.Name = "First Fit Descending";
+            FFDTree.Name = "FFD";
 
             return FFDTree;
         }
@@ -272,12 +266,17 @@ namespace TreeGPDesigner.MVVM.Model
             return node;
         }
 
-        public void GetPopulationFitness()
+        public void GetBPPopulationFitness()
         {
             List<int> testItems = new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 };
             int testBinCapacity = 60;
 
             foreach (Node node in Generation)
+            {
+                FitnessFunctionOne(node, testItems, testBinCapacity);
+            }
+
+            foreach (Node node in KnownAlgorithms)
             {
                 FitnessFunctionOne(node, testItems, testBinCapacity);
             }
@@ -300,6 +299,17 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 node.Fitness = adjustNumber + node.Fitness;
             }
+
+            foreach (Node node in KnownAlgorithms)
+            {
+                node.Fitness = adjustNumber + node.Fitness;
+            }
+        }
+
+        public override void GetPopulationFitness()
+        {
+            GetBPPopulationFitness();
+            MakeAllFitnessPositive();
         }
     }
 }

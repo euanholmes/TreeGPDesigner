@@ -23,6 +23,7 @@ namespace TreeGPDesigner.MVVM.Model
         private int currentSelectionMethod = 0;
         private int currentPopulationCount = 100;
         private int currentMaxDepth = 3;
+        private int currentMinDepth = 1;
         private int currentSelectionPercent = 34;
         private int currentMutationPercent = 10;
         private int currentCrossoverPercent = 90;
@@ -30,6 +31,7 @@ namespace TreeGPDesigner.MVVM.Model
         private List<string> datasetUI;
         private List<bool> currentDatasets = new List<bool>();
         private List<Node> knownAlgorithms = new List<Node>();
+        private int currentGenerationNum = 0;
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -52,6 +54,8 @@ namespace TreeGPDesigner.MVVM.Model
         public List<string> DatasetUI { get => datasetUI; set => datasetUI = value; }
         public List<bool> CurrentDatasets { get => currentDatasets; set => currentDatasets = value; }
         public List<Node> KnownAlgorithms { get => knownAlgorithms; set => knownAlgorithms = value; }
+        public int CurrentMinDepth { get => currentMinDepth; set => currentMinDepth = value; }
+        public int CurrentGenerationNum { get => currentGenerationNum; set => currentGenerationNum = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {
@@ -200,6 +204,8 @@ namespace TreeGPDesigner.MVVM.Model
 
             return node;
         }
+
+        public abstract void GetPopulationFitness();
 
         public void GeneratePopulationAllFull(int populationNum, int minDepth, int maxDepth)
         {
@@ -354,6 +360,68 @@ namespace TreeGPDesigner.MVVM.Model
             }
 
             Generation = population;
+        }
+
+        public void GetInitialPopulation()
+        {
+            RemoveUnselectedNodes();
+
+            if (CurrentTreeGrowingMethod == 0)
+            {
+                GeneratePopulationRampedHalfAndHalf(CurrentPopulationCount, CurrentMinDepth, CurrentMaxDepth);
+            }
+            else if (CurrentTreeGrowingMethod == 1)
+            {
+                GeneratePopulationAllGrow(CurrentPopulationCount, CurrentMinDepth, CurrentMaxDepth);
+            }
+            else
+            {
+                GeneratePopulationAllFull(CurrentPopulationCount, CurrentMinDepth, CurrentMaxDepth);
+            }
+
+            GetPopulationFitness();
+            SortGenerationByFitness();
+        }
+
+        public void SortGenerationByFitness()
+        {
+            Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
+        }
+
+        //fix this.
+        public void RemoveUnselectedNodes()
+        {
+            foreach (FunctionNode node in FunctionNodes)
+            {
+                if (!node.IsSelected)
+                {
+                    FunctionNodes.Remove(node);
+                }
+            }
+
+            foreach (TerminalNode node in TerminalNodes)
+            {
+                if (!node.IsSelected)
+                {
+                    TerminalNodes.Remove(node);
+                }
+            }
+
+            foreach (FunctionNode node in FunctionRootNodes)
+            {
+                if (!node.IsSelected)
+                {
+                    FunctionRootNodes.Remove(node);
+                }
+            }
+
+            foreach (TerminalNode node in TerminalRootNodes)
+            {
+                if (!node.IsSelected)
+                {
+                    TerminalRootNodes.Remove(node);
+                }
+            }
         }
 
         public Node GetRandomChildNodeAtDepthLevelDown(Node node, int depth)

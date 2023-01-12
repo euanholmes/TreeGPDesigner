@@ -91,6 +91,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         private List<Node> knownAlgorithms = AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms;
 
+        private List<Node> currentGeneration = new();
+
+        [ObservableProperty]
+        private List<Tree> generationTrees = new();
+
         //Constructor
         public GPR9MainScreenViewModel()
         {
@@ -101,6 +106,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             InitialiseSettings();
             GetKnownAlgorithmTrees();
+            GetInitialPopulation();
             AppInfoSingleton.Instance.MainDisplayTree = new();
         }
 
@@ -110,10 +116,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
         }
 
-        public void GetNextGeneration()
-        {
-
-        }
+        
 
         //Main screen functions
         public void InitialiseSettings()
@@ -159,7 +162,24 @@ namespace TreeGPDesigner.MVVM.ViewModel
             for (int i = 0; i < knownAlgorithms.Count; i++)
             {
                 KnownAlgorithmTrees.Add(new Tree(TextColour, Background, NormalButtonColour, knownAlgorithms[i].Name, knownAlgorithms[i].Fitness.ToString(), 
-                    Brushes.HotPink, i.ToString()));
+                    Brushes.HotPink, i.ToString(), true));
+            }
+        }
+
+        public void GetNextGeneration()
+        {
+
+        }
+
+        public void GetInitialPopulation()
+        {
+            AppInfoSingleton.Instance.CurrentTemplate.GetInitialPopulation();
+            currentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
+
+            for (int i = 0; i < currentGeneration.Count; i++)
+            {
+                GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i+1), 
+                    currentGeneration[i].Fitness.ToString(), Brushes.Blue, i.ToString(), false));  
             }
         }
     }
@@ -174,8 +194,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private Brush? colourIndicator;
         private ICommand displayTreeCommand;
         private string displayTreeParameter;
+        private bool knownAlgorithm;
 
-        public Tree(Brush? textColour, Brush? background, Brush? normalButtonColour, string name, string fitness, Brush? colourIndicator, string displayTreeParameter)
+        public Tree(Brush? textColour, Brush? background, Brush? normalButtonColour, string name, string fitness, Brush? colourIndicator, string displayTreeParameter, bool knownAlgorithm)
         {
             this.textColour = textColour;
             this.background = background;
@@ -184,6 +205,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             this.fitness = fitness;
             this.colourIndicator = colourIndicator;
             this.displayTreeParameter = displayTreeParameter;
+            this.knownAlgorithm = knownAlgorithm;
             this.displayTreeCommand = new RelayCommand<string>(param => DisplayTree(param));
         }
 
@@ -195,14 +217,26 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public Brush? ColourIndicator { get => colourIndicator; set => colourIndicator = value; }
         public ICommand DisplayTreeCommand { get => displayTreeCommand; set => displayTreeCommand = value; }
         public string DisplayTreeParameter { get => displayTreeParameter; set => displayTreeParameter = value; }
+        public bool KnownAlgorithm { get => knownAlgorithm; set => knownAlgorithm = value; }
 
         public void DisplayTree(string treeNumString)
         {
-            AppInfoSingleton.Instance.MainDisplayTree.Clear();
-            int treeNum = Convert.ToInt32(treeNumString);
-            TreeDrawingAlgorithm.CalculateNodePositions(AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum]);
-            AppInfoSingleton.Instance.MainDisplayTree = AppInfoSingleton.GetTreePlot(AppInfoSingleton.Instance.MainDisplayTree,
-                AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum], AppInfoSingleton.Instance.CurrentBrushSet);
+            if (knownAlgorithm)
+            {
+                AppInfoSingleton.Instance.MainDisplayTree.Clear();
+                int treeNum = Convert.ToInt32(treeNumString);
+                TreeDrawingAlgorithm.CalculateNodePositions(AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum]);
+                AppInfoSingleton.Instance.MainDisplayTree = AppInfoSingleton.GetTreePlot(AppInfoSingleton.Instance.MainDisplayTree,
+                    AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum], AppInfoSingleton.Instance.CurrentBrushSet);
+            }
+            else
+            {
+                AppInfoSingleton.Instance.MainDisplayTree.Clear();
+                int treeNum = Convert.ToInt32(treeNumString);
+                TreeDrawingAlgorithm.CalculateNodePositions(AppInfoSingleton.Instance.CurrentTemplate.Generation[treeNum]);
+                AppInfoSingleton.Instance.MainDisplayTree = AppInfoSingleton.GetTreePlot(AppInfoSingleton.Instance.MainDisplayTree,
+                    AppInfoSingleton.Instance.CurrentTemplate.Generation[treeNum], AppInfoSingleton.Instance.CurrentBrushSet);
+            }
         }
     }
 }
