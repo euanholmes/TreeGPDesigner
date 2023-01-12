@@ -8,9 +8,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
@@ -103,6 +105,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //Constructor
         public GPR9MainScreenViewModel()
         {
+            var splashScreen = new SplashScreen("Images/tempLoadScreen.jpg");
+            splashScreen.Show(false);
+
             AppInfoSingleton.Instance.MainDisplayTreeChanged += OnMainDisplayTreeChanged;
 
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
@@ -112,6 +117,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             GetKnownAlgorithmTrees();
             GetInitialPopulation();
             AppInfoSingleton.Instance.MainDisplayTree = new();
+
+            splashScreen.Close(TimeSpan.FromSeconds(0.5));
         }
 
         //Navigation Functions
