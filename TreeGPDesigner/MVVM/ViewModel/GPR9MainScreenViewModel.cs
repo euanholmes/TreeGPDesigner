@@ -162,7 +162,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             for (int i = 0; i < knownAlgorithms.Count; i++)
             {
                 KnownAlgorithmTrees.Add(new Tree(TextColour, Background, NormalButtonColour, knownAlgorithms[i].Name, knownAlgorithms[i].Fitness.ToString(), 
-                    Brushes.HotPink, i.ToString(), true));
+                    AppInfoSingleton.RainbowBrush, i.ToString(), true));
             }
         }
 
@@ -176,10 +176,25 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentTemplate.GetInitialPopulation();
             currentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
 
+            Trace.WriteLine(AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness);
+
             for (int i = 0; i < currentGeneration.Count; i++)
             {
-                GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i+1), 
-                    currentGeneration[i].Fitness.ToString(), Brushes.LightBlue, i.ToString(), false));  
+                if (currentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness/2)
+                {
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1),
+                    currentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false));
+                }
+                else if (currentGeneration[i].NotFailedYet)
+                {
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1),
+                    currentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false));
+                }
+                else
+                {
+                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1),
+                    currentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false));
+                }
             }
         }
     }

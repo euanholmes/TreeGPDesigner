@@ -32,6 +32,7 @@ namespace TreeGPDesigner.MVVM.Model
         private List<bool> currentDatasets = new List<bool>();
         private List<Node> knownAlgorithms = new List<Node>();
         private int currentGenerationNum = 0;
+        private float lowestKnownAlgorithmFitness = float.MaxValue;
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -56,6 +57,7 @@ namespace TreeGPDesigner.MVVM.Model
         public List<Node> KnownAlgorithms { get => knownAlgorithms; set => knownAlgorithms = value; }
         public int CurrentMinDepth { get => currentMinDepth; set => currentMinDepth = value; }
         public int CurrentGenerationNum { get => currentGenerationNum; set => currentGenerationNum = value; }
+        public float LowestKnownAlgorithmFitness { get => lowestKnownAlgorithmFitness; set => lowestKnownAlgorithmFitness = value; }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {
@@ -381,6 +383,7 @@ namespace TreeGPDesigner.MVVM.Model
 
             GetPopulationFitness();
             SortGenerationByFitness();
+            GetLowestKnownAlgorithmFitness();
         }
 
         public void SortGenerationByFitness()
@@ -431,6 +434,13 @@ namespace TreeGPDesigner.MVVM.Model
             TerminalNodes = chosenTerminalNodes;
             FunctionRootNodes = chosenFunctionRootNodes;
             TerminalRootNodes = chosenTerminalRootNodes;
+        }
+
+        public void GetLowestKnownAlgorithmFitness()
+        {
+            Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
+
+            LowestKnownAlgorithmFitness = KnownAlgorithms.OrderByDescending(a => a.Fitness).ToList()[knownAlgorithms.Count - 1].Fitness;
         }
 
         public Node GetRandomChildNodeAtDepthLevelDown(Node node, int depth)
