@@ -388,40 +388,49 @@ namespace TreeGPDesigner.MVVM.Model
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
         }
 
-        //fix this.
         public void RemoveUnselectedNodes()
         {
+            List<FunctionNode> chosenFunctionNodes = new();
+            List<TerminalNode> chosenTerminalNodes = new();
+            List<FunctionNode> chosenFunctionRootNodes = new();
+            List<TerminalNode> chosenTerminalRootNodes = new();
+
             foreach (FunctionNode node in FunctionNodes)
             {
-                if (!node.IsSelected)
+                if (node.IsSelected)
                 {
-                    FunctionNodes.Remove(node);
+                    chosenFunctionNodes.Add(node);
                 }
             }
 
             foreach (TerminalNode node in TerminalNodes)
             {
-                if (!node.IsSelected)
+                if (node.IsSelected)
                 {
-                    TerminalNodes.Remove(node);
+                    chosenTerminalNodes.Add(node);
                 }
             }
 
             foreach (FunctionNode node in FunctionRootNodes)
             {
-                if (!node.IsSelected)
+                if (node.IsSelected)
                 {
-                    FunctionRootNodes.Remove(node);
+                    chosenFunctionRootNodes.Add(node);
                 }
             }
 
             foreach (TerminalNode node in TerminalRootNodes)
             {
-                if (!node.IsSelected)
+                if (node.IsSelected)
                 {
-                    TerminalRootNodes.Remove(node);
+                    chosenTerminalRootNodes.Add(node);
                 }
             }
+
+            FunctionNodes = chosenFunctionNodes;
+            TerminalNodes = chosenTerminalNodes;
+            FunctionRootNodes = chosenFunctionRootNodes;
+            TerminalRootNodes = chosenTerminalRootNodes;
         }
 
         public Node GetRandomChildNodeAtDepthLevelDown(Node node, int depth)

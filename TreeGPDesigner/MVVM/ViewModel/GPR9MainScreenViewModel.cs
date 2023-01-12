@@ -179,7 +179,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             for (int i = 0; i < currentGeneration.Count; i++)
             {
                 GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i+1), 
-                    currentGeneration[i].Fitness.ToString(), Brushes.Blue, i.ToString(), false));  
+                    currentGeneration[i].Fitness.ToString(), Brushes.LightBlue, i.ToString(), false));  
             }
         }
     }
