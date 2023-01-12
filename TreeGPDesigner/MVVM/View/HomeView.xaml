@@ -54,7 +54,7 @@
                 </Button>
             </Viewbox>
         </Grid>
-        
+
         <!-- Main Menu Buttons -->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -77,7 +77,7 @@
                 </UniformGrid>
             </Viewbox>
         </Grid>
-        
+
         <!-- Example Tree and Colour Settings -->
         <Grid Grid.Column="2" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -103,7 +103,7 @@
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
                         </Viewbox>
                     </Grid>
-                    
+
                     <Viewbox>
                         <Grid>
                             <Grid>
@@ -325,21 +325,5 @@
                 <Button Style="{StaticResource NavButtonStyle}" Click="ExitBtn_Click"  Content="Exit"/>
             </Viewbox>
         </Grid>
-
-        <!-- Debug Window Button -->
-        <Grid Grid.Column="2" Grid.Row="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="6*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <Viewbox HorizontalAlignment="Right" Grid.Row="1">
-                <Button Style="{DynamicResource NavButtonStyle}" x:Name="debugBtn" Content="Debug Window" Click="DebugBtn_Click"/>
-            </Viewbox>
-        </Grid>
     </Grid>
-
-    
-    
 </UserControl>

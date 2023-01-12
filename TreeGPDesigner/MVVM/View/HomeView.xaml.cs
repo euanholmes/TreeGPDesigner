@@ -86,12 +86,6 @@ namespace TreeGPDesigner.MVVM.View
             };
         }
 
-        private void DebugBtn_Click(object sender, RoutedEventArgs e)
-        {
-            DebugWindow debugWindow = new DebugWindow();
-            debugWindow.Show();
-        }
-
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
