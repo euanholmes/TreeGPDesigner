@@ -65,6 +65,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void NavStartRun()
         {
+            if (AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount < 10)
+            {
+                AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount = 10;
+            }
+
+            if (AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth < AppInfoSingleton.Instance.CurrentTemplate.CurrentMinDepth)
+            {
+                AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth = AppInfoSingleton.Instance.CurrentTemplate.CurrentMinDepth;
+            }
+
             AppInfoSingleton.Instance.CurrentViewModel = new GPR9MainScreenViewModel();
         }
 
