@@ -29,7 +29,309 @@
 
         <!-- Tutorial Panel -->
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Information Panel -->
+                <Border Style="{DynamicResource Panel1}" Grid.Column="1" Grid.Row="1">
+                    <Viewbox Margin="10">
+                        <TextBlock Style="{DynamicResource RegularText}">
+                            A genetic function that can be<LineBreak/>
+                            applied to a program tree is<LineBreak/>
+                            crossover. Unlike mutation<LineBreak/>
+                            which only applies to one tree<LineBreak/> 
+                            crossover requires two parents.<LineBreak/>
+                            For crossover to occur two<LineBreak/>
+                            crossover points are required,<LineBreak/>
+                            one for each tree. The<LineBreak/>
+                            crossover point of parent 1<LineBreak/>
+                            will have a branch cut off and<LineBreak/>
+                            be replaced with a branch from<LineBreak/>
+                            parent 2. In most GP <LineBreak/>
+                            applications crossover is <LineBreak/>
+                            considered more important than<LineBreak/>
+                            mutation and therefore used<LineBreak/>
+                            at a much higher percentage<LineBreak/>
+                            typically around 90% of <LineBreak/>
+                            selected programs will be<LineBreak/>
+                            used in crossover with the <LineBreak/>
+                            remaining being mutated.<LineBreak/>
+                            <LineBreak/>
+                            Try using the crossover operation<LineBreak/>
+                            on the two parent trees to the left.
+                        </TextBlock>
+                    </Viewbox>
+                </Border>
+
+                <!-- Crossover Parent Trees -->
+                <Grid Grid.Column="3" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Parent 1 Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="0">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Parent 1 Title -->
+                            <Viewbox Grid.Row="0">
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Parent 1"/>
+                            </Viewbox>
+                            
+                            <!-- Parent 1 Tree -->
+                            <Viewbox Grid.Row="2">
+                                <Grid>
+                                    <!-- Lines -->
+                                    <Grid>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="76.65" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="178.85" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                    </Grid>
+
+                                    <!-- Nodes -->
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.83333*"/>
+                                            <RowDefinition Height="0.25*"/>
+                                            <RowDefinition Height="0.83333*"/>
+                                            <RowDefinition Height="0.25*"/>
+                                            <RowDefinition Height="0.83333*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="0" Grid.Column="2">
+                                            <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="+"/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="2" Grid.Column="1">
+                                            <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">"/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="2" Grid.Column="3">
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-1"/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="4" Grid.Column="0">
+                                            <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1"/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="4" Grid.Column="2">
+                                            <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="X"/>
+                                            </Border>
+                                        </Viewbox>
+                                    </Grid>
+                                </Grid>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+
+                    <!-- Parent 2 Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="2">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Parent 2 Title -->
+                            <Viewbox Grid.Row="0">
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Parent 2"/>
+                            </Viewbox>
+
+                            <!-- Parent 2 Tree -->
+                            <Viewbox Grid.Row="2">
+                                <Grid>
+                                    <!-- Lines -->
+                                    <Grid>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                        <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="76.65" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="178.85" Y1="99.35" X2="127.75" Y2="19.87"/>
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                        <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="178.3" X2="76.65" Y2="99.35"/>
+                                    </Grid>
+
+                                    <!-- Nodes -->
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.83333*"/>
+                                            <RowDefinition Height="0.25*"/>
+                                            <RowDefinition Height="0.83333*"/>
+                                            <RowDefinition Height="0.25*"/>
+                                            <RowDefinition Height="0.83333*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Viewbox Grid.Row="0" Grid.Column="2">
+                                            <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">="/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="2" Grid.Column="1">
+                                            <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="-"/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="2" Grid.Column="3">
+                                            <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="2Y"/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="4" Grid.Column="0">
+                                            <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AB"/>
+                                            </Border>
+                                        </Viewbox>
+                                        <Viewbox Grid.Row="4" Grid.Column="2">
+                                            <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42">
+                                                <TextBlock FontFamily="{StaticResource RobotoBold}" Foreground="{Binding TextColour}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="34"/>
+                                            </Border>
+                                        </Viewbox>
+                                    </Grid>
+                                </Grid>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Display Tree Grid -->
+                <Grid Grid.Column="5" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.5*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Display Tree Panel -->
+                        <Border x:Name="treeBorder" Cursor="Hand" ClipToBounds="true" Grid.Row="0" Style="{DynamicResource Panel1}">
+                            <Grid>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="8*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.3*"/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="8*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Viewbox Grid.Row="1" Grid.Column="0">
+                                        <Image RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="1" x:Name="panZoomImg" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="50" Width="50" Source="{Binding ZoomIconSource}"/>
+                                    </Viewbox>
+                                </Grid>
+
+                                <Viewbox>
+                                    <Grid>
+                                        <Grid>
+                                            <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="311.49"/>
+                                            <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="370.71" Y2="0"/>
+                                            <Line StrokeThickness="0" Stroke="Black" X1="370.71" Y1="0" X2="370.71" Y2="311.49"/>
+                                            <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="311.49" X2="370.71" Y2="311.49"/>
+                                        </Grid>
+
+                                        <Canvas Height="250" Width="300" x:Name="treeCanvas">
+                                            <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <Canvas IsItemsHost="true"/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="{Binding SymbolColour}" StrokeThickness="2"/>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+
+                                            <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <Canvas IsItemsHost="True"/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemContainerStyle>
+                                                    <Style>
+                                                        <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                                        <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                                    </Style>
+                                                </ItemsControl.ItemContainerStyle>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
+                                                            <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Canvas>
+                                    </Grid>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+
+                        <!-- Generate Tree Button -->
+                        <Viewbox Grid.Row="2">
+                            <Button Command="{Binding CrossoverTreesCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Crossover Trees"/>
+                        </Viewbox>
+
+                    </Grid>
+                </Grid>
+
+            </Grid>
         </Border>
 
         <!--Navigation Buttons-->

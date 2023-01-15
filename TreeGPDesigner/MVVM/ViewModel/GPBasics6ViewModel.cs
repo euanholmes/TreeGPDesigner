@@ -108,7 +108,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //GP Basics 6 Functions.
         public void MutateTree()
         {
-            bpTemplate.Mutate(displayTree, 3);
+            bpTemplate.Mutate(displayTree, 2);
             TreeDrawingAlgorithm.CalculateNodePositions(displayTree);
             DisplayTreePlot.Clear();
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, displayTree, BrushSet);
