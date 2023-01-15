@@ -150,14 +150,18 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 for (int i = 0; i < node.NoOperands; i++)
                 {
-                    node.ChildNodes.Add(GetRandomTerminalNode());
+                    TerminalNode randomTerminalNode = GetRandomTerminalNode();
+                    randomTerminalNode.DepthLevel = node.DepthLevel++;
+                    node.ChildNodes.Add(randomTerminalNode);
                 }
             }
             else
             {
                 for (int i = 0; i < node.NoOperands; i++)
                 {
-                    node.ChildNodes.Add(GetRandomFunctionNode());
+                    FunctionNode randomFunctionNode = GetRandomFunctionNode();
+                    randomFunctionNode.DepthLevel = node.DepthLevel++;
+                    node.ChildNodes.Add(randomFunctionNode);
                 }
 
                 for (int i = 0; i < node.NoOperands; i++)
@@ -177,7 +181,9 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 for (int i = 0; i < node.NoOperands; i++)
                 {
-                    node.ChildNodes.Add(GetRandomTerminalNode());
+                    TerminalNode randomTerminalNode = GetRandomTerminalNode();
+                    randomTerminalNode.DepthLevel = node.DepthLevel++;
+                    node.ChildNodes.Add(randomTerminalNode);
                 }
             }
             else
@@ -188,11 +194,15 @@ namespace TreeGPDesigner.MVVM.Model
 
                     if (randomNum == 1)
                     {
-                        node.ChildNodes.Add(GetRandomTerminalNode());
+                        TerminalNode randomTerminalNode = GetRandomTerminalNode();
+                        randomTerminalNode.DepthLevel = node.DepthLevel++;
+                        node.ChildNodes.Add(randomTerminalNode);
                     }
                     else
                     {
-                        node.ChildNodes.Add(GetRandomFunctionNode());
+                        FunctionNode randomFunctionNode = GetRandomFunctionNode();
+                        randomFunctionNode.DepthLevel = node.DepthLevel++;
+                        node.ChildNodes.Add(randomFunctionNode);
                     }
                 }
 
@@ -589,7 +599,7 @@ namespace TreeGPDesigner.MVVM.Model
             Node newNode;
             Node crossoverNode2;
 
-            if (crossoverNode1.Height + 1 == maxDepth && crossoverNode1.GetType() == typeof(TerminalNode))
+            if (crossoverNode1.DepthLevel == maxDepth && crossoverNode1.GetType() == typeof(TerminalNode))
             {
                 crossoverNode2 = GetRandomTerminalNodeOfTree(node2);
             }

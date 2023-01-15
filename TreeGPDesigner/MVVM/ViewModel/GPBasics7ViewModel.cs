@@ -69,7 +69,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             parentTree1.ChildNodes.Add(new TerminalNode("-1", 0, -1, false));
             parentTree1.ChildNodes[0].ChildNodes.Add(new TerminalNode("1", 0, 1, false));
             parentTree1.ChildNodes[0].ChildNodes.Add(new TerminalNode("X", 0, 1, true));
-
             parentTree2.ChildNodes.Add(new FunctionNode("-", 2, a => a[0] - a[1], true));
             parentTree2.ChildNodes.Add(new TerminalNode("2Y", 0, 1, true));
             parentTree2.ChildNodes[0].ChildNodes.Add(new TerminalNode("AB", 0, 1, true));
@@ -96,7 +95,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void CrossoverTrees()
         {
             Node parentTree1Copy = bpTemplate.CopyNode(parentTree1);
-            bpTemplate.Crossover(parentTree1Copy, parentTree2, 3);
+            bpTemplate.Crossover(parentTree1Copy, parentTree2, 2);
             displayTree = bpTemplate.CopyNode(parentTree1Copy);
             TreeDrawingAlgorithm.CalculateNodePositions(displayTree);
             DisplayTreePlot.Clear();

@@ -26,6 +26,7 @@ namespace TreeGPDesigner.MVVM.Model
         private string nodeDescription;
         private bool isSelected;
         private string name;
+        private int depthLevel = 0;
 
         public Node(string symbol, int noOperands)
         {
@@ -98,7 +99,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
-        //Functions needed for FindTreePosition class Author = Rachel Lim
+        //Functions needed for TreeDrawingAlgorithm class Author = Rachel Lim
         public bool IsLeftMost()
         {
             if (this.Parent == null)
@@ -176,5 +177,6 @@ namespace TreeGPDesigner.MVVM.Model
         public string NodeDescription { get => nodeDescription; set => nodeDescription = value; }
         public bool IsSelected { get => isSelected; set => isSelected = value; }
         public string Name { get => name; set => name = value; }
+        public int DepthLevel { get => depthLevel; set => depthLevel = value; }
     }
 }
