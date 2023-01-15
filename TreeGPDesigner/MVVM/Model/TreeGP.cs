@@ -579,6 +579,7 @@ namespace TreeGPDesigner.MVVM.Model
             TreeDrawingAlgorithm.CalculateNodePositions(node);
         }
 
+        //Not fixed for all cases yet.
         public void Crossover(Node node1, Node node2, int maxDepth)
         {
             TreeDrawingAlgorithm.CalculateNodePositions(node1);
