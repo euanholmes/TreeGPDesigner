@@ -69,7 +69,7 @@ namespace TreeGPDesigner.MVVM.Model
 
             AddFunctionNode(new FunctionNode("<=", 2,  "Less Than or Equal To   ", true, a => a[0] <= a[1] ? 1 : 0, true));
             AddFunctionNode(new FunctionNode("+", 2,   "Addition                ", true, a => a[0] + a[1], false));
-            AddFunctionNode(new FunctionNode("-", 3,   "Subtraction             ", true, a => a[0] - a[1], false));
+            AddFunctionNode(new FunctionNode("-", 2,   "Subtraction             ", true, a => a[0] - a[1], false));
             AddFunctionNode(new FunctionNode("*", 2,   "Multiplication          ", true, a => a[0] * a[1], false));
             AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs                ", true, a => Math.Abs(a[0]), false));
             AddFunctionNode(new FunctionNode("++", 3,  "3 Operand Addition      ", true, a => a[0] + a[1] + a[2], false));

@@ -223,7 +223,7 @@
 
                                 <!-- Radio Button -->
                                 <Viewbox Grid.Column="2">
-                                    <RadioButton IsChecked="True" GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
+                                    <RadioButton Command="{Binding RadioButtonCommand}" CommandParameter="0" IsChecked="True" GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
                                 </Viewbox>
                             </Grid>
                         </Grid>
@@ -284,7 +284,7 @@
 
                                 <!-- Radio Button -->
                                 <Viewbox Grid.Column="2">
-                                    <RadioButton GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
+                                    <RadioButton Command="{Binding RadioButtonCommand}" CommandParameter="1" GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
                                 </Viewbox>
                             </Grid>
                         </Grid>
@@ -351,7 +351,7 @@
 
                                 <!-- Radio Button -->
                                 <Viewbox Grid.Column="2">
-                                    <RadioButton GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
+                                    <RadioButton Command="{Binding RadioButtonCommand}" CommandParameter="2" GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
                                 </Viewbox>
                             </Grid>
                         </Grid>
@@ -545,7 +545,7 @@
                     
                     <!-- Select Button -->
                     <Viewbox Grid.Row="2">
-                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Select"/>
+                        <Button Command="{Binding SelectCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Select"/>
                     </Viewbox>
                     
                     <!-- Selected Trees Panel -->
@@ -584,9 +584,9 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
-                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="{Binding Selection1Name}"/>
+                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding Selection1Colour}">
+                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection1Fitness}"/>
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -607,9 +607,9 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
-                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="{Binding Selection2Name}"/>
+                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding Selection2Colour}">
+                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection2Fitness}"/>
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -630,9 +630,9 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
-                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="{Binding Selection3Name}"/>
+                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding Selection3Colour}">
+                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection3Fitness}"/>
                                         </Border>
                                     </Grid>
                                 </Border>
