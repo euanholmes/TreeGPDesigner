@@ -525,6 +525,18 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        public Node GetRandomTerminalNodeOfTree(Node node)
+        {
+            if (node.GetType() == typeof(TerminalNode))
+            {
+                return node;
+            }
+            else
+            {
+                return GetRandomTerminalNodeOfTree(node.ChildNodes[random.Next(0, node.ChildNodes.Count)]);
+            }
+        }
+
         public void Mutate(Node node, int maxDepth)
         {
             TreeDrawingAlgorithm.CalculateNodePositions(node);
@@ -542,8 +554,6 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 mutateDepth = random.Next(1, maxDepth - mutationNodeDepth + 1);
             }
-
-
 
             if (mutationNode.Height == 0 || mutationNodeDepth == maxDepth || mutateDepth == 0)
             {
@@ -575,10 +585,20 @@ namespace TreeGPDesigner.MVVM.Model
             int crossoverPoint1 = random.Next(1, node1.Height + 1);
             Node crossoverNode1 = GetRandomChildNodeAtDepthLevelDown(node1, crossoverPoint1);
             int crossoverIndex = crossoverNode1.Parent.ChildNodes.IndexOf(crossoverNode1);
-            TreeDrawingAlgorithm.CalculateNodePositions(node2);
             Node newNode;
-            int crossoverPoint2 = random.Next(1, node2.Height + 1);
-            Node crossoverNode2 = GetRandomChildNodeAtDepthLevelDown(node2, crossoverPoint2);
+            Node crossoverNode2;
+
+            if (crossoverNode1.Height + 1 == maxDepth && crossoverNode1.GetType() == typeof(TerminalNode))
+            {
+                crossoverNode2 = GetRandomTerminalNodeOfTree(node2);
+            }
+            else
+            {
+                TreeDrawingAlgorithm.CalculateNodePositions(node2);
+                int crossoverPoint2 = random.Next(1, node2.Height + 1);
+                crossoverNode2 = GetRandomChildNodeAtDepthLevelDown(node2, crossoverPoint2);
+            }
+
             newNode = CopyNode(crossoverNode2);
             newNode.Parent = crossoverNode1.Parent;
             newNode.Parent.ChildNodes[crossoverIndex] = newNode;
