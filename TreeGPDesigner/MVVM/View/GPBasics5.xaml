@@ -29,9 +29,622 @@
 
         <!-- Tutorial Panel -->
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Information Panel -->
+                <Border Grid.Row="1" Grid.Column="1" Style="{DynamicResource Panel1}">
+                    <Viewbox Margin="10">
+                        <TextBlock Style="{DynamicResource RegularText}">
+                            Selection is used to determine<LineBreak/>
+                            which programs will have<LineBreak/>
+                            genetic functions applied to<LineBreak/>
+                            them. There are many different<LineBreak/>
+                            selection methods. Three popular<LineBreak/>
+                            ones are tournament selection<LineBreak/>
+                            fitness proportionate <LineBreak/>
+                            roulette selection and<LineBreak/>
+                            truncation selection.<LineBreak/>
+                            Tournament selection involves<LineBreak/>
+                            using a tournament bracket<LineBreak/>
+                            system to determine each<LineBreak/>
+                            program that will be selected.<LineBreak/>
+                            Fitness proportionate selection<LineBreak/>
+                            will assign each program a <LineBreak/>
+                            probability based on their<LineBreak/>
+                            fitness then a roulette system<LineBreak/>
+                            will determine which programs<LineBreak/>
+                            are selected. Truncation <LineBreak/>
+                            selection will simply select a <LineBreak/>
+                            percentof the top fittest programs.<LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            Try out these different selection<LineBreak/>
+                            methods to see which programs are<LineBreak/>
+                            selected.
+                        </TextBlock>
+                    </Viewbox>
+                </Border>
+                
+                <!-- Selection Methods Grid -->
+                <Grid Grid.Column="3" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Tournament Selection Panel -->
+                    <Border Grid.Row="0" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="0.25*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Tournament Selection Title -->
+                            <Viewbox Grid.Row="1">
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Tournament Selection"/>
+                            </Viewbox>
+
+                            <!-- Tournament Selection Diagram and Radio Button Grid -->
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <!-- Tournament Selection Diagram -->
+                                <Viewbox Grid.Column="0">
+                                    <Grid>
+                                        <Grid>
+                                            <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                            <Line X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                            <Line X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                            <Line X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="32" X2="127.75" Y2="55"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="55" X2="59.5" Y2="55"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="55" X2="196" Y2="55"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="54.025" X2="196" Y2="88"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="111" X2="196" Y2="140"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="59.5" Y1="54.025" X2="59.5" Y2="88"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="59.5" Y1="111" X2="59.5" Y2="140"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="60" Y1="138.98" X2="25" Y2="138.98"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="60" Y1="138.98" X2="95" Y2="138.98"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25" Y1="138" X2="25" Y2="167"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="94" Y1="138" X2="94" Y2="167"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="138.98" X2="162" Y2="138.98"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="138.98" X2="229.5" Y2="138.98"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="162" Y1="138" X2="162" Y2="167"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="229.5" Y1="138" X2="229.5" Y2="167"/>
+
+                                        </Grid>
+
+                                        <!-- Nodes -->
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="2*"/>
+                                                <RowDefinition Height="2*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Viewbox Grid.Row="0" Grid.Column="2">
+                                                    <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                                </Viewbox>
+                                            </Grid>
+
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.66666*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="0.66666*"/>
+                                                    <ColumnDefinition Width="0.33333*"/>
+                                                    <ColumnDefinition Width="0.66666*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="0.66666*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+
+
+                                                <Viewbox Grid.Row="2" Grid.Column="1">
+                                                    <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="2" Grid.Column="5">
+                                                    <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                                </Viewbox>
+                                            </Grid>
+
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="0.333333*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="0.333333*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="0.333333*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Viewbox Grid.Row="1" Grid.Column="0">
+                                                    <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="1" Grid.Column="2">
+                                                    <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="1" Grid.Column="4">
+                                                    <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                                </Viewbox>
+                                                <Viewbox Grid.Row="1" Grid.Column="6">
+                                                    <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
+                                                </Viewbox>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Viewbox>
+
+                                <!-- Radio Button -->
+                                <Viewbox Grid.Column="2">
+                                    <RadioButton IsChecked="True" GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Fitness Proportionate Selection Panel -->
+                    <Border Grid.Row="2" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="0.25*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Fitness Proportionate Selection Title -->
+                            <Viewbox Grid.Row="1">
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Fitness Proportionate Selection"/>
+                            </Viewbox>
+
+                            <!-- Fitness Proportionate Selection Diagram and Radio Button Grid -->
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Fitness Proportionate Selection Diagram -->
+                                <Viewbox Grid.Column="0">
+                                    <Grid Margin="10">
+                                        <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                        <Line X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                        <Line X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                        <Line X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                        <Polygon Points="127.5,99.35 127.5,178.7 157.87,172.6" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 157.87,172.6 183.61,155.46" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 183.61,155.46 200.81,129.72" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 200.81,129.72 206.85,99.35" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 206.85,99.35 200.81,68.98" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 200.81,68.98 183.61,43.24" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 183.61,43.24 157.87,26.04" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 157.87,26.04 127.5,20" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 127.5,20 97.13,26.04" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 97.13,26.04 71.39,43.24" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 71.39,43.24 54.19,68.98" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 54.19,68.98 48.15,99.35" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 48.15,99.35 54.19,68.98" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 54.19,68.98 48.15,99.35" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 48.15,99.35 54.19,129.72" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 54.19,129.72 71.39,155.46" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 71.39,155.46 97.13,172.66" Fill="{Binding TextColour}" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                        <Polygon Points="127.5,99.35 97.13,172.66 127.5,178.7" Stroke="{Binding TextColour}" StrokeThickness="2"/>
+                                    </Grid>
+                                </Viewbox>
+
+                                <!-- Radio Button -->
+                                <Viewbox Grid.Column="2">
+                                    <RadioButton GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Truncation Selection Panel -->
+                    <Border Grid.Row="4" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="0.25*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Truncation Selection Title -->
+                            <Viewbox Grid.Row="1">
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Truncation Selection"/>
+                            </Viewbox>
+
+                            <!-- Truncation Selection Diagram and Radio Button Grid -->
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Truncation Selection Diagram -->
+                                <Viewbox Grid.Column="0">
+                                    <Grid>
+                                        <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
+                                        <Line X1="0" Y1="0" X2="255.5" Y2="0"/>
+                                        <Line X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
+                                        <Line X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
+
+                                        <Line StrokeDashArray="2, 4" Stroke="{Binding TextColour}" X1="0" Y1="55" X2="255.5" Y2="55"/>
+
+                                        <StackPanel>
+                                            <StackPanel.Resources>
+                                                <Style TargetType="Rectangle">
+                                                    <Setter Property="Margin" Value="2"/>
+                                                </Style>
+                                            </StackPanel.Resources>
+
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Width="50" Height="10"/>
+                                            <Rectangle Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                            <Rectangle Stroke="{Binding TextColour}" Width="50" Height="10"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Viewbox>
+
+                                <!-- Radio Button -->
+                                <Viewbox Grid.Column="2">
+                                    <RadioButton GroupName="selectionMethods" Style="{DynamicResource RadioButton}"/>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    
+                    
+
+
+                </Grid>
+                
+                <!-- Tree Selection Grid -->
+                <Grid Grid.Column="5" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Trees Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- First Stack of Trees -->
+                            <Viewbox Grid.Column="0">
+                                <StackPanel>
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 1"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="100"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 2"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="98"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 3"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="97"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 4"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="96"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 5"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="94"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                            </Viewbox>
+
+                            <!-- Second Stack of Trees-->
+                            <Viewbox Grid.Column="1">
+                                <StackPanel>
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 6"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="93"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 7"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="92"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 8"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="83"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 9"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="73"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Margin="5" Background="{Binding Background}">
+                                        <Grid Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                            </Viewbox>
+
+                        </Grid>
+                    </Border>
+                    
+                    <!-- Select Button -->
+                    <Viewbox Grid.Row="2">
+                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Select"/>
+                    </Viewbox>
+                    
+                    <!-- Selected Trees Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="4">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.25*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Selection 1 Title -->
+                            <Viewbox Grid.Column="1" Grid.Row="1">
+                                <TextBlock Style="{DynamicResource RegularText}" Text="Selection 1:"/>
+                            </Viewbox>
+                            
+                            <!-- 1st Selected Tree -->
+                            <Viewbox Grid.Column="3" Grid.Row="1">
+                                <Border Margin="5" Background="{Binding Background}">
+                                    <Grid Height="40">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
+                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+
+                            <!-- Selection 2 Title -->
+                            <Viewbox Grid.Column="1" Grid.Row="3">
+                                <TextBlock Style="{DynamicResource RegularText}" Text="Selection 2:"/>
+                            </Viewbox>
+
+                            <!-- 2nd Selected Tree -->
+                            <Viewbox Grid.Column="3" Grid.Row="3">
+                                <Border Margin="5" Background="{Binding Background}">
+                                    <Grid Height="40">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
+                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+
+                            <!-- Selection 3 Title -->
+                            <Viewbox Grid.Column="1" Grid.Row="5">
+                                <TextBlock Style="{DynamicResource RegularText}" Text="Selection 3:"/>
+                            </Viewbox>
+
+                            <!-- 3rd Selected Tree -->
+                            <Viewbox Grid.Column="3" Grid.Row="5">
+                                <Border Margin="5" Background="{Binding Background}">
+                                    <Grid Height="40">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
+                                        <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
+                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+
+
+                </Grid>
+            </Grid>
         </Border>
-
+        
         <!--Navigation Buttons-->
         <Grid Grid.Row="4" Grid.Column="1">
             <Grid.ColumnDefinitions>

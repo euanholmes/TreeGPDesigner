@@ -115,7 +115,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             Node displayTree = bpTemplate.CopyNode(bpTemplate.FunctionRootNodes[random.Next(0, bpTemplate.FunctionRootNodes.Count)]);
 
-            int depth = random.Next(1, 4);
+            int depth = random.Next(1, 3);
 
             if (CurrentGrowMethod == 0)
             {
