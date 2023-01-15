@@ -40,25 +40,48 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         public ObservableCollection<NodePlot> displayTreePlot = new();
 
-        [ObservableProperty]
-        private float? canvasHeight;
-
-        [ObservableProperty]
-        private float? canvasWidth;
-
         //Commands
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand NavNextCommand { get; }
         public ICommand NavPreviousCommand { get; }
+        public ICommand MutateTreeCommand { get; }
 
+        //GP Basics 6 Variables
+        private BinPackingTemplate bpTemplate = new();
+
+        private static Random random = new();
+
+        private Node displayTree;
+        
+
+        //Constructor
         public GPBasics6ViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavPreviousCommand = new RelayCommand(NavPrevious);
+            MutateTreeCommand = new RelayCommand(MutateTree);
+
+            bpTemplate.FunctionNodes = new List<FunctionNode> {new FunctionNode("+", 2, a => a[0] + a[1], false), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0, true),
+            new FunctionNode("/", 2, a => a[0] / a[1], false), new FunctionNode("-", 2, a => a[0] - a[1], false), new FunctionNode("*", 2, a => a[0] * a[1], false),
+            new FunctionNode("ABS", 1, a => Math.Abs(a[0]), false)};
+
+            bpTemplate.TerminalNodes = new List<TerminalNode> {new TerminalNode("-1", 0, -1, false), new TerminalNode("1", 0, 1, false), new TerminalNode("34", 0, 34, false),
+            new TerminalNode("X", 0, 0, true), new TerminalNode("Y", 0, 1, true), new TerminalNode("AB", 0, 2, true) };
+
+            bpTemplate.FunctionRootNodes = new List<FunctionNode> {new FunctionNode("+", 2, a => a[0] + a[1], false), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0, true),
+            new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0, true), new FunctionNode("-", 2, a => a[0] - a[1], false)};
+
+            displayTree = bpTemplate.CopyNode(bpTemplate.FunctionRootNodes[random.Next(0, bpTemplate.FunctionRootNodes.Count)]);
+            displayTree = bpTemplate.GrowTree(displayTree, random.Next(1, 3));
+            TreeDrawingAlgorithm.CalculateNodePositions(displayTree);
+            DisplayTreePlot.Clear();
+            DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, displayTree, BrushSet);
         }
+
+        
 
 
         //Navigation Functions
@@ -80,6 +103,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void NavPrevious()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPBasics5ViewModel();
+        }
+
+        //GP Basics 6 Functions.
+        public void MutateTree()
+        {
+            bpTemplate.Mutate(displayTree, 3);
+            TreeDrawingAlgorithm.CalculateNodePositions(displayTree);
+            DisplayTreePlot.Clear();
+            DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, displayTree, BrushSet);
         }
     }
 }
