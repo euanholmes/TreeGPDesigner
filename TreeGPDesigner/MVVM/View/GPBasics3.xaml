@@ -24,7 +24,7 @@
 
         <!-- GP Basics 1-3 Title -->
         <Viewbox Grid.Row="1" Grid.Column="1">
-            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 1-3: Fitness Functions" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 1-3: Wrappers and Datasets" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Tutorial Panel -->
@@ -59,7 +59,7 @@
                 <Viewbox Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
                         <Button Command="{Binding NavPreviousCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 0 2.5 0" Content="Back"/>
-                        <Button Command="{Binding NavTutorialsMenuCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Finish"/>
+                        <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Next"/>
                     </StackPanel>
                 </Viewbox>
             </Grid>

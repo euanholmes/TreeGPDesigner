@@ -51,7 +51,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void NavGPBasics2()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics4ViewModel();
+            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics5ViewModel();
         }
     }
 }

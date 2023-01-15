@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
-    <!-- GP Basics 2-1 Grid -->
+    <!-- GP Basics 1-4 Grid -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
@@ -22,9 +22,9 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- GP Basics 2-1 Title -->
+        <!-- GP Basics 1-4 Title -->
         <Viewbox Grid.Row="1" Grid.Column="1">
-            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 2-1: Selection Methods" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 1-4: Fitness Functions" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Tutorial Panel -->
@@ -48,7 +48,7 @@
                 </StackPanel>
             </Viewbox>
 
-            <!-- Next Tutorial Navigation Button-->
+            <!-- Next/Previous Tutorial Navigation Buttons-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.4*"/>
@@ -57,7 +57,10 @@
                 </Grid.RowDefinitions>
 
                 <Viewbox Grid.Row="1">
-                    <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Next"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Command="{Binding NavPreviousCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 0 2.5 0" Content="Back"/>
+                        <Button Command="{Binding NavTutorialsMenuCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Finish"/>
+                    </StackPanel>
                 </Viewbox>
             </Grid>
         </Grid>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
-    <!-- GP Basics 3-3 Grid -->
+    <!-- GP Basics 2-2 Grid -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
@@ -22,9 +22,9 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- GP Basics 3-3 Title -->
+        <!-- GP Basics 2-2 Title -->
         <Viewbox Grid.Row="1" Grid.Column="1">
-            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 2-3: Crossover" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Style="{DynamicResource TitleText}"  Text="GP Basics 2-2: Mutation" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
 
         <!-- Tutorial Panel -->
@@ -59,7 +59,7 @@
                 <Viewbox Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
                         <Button Command="{Binding NavPreviousCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 0 2.5 0" Content="Back"/>
-                        <Button Command="{Binding NavTutorialsMenuCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Finish"/>
+                        <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Next"/>
                     </StackPanel>
                 </Viewbox>
             </Grid>

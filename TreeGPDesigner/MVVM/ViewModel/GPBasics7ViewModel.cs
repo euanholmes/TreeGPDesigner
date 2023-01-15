@@ -2,15 +2,17 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
+using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPBasics4ViewModel : ObservableObject
+    public partial class GPBasics7ViewModel : ObservableObject
     {
         //Common Variables
         [ObservableProperty]
@@ -28,12 +30,29 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
+        //Tree Drawing Variables
+        [ObservableProperty]
+        private Brush[]? brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
+
+        [ObservableProperty]
+        private ImageSource? zoomIconSource = AppInfoSingleton.Instance.CurrentZoomIcon;
+
+        [ObservableProperty]
+        public ObservableCollection<NodePlot> displayTreePlot = new();
+
+        [ObservableProperty]
+        private float? canvasHeight;
+
+        [ObservableProperty]
+        private float? canvasWidth;
+
         //Commands
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand NavPreviousCommand { get; }
-
-        public GPBasics4ViewModel()
+        
+        //Constructor
+        public GPBasics7ViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
@@ -53,7 +72,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void NavPrevious()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics3ViewModel();
+            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics6ViewModel();
         }
     }
 }

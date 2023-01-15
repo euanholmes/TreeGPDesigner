@@ -50,12 +50,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand NavPreviousCommand { get; }
+        public ICommand NavNextCommand { get; }
 
         public GPBasics3ViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavPreviousCommand = new RelayCommand(NavPrevious);
+            NavNextCommand = new RelayCommand(NavNext);
         }
 
         //Navigation Functions
@@ -72,6 +74,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void NavPrevious()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPBasics2ViewModel();
+        }
+        public void NavNext()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics4ViewModel();
         }
     }
 }

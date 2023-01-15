@@ -46,6 +46,10 @@
                 <view:GPBasics6/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:GPBasics7ViewModel}">
+                <view:GPBasics7/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vm:GPR1GPTemplateMenuViewModel}">
                 <view:GPR1GPTemplateMenu/>
             </DataTemplate>

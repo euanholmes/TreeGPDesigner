@@ -30,36 +30,17 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
-        //Tree Drawing Variables
-        [ObservableProperty]
-        private Brush[]? brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
-
-        [ObservableProperty]
-        private ImageSource? zoomIconSource = AppInfoSingleton.Instance.CurrentZoomIcon;
-
-        [ObservableProperty]
-        public ObservableCollection<NodePlot> displayTreePlot = new();
-
-        [ObservableProperty]
-        private float? canvasHeight;
-
-        [ObservableProperty]
-        private float? canvasWidth;
-
         //Commands
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand NavNextCommand { get; }
-        public ICommand NavPreviousCommand { get; }
 
         public GPBasics5ViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavNextCommand = new RelayCommand(NavNext);
-            NavPreviousCommand = new RelayCommand(NavPrevious);
         }
-
 
         //Navigation Functions
         public void NavHomeMenu()
@@ -75,11 +56,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void NavNext()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPBasics6ViewModel();
-        }
-
-        public void NavPrevious()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics4ViewModel();
         }
     }
 }
