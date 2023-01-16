@@ -195,34 +195,30 @@
 
                     <!-- Bins Panel -->
                     <Border Style="{DynamicResource Panel1}" Grid.Row="4">
-                        <ItemsControl ItemsSource="{Binding Bins}" Margin="10">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BorderThickness="1" BorderBrush="{Binding TextColour}">
-                                        <Viewbox Width="100">
-                                            <StackPanel>
+                        <Viewbox>
+                            <ItemsControl ItemsSource="{Binding Bins}" Margin="10">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Width="48" Height="48" Margin="5 0 5 0" BorderThickness="2" BorderBrush="{Binding TextColour}">
+                                            <Viewbox>
                                                 <ItemsControl ItemsSource="{Binding BinItems}">
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
-                                                            <Viewbox>
-                                                                <StackPanel>
-                                                                    <TextBlock Text="{Binding CurrentBinItem}" Style="{DynamicResource RegularText}"/>
-                                                                </StackPanel>
-                                                            </Viewbox>
+                                                            <TextBlock Text="{Binding CurrentBinItem}" Style="{DynamicResource RegularText}"/>
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>
                                                 </ItemsControl>
-                                            </StackPanel>
-                                        </Viewbox>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                                            </Viewbox>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Viewbox>
                     </Border>
                 </Grid>
             </Grid>
