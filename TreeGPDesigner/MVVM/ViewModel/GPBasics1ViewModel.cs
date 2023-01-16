@@ -44,10 +44,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ObservableCollection<NodePlot> displayTreePlot = new();
 
         [ObservableProperty]
-        private float? canvasHeight;
+        private float? canvasHeight = 0;
 
         [ObservableProperty]
-        private float? canvasWidth;
+        private float? canvasWidth = 0;
 
         //Commands
         public ICommand NavHomeMenuCommand { get; }
@@ -93,8 +93,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             FunctionNodeCheckBoxCommand = new RelayCommand<string>(param => FunctionNodeCheckBox(param));
             TerminalNodeCheckBoxCommand = new RelayCommand<string>(param => TerminalNodeCheckBox(param));
             RootNodeCheckBoxCommand = new RelayCommand<string>(param => RootNodeCheckBox(param));
-
-            GenerateTree();
         }
 
         //Navigation Functions

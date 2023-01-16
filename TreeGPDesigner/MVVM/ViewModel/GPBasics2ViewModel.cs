@@ -40,6 +40,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         public ObservableCollection<NodePlot> displayTreePlot = new();
 
+        [ObservableProperty]
+        private float? canvasWidth = 0;
+
+        [ObservableProperty]
+        private float? canvasHeight = 0;
+
         //GP Basics 2 Variables
         [ObservableProperty]
         private int currentGrowMethod = 0;
@@ -115,7 +121,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             Node displayTree = bpTemplate.CopyNode(bpTemplate.FunctionRootNodes[random.Next(0, bpTemplate.FunctionRootNodes.Count)]);
 
-            int depth = random.Next(1, 3);
+            int depth = random.Next(1, 4);
 
             if (CurrentGrowMethod == 0)
             {
@@ -129,6 +135,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             TreeDrawingAlgorithm.CalculateNodePositions(displayTree);
             DisplayTreePlot.Clear();
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, displayTree, BrushSet);
+            CanvasHeight = (displayTree.Height * 100) + 100;
+            CanvasWidth = (displayTree.Width * 100) + 100;
         }
     }
 }

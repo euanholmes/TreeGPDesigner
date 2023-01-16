@@ -25,7 +25,7 @@ namespace TreeGPDesigner.MVVM.Model
         private int currentPopulationCount = 100;
         private int currentMaxDepth = 3;
         private int currentMinDepth = 1;
-        private int currentSelectionPercent = 34;
+        private int currentSelectionPercent = 40;
         private int currentMutationPercent = 10;
         private int currentCrossoverPercent = 90;
         private string currentRunName = "My GP Run";

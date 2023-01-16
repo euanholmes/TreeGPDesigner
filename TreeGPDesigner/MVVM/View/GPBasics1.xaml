@@ -690,7 +690,7 @@
                                         <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="311.49" X2="370.71" Y2="311.49"/>
                                     </Grid>
 
-                                    <Canvas Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="treeCanvas">
+                                    <Canvas Margin="10" Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="treeCanvas">
                                         <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>

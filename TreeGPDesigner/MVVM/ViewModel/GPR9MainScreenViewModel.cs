@@ -53,6 +53,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private ImageSource? zoomIconSource = AppInfoSingleton.Instance.CurrentZoomIcon;
 
+        [ObservableProperty]
+        private float? canvasWidth = 0;
+
+        [ObservableProperty]
+        private float? canvasHeight = 0;
+
         //Commands
         public ICommand NavHomeMenuCommand { get; }
         public ICommand GetNextGenerationCommand { get; }
@@ -173,7 +179,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             for (int i = 0; i < knownAlgorithms.Count; i++)
             {
                 KnownAlgorithmTrees.Add(new Tree(TextColour, Background, NormalButtonColour, knownAlgorithms[i].Name, knownAlgorithms[i].Fitness.ToString(), 
-                    AppInfoSingleton.RainbowBrush, i.ToString(), true));
+                    AppInfoSingleton.RainbowBrush, i.ToString(), true, this));
             }
         }
 
@@ -215,17 +221,17 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness)
                 {
                     GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
-                    CurrentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false));
+                    CurrentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false, this));
                 }
                 else if (CurrentGeneration[i].NotFailedYet)
                 {
                     GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
-                    CurrentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false));
+                    CurrentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false, this));
                 }
                 else
                 {
                     GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
-                    CurrentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false));
+                    CurrentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false, this));
                 }
             }
         }
@@ -242,18 +248,20 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private ICommand displayTreeCommand;
         private string displayTreeParameter;
         private bool knownAlgorithm;
+        private GPR9MainScreenViewModel mainVM;
 
-        public Tree(Brush? textColour, Brush? background, Brush? normalButtonColour, string name, string fitness, Brush? colourIndicator, string displayTreeParameter, bool knownAlgorithm)
+        public Tree(Brush? textColour, Brush? background, Brush? normalButtonColour, string name, string fitness, Brush? colourIndicator, string displayTreeParameter, bool knownAlgorithm, GPR9MainScreenViewModel mainVM)
         {
-            this.textColour = textColour;
-            this.background = background;
-            this.normalButtonColour = normalButtonColour;
-            this.name = name;
-            this.fitness = fitness;
-            this.colourIndicator = colourIndicator;
-            this.displayTreeParameter = displayTreeParameter;
-            this.knownAlgorithm = knownAlgorithm;
-            this.displayTreeCommand = new RelayCommand<string>(param => DisplayTree(param));
+            this.TextColour = textColour;
+            this.Background = background;
+            this.NormalButtonColour = normalButtonColour;
+            this.Name = name;
+            this.Fitness = fitness;
+            this.ColourIndicator = colourIndicator;
+            this.DisplayTreeParameter = displayTreeParameter;
+            this.KnownAlgorithm = knownAlgorithm;
+            this.DisplayTreeCommand = new RelayCommand<string>(param => DisplayTree(param));
+            this.MainVM = mainVM;
         }
 
         public Brush? TextColour { get => textColour; set => textColour = value; }
@@ -265,16 +273,20 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand DisplayTreeCommand { get => displayTreeCommand; set => displayTreeCommand = value; }
         public string DisplayTreeParameter { get => displayTreeParameter; set => displayTreeParameter = value; }
         public bool KnownAlgorithm { get => knownAlgorithm; set => knownAlgorithm = value; }
+        public GPR9MainScreenViewModel MainVM { get => mainVM; set => mainVM = value; }
 
         public void DisplayTree(string treeNumString)
         {
-            if (knownAlgorithm)
+            if (KnownAlgorithm)
             {
                 AppInfoSingleton.Instance.MainDisplayTree.Clear();
                 int treeNum = Convert.ToInt32(treeNumString);
                 TreeDrawingAlgorithm.CalculateNodePositions(AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum]);
                 AppInfoSingleton.Instance.MainDisplayTree = AppInfoSingleton.GetTreePlot(AppInfoSingleton.Instance.MainDisplayTree,
                     AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum], AppInfoSingleton.Instance.CurrentBrushSet);
+
+                MainVM.CanvasWidth = (AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum].Width * 100) + 100;
+                MainVM.CanvasHeight = (AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms[treeNum].Height * 100) + 100;
             }
             else
             {
@@ -283,6 +295,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 TreeDrawingAlgorithm.CalculateNodePositions(AppInfoSingleton.Instance.CurrentTemplate.Generation[treeNum]);
                 AppInfoSingleton.Instance.MainDisplayTree = AppInfoSingleton.GetTreePlot(AppInfoSingleton.Instance.MainDisplayTree,
                     AppInfoSingleton.Instance.CurrentTemplate.Generation[treeNum], AppInfoSingleton.Instance.CurrentBrushSet);
+
+                MainVM.CanvasWidth = (AppInfoSingleton.Instance.CurrentTemplate.Generation[treeNum].Width * 100) + 100;
+                MainVM.CanvasHeight = (AppInfoSingleton.Instance.CurrentTemplate.Generation[treeNum].Height * 100) + 100;
             }
         }
     }
