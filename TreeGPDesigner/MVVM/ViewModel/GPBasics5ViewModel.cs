@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -74,6 +75,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         [ObservableProperty]
         private Brush selection3Colour;
+
+        [ObservableProperty]
+        private bool selectEnabled = true;
 
 
         //Constructor
@@ -163,8 +167,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //GP Basics 5 Functions
-        public void Select()
+        public async void Select()
         {
+            SelectEnabled = false;
+
             bpTemplate.Generation = programs;
 
             if (selectionMethod == 0)
@@ -184,10 +190,30 @@ namespace TreeGPDesigner.MVVM.ViewModel
             Node selection2 = bpTemplate.GeneticFunctionPool[1];
             Node selection3 = bpTemplate.GeneticFunctionPool[2];
 
+
+
+            Selection1Name = "";
+            Selection1Fitness = "";
+            Selection1Colour = Brushes.Transparent;
+            Selection2Name = "";
+            Selection2Fitness = "";
+            Selection2Colour = Brushes.Transparent;
+            Selection3Name = "";
+            Selection3Fitness = "";
+            Selection3Colour = Brushes.Transparent;
+
+
+
+            await Task.Delay(1000);
+
             Selection1Name = selection1.Name;
             Selection1Fitness = selection1.Fitness.ToString();
 
-            if (selection1.NotFailedYet)
+            if (selection1.NotFailedYet && selection1.Fitness == 100)
+            {
+                Selection1Colour = AppInfoSingleton.RainbowBrush;
+            }
+            else if (selection1.NotFailedYet)
             {
                 Selection1Colour = Brushes.Green;
             }
@@ -196,10 +222,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 Selection1Colour = Brushes.Red;
             }
 
+            await Task.Delay(1000);
+
             Selection2Name = selection2.Name;
             Selection2Fitness = selection2.Fitness.ToString();
 
-            if (selection2.NotFailedYet)
+            if (selection2.NotFailedYet && selection2.Fitness == 100)
+            {
+                Selection2Colour = AppInfoSingleton.RainbowBrush;
+            }
+            else if(selection2.NotFailedYet)
             {
                 Selection2Colour = Brushes.Green;
             }
@@ -208,10 +240,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 Selection2Colour = Brushes.Red;
             }
 
+            await Task.Delay(1000);
+
             Selection3Name = selection3.Name;
             Selection3Fitness = selection3.Fitness.ToString();
 
-            if (selection3.NotFailedYet)
+            if (selection3.NotFailedYet && selection3.Fitness == 100)
+            {
+                Selection3Colour = AppInfoSingleton.RainbowBrush;
+            }
+            else if(selection3.NotFailedYet)
             {
                 Selection3Colour = Brushes.Green;
             }
@@ -219,6 +257,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             {
                 Selection3Colour = Brushes.Red;
             }
+
+            SelectEnabled = true;
         }
 
         public void RadioButton(string selectionMethodString)

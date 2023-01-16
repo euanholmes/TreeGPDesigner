@@ -392,7 +392,18 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 1"/>
-                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
+                                            <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50">
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="Red" Offset="0.0"/>
+                                                        <GradientStop Color="Orange" Offset="0.2"/>
+                                                        <GradientStop Color="Yellow" Offset="0.4"/>
+                                                        <GradientStop Color="Green" Offset="0.6"/>
+                                                        <GradientStop Color="Blue" Offset="0.75"/>
+                                                        <GradientStop Color="Indigo" Offset="0.875"/>
+                                                        <GradientStop Color="Violet" Offset="1.0"/>
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
                                                 <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="100"/>
                                             </Border>
                                         </Grid>
@@ -545,7 +556,7 @@
                     
                     <!-- Select Button -->
                     <Viewbox Grid.Row="2">
-                        <Button Command="{Binding SelectCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Select"/>
+                        <Button IsEnabled="{Binding SelectEnabled}" Command="{Binding SelectCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Select"/>
                     </Viewbox>
                     
                     <!-- Selected Trees Panel -->
