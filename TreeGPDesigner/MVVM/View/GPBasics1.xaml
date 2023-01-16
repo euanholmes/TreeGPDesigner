@@ -31,13 +31,23 @@
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.2*"/>
                 </Grid.ColumnDefinitions>
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
                 <!-- Information Panel -->
-                <Border Style="{DynamicResource Panel1}" Grid.Column="0" Margin="10 10 5 10">
+                <Border Style="{DynamicResource Panel1}" Grid.Column="1" Grid.Row="1">
                     <Viewbox Margin="10" VerticalAlignment="Top">
                         <TextBlock Style="{DynamicResource RegularText}">
                             Genetic programming is the automatic<LineBreak/>
@@ -74,29 +84,35 @@
                 </Border>
 
                 <!-- Nodes Panel -->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="3" Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.15*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.15*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Function Nodes -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="0" Margin="5 10 5 5">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="0">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="0.25*"/>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.25*"/>
                             </Grid.RowDefinitions>
 
                             <!-- Function Nodes Title-->
-                            <Viewbox Grid.Row="0">
+                            <Viewbox Grid.Row="1">
                                 <TextBlock Style="{DynamicResource SubTitleText}"  Text="Function Nodes"/>
                             </Viewbox>
 
                             <!-- First Row of Function Nodes-->
-                            <Grid Grid.Row="1" Margin="0 0 10 0">
+                            <Grid Grid.Row="3" Margin="0 0 10 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -183,7 +199,7 @@
                             </Grid>
                             
                             <!-- Second Row of Function Nodes-->
-                            <Grid Grid.Row="2" Margin="0 0 10 0">
+                            <Grid Grid.Row="5" Margin="0 0 10 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -272,21 +288,25 @@
                     </Border>
 
                     <!-- Terminal Nodes -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="1" Margin="5 5 5 5">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="2">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="0.25*"/>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.25*"/>
                             </Grid.RowDefinitions>
 
                             <!-- Terminal Nodes Title-->
-                            <Viewbox Grid.Row="0">
+                            <Viewbox Grid.Row="1">
                                 <TextBlock Style="{DynamicResource SubTitleText}" Text="Terminal Nodes"/>
                             </Viewbox>
 
                             <!-- First Row of Terminal Nodes-->
-                            <Grid Grid.Row="1" Margin="0 0 10 0">
+                            <Grid Grid.Row="3" Margin="0 0 10 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -373,7 +393,7 @@
                             </Grid>
 
                             <!-- Second Row of Terminal Nodes-->
-                            <Grid Grid.Row="2" Margin="0 0 10 0">
+                            <Grid Grid.Row="5" Margin="0 0 10 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -462,21 +482,25 @@
                     </Border>
 
                     <!-- Root Nodes -->
-                    <Border Grid.Row="2" Style="{DynamicResource Panel1}" Margin="5 5 5 10">
+                    <Border Grid.Row="4" Style="{DynamicResource Panel1}">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="0.25*"/>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.25*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="0.25*"/>
                             </Grid.RowDefinitions>
 
                             <!-- Root Nodes Title-->
-                            <Viewbox Grid.Row="0">
+                            <Viewbox Grid.Row="1">
                                 <TextBlock Style="{DynamicResource SubTitleText}" Text="Root Nodes"/>
                             </Viewbox>
 
                             <!-- First Row of Root Nodes-->
-                            <Grid Grid.Row="1" Margin="0 0 10 0">
+                            <Grid Grid.Row="3" Margin="0 0 10 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -563,7 +587,7 @@
                             </Grid>
 
                             <!-- Second Row of Root Nodes-->
-                            <Grid Grid.Row="2" Margin="0 0 10 0">
+                            <Grid Grid.Row="5" Margin="0 0 10 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -653,7 +677,7 @@
                 </Grid>
 
                 <!-- Display Tree Panel-->
-                <Grid Grid.Column="2">
+                <Grid Grid.Column="5" Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="0.2*"/>
@@ -662,7 +686,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Display Tree-->
-                    <Border x:Name="treeBorder" Style="{DynamicResource Panel1}" ClipToBounds="true" Grid.Row="0" Margin="5 10 10 0">
+                    <Border x:Name="treeBorder" Style="{DynamicResource Panel1}" ClipToBounds="true" Grid.Row="0">
                         <Grid>
                             <Grid>
                                 <Grid.ColumnDefinitions>
