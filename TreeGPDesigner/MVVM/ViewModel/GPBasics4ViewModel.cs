@@ -53,7 +53,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         //GP Basics 4 Variables
         [ObservableProperty]
-        private string informationText = "";
+        private string informationText = "Now that you have a population of programs as well as wrappers and datasets to use with them you can start assessing the " +
+            "fitness of these programs. Assessing the fitness of programs is important to see firstly which programs complete the task correctly and " +
+            "secondly which programs do it the best. Using bin packing as an example again, a bin packing fitness function would reward programs that firstly put items into bins " +
+            "not letting the total item weight exceed the bin capacity and not giving empty bins in a solution. The programs that pack bins correctly will " +
+            "then be rewarded further for packing the items into less bins.\n\nTry using the fitness function to the right with some " +
+            "randomly generated program trees. The fitness indicator will go green when a program packs bins correctly and red if it doesn't. You may notice that " +
+            "most programs fail to pack the bins correctly but fail in different ways. The bin capacity for the problem used is 60 while the items are: " +
+            "6, 6, 8, 8, 24, 17, 22, 44, 24, 21. Terminal nodes include: current bin weight (CBW), current item (CI) and bin capacity (BC).";
 
         [ObservableProperty]
         private ObservableCollection<Bin> bins = new();
@@ -105,7 +112,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 currentTree.NotFailedYet = true;
                 bpTemplate.FitnessFunctionOne(currentTree, new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60);
                 string fitnessNumString = (11 + currentTree.Fitness).ToString();
-                Trace.WriteLine(fitnessNumString);
                 TreeFitness = "Fitness = " + fitnessNumString;
                 List<List<int>> rawBins = bpTemplate.BPOfflineWrapper(new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60, currentTree);
                 GPBasics3ViewModel vmgp3 = new();

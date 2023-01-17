@@ -80,11 +80,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private bool selectEnabled = true;
 
         [ObservableProperty]
-        private string informationText = "Selection is used to determine which programs will have genetic functions applied to them. There are many different " +
-            "selection methods. Three popular ones are tournament selection fitness proportionate roulette selection and truncation selection. Tournament selection " +
-            "involves using a tournament bracket system to determine each program that will be selected. Fitness proportionate selection will assign each program a " +
-            "probability based on their fitness then a roulette system will determine which programs are selected. Truncation selection will simply select a " +
-            "percentage of the top fittest programs.\n\nTry out these different selection methods to see which programs are selected.";
+        private string informationText = 
+            "Selection is used to determine which programs will be available for mutation and crossover. There are many different " +
+            "selection methods, three popular ones are tournament selection, fitness proportionate selection and truncation selection. Tournament selection " +
+            "involves using a tournament bracket system to determine each program that will be selected, with the higher fitness program winning each bracket. " +
+            "Fitness proportionate selection will assign each program a probability based on their fitness then a roulette system will determine which programs " +
+            "are selected. Truncation selection will simply select a percentage of the top fittest programs. These different selection methods provide different " +
+            "benefits for example tournament selection will give a higher change that average programs will make it through and increase the populations " +
+            "diversity while truncation selection will guarantee that high fitness programs make it through.\n\nTry out these different selection methods to see " +
+            "which programs are selected.";
 
 
         //Constructor
@@ -177,7 +181,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public async void Select()
         {
             SelectEnabled = false;
-
             bpTemplate.Generation = programs;
 
             if (selectionMethod == 0)
@@ -197,8 +200,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             Node selection2 = bpTemplate.GeneticFunctionPool[1];
             Node selection3 = bpTemplate.GeneticFunctionPool[2];
 
-
-
             Selection1Name = "";
             Selection1Fitness = "";
             Selection1Colour = Brushes.Transparent;
@@ -209,9 +210,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             Selection3Fitness = "";
             Selection3Colour = Brushes.Transparent;
 
-
-
-            await Task.Delay(1000);
+            await Task.Delay(500);
 
             Selection1Name = selection1.Name;
             Selection1Fitness = selection1.Fitness.ToString();
@@ -229,7 +228,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 Selection1Colour = Brushes.Red;
             }
 
-            await Task.Delay(1000);
+            await Task.Delay(500);
 
             Selection2Name = selection2.Name;
             Selection2Fitness = selection2.Fitness.ToString();
@@ -247,7 +246,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 Selection2Colour = Brushes.Red;
             }
 
-            await Task.Delay(1000);
+            await Task.Delay(500);
 
             Selection3Name = selection3.Name;
             Selection3Fitness = selection3.Fitness.ToString();
@@ -273,12 +272,5 @@ namespace TreeGPDesigner.MVVM.ViewModel
             int selectionMethodInt = Convert.ToInt32(selectionMethodString);
             selectionMethod = selectionMethodInt;
         }
-    }
-
-    public class SelectedProgram
-    {
-        private string name;
-        private string fitness;
-        private Brush fitnessColour;
     }
 }
