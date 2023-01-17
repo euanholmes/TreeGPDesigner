@@ -63,6 +63,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         private Node parentTree2 = new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0, true);
 
+        [ObservableProperty]
+        private string informationText = "A genetic function that can be applied to a program tree is crossover. Unlike mutation " +
+            "which only applies to one tree crossover requires two parents. For crossover to occur two crossover points are " +
+            "required, one for each tree. The crossover point of parent 1 will have a branch cut off and be replaced with a " +
+            "branch from parent 2. In most GP applications crossover is considered more important than mutation and therefore " +
+            "used at a much higher percentage typically around 90% of selected programs will be used in crossover with the " +
+            "remaining being mutated.\n\nTry using the crossover operation on the two parent trees to the left.";
+
         //Constructor
         public GPBasics7ViewModel()
         {

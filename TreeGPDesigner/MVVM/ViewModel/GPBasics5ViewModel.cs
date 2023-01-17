@@ -79,6 +79,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private bool selectEnabled = true;
 
+        [ObservableProperty]
+        private string informationText = "Selection is used to determine which programs will have genetic functions applied to them. There are many different " +
+            "selection methods. Three popular ones are tournament selection fitness proportionate roulette selection and truncation selection. Tournament selection " +
+            "involves using a tournament bracket system to determine each program that will be selected. Fitness proportionate selection will assign each program a " +
+            "probability based on their fitness then a roulette system will determine which programs are selected. Truncation selection will simply select a " +
+            "percentage of the top fittest programs.\n\nTry out these different selection methods to see which programs are selected.";
+
 
         //Constructor
         public GPBasics5ViewModel()

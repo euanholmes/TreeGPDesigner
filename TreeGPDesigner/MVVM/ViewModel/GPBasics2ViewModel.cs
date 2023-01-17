@@ -54,6 +54,18 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         private static Random random = new();
 
+        [ObservableProperty]
+        private string informationText = "Once you've selected your primitive set you are ready to start generating programs." +
+            " To generate programs you need to grow program trees. There are many ways to grow program trees, " +
+            "two common tree growing methods are \"grow\" and \"full.\" Trees grown with the " +
+            "\"grow\" method will grow branches from the root node and will place terminal or function nodes on each branch " +
+            "up until the max depth where only terminal nodes will be placed. Trees grown with the \"full\" method will place " +
+            "function nodes at each depth up until the max depth where only terminal nodes will be placed. When starting a " +
+            "GP run all trees can be grown with the \"full\" or \"grow\" methods or a mixture of the two can be used. A popular method " +
+            "used in GP is the ramped half and half approach where half the trees at each depth level are grown with the \"full\" " +
+            "method and half are grown with the \"grow\" method \n\nTry growing trees with these two different methods and see what " +
+            "kind of trees you can grow and how the two methods differ.";
+
         //Commands
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavTutorialsMenuCommand { get; }

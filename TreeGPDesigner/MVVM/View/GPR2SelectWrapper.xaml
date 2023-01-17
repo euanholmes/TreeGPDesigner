@@ -110,7 +110,7 @@
                     <!-- Wrapper Information -->
                     <Border Style="{DynamicResource Panel1}" Grid.Column="3">
                         <Viewbox Margin="10">
-                            <TextBlock Text="{Binding WrapperInfo}" Style="{DynamicResource RegularText}"/>
+                            <TextBlock Width="272" Height="313" TextWrapping="Wrap" Text="{Binding WrapperInfo}" Style="{DynamicResource RegularText}"/>
                         </Viewbox>
                     </Border>
                 </Grid>

@@ -58,7 +58,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand TerminalNodeCheckBoxCommand { get; set; }
         public ICommand RootNodeCheckBoxCommand { get; set; }
 
-        //Variables
+        //GP Basics 1 Variables
         public Node? DisplayTree;
         private static Random random = new Random();
 
@@ -81,6 +81,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         [ObservableProperty]
         public ObservableCollection<bool> selectedRootNodes = new() { true, true, false, false, false, false };
+
+        [ObservableProperty]
+        private string informationText = "Genetic programming is the automatic generation of programs through evolutionary functions such as crossover,  " +
+            "selection and mutation. In genetic programming programs are represented as tree structures. These tree structures are made up of function " +
+            "and terminal nodes. Function nodes will have one or more operands which will have a function applied to them. For example an addition function " +
+            "node would add two nodes together. A terminal node can be a variable or a static number like one. Terminal nodes are so called because they " +
+            "are placed at the end of a branch and have no operands or nodes below them. Root nodes appear at the top of a tree and can be function or " +
+            "terminal nodes depending on the GP application. The function nodes you use are called your \"function set\" and the terminal nodes you use are " +
+            "called your \"terminal set.\" Both these sets together make up your \"primitive set.\"\n\nTry out selecting different function, terminal and root " +
+            "nodes and see the different program trees you can generate.";
 
         //Constructor
         public GPBasics1ViewModel()

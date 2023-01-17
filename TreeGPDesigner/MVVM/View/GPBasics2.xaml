@@ -49,26 +49,7 @@
                 <!-- Information Panel -->
                 <Border Style="{DynamicResource Panel1}" Grid.Column="1" Grid.Row="1">
                     <Viewbox Margin="10">
-                        <TextBlock Style="{DynamicResource RegularText}">
-                            Two common tree growing<LineBreak/>
-                            methods are "grow" and "full."<LineBreak/>
-                            Trees grown with the "grow"<LineBreak/>
-                            method will grow branches<LineBreak/>
-                            from the root node and will<LineBreak/>
-                            place terminal or function<LineBreak/>
-                            nodes on each branch up <LineBreak/>
-                            until the max depth where<LineBreak/>
-                            only terminal nodes will be<LineBreak/>
-                            placed. Trees grown with the<LineBreak/>
-                            full method will place <LineBreak/>
-                            function nodes at each depth<LineBreak/>
-                            up until the max depth where<LineBreak/>
-                            terminal nodes will be placed.<LineBreak/>
-                            <LineBreak/>
-                            Try growing trees with these<LineBreak/>
-                            two different methods and see<LineBreak/>
-                            what kind of trees you can grow.
-                        </TextBlock>
+                        <TextBlock Width="250" Height="372" TextWrapping="Wrap" Text="{Binding InformationText}" Style="{DynamicResource RegularText}"/>
                     </Viewbox>
                 </Border>
                 

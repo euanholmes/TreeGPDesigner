@@ -59,6 +59,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private static Random random = new();
 
         private Node displayTree;
+
+        [ObservableProperty]
+        private string informationText = "A genetic function that can be applied to a program tree is mutation. For a tree to be mutated, " +
+            "first a mutation point needs to be found. This is a point at a random depth down that a branch of the tree will be cut off and " +
+            "replaced with a new branch. This branch could consist of a terminal node or a function node with more nodes below.\n\nTry mutating " +
+            "the tree in the panel on the right and see what branches will grow.";
         
 
         //Constructor

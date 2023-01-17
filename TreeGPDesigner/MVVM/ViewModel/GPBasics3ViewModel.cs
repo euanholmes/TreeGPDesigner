@@ -46,19 +46,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private int bc4 = random.Next(50, 61);
 
-        private List<int> items1 = new() /*{ random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), 
-            random.Next(1, 10), random.Next(1, 10), random.Next(1, 10), random.Next(1, 10) }*/;
+        private List<int> items1 = new();
 
-        private List<int> items2 = new() /*{ random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61),
-            random.Next(1, 10), random.Next(1, 10), random.Next(1, 10), random.Next(1, 10) }*/;
+        private List<int> items2 = new();
 
-        private List<int> items3 = new() /*{ random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61),
-            random.Next(1, 10), random.Next(1, 10), random.Next(1, 10), random.Next(1, 10) }*/;
+        private List<int> items3 = new();
 
-        private List<int> items4 = new() /*{ random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61), random.Next(10, 61),
-            random.Next(1, 10), random.Next(1, 10), random.Next(1, 10), random.Next(1, 10) }*/;
-       
-        
+        private List<int> items4 = new();
 
         [ObservableProperty]
         private string items1String;
@@ -90,6 +84,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private int currentBinList = 0;
 
+        [ObservableProperty]
+        private string informationText = "In GP wrappers can be used to surround the generated program tree and provide it with functionality and data" +
+            " common to all programs of this type. For example when generating a bin packing algorithm the wrapper can present to the solution program" +
+            " a list of items, bin capacity and current bin weight which can be used in the solution program. When using a wrapper, a dataset might also" +
+            " be required. A bin packing dataset would include a list of problems which would each have a bin capacity and a list of items. Note that " +
+            "not all GP applications require wrappers, or even datasets if there are only static terminal nodes used in your program trees.\n\n" +
+            "Try the offline bin packing wrapper to the right with some randomly generated bin packing problems. The solution program used in the" +
+            " wrapper here is the \"first fit descending algorithm\". This algorithm will pack the current item into the first bin it fits into, " +
+            "if no bin is found a new a new bin will be opened, and it will be packed into the new bin.";
 
         //Commands
         public ICommand NavHomeMenuCommand { get; }
@@ -260,19 +263,4 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public List<BinItem> BinItems { get => binItems; set => binItems = value; }
         public Brush TextColour { get => textColour; set => textColour = value; }
     }
-
-    /*public class BinList
-    {
-        private Bin currentBin;
-        private Brush textColour;
-
-        public BinList(Bin currentBin, Brush textColour)
-        {
-            this.currentBin = currentBin;
-            this.textColour = textColour;
-        }
-
-        public Bin CurrentBin { get => currentBin; set => currentBin = value; }
-        public Brush TextColour { get => textColour; set => textColour = value; }
-    }*/
 }

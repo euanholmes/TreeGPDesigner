@@ -48,38 +48,8 @@
 
                 <!-- Information Panel -->
                 <Border Style="{DynamicResource Panel1}" Grid.Column="1" Grid.Row="1">
-                    <Viewbox Margin="10" VerticalAlignment="Top">
-                        <TextBlock Style="{DynamicResource RegularText}">
-                            Genetic programming is the automatic<LineBreak/>
-                            generation of programs through <LineBreak/> 
-                            evolutionary functions such as crossover,<LineBreak/>  
-                            selection and mutation. In genetic <LineBreak/>
-                            programming programs are represented<LineBreak/> 
-                            as tree structures. These tree <LineBreak/> 
-                            structures are made up of function and<LineBreak/>  
-                            terminal nodes. Function nodes will have <LineBreak/>  
-                            one or more operands which will have a <LineBreak/>  
-                            function applied to them. For example an <LineBreak/>  
-                            addition function node would add two nodes<LineBreak/>  
-                            together. A terminal node can be a be a <LineBreak/> 
-                            variable or a static number like one. <LineBreak/> 
-                            Terminal nodes are so called because they<LineBreak/>  
-                            are placed at the end of a branch and have<LineBreak/>  
-                            no operands or nodes below them. Root nodes<LineBreak/>  
-                            appear at the top of a tree and can be <LineBreak/> 
-                            function or terminal nodes depending on<LineBreak/> 
-                            the GP application. The function nodes you<LineBreak/>
-                            use are called your "function set" and the<LineBreak/>
-                            terminal nodes you use are called your <LineBreak/>
-                            "terminal set." Both these sets together<LineBreak/>
-                            make up your "primitive set."
-                            <LineBreak/>
-                            <LineBreak/>
-                            <LineBreak/>
-                            Try out selecting different function, <LineBreak/> 
-                            terminal and root nodes and see the <LineBreak/> 
-                            different program trees you can generate.
-                        </TextBlock>
+                    <Viewbox Margin="10">
+                        <TextBlock Width="250" Height="372" TextWrapping="Wrap" Text="{Binding InformationText}" Style="{DynamicResource RegularText}"/>
                     </Viewbox>
                 </Border>
 

@@ -49,35 +49,10 @@
                 <!-- Information Panel -->
                 <Border Grid.Row="1" Grid.Column="1" Style="{DynamicResource Panel1}">
                     <Viewbox Margin="10">
-                        <TextBlock Style="{DynamicResource RegularText}">
-                            Selection is used to determine<LineBreak/>
-                            which programs will have<LineBreak/>
-                            genetic functions applied to<LineBreak/>
-                            them. There are many different<LineBreak/>
-                            selection methods. Three popular<LineBreak/>
-                            ones are tournament selection<LineBreak/>
-                            fitness proportionate <LineBreak/>
-                            roulette selection and<LineBreak/>
-                            truncation selection.<LineBreak/>
-                            Tournament selection involves<LineBreak/>
-                            using a tournament bracket<LineBreak/>
-                            system to determine each<LineBreak/>
-                            program that will be selected.<LineBreak/>
-                            Fitness proportionate selection<LineBreak/>
-                            will assign each program a <LineBreak/>
-                            probability based on their<LineBreak/>
-                            fitness then a roulette system<LineBreak/>
-                            will determine which programs<LineBreak/>
-                            are selected. Truncation <LineBreak/>
-                            selection will simply select a <LineBreak/>
-                            percentof the top fittest programs.<LineBreak/>
-                            <LineBreak/>
-                            <LineBreak/>
-                            Try out these different selection<LineBreak/>
-                            methods to see which programs are<LineBreak/>
-                            selected.
-                        </TextBlock>
+                        <TextBlock Width="250" Height="372" TextWrapping="Wrap" Text="{Binding InformationText}" Style="{DynamicResource RegularText}"/>
                     </Viewbox>
+                        
+                    
                 </Border>
                 
                 <!-- Selection Methods Grid -->
