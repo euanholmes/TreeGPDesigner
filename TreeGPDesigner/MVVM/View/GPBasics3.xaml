@@ -192,31 +192,47 @@
                     </Viewbox>
 
                     <!-- Bins Panel -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="4">
-                        <Viewbox>
-                            <ItemsControl ItemsSource="{Binding Bins}" Margin="10">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Width="48" Height="48" Margin="5 0 5 0" BorderThickness="2" BorderBrush="{Binding TextColour}">
-                                            <Viewbox>
-                                                <ItemsControl ItemsSource="{Binding BinItems}">
-                                                    <ItemsControl.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding CurrentBinItem}" Style="{DynamicResource RegularText}"/>
-                                                        </DataTemplate>
-                                                    </ItemsControl.ItemTemplate>
-                                                </ItemsControl>
-                                            </Viewbox>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </Viewbox>
+                    <Border Grid.Row="4" Style="{DynamicResource Panel1}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="0.2*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Bins Title -->
+                            <Viewbox Grid.Row="1">
+                                <TextBlock Style="{DynamicResource SubTitleText}" Text="Bins"/>
+                            </Viewbox>
+
+                            <!-- Bins -->
+                            <Viewbox Grid.Row="3">
+                                <ItemsControl ItemsSource="{Binding Bins}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Width="48" Height="48" Margin="5 0 5 0" BorderThickness="2" BorderBrush="{Binding TextColour}">
+                                                <Viewbox>
+                                                    <ItemsControl ItemsSource="{Binding BinItems}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding CurrentBinItem}" Style="{DynamicResource RegularText}"/>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </Viewbox>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Viewbox>
+                        </Grid>
                     </Border>
                 </Grid>
             </Grid>

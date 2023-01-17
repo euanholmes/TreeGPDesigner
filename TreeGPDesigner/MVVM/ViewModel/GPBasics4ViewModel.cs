@@ -59,7 +59,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private ObservableCollection<Bin> bins = new();
 
         [ObservableProperty]
-        private string treeFitness = "";
+        private string treeFitness = "Fitness = ";
+
+        [ObservableProperty]
+        private Brush colourIndicator = Brushes.Gray;
 
         private BinPackingTemplate bpTemplate = new();
 
@@ -98,22 +101,32 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             if (currentTree != null)
             {
-                TreeFitness = "";
                 currentTree.Fitness = 0;
+                currentTree.NotFailedYet = true;
                 bpTemplate.FitnessFunctionOne(currentTree, new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60);
-                string fitnessNumString = (3000 + currentTree.Fitness).ToString();
+                string fitnessNumString = (11 + currentTree.Fitness).ToString();
                 Trace.WriteLine(fitnessNumString);
                 TreeFitness = "Fitness = " + fitnessNumString;
                 List<List<int>> rawBins = bpTemplate.BPOfflineWrapper(new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60, currentTree);
                 GPBasics3ViewModel vmgp3 = new();
                 Bins.Clear();
                 Bins = vmgp3.GetBinList(rawBins);
+
+                if (currentTree.NotFailedYet)
+                {
+                    ColourIndicator = Brushes.Green;
+                }
+                else
+                {
+                    ColourIndicator = Brushes.Red;
+                }
             }
         }
 
         public void NewTree()
         {
-            TreeFitness = "";
+            TreeFitness = "Fitness = ";
+            ColourIndicator = Brushes.Gray;
             Bins.Clear();
             DisplayTreePlot.Clear();
             Node randomRootNode = bpTemplate.CopyNode(bpTemplate.FunctionRootNodes[random.Next(0, bpTemplate.FunctionRootNodes.Count)]);
