@@ -55,9 +55,9 @@ namespace TreeGPDesigner
 
         public static Brush[]? BrushSet5 = { Brushes.Black, Brushes.White, Brushes.Black, Brushes.White };
 
-        public static Brush[]? BrushSet6 = { RainbowBrush,
+        public static Brush[]? BrushSet6 = { Brushes.Black,
                                             new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/sunflowers.jpg"))),
-                                            RainbowBrush,
+                                            Brushes.Black,
                                             new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/the-bedroom-at-arles.jpg")))};
 
         //Node Brushes Dark.
@@ -83,9 +83,9 @@ namespace TreeGPDesigner
 
         public static Brush[]? BrushSet5Dark = { Brushes.White, Brushes.Black, Brushes.White, Brushes.Black  };
 
-        public static Brush[]? BrushSet6Dark = { LightRainbowBrush,
+        public static Brush[]? BrushSet6Dark = { Brushes.White,
                                                  new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/starry-night.jpg"))),
-                                                 LightRainbowBrush,
+                                                 Brushes.White,
                                                  new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/the-starry-night-over-the-rhone.jpg")))};
 
         private AppInfoSingleton()

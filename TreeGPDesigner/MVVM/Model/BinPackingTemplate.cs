@@ -60,7 +60,7 @@ namespace TreeGPDesigner.MVVM.Model
             AddFunctionNode(new FunctionNode("-", 2,   "Subtraction             ", true, a => a[0] - a[1], false));
             AddFunctionNode(new FunctionNode("*", 2,   "Multiplication          ", true, a => a[0] * a[1], false));
             AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs                ", true, a => Math.Abs(a[0]), false));
-            AddFunctionNode(new FunctionNode("++", 3,  "3 Operand Addition      ", true, a => a[0] + a[1] + a[2], false));
+            AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition      ", true, a => a[0] + a[1] + a[2], false));
             AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight      ", true, 0, true));
             AddTerminalNode(new TerminalNode("CI", 0,  "Current Item            ", true, 1, true));
             AddTerminalNode(new TerminalNode("BC", 0,  "Bin Capacity            ", true, 2, true));

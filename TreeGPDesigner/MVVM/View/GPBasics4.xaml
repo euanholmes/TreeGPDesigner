@@ -29,7 +29,194 @@
 
         <!-- Tutorial Panel -->
         <Border Style="{DynamicResource Panel2}" Grid.Row="3" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="7.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Information Panel -->
+                <Border Style="{DynamicResource Panel1}" Grid.Column="1" Grid.Row="1">
+                    <Viewbox Margin="10">
+                        <TextBlock Width="250" Height="372" TextWrapping="Wrap" Text="{Binding InformationText}" Style="{DynamicResource RegularText}"/>
+                    </Viewbox>
+                </Border>
+
+                <!-- Main Grid -->
+                <Grid Grid.Column="3" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Fitness Function and Program Tree Grid -->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Fitness Function Panel -->
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.75*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="4.85*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Fitness Function Title-->
+                                <Viewbox Grid.Row="1">
+                                    <TextBlock Style="{DynamicResource SubTitleText}" Text="Fitness Function"/>
+                                </Viewbox>
+
+                                <!-- Fitness Function -->
+                                <Viewbox Grid.Row="3" Margin="10">
+                                    <Image Source="pack://application:,,,/Images/FitnessFunctionOne.png"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+
+                        <!-- Program Tree Panel -->
+                        <Border Style="{DynamicResource Panel1}" Grid.Column="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.75*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="4*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.75*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Program Tree Title -->
+                                <Viewbox Grid.Row="1">
+                                    <TextBlock Style="{DynamicResource SubTitleText}" Text="Program Tree"/>
+                                </Viewbox>
+
+                                <!-- Program Tree -->
+                                <Grid Grid.Row="3" x:Name="treeBorder" ClipToBounds="True">
+                                    <Viewbox>
+                                        <Grid>
+                                            <Grid>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="311.49"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="370.71" Y2="0"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="370.71" Y1="0" X2="370.71" Y2="311.49"/>
+                                                <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="311.49" X2="370.71" Y2="311.49"/>
+                                            </Grid>
+
+                                            <Canvas Margin="10" Height="{Binding CanvasHeight}" Width="{Binding CanvasWidth}" x:Name="treeCanvas">
+                                                <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <Canvas IsItemsHost="true"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Line X1="{Binding Linex1}" X2="{Binding Linex2}" Y1="{Binding Liney1}" Y2="{Binding Liney2}" Stroke="{Binding SymbolColour}" StrokeThickness="2"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+
+                                                <ItemsControl ItemsSource="{Binding DisplayTreePlot}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <Canvas IsItemsHost="True"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemContainerStyle>
+                                                        <Style>
+                                                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                                        </Style>
+                                                    </ItemsControl.ItemContainerStyle>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
+                                                                <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </Canvas>
+                                        </Grid>
+                                    </Viewbox>
+                                </Grid>
+                                
+                                <!-- Program Tree Fitness -->
+                                <Viewbox Grid.Row="5">
+                                    <TextBlock Style="{DynamicResource RegularText}" Text="{Binding TreeFitness}"/>
+                                </Viewbox>
+                                
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <!-- Buttons Grid -->
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Get Fitness Button -->
+                        <Viewbox Grid.Column="0">
+                            <Button Command="{Binding GetFitnessCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Get Fitness"/>
+                        </Viewbox>
+                        
+                        <!-- New Tree Button -->
+                        <Viewbox Grid.Column="3">
+                            <Button Command="{Binding NewTreeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="New Tree"/>
+                        </Viewbox>
+                    </Grid>
+
+                    <!-- Bins Panel -->
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="4">
+                        <Viewbox>
+                            <ItemsControl ItemsSource="{Binding Bins}" Margin="10">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Width="48" Height="48" Margin="5 0 5 0" BorderThickness="2" BorderBrush="{Binding TextColour}">
+                                            <Viewbox>
+                                                <ItemsControl ItemsSource="{Binding BinItems}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding CurrentBinItem}" Style="{DynamicResource RegularText}"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </Viewbox>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Viewbox>
+                    </Border>
+                </Grid>
+            </Grid>
         </Border>
 
         <!--Navigation Buttons-->
