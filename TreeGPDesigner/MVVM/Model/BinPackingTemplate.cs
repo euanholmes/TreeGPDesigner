@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,16 @@ namespace TreeGPDesigner.MVVM.Model
             "Random Dataset 5 (500 problems)      "
         };
 
+        private static Random random = new();
+
+        private List<BPData> randomDataset10;
+        private List<BPData> randomDataset50;
+        private List<BPData> randomDataset100;
+        private List<BPData> randomDataset200;
+        private List<BPData> randomDataset500;
+
+        private List<List<BPData>> bpDatasets = new();
+
         public BinPackingTemplate()
         {
             WrappersUI = BPWrappersUI;
@@ -73,6 +84,40 @@ namespace TreeGPDesigner.MVVM.Model
 
             Node FFDTree = MakeFFDTree();
             KnownAlgorithms.Add(FFDTree);
+            randomDataset10 = GenerateRandomBPDataset(10);
+            randomDataset50 = GenerateRandomBPDataset(50);
+            randomDataset100 = GenerateRandomBPDataset(100);
+            randomDataset200 = GenerateRandomBPDataset(200);
+            randomDataset500 = GenerateRandomBPDataset(500);
+            bpDatasets.Add(randomDataset10);
+            bpDatasets.Add(randomDataset50);
+            bpDatasets.Add(randomDataset100);
+            bpDatasets.Add(randomDataset200);
+            bpDatasets.Add(randomDataset500);
+        }
+
+        public List<BPData> GenerateRandomBPDataset(int num)
+        {
+            List<BPData> dataset = new();
+
+            for (int i = 0; i < num; i++)
+            {
+                int binCapacity = random.Next(50, 61);
+                List<int> items = new();
+
+                for (int j = 0; j < 5; j++)
+                {
+                    items.Add(random.Next(10, binCapacity));
+                }
+
+                for (int j = 0; j < 5; j++)
+                {
+                    items.Add(random.Next(1, 11));
+                }
+
+                dataset.Add(new BPData(binCapacity, items));
+            }
+            return dataset;
         }
 
         public Node MakeFFDTree()
@@ -183,7 +228,16 @@ namespace TreeGPDesigner.MVVM.Model
         public Node FitnessFunctionOne(Node node, List<int> items, int binCapacity)
         {
             List<List<int>> bins = new List<List<int>>();
-            bins = BPOfflineWrapper(items, binCapacity, node);
+
+            if (CurrentWrapper == 0)
+            {
+                bins = BPOfflineWrapper(items, binCapacity, node);
+            }
+            else
+            {
+                bins = BPOnlineWrapper(items, binCapacity, node);
+            }
+            
             int totalBinWeight = 0;
             int totalItemWeight = items.Sum();
 
@@ -216,7 +270,16 @@ namespace TreeGPDesigner.MVVM.Model
         public Node FitnessFunctionTwo(Node node, List<int> items, int binCapacity)
         {
             List<List<int>> bins = new List<List<int>>();
-            bins = BPOfflineWrapper(items, binCapacity, node);
+
+            if (CurrentWrapper == 0)
+            {
+                bins = BPOfflineWrapper(items, binCapacity, node);
+            }
+            else
+            {
+                bins = BPOnlineWrapper(items, binCapacity, node);
+            }
+
             int totalBinWeight = 0;
             int totalItemWeight = items.Sum();
 
@@ -254,10 +317,31 @@ namespace TreeGPDesigner.MVVM.Model
             return node;
         }
 
+        public void RemoveUnselectedDatasets()
+        {
+            List<List<BPData>> chosenDatasets = new();
+
+            if (bpDatasets.Count == CurrentDatasets.Count)
+            {
+                for (int i = 0; i < CurrentDatasets.Count; i++)
+                {
+                    if (CurrentDatasets[i])
+                    {
+                        chosenDatasets.Add(bpDatasets[i]);
+                    }
+                }
+                bpDatasets = chosenDatasets;
+            }
+        }
+
         public void GetBPPopulationFitness()
         {
             List<int> testItems = new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 };
             int testBinCapacity = 60;
+
+            RemoveUnselectedDatasets();
+
+
 
             if (CurrentFitnessFunction == 0)
             {
@@ -265,14 +349,29 @@ namespace TreeGPDesigner.MVVM.Model
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    FitnessFunctionOne(node, testItems, testBinCapacity);
+                    //FitnessFunctionOne(node, testItems, testBinCapacity);
+
+                    foreach (List<BPData> dataset in bpDatasets)
+                    {
+                        foreach(BPData data in dataset)
+                        {
+                            FitnessFunctionOne(node, data.Items, data.BinCapacity);
+                        }
+                    }
                 }
 
                 foreach (Node node in KnownAlgorithms)
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    FitnessFunctionOne(node, testItems, testBinCapacity);
+                    //FitnessFunctionOne(node, testItems, testBinCapacity);
+                    foreach (List<BPData> dataset in bpDatasets)
+                    {
+                        foreach (BPData data in dataset)
+                        {
+                            FitnessFunctionOne(node, data.Items, data.BinCapacity);
+                        }
+                    }
                 }
             }
             else
@@ -281,14 +380,28 @@ namespace TreeGPDesigner.MVVM.Model
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    FitnessFunctionTwo(node, testItems, testBinCapacity);
+                    //FitnessFunctionTwo(node, testItems, testBinCapacity);
+                    foreach (List<BPData> dataset in bpDatasets)
+                    {
+                        foreach (BPData data in dataset)
+                        {
+                            FitnessFunctionTwo(node, data.Items, data.BinCapacity);
+                        }
+                    }
                 }
 
                 foreach (Node node in KnownAlgorithms)
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    FitnessFunctionTwo(node, testItems, testBinCapacity);
+                    //FitnessFunctionTwo(node, testItems, testBinCapacity);
+                    foreach (List<BPData> dataset in bpDatasets)
+                    {
+                        foreach (BPData data in dataset)
+                        {
+                            FitnessFunctionTwo(node, data.Items, data.BinCapacity);
+                        }
+                    }
                 }
             } 
         }
@@ -322,5 +435,20 @@ namespace TreeGPDesigner.MVVM.Model
             GetBPPopulationFitness();
             MakeAllFitnessPositive();
         }
+    }
+
+    public class BPData
+    {
+        private int binCapacity;
+        private List<int> items;
+
+        public BPData(int binCapacity, List<int> items)
+        {
+            this.binCapacity = binCapacity;
+            this.items = items;
+        }
+
+        public int BinCapacity { get => binCapacity; set => binCapacity = value; }
+        public List<int> Items { get => items; set => items = value; }
     }
 }
