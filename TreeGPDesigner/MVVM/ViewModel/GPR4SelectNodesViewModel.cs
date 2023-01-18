@@ -65,6 +65,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private List<SelectNode> selectRootNodes = new List<SelectNode>();
 
+        [ObservableProperty]
+        private string errorMessage = "";
+
         //Constructor
         public GPR4SelectNodesViewModel()
         {
@@ -83,7 +86,18 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void NavNext()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPR5SelectTrainingDataViewModel();
+            bool terminalNodeListEmpty = IsNodeListEmpty(new List<Node>(AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes));
+            bool functionRootNodeListEmpty = IsNodeListEmpty(new List<Node>(AppInfoSingleton.Instance.CurrentTemplate.FunctionRootNodes));
+            bool terminalRootNodeListEmpty = IsNodeListEmpty(new List<Node>(AppInfoSingleton.Instance.CurrentTemplate.TerminalRootNodes));
+
+            if ((functionRootNodeListEmpty && terminalRootNodeListEmpty) ||  (terminalNodeListEmpty && !functionRootNodeListEmpty))
+            {
+                ErrorMessage = "*Select more nodes.";
+            }
+            else
+            {
+                AppInfoSingleton.Instance.CurrentViewModel = new GPR5SelectTrainingDataViewModel();
+            }
         }
 
         public void NavBack()
@@ -91,31 +105,47 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new GPR3SelectFitnessFunctionViewModel();
         }
 
-        //Select Nodes Function
+        //GP Basics 4 Functions
+        public bool IsNodeListEmpty(List<Node> nodeList)
+        {
+            bool nodeListEmpty = true;
+
+            foreach(Node node in nodeList)
+            {
+                if (node.IsSelected)
+                {
+                    nodeListEmpty = false;
+                    break;
+                }
+            }
+            return nodeListEmpty;
+        }
+
+
         public void GetSelectNodes()
         {
             foreach (FunctionNode node in FunctionNodes)
             {
                 SelectFunctionNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[0], BrushSet[1], TextColour, new CornerRadius(30), Background, NormalButtonColour,
-                    FunctionNodes.IndexOf(node).ToString(), node.IsSelected, "function"));
+                    FunctionNodes.IndexOf(node).ToString(), node.IsSelected, "function", this));
             }
 
             foreach (TerminalNode node in TerminalNodes)
             {
                 SelectTerminalNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[2], BrushSet[3], TextColour, new CornerRadius(0), Background, NormalButtonColour,
-                    TerminalNodes.IndexOf(node).ToString(), node.IsSelected, "terminal"));
+                    TerminalNodes.IndexOf(node).ToString(), node.IsSelected, "terminal", this));
             }
 
             foreach (FunctionNode node in FunctionRootNodes)
             {
                 SelectRootNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[0], BrushSet[1], TextColour, new CornerRadius(30), Background, NormalButtonColour,
-                    FunctionRootNodes.IndexOf(node).ToString(), node.IsSelected, "rootFunction"));
+                    FunctionRootNodes.IndexOf(node).ToString(), node.IsSelected, "rootFunction", this));
             }
 
             foreach (TerminalNode node in TerminalRootNodes)
             {
                 SelectRootNodes.Add(new SelectNode(node.Symbol, node.NodeDescription, BrushSet[2], BrushSet[3], TextColour, new CornerRadius(0), Background, NormalButtonColour,
-                    TerminalRootNodes.IndexOf(node).ToString(), node.IsSelected, "rootTerminal"));
+                    TerminalRootNodes.IndexOf(node).ToString(), node.IsSelected, "rootTerminal", this));
             }
         }
     }
@@ -134,9 +164,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private string? checkBoxCommandParameter;
         private bool? isSelected;
         private string? functionType;
+        private GPR4SelectNodesViewModel? selectNodesVM;
 
         public SelectNode(string? symbol, string? nodeDescription, Brush? nodeOutline, Brush? nodeFill, Brush? textColour, CornerRadius? cornerRadius, Brush? backgroundColour,
-            Brush? normalButtonColour, string? checkBoxCommandParameter, bool? isSelected, string? functionType)
+            Brush? normalButtonColour, string? checkBoxCommandParameter, bool? isSelected, string? functionType, GPR4SelectNodesViewModel? selectNodesVM)
         {
             this.symbol = symbol;
             this.nodeDescription = nodeDescription;
@@ -151,6 +182,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             this.functionType = functionType;
 
             this.checkBoxCommand = new RelayCommand<string>(param => CheckBox(param));
+            this.selectNodesVM = selectNodesVM;
         }
 
         public string? Symbol { get => symbol; set => symbol = value; }
@@ -165,9 +197,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public string? CheckBoxCommandParameter { get => checkBoxCommandParameter; set => checkBoxCommandParameter = value; }
         public bool? IsSelected { get => isSelected; set => isSelected = value; }
         public string? FunctionType { get => functionType; set => functionType = value; }
+        public GPR4SelectNodesViewModel? SelectNodesVM { get => selectNodesVM; set => selectNodesVM = value; }
 
         public void CheckBox(string nodeNumString)
         {
+            selectNodesVM.ErrorMessage = "";
             int nodeNumInt = Convert.ToInt32(nodeNumString);
 
             if (FunctionType == "function")

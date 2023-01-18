@@ -45,6 +45,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private List<SelectDataset> datasets = new List<SelectDataset>();
 
+        [ObservableProperty]
+        private string errorMessage = "";
+
         //Constructor
         public GPR5SelectTrainingDataViewModel()
         {
@@ -63,7 +66,25 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void NavNext()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPR6SelectTreeGrowingMethodViewModel();
+            bool noDatasets = true;
+
+            foreach(bool dataset in AppInfoSingleton.Instance.CurrentTemplate.CurrentDatasets)
+            {
+                if (dataset)
+                {
+                    noDatasets = false;
+                    break;
+                }
+            }
+
+            if (noDatasets)
+            {
+                ErrorMessage = "*Select a Dataset.";
+            }
+            else
+            {
+                AppInfoSingleton.Instance.CurrentViewModel = new GPR6SelectTreeGrowingMethodViewModel();
+            }
         }
 
         public void NavBack()
@@ -76,7 +97,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             for (int i = 0; i < datasetsUI.Count; i++)
             {
-                Datasets.Add(new SelectDataset(datasetsUI[i], Background, TextColour, NormalButtonColour, i.ToString(), currentDatasets[i]));
+                Datasets.Add(new SelectDataset(datasetsUI[i], Background, TextColour, NormalButtonColour, i.ToString(), currentDatasets[i], this));
             }
         }
     }
@@ -90,8 +111,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private string? checkBoxCommandParameter;
         private bool? isSelected;
         private ICommand checkBoxCommand;
+        private GPR5SelectTrainingDataViewModel selectDatasetVM;
 
-        public SelectDataset(string? datasetInfo, Brush? backgroundColour, Brush? textColour, Brush? normalButtonColour, string? checkBoxCommandParameter, bool? isSelected)
+        public SelectDataset(string? datasetInfo, Brush? backgroundColour, Brush? textColour, Brush? normalButtonColour, string? checkBoxCommandParameter, bool? isSelected, GPR5SelectTrainingDataViewModel selectDatasetVM)
         {
             this.datasetInfo = datasetInfo;
             this.backgroundColour = backgroundColour;
@@ -100,6 +122,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             this.checkBoxCommandParameter = checkBoxCommandParameter;
             this.isSelected = isSelected;
             this.CheckBoxCommand = new RelayCommand<string>(param => CheckBox(param));
+            this.selectDatasetVM = selectDatasetVM;
         }
 
         public string? DatasetInfo { get => datasetInfo; set => datasetInfo = value; }
@@ -109,9 +132,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public string? CheckBoxCommandParameter { get => checkBoxCommandParameter; set => checkBoxCommandParameter = value; }
         public bool? IsSelected { get => isSelected; set => isSelected = value; }
         public ICommand CheckBoxCommand { get => checkBoxCommand; set => checkBoxCommand = value; }
+        public GPR5SelectTrainingDataViewModel SelectDatasetVM { get => selectDatasetVM; set => selectDatasetVM = value; }
 
         public void CheckBox(string datasetNumString)
         {
+            selectDatasetVM.ErrorMessage = "";
             int datasetNumInt = Convert.ToInt32(datasetNumString);
 
             if (AppInfoSingleton.Instance.CurrentTemplate.CurrentDatasets[datasetNumInt] == false)
