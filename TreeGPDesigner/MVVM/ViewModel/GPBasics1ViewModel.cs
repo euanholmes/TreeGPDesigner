@@ -92,6 +92,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             "called your \"terminal set.\" Both these sets together make up your \"primitive set.\"\n\nTry out selecting different function, terminal and root " +
             "nodes and see the different program trees you can generate.";
 
+        [ObservableProperty]
+        private string errorMessage = "";
+
         //Constructor
         public GPBasics1ViewModel()
         {
@@ -134,8 +137,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             if ((bpTemplate.TerminalNodes.Count == 0 && SelectedRootNodes[4] == false && SelectedRootNodes[5] == false) ||
                 (bpTemplate.TerminalRootNodes.Count == 0 && bpTemplate.FunctionRootNodes.Count == 0))
             {
-                MessageBox.Show("Error generating tree. Make sure there are root nodes selected. Also, if using only function root " +
-                    "nodes make sure there are terminal nodes selected.", "Tree Generation Error");
+                /*MessageBox.Show("Error generating tree. Make sure there are root nodes selected. Also, if using only function root " +
+                    "nodes make sure there are terminal nodes selected.", "Tree Generation Error");*/
+                ErrorMessage = "*Select More Nodes.";
             }
             else
             {
@@ -203,6 +207,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void FunctionNodeCheckBox(string functionNodeNum)
         {
+            ErrorMessage = "";
             if (SelectedFunctionNodes[Convert.ToInt32(functionNodeNum)] == true)
             {
                 SelectedFunctionNodes[Convert.ToInt32(functionNodeNum)] = false;
@@ -215,6 +220,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void TerminalNodeCheckBox(string terminalNodeNum)
         {
+            ErrorMessage = "";
             if (SelectedTerminalNodes[Convert.ToInt32(terminalNodeNum)] == true)
             {
                 SelectedTerminalNodes[Convert.ToInt32(terminalNodeNum)] = false;
@@ -227,6 +233,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void RootNodeCheckBox(string rootNodeNum)
         {
+            ErrorMessage = "";
             if (SelectedRootNodes[Convert.ToInt32(rootNodeNum)] == true)
             {
                 SelectedRootNodes[Convert.ToInt32(rootNodeNum)] = false;

@@ -23,6 +23,9 @@ namespace TreeGPDesigner.MVVM.View
     /// </summary>
     public partial class GPR8FinalSettings : UserControl
     {
+        public int maxDepthLoad = 0;
+        public int popCountLoad = 0;
+
         public GPR8FinalSettings()
         {
             InitializeComponent();
@@ -56,6 +59,17 @@ namespace TreeGPDesigner.MVVM.View
             int popCountInt;
             bool success = Int32.TryParse(popCountString, out popCountInt);
 
+            popCountLoad = popCountInt;
+            if (popCountLoad > 9999 || maxDepthLoad > 14)
+            {
+                loadMessage.Text = "*Potentially long load time.";
+            }
+            else
+            {
+                loadMessage.Text = "";
+            }
+
+
             if (success)
             {
                 AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount = popCountInt;
@@ -67,6 +81,16 @@ namespace TreeGPDesigner.MVVM.View
             string maxDepthString = maxDepth.Text;
             int maxDepthInt;
             bool success = Int32.TryParse(maxDepthString, out maxDepthInt);
+
+            maxDepthLoad = maxDepthInt;
+            if (popCountLoad > 9999 || maxDepthLoad > 14)
+            {
+                loadMessage.Text = "*Potentially long load time.";
+            }
+            else
+            {
+                loadMessage.Text = "";
+            }
 
             if (success)
             {

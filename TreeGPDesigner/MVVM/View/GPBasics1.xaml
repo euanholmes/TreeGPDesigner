@@ -760,8 +760,11 @@
                     <Button Command="{Binding NavNextCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Next"/>
                 </Viewbox>
             </Grid>
-            
-            
+
+            <!-- Error Message -->
+            <Viewbox Grid.Column="2">
+                <TextBlock Foreground="Red" FontFamily="{StaticResource RobotoLightItalic}" Text="{Binding ErrorMessage}"/>
+            </Viewbox>
         </Grid>
     </Grid>
 </UserControl>

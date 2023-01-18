@@ -296,6 +296,11 @@
                     </StackPanel>
                 </Viewbox>
             </Grid>
+
+            <!-- Error Message -->
+            <Viewbox Grid.Column="2">
+                <TextBlock x:Name="loadMessage" Foreground="Orange" FontFamily="{StaticResource RobotoLightItalic}"/>
+            </Viewbox>
         </Grid>
     </Grid>
 </UserControl>
