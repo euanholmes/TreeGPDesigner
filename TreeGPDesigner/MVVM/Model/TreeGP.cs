@@ -629,9 +629,38 @@ namespace TreeGPDesigner.MVVM.Model
             TruncationSelection(selectionNumber);
         }
 
+        //Note: There was a bug with this that generation was set to another list and it changed that list as well. Fixed it
+        //in problem by doing Generation = new List<Node>(programs). Didn't break truncation selection though????
         public void TournamentSelection(int selectionNumber)
         {
-            TruncationSelection(selectionNumber);
+            int tournamentSelectionNum = (int)Math.Floor((60 / 100d) * CurrentPopulationCount);
+            List<Node> tournament = new();
+
+            for (int i = 0; i < selectionNumber; i++)
+            {
+                tournament = new List<Node>(Generation);
+                tournament = tournament.OrderBy(a => random.Next()).ToList();
+
+                if (tournamentSelectionNum < Generation.Count)
+                {
+                    tournament.RemoveRange(tournamentSelectionNum, tournament.Count - tournamentSelectionNum);
+                }
+
+                tournament = tournament.OrderByDescending(a => a.Fitness).ToList();
+
+
+               /* Trace.Write($"Run {i}");
+                foreach (Node node in tournament)
+                {
+                    Trace.Write($"{node.Name} fitness = {node.Fitness}  ");
+                }
+                Trace.WriteLine("");*/
+
+                GeneticFunctionPool.Add(tournament[0]);
+                Generation.Remove(tournament[0]);
+            }
+            tournament.Clear();
+            Generation.Clear();
         }
 
         public void ApplyGeneticFunctions(int crossoverNumber, int mutationNumber, int maxDepth)

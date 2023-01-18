@@ -126,7 +126,7 @@ namespace TreeGPDesigner.MVVM.Model
             FFDTree.ChildNodes.Add(new FunctionNode("+", 2, a => a[0] + a[1], false));
             FFDTree.ChildNodes.Add(new TerminalNode("BC", 0, 2, true));
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, 0, true));
-            FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("LI", 0, 1, true));
+            FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, 1, true));
 
             FFDTree.Name = "FFD";
 

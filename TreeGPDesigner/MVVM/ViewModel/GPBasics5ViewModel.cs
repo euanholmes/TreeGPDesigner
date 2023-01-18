@@ -181,7 +181,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public async void Select()
         {
             SelectEnabled = false;
-            bpTemplate.Generation = programs;
+            bpTemplate.CurrentPopulationCount = 10;
+            bpTemplate.Generation = new List<Node>(programs);
 
             if (selectionMethod == 0)
             {
@@ -265,6 +266,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             }
 
             SelectEnabled = true;
+            selection1 = null;
+            selection2 = null;
+            selection3 = null;
         }
 
         public void RadioButton(string selectionMethodString)
