@@ -122,24 +122,24 @@
                                             </Grid>
 
                                             <!-- Full Tree -->
-                                            <Canvas Width="250" Height="250">
-                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="125" Y1="25" X2="58.333335" Y2="125"/>
-                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="125" Y1="25" X2="191.6666665" Y2="125"/>
+                                            <Canvas Width="350" Height="250">
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="175" Y1="25" X2="75" Y2="125"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="175" Y1="25" X2="275" Y2="125"/>
 
-                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="58.333335" Y1="125" X2="25" Y2="225"/>
-                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="58.333335" Y1="125" X2="91.6666667" Y2="225"/>
-                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="191.6666665" Y1="125" X2="158.3333334" Y2="225"/>
-                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="191.6666665" Y1="125" X2="225" Y2="225"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="75" Y1="125" X2="25" Y2="225"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="75" Y1="125" X2="125" Y2="225"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="275" Y1="125" X2="225" Y2="225"/>
+                                                <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="275" Y1="125" X2="325" Y2="225"/>
 
-                                                <Border Canvas.Left="100" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                <Border Canvas.Left="150" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
 
-                                                <Border Canvas.Top="100" Canvas.Left="33.3333335" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
-                                                <Border Canvas.Top="100" Canvas.Left="166.6666665" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                <Border Canvas.Top="100" Canvas.Left="50" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                                <Border Canvas.Top="100" Canvas.Left="250" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
 
                                                 <Border Canvas.Top="200" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
-                                                <Border Canvas.Top="200" Canvas.Left="66.6666667" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
-                                                <Border Canvas.Top="200" Canvas.Left="133.3333334" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                <Border Canvas.Top="200" Canvas.Left="100" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
                                                 <Border Canvas.Top="200" Canvas.Left="200" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                                <Border Canvas.Top="200" Canvas.Left="300" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
                                             </Canvas>
                                         </Grid>
                                     </Viewbox>
