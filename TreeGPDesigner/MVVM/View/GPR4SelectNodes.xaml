@@ -78,7 +78,7 @@
                                                     </Border>
 
                                                     <!-- Description -->
-                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="1" Text="{Binding NodeDescription}"/>
+                                                    <TextBlock Width="200" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoRegular}" Grid.Column="1" Text="{Binding NodeDescription}"/>
                                                     
                                                     <!-- CheckBox -->
                                                     <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>
@@ -135,7 +135,7 @@
                                                     </Border>
 
                                                     <!-- Description -->
-                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="1" Text="{Binding NodeDescription}"/>
+                                                    <TextBlock Width="200" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoRegular}" Grid.Column="1" Text="{Binding NodeDescription}"/>
 
                                                     <!-- CheckBox -->
                                                     <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>
@@ -192,7 +192,7 @@
                                                     </Border>
 
                                                     <!-- Description -->
-                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="1" Text="{Binding NodeDescription}"/>
+                                                    <TextBlock Width="200" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoRegular}" Grid.Column="1" Text="{Binding NodeDescription}"/>
 
                                                     <!-- CheckBox -->
                                                     <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="2"/>

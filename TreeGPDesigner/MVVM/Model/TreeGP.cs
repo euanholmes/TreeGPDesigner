@@ -599,7 +599,7 @@ namespace TreeGPDesigner.MVVM.Model
             Node newNode;
             Node crossoverNode2;
 
-            if (crossoverNode1.DepthLevel == maxDepth && crossoverNode1.GetType() == typeof(TerminalNode))
+            if (crossoverNode1.DepthLevel == maxDepth/* && crossoverNode1.GetType() == typeof(TerminalNode)*/)
             {
                 crossoverNode2 = GetRandomTerminalNodeOfTree(node2);
             }

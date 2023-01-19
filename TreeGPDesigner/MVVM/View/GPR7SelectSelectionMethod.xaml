@@ -44,6 +44,8 @@
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="2*"/>
@@ -52,8 +54,13 @@
                         <RowDefinition Height="0.1*"/>
                     </Grid.RowDefinitions>
                     
+                    <!-- Tournament Title -->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock TextAlignment="Center" Width="113.963333333333" Text="Tournament" Style="{DynamicResource SubTitleText}"/>
+                    </Viewbox>
+                    
                     <!-- Tournament Selection Diagram -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
                         <Viewbox>
                             <Grid Margin="10">
                                 <Grid>
@@ -157,28 +164,19 @@
                                         </Viewbox>
                                     </Grid>
                                 </Grid>
-
-
-
-
                             </Grid>
                         </Viewbox>
                     </Border>
                     
                     <!-- Tournament Selection Information -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="5">
                         <Viewbox Margin="10">
-                            <TextBlock Style="{DynamicResource RegularText}">
-                                Tournament: Programs are stacked <LineBreak/>
-                                against each other with the winner <LineBreak/>
-                                of each tournament being selected.<LineBreak/>
-                                <LineBreak/>
-                            </TextBlock>
+                            <TextBlock TextAlignment="Center" Width="200" TextWrapping="Wrap" Style="{DynamicResource RegularText}" Text="Programs are stacked against each other with the winner of each tournament being selected."/>
                         </Viewbox>
                     </Border>
                     
                     <!-- Tournament Selection Radio Button -->
-                    <Viewbox Grid.Row="5">
+                    <Viewbox Grid.Row="7">
                         <RadioButton IsChecked="{Binding RadioButton1IsChecked}" Command="{Binding SetSelectionMethodCommand}" CommandParameter="0" Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
 
@@ -188,6 +186,8 @@
                 <Grid Grid.Column="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="2*"/>
@@ -195,9 +195,14 @@
                         <RowDefinition Height="0.75*"/>
                         <RowDefinition Height="0.1*"/>
                     </Grid.RowDefinitions>
+                    
+                    <!-- Fitness Proportionate Title -->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock Text="Fitness Proportionate" Style="{DynamicResource SubTitleText}"/>
+                    </Viewbox>
 
                     <!-- Fitness Proportionate Selection Diagram -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
                         <Viewbox>
                             <Grid Margin="10">
                                 <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
@@ -228,20 +233,14 @@
                     </Border>
 
                     <!-- Fitness Proportionate Selection Information -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="5">
                         <Viewbox Margin="10">
-                            <TextBlock Style="{DynamicResource RegularText}">
-                                Fitness Proportionate: Programs are<LineBreak/>
-                                assigned a probability based on their<LineBreak/>
-                                fitness then a roulette system using<LineBreak/>
-                                these probabilities decides which <LineBreak/>
-                                programs will be selected.
-                            </TextBlock>
+                            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="180" Style="{DynamicResource RegularText}" Text="Programs are assigned a probability based on their fitness then a roulette system decides which programs will be selected."/>
                         </Viewbox>
                     </Border>
 
                     <!-- Fitness Proportionate Selection Radio Button -->
-                    <Viewbox Grid.Row="5">
+                    <Viewbox Grid.Row="7">
                         <RadioButton IsChecked="{Binding RadioButton2IsChecked}" Command="{Binding SetSelectionMethodCommand}" CommandParameter="1" Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
@@ -250,6 +249,8 @@
                 <Grid Grid.Column="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="2*"/>
@@ -257,9 +258,14 @@
                         <RowDefinition Height="0.75*"/>
                         <RowDefinition Height="0.1*"/>
                     </Grid.RowDefinitions>
+                    
+                    <!-- Truncation Title -->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock TextAlignment="Center" Width="113.963333333333" Text="Truncation" Style="{DynamicResource SubTitleText}"/>
+                    </Viewbox>
 
                     <!-- Truncation Selection Diagram -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
                         <Viewbox>
                             <Grid Margin="10">
                                 <Line X1="0" Y1="0" X2="0" Y2="198.7"/>
@@ -296,19 +302,14 @@
                     </Border>
 
                     <!-- Truncation Selection Information -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="5">
                         <Viewbox Margin="10">
-                            <TextBlock Style="{DynamicResource RegularText}">
-                                Truncation: The population of <LineBreak/>
-                                programs is ranked by fitness<LineBreak/>
-                                then a proportion of programs <LineBreak/>
-                                are selected.<LineBreak/>
-                            </TextBlock>
+                            <TextBlock Width="158" TextAlignment="Center" TextWrapping="Wrap" Style="{DynamicResource RegularText}" Text="The population of programs is ranked by fitness then a proportion of programs are selected."/>
                         </Viewbox>
                     </Border>
 
                     <!-- Truncation Selection Radio Button -->
-                    <Viewbox Grid.Row="5">
+                    <Viewbox Grid.Row="7">
                         <RadioButton IsChecked="{Binding RadioButton3IsChecked}" Command="{Binding SetSelectionMethodCommand}" CommandParameter="2" Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>

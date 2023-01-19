@@ -57,7 +57,7 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <!-- Dataset -->
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="0" Text="{Binding DatasetInfo}"/>
+                                                <TextBlock Width="500" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoRegular}" Grid.Column="0" Text="{Binding DatasetInfo}"/>
 
                                                 <!-- CheckBox -->
                                                 <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding CheckBoxCommandParameter}" Style="{DynamicResource CheckBox}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="1"/>

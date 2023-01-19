@@ -36,11 +36,11 @@ namespace TreeGPDesigner.MVVM.Model
 
         private List<string> BPDatasetsUI = new List<string>()
         {
-            "Random Dataset 1 (10 problems)       ",
-            "Random Dataset 2 (50 problems)       ",
-            "Random Dataset 3 (100 problems)      ",
-            "Random Dataset 4 (200 problems)      ",
-            "Random Dataset 5 (500 problems)      "
+            "Random Dataset 1 (10 problems)",
+            "Random Dataset 2 (50 problems)",
+            "Random Dataset 3 (100 problems)",
+            "Random Dataset 4 (200 problems)",
+            "Random Dataset 5 (500 problems)"
         };
 
         private static Random random = new();
@@ -66,21 +66,21 @@ namespace TreeGPDesigner.MVVM.Model
                 CurrentDatasets.Add(false);
             }
 
-            AddFunctionNode(new FunctionNode("<=", 2,  "Less Than or Equal To   ", true, a => a[0] <= a[1] ? 1 : 0, true));
-            AddFunctionNode(new FunctionNode("+", 2,   "Addition                ", true, a => a[0] + a[1], false));
-            AddFunctionNode(new FunctionNode("-", 2,   "Subtraction             ", true, a => a[0] - a[1], false));
-            AddFunctionNode(new FunctionNode("*", 2,   "Multiplication          ", true, a => a[0] * a[1], false));
-            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs                ", true, a => Math.Abs(a[0]), false));
-            AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition      ", true, a => a[0] + a[1] + a[2], false));
-            AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight      ", true, 0, true));
-            AddTerminalNode(new TerminalNode("CI", 0,  "Current Item            ", true, 1, true));
-            AddTerminalNode(new TerminalNode("BC", 0,  "Bin Capacity            ", true, 2, true));
-            AddTerminalNode(new TerminalNode("-1", 0,  "-1                      ", true, -1, false));
-            AddTerminalNode(new TerminalNode("1", 0,   "1                       ", true, 1, false));
-            AddRootNode(new FunctionNode("<=", 2,      "Less Than or Equal To   ", true, a => a[0] <= a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode(">=", 2,      "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode(">", 2,       "Greater Than            ", true, a => a[0] > a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode("<", 2,       "Less Than               ", true, a => a[0] < a[1] ? 1 : 0, true));
+            AddFunctionNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0, true));
+            AddFunctionNode(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1], false));
+            AddFunctionNode(new FunctionNode("-", 2, "Subtraction", true, a => a[0] - a[1], false));
+            AddFunctionNode(new FunctionNode("*", 2, "Multiplication", true, a => a[0] * a[1], false));
+            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs", true, a => Math.Abs(a[0]), false));
+            AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition", true, a => a[0] + a[1] + a[2], false));
+            AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
+            AddTerminalNode(new TerminalNode("CI", 0, "Current Item", true, 1, true));
+            AddTerminalNode(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
+            AddTerminalNode(new TerminalNode("-1", 0, "-1", true, -1, false));
+            AddTerminalNode(new TerminalNode("1", 0, "1", true, 1, false));
+            AddRootNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode(">=", 2, "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0, true));
 
             Node FFDTree = MakeFFDTree();
             KnownAlgorithms.Add(FFDTree);

@@ -44,6 +44,8 @@
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="2*"/>
@@ -51,11 +53,15 @@
                         <RowDefinition Height="0.75*"/>
                         <RowDefinition Height="0.1*"/>
                     </Grid.RowDefinitions>
+                    
+                    <!-- Ramped Half and Half Title -->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock Text="Ramped Half and Half" Style="{DynamicResource SubTitleText}"/>
+                    </Viewbox>
 
                     <!-- Ramped Half And Half Display -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
                         <Grid Margin="10">
-
                             <Viewbox>
                                 <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="0" Y1="100" X2="100" Y2="0"/>
                             </Viewbox>
@@ -230,19 +236,18 @@
                     </Border>
 
                     <!-- Ramped Half And Half Information Panel -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="5">
                         <Viewbox Margin="10">
-                            <TextBlock Style="{DynamicResource RegularText}">
-                            Ramped Half and Half:<LineBreak/> 
-                            The trees will be grown<LineBreak/>
-                            with the ramped half<LineBreak/>
+                            <TextBlock TextAlignment="Center" Width="158" TextWrapping="Wrap" Style="{DynamicResource RegularText}">
+                            The trees will be grown
+                            with the ramped half
                             and half method.
                             </TextBlock>
                         </Viewbox>
                     </Border>
 
                     <!-- Ramped Half And Half Radio Button -->
-                    <Viewbox Grid.Row="5">
+                    <Viewbox Grid.Row="7">
                         <RadioButton IsChecked="{Binding RadioButton1IsChecked}" Command="{Binding SetTreeGrowingMethodCommand}" CommandParameter="0" Foreground="{Binding TextColour}"  GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
@@ -251,6 +256,8 @@
                 <Grid Grid.Column="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="2*"/>
@@ -258,9 +265,14 @@
                         <RowDefinition Height="0.75*"/>
                         <RowDefinition Height="0.1*"/>
                     </Grid.RowDefinitions>
+                    
+                    <!-- All Grow Title -->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock TextAlignment="Center" Width="115.6" Text="All Grow" Style="{DynamicResource SubTitleText}"/>
+                    </Viewbox>
 
                     <!-- Grow Method Tree -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
                         <Viewbox>
                             <Grid Margin="10">
                                 <!-- Lines -->
@@ -315,18 +327,14 @@
                     </Border>
 
                     <!-- Grow Method Information Panel -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="5">
                         <Viewbox Margin="10">
-                            <TextBlock Style="{DynamicResource RegularText}">
-                            All grow: All trees<LineBreak/> 
-                            will be grown with <LineBreak/>
-                            the grow method.<LineBreak/>
-                            </TextBlock>
+                            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="158" Style="{DynamicResource RegularText}" Text="All trees will be grown with the grow method."/>
                         </Viewbox>
                     </Border>
 
                     <!-- Grow Method Radio Button -->
-                    <Viewbox Grid.Row="5">
+                    <Viewbox Grid.Row="7">
                         <RadioButton IsChecked="{Binding RadioButton2IsChecked}" Command="{Binding SetTreeGrowingMethodCommand}" CommandParameter="1" Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>
@@ -335,6 +343,8 @@
                 <Grid Grid.Column="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="2*"/>
@@ -342,9 +352,14 @@
                         <RowDefinition Height="0.75*"/>
                         <RowDefinition Height="0.1*"/>
                     </Grid.RowDefinitions>
+                    
+                    <!-- All Full Title -->
+                    <Viewbox Grid.Row="1">
+                        <TextBlock TextAlignment="Center" Width="115.6" Text="All Full" Style="{DynamicResource SubTitleText}"/>
+                    </Viewbox>
 
                     <!-- Full Method Tree -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="1">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
                         <Viewbox>
                             <Grid Margin="10">
                                 <!-- Lines -->
@@ -444,18 +459,14 @@
                     </Border>
 
                     <!-- Full Method Information Panel -->
-                    <Border Style="{DynamicResource Panel1}" Grid.Row="3">
+                    <Border Style="{DynamicResource Panel1}" Grid.Row="5">
                         <Viewbox Margin="10">
-                            <TextBlock Style="{DynamicResource RegularText}">
-                            All full: All trees<LineBreak/> 
-                            will be grown with <LineBreak/>
-                            the full method.<LineBreak/>
-                            </TextBlock>
+                            <TextBlock TextAlignment="Center" Width="158" TextWrapping="Wrap" Style="{DynamicResource RegularText}" Text="All trees will be grown with the full method."/>
                         </Viewbox>
                     </Border>
 
                     <!-- Full Method Radio Button -->
-                    <Viewbox Grid.Row="5">
+                    <Viewbox Grid.Row="7">
                         <RadioButton IsChecked="{Binding RadioButton3IsChecked}" Command="{Binding SetTreeGrowingMethodCommand}" CommandParameter="2" Foreground="{Binding TextColour}" GroupName="growMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
                 </Grid>

@@ -72,11 +72,11 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <!-- Algorithm Name -->
-                                                <TextBlock Width="100" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="2" Text="{Binding Name}"/>
+                                                <TextBlock Width="100" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoRegular}" Grid.Column="2" Text="{Binding Name}"/>
 
                                                 <!-- Colour Indicator and Fitness -->
                                                 <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding ColourIndicator}">
-                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Text="{Binding Fitness}"/>
+                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Fitness}"/>
                                                 </Border>
                                             </Grid>
                                         </Viewbox>
@@ -230,11 +230,11 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <!-- Algorithm Name -->
-                                                <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Grid.Column="2" Text="{Binding Name}"/>
+                                                <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoRegular}" Grid.Column="2" Text="{Binding Name}"/>
 
                                                 <!-- Colour Indicator and Fitness -->
                                                 <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding ColourIndicator}">
-                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="Courier New" FontWeight="DemiBold" Text="{Binding Fitness}"/>
+                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Fitness}"/>
                                                 </Border>
                                             </Grid>
                                         </Viewbox>
