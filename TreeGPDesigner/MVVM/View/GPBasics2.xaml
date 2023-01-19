@@ -83,56 +83,33 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <!-- Grow Tree -->
-                                <Viewbox Grid.Column="0">
-                                    <Grid>
-                                        <!-- Lines -->
+                                <!-- Grow Method Tree -->
+                                <Viewbox>
+                                    <Grid Margin="10">
+                                        <!-- Grid Lines -->
                                         <Grid>
                                             <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
                                             <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
                                             <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
                                             <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
-
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="76.65" Y1="99.35" X2="127.75" Y2="19.87"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="178.85" Y1="99.35" X2="127.75" Y2="19.87"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="76.65" Y2="99.35"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="127.75" Y1="178.3" X2="76.65" Y2="99.35"/>
                                         </Grid>
 
-                                        <!-- Nodes -->
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
+                                        <!-- Grow Tree -->
+                                        <Canvas Width="250" Height="250">
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="125" Y1="25" X2="75" Y2="125"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="125" Y1="25" X2="175" Y2="125"/>
 
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="0.83333*"/>
-                                                <RowDefinition Height="0.25*"/>
-                                                <RowDefinition Height="0.83333*"/>
-                                                <RowDefinition Height="0.25*"/>
-                                                <RowDefinition Height="0.83333*"/>
-                                            </Grid.RowDefinitions>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="75" Y1="125" X2="25" Y2="225"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="75" Y1="125" X2="125" Y2="225"/>
 
-                                            <Viewbox Grid.Row="0" Grid.Column="2">
-                                                <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
-                                            </Viewbox>
-                                            <Viewbox Grid.Row="2" Grid.Column="1">
-                                                <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
-                                            </Viewbox>
-                                            <Viewbox Grid.Row="2" Grid.Column="3">
-                                                <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
-                                            </Viewbox>
-                                            <Viewbox Grid.Row="4" Grid.Column="0">
-                                                <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
-                                            </Viewbox>
-                                            <Viewbox Grid.Row="4" Grid.Column="2">
-                                                <Border BorderThickness="2"  BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
-                                            </Viewbox>
-                                        </Grid>
+                                            <Border Canvas.Left="100" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+
+                                            <Border Canvas.Top="100" Canvas.Left="50" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                            <Border Canvas.Top="100" Canvas.Left="150" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+
+                                            <Border Canvas.Top="200" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border Canvas.Top="200" Canvas.Left="100" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        </Canvas>
                                     </Grid>
                                 </Viewbox>
 
@@ -166,103 +143,41 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <!-- Full Tree -->
-                                <Viewbox Grid.Column="0">
-                                    <Grid>
+                                <!-- Full Method Tree -->
+                                <Viewbox>
+                                    <Grid Margin="10">
                                         <!-- Lines -->
                                         <Grid>
                                             <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="198.7"/>
                                             <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="255.5" Y2="0"/>
                                             <Line StrokeThickness="0" Stroke="Black" X1="255.5" Y1="0" X2="255.5" Y2="198.7"/>
                                             <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="198.7" X2="255.5" Y2="198.7"/>
-
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="63.875" Y1="99.35" X2="127.75" Y2="19.87"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="191.625" Y1="99.35" X2="127.75" Y2="19.87"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="25.55" Y1="178.3" X2="59.61" Y2="99.35"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="93.68" Y1="178.3" X2="59.61" Y2="99.35"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="161.82" Y1="178.3" X2="195.88" Y2="99.35"/>
-                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="230" Y1="178.3" X2="195.88" Y2="99.35"/>
                                         </Grid>
 
-                                        <!-- Nodes -->
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="2*"/>
-                                                <RowDefinition Height="2*"/>
-                                            </Grid.RowDefinitions>
+                                        <!-- Full Tree -->
+                                        <Canvas Width="250" Height="250">
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="125" Y1="25" X2="58.333335" Y2="125"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="125" Y1="25" X2="191.6666665" Y2="125"/>
 
-                                            <Grid Grid.Row="0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="58.333335" Y1="125" X2="25" Y2="225"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="58.333335" Y1="125" X2="91.6666667" Y2="225"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="191.6666665" Y1="125" X2="158.3333334" Y2="225"/>
+                                            <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="191.6666665" Y1="125" X2="225" Y2="225"/>
 
-                                                <Viewbox Grid.Row="0" Grid.Column="2">
-                                                    <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
-                                                </Viewbox>
-                                            </Grid>
+                                            <Border Canvas.Left="100" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
 
-                                            <Grid Grid.Row="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="0.66666*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="0.66666*"/>
-                                                    <ColumnDefinition Width="0.33333*"/>
-                                                    <ColumnDefinition Width="0.66666*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="0.66666*"/>
-                                                </Grid.ColumnDefinitions>
+                                            <Border Canvas.Top="100" Canvas.Left="33.3333335" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
+                                            <Border Canvas.Top="100" Canvas.Left="166.6666665" BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
 
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                </Grid.RowDefinitions>
-
-
-                                                <Viewbox Grid.Row="2" Grid.Column="1">
-                                                    <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
-                                                </Viewbox>
-                                                <Viewbox Grid.Row="2" Grid.Column="5">
-                                                    <Border BorderThickness="2" CornerRadius="50" BorderBrush="{Binding BrushSet[0]}" Background="{Binding BrushSet[1]}" Width="50" Height="50"/>
-                                                </Viewbox>
-                                            </Grid>
-
-                                            <Grid Grid.Row="2">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="0.333333*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="0.333333*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="0.333333*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                </Grid.RowDefinitions>
-
-                                                <Viewbox Grid.Row="1" Grid.Column="0">
-                                                    <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
-                                                </Viewbox>
-                                                <Viewbox Grid.Row="1" Grid.Column="2">
-                                                    <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
-                                                </Viewbox>
-                                                <Viewbox Grid.Row="1" Grid.Column="4">
-                                                    <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
-                                                </Viewbox>
-                                                <Viewbox Grid.Row="1" Grid.Column="6">
-                                                    <Border BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="42" Height="42"/>
-                                                </Viewbox>
-                                            </Grid>
-                                        </Grid>
+                                            <Border Canvas.Top="200" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border Canvas.Top="200" Canvas.Left="66.6666667" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border Canvas.Top="200" Canvas.Left="133.3333334" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                            <Border Canvas.Top="200" Canvas.Left="200" BorderThickness="2" BorderBrush="{Binding BrushSet[2]}" Background="{Binding BrushSet[3]}" Width="50" Height="50"/>
+                                        </Canvas>
                                     </Grid>
                                 </Viewbox>
+
+
 
                                 <!-- Full Tree Radio Button -->
                                 <Viewbox Grid.Column="2">
