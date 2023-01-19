@@ -624,9 +624,41 @@ namespace TreeGPDesigner.MVVM.Model
             Generation.Clear();
         }
 
+        //This might be wrong/just random, adapted from code here https://jamesmccaffrey.wordpress.com/2020/04/23/implementing-a-proportional-selection-function-using-roulette-wheel-selection/ 
         public void FitnessProportionateSelection(int selectionNumber)
         {
-            TruncationSelection(selectionNumber);
+            for (int i = 0; i < selectionNumber; i++)
+            {
+                double fitnessSum = 0.0;
+
+                for (int j = 0; j < Generation.Count; j++)
+                {
+                    fitnessSum += Generation[j].Fitness;
+                }
+
+                double accum = 0.0;
+                double p = random.NextDouble();
+
+                for (int j = 0; j < Generation.Count; j++)
+                {
+                    accum += (Generation[j].Fitness / fitnessSum);
+
+                    if (p < accum)
+                    {
+                        GeneticFunctionPool.Add(Generation[j]);
+                        Generation.Remove(Generation[j]);
+                        break;
+                    }
+
+                    if (j == Generation.Count)
+                    {
+                        GeneticFunctionPool.Add(Generation[j]);
+                        Generation.Remove(Generation[j]);
+                        break;
+                    }
+                }
+            }
+            Generation.Clear();
         }
 
         //Note: There was a bug with this that generation was set to another list and it changed that list as well. Fixed it
@@ -647,18 +679,10 @@ namespace TreeGPDesigner.MVVM.Model
                 }
 
                 tournament = tournament.OrderByDescending(a => a.Fitness).ToList();
-
-
-               /* Trace.Write($"Run {i}");
-                foreach (Node node in tournament)
-                {
-                    Trace.Write($"{node.Name} fitness = {node.Fitness}  ");
-                }
-                Trace.WriteLine("");*/
-
                 GeneticFunctionPool.Add(tournament[0]);
                 Generation.Remove(tournament[0]);
             }
+
             tournament.Clear();
             Generation.Clear();
         }
