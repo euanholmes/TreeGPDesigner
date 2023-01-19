@@ -201,6 +201,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             Node selection2 = bpTemplate.GeneticFunctionPool[1];
             Node selection3 = bpTemplate.GeneticFunctionPool[2];
 
+            bpTemplate.GeneticFunctionPool.Clear();
+
             Selection1Name = "";
             Selection1Fitness = "";
             Selection1Colour = Brushes.Transparent;
