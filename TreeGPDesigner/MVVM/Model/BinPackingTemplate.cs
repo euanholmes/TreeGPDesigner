@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Scripting;
+using Microsoft.CodeAnalysis.Scripting;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -94,6 +97,15 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(randomDataset100);
             bpDatasets.Add(randomDataset200);
             bpDatasets.Add(randomDataset500);
+        }
+
+        public async Task testAsync()
+        {
+            string functionLambda = "a => a[0] + a[1]";
+            var options = ScriptOptions.Default;
+            Func<int[], int> additionFunction = await CSharpScript.EvaluateAsync<Func<int[],int>>(functionLambda, options);
+            int[] testInts = new int[] { 10, 24 };
+            Trace.WriteLine(additionFunction(testInts));
         }
 
         public List<BPData> GenerateRandomBPDataset(int num)
