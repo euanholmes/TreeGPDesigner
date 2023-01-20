@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using TreeGPDesigner.MVVM.View;
 
 namespace TreeGPDesigner.MVVM.Model
 {
@@ -97,16 +98,18 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(randomDataset100);
             bpDatasets.Add(randomDataset200);
             bpDatasets.Add(randomDataset500);
+
+            AddCustomFunctionNode("* -1", 2, "Multiply then minus one", true, "a => (a[0] * a[1]) - 1", false);
         }
 
-        public async Task testAsync()
+        /*public async Task testAsync()
         {
             string functionLambda = "a => a[0] + a[1]";
             var options = ScriptOptions.Default;
             Func<int[], int> additionFunction = await CSharpScript.EvaluateAsync<Func<int[],int>>(functionLambda, options);
             int[] testInts = new int[] { 10, 24 };
             Trace.WriteLine(additionFunction(testInts));
-        }
+        }*/
 
         public List<BPData> GenerateRandomBPDataset(int num)
         {

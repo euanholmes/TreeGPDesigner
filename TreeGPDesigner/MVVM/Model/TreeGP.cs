@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
+using Microsoft.CodeAnalysis.Scripting;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -59,6 +61,15 @@ namespace TreeGPDesigner.MVVM.Model
         public int CurrentMinDepth { get => currentMinDepth; set => currentMinDepth = value; }
         public int CurrentGenerationNum { get => currentGenerationNum; set => currentGenerationNum = value; }
         public float LowestKnownAlgorithmFitness { get => lowestKnownAlgorithmFitness; set => lowestKnownAlgorithmFitness = value; }
+
+        public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, bool customIsNodeSelected, string customFunctionString,
+            bool customBooleanFunction)
+        {
+            var options = ScriptOptions.Default;
+            Func<int[], int> customFunction = await CSharpScript.EvaluateAsync<Func<int[], int>>(customFunctionString, options);
+
+            AddFunctionNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, customIsNodeSelected, customFunction, customBooleanFunction));
+        }
 
         public void AddFunctionNode(FunctionNode functionNode)
         {
