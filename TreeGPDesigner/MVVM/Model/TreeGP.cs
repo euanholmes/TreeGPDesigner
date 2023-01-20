@@ -62,13 +62,12 @@ namespace TreeGPDesigner.MVVM.Model
         public int CurrentGenerationNum { get => currentGenerationNum; set => currentGenerationNum = value; }
         public float LowestKnownAlgorithmFitness { get => lowestKnownAlgorithmFitness; set => lowestKnownAlgorithmFitness = value; }
 
-        public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, bool customIsNodeSelected, string customFunctionString,
-            bool customBooleanFunction)
+        public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, bool customIsNodeSelected, string customFunctionString)
         {
             var options = ScriptOptions.Default;
             Func<double[], double> customFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customFunctionString, options);
 
-            AddFunctionNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, customIsNodeSelected, customFunction, customBooleanFunction));
+            AddFunctionNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, customIsNodeSelected, customFunction));
         }
 
         public void AddFunctionNode(FunctionNode functionNode)
@@ -108,7 +107,7 @@ namespace TreeGPDesigner.MVVM.Model
         {
             FunctionNode randomFunctionNode = FunctionNodes[random.Next(0, FunctionNodes.Count)];
             FunctionNode functionNode = new FunctionNode(randomFunctionNode.Symbol, randomFunctionNode.NoOperands,
-                randomFunctionNode.Function, randomFunctionNode.BooleanFunction);
+                randomFunctionNode.Function);
             return functionNode;
         }
 
@@ -124,7 +123,7 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 FunctionNode randomFunctionRootNode = FunctionRootNodes[random.Next(0, FunctionRootNodes.Count)];
                 FunctionNode functionRootNode = new FunctionNode(randomFunctionRootNode.Symbol, randomFunctionRootNode.NoOperands,
-                    randomFunctionRootNode.Function, randomFunctionRootNode.BooleanFunction);
+                    randomFunctionRootNode.Function);
                 return functionRootNode;
             }
             else if (TerminalRootNodes.Count > 0 && FunctionRootNodes.Count == 0)
@@ -149,7 +148,7 @@ namespace TreeGPDesigner.MVVM.Model
                 {
                     FunctionNode randomFunctionRootNode = FunctionRootNodes[random.Next(0, FunctionRootNodes.Count)];
                     FunctionNode functionRootNode = new FunctionNode(randomFunctionRootNode.Symbol, randomFunctionRootNode.NoOperands,
-                        randomFunctionRootNode.Function, randomFunctionRootNode.BooleanFunction);
+                        randomFunctionRootNode.Function);
                     return functionRootNode;
                 }
             }
@@ -765,7 +764,7 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 FunctionNode functionNode = (FunctionNode)node;
                 copiedNode = new FunctionNode(functionNode.Symbol, functionNode.Root, functionNode.Data, functionNode.NoOperands, functionNode.Fitness,
-                    true, functionNode.Function, functionNode.BooleanFunction);
+                    true, functionNode.Function);
             }
             else
             {

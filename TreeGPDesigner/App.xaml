@@ -86,6 +86,10 @@
                 <view:GPR9MainScreen/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:AddCustomFunctionNodeViewModel}">
+                <view:AddCustomFunctionNode/>
+            </DataTemplate>
+
 
             <!-- Custom Fonts -->
             <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>

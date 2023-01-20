@@ -62,15 +62,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public Node? DisplayTree;
         private static Random random = new Random();
 
-        public List<FunctionNode> FunctionNodes = new() { new FunctionNode("+", 2, a => a[0] + a[1], false), new FunctionNode("<", 2, a => a[0] < a[1]? 1 : 0, true),
-            new FunctionNode("/", 2, a => a[0] / a[1], false), new FunctionNode("-", 2, a => a[0] - a[1], false), new FunctionNode("*", 2, a => a[0] * a[1], false),
-            new FunctionNode("ABS", 1, a => Math.Abs(a[0]), false)};
+        public List<FunctionNode> FunctionNodes = new() { new FunctionNode("+", 2, a => a[0] + a[1]), new FunctionNode("<", 2, a => a[0] < a[1]? 1 : 0),
+            new FunctionNode("/", 2, a => a[0] / a[1]), new FunctionNode("-", 2, a => a[0] - a[1]), new FunctionNode("*", 2, a => a[0] * a[1]),
+            new FunctionNode("ABS", 1, a => Math.Abs(a[0]))};
 
         public List<TerminalNode> TerminalNodes = new() { new TerminalNode("-1", 0, -1, false), new TerminalNode("1", 0, 1, false), new TerminalNode("34", 0, 34, false), 
             new TerminalNode("X", 0, 0, true), new TerminalNode("Y", 0, 1, true), new TerminalNode("AB", 0, 2, true)};
 
-        public List<Node> RootNodes = new() {new FunctionNode("+", 2, a => a[0] + a[1], false), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0, true),
-            new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0, true), new FunctionNode("-", 2, a => a[0] - a[1], false), new TerminalNode("X", 0, 0, true),
+        public List<Node> RootNodes = new() {new FunctionNode("+", 2, a => a[0] + a[1]), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0),
+            new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0), new FunctionNode("-", 2, a => a[0] - a[1]), new TerminalNode("X", 0, 0, true),
             new TerminalNode("1", 0, 1, false) };
 
         [ObservableProperty]

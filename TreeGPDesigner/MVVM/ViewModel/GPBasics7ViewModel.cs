@@ -59,9 +59,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         private Node displayTree;
 
-        private Node parentTree1 = new FunctionNode("+", 2, a => a[0] + a[1], false); 
+        private Node parentTree1 = new FunctionNode("+", 2, a => a[0] + a[1]); 
 
-        private Node parentTree2 = new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0, true);
+        private Node parentTree2 = new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0);
 
         [ObservableProperty]
         private string informationText = "Crossover is a genetic function that takes two parent trees and combines parts " +
@@ -81,11 +81,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavPreviousCommand = new RelayCommand(NavPrevious);
             CrossoverTreesCommand = new RelayCommand(CrossoverTrees);
 
-            parentTree1.ChildNodes.Add(new FunctionNode(">", 2, a => a[0] > a[1] ? 1 : 0, true));
+            parentTree1.ChildNodes.Add(new FunctionNode(">", 2, a => a[0] > a[1] ? 1 : 0));
             parentTree1.ChildNodes.Add(new TerminalNode("-1", 0, -1, false));
             parentTree1.ChildNodes[0].ChildNodes.Add(new TerminalNode("1", 0, 1, false));
             parentTree1.ChildNodes[0].ChildNodes.Add(new TerminalNode("X", 0, 1, true));
-            parentTree2.ChildNodes.Add(new FunctionNode("-", 2, a => a[0] - a[1], true));
+            parentTree2.ChildNodes.Add(new FunctionNode("-", 2, a => a[0] - a[1]));
             parentTree2.ChildNodes.Add(new TerminalNode("2Y", 0, 1, true));
             parentTree2.ChildNodes[0].ChildNodes.Add(new TerminalNode("AB", 0, 1, true));
             parentTree2.ChildNodes[0].ChildNodes.Add(new TerminalNode("34", 0, -1, false));

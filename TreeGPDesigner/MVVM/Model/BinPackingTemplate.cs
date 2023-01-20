@@ -70,13 +70,13 @@ namespace TreeGPDesigner.MVVM.Model
                 CurrentDatasets.Add(false);
             }
 
-            AddFunctionNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? a[0] : a[1], true));
-            AddFunctionNode(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1], false));
-            AddFunctionNode(new FunctionNode("-", 2, "Subtraction", true, a => a[0] - a[1], false));
-            AddFunctionNode(new FunctionNode("*", 2, "Multiplication", true, a => a[0] * a[1], false));
-            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs", true, a => Math.Abs(a[0]), false));
-            AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition", true, a => a[0] + a[1] + a[2], false));
-            AddFunctionNode(new FunctionNode("%", 2, "Protected Divide", true, a => a[1] == 0 ? 1 : a[0] / a[1], false));
+            AddFunctionNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? a[0] : a[1]));
+            AddFunctionNode(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1]));
+            AddFunctionNode(new FunctionNode("-", 2, "Subtraction", true, a => a[0] - a[1]));
+            AddFunctionNode(new FunctionNode("*", 2, "Multiplication", true, a => a[0] * a[1]));
+            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs", true, a => Math.Abs(a[0])));
+            AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition", true, a => a[0] + a[1] + a[2]));
+            AddFunctionNode(new FunctionNode("%", 2, "Protected Divide", true, a => a[1] == 0 ? 1 : a[0] / a[1]));
             AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
             AddTerminalNode(new TerminalNode("CI", 0, "Current Item", true, 1, true));
             AddTerminalNode(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
@@ -87,11 +87,11 @@ namespace TreeGPDesigner.MVVM.Model
             AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => a[0] - a[1], new int[]{ 2, 0}));
             AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", true, 0, false, true, a => a[0] * 2, new int[] { 2 }));
 
-            AddRootNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode(">=", 2, "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0, true));
-            AddRootNode(new FunctionNode("==", 2, "Equals", true, a => a[0] == a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0));
+            AddRootNode(new FunctionNode(">=", 2, "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0));
+            AddRootNode(new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? 1 : 0));
+            AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0));
+            AddRootNode(new FunctionNode("==", 2, "Equals", true, a => a[0] == a[1] ? 1 : 0));
 
             Node FFDTree = MakeFFDTree();
             KnownAlgorithms.Add(FFDTree);
@@ -154,8 +154,8 @@ namespace TreeGPDesigner.MVVM.Model
 
         public Node MakeFFDTree()
         {
-            Node FFDTree = new FunctionNode("<=", 2, a => a[0] <= a[1] ? 1 : 0, true);
-            FFDTree.ChildNodes.Add(new FunctionNode("+", 2, a => a[0] + a[1], false));
+            Node FFDTree = new FunctionNode("<=", 2, a => a[0] <= a[1] ? 1 : 0);
+            FFDTree.ChildNodes.Add(new FunctionNode("+", 2, a => a[0] + a[1]));
             FFDTree.ChildNodes.Add(new TerminalNode("BC", 0, 2, true));
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, 0, true));
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, 1, true));

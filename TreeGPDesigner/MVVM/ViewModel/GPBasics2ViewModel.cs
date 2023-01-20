@@ -84,15 +84,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
             ChangeGrowMethodCommand = new RelayCommand(ChangeGrowMethod);
             GenerateTreeCommand = new RelayCommand(GenerateTree);
 
-            bpTemplate.FunctionNodes = new List<FunctionNode> {new FunctionNode("+", 2, a => a[0] + a[1], false), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0, true),
-            new FunctionNode("/", 2, a => a[0] / a[1], false), new FunctionNode("-", 2, a => a[0] - a[1], false), new FunctionNode("*", 2, a => a[0] * a[1], false),
-            new FunctionNode("ABS", 1, a => Math.Abs(a[0]), false)};
+            bpTemplate.FunctionNodes = new List<FunctionNode> {new FunctionNode("+", 2, a => a[0] + a[1]), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0),
+            new FunctionNode("/", 2, a => a[0] / a[1]), new FunctionNode("-", 2, a => a[0] - a[1]), new FunctionNode("*", 2, a => a[0] * a[1]),
+            new FunctionNode("ABS", 1, a => Math.Abs(a[0]))};
 
             bpTemplate.TerminalNodes = new List<TerminalNode> {new TerminalNode("-1", 0, -1, false), new TerminalNode("1", 0, 1, false), new TerminalNode("34", 0, 34, false),
             new TerminalNode("X", 0, 0, true), new TerminalNode("Y", 0, 1, true), new TerminalNode("AB", 0, 2, true) };
 
-            bpTemplate.FunctionRootNodes = new List<FunctionNode> {new FunctionNode("+", 2, a => a[0] + a[1], false), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0, true),
-            new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0, true), new FunctionNode("-", 2, a => a[0] - a[1], false)};
+            bpTemplate.FunctionRootNodes = new List<FunctionNode> {new FunctionNode("+", 2, a => a[0] + a[1]), new FunctionNode("<", 2, a => a[0] < a[1] ? 1 : 0),
+            new FunctionNode(">=", 2, a => a[0] >= a[1] ? 1 : 0), new FunctionNode("-", 2, a => a[0] - a[1])};
         }
 
         //Navigation Functions

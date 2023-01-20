@@ -42,6 +42,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand NavHomeMenuCommand { get; }
         public ICommand NavNextCommand { get; }
         public ICommand NavBackCommand { get; }
+        public ICommand AddFunctionNodeCommand { get; }
 
         //Select Nodes Variables
         [ObservableProperty]
@@ -74,6 +75,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
+            AddFunctionNodeCommand = new RelayCommand(AddFunctionNode);
 
             GetSelectNodes();
         }
@@ -106,6 +108,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //GP Basics 4 Functions
+        public void AddFunctionNode()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new AddCustomFunctionNodeViewModel();
+        }
+
         public bool IsNodeListEmpty(List<Node> nodeList)
         {
             bool nodeListEmpty = true;

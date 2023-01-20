@@ -126,7 +126,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand RadioButton5Command { get; }
         public ICommand RadioButton6Command { get; }
 
-        public Node? DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0, true);
+        public Node? DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0);
         
 
         public HomeViewModel()
@@ -163,7 +163,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             RadioButton5Command = new RelayCommand(RadioButton5);
             RadioButton6Command = new RelayCommand(RadioButton6);
 
-            DisplayTree.ChildNodes.Add(new FunctionNode("Hol", 2, a => a[0] <= a[1] ? 1 : 0, true));
+            DisplayTree.ChildNodes.Add(new FunctionNode("Hol", 2, a => a[0] <= a[1] ? 1 : 0));
             DisplayTree.ChildNodes.Add(new TerminalNode("mes", 0, 0, false));
             DisplayTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("4045", 0, 0, false));
             DisplayTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("4766", 0, 0, false));;

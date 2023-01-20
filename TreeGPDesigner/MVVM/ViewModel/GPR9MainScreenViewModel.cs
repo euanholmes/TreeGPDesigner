@@ -119,13 +119,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             GetNextGenerationCommand = new RelayCommand(GetNextGeneration);
 
-            Trace.WriteLine("1.");
             InitialiseSettings();
-            Trace.WriteLine("2.");
             GetKnownAlgorithmTrees();
-            Trace.WriteLine("3.");
             GetInitialPopulation();
-            Trace.WriteLine("4.");
             AppInfoSingleton.Instance.MainDisplayTree = new();
 
             splashScreen.Close(TimeSpan.FromSeconds(0.5));

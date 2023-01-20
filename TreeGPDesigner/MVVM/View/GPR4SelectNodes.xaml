@@ -93,7 +93,7 @@
                     
                     <!-- Add Function Nodes Button -->
                     <Viewbox Grid.Row="5">
-                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Add Function Node"/>
+                        <Button Command="{Binding AddFunctionNodeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Add Function Node"/>
                     </Viewbox>
                 </Grid>
 
