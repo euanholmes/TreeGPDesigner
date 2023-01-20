@@ -13,7 +13,7 @@ namespace TreeGPDesigner.MVVM.Model
         private string symbol;
         private List<Node> childNodes = new List<Node>();
         private bool root = false;
-        private int[] data;
+        private double[] data;
         private int noOperands = 0;
         private float xPos;
         private int yPos;
@@ -49,7 +49,7 @@ namespace TreeGPDesigner.MVVM.Model
             IsSelected = isSelected;
         }
 
-        public Node(string symbol, bool root, int[] data, int noOperands, float fitness, bool notFailedYet)
+        public Node(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet)
         {
             Symbol = symbol;
             Root = root;
@@ -59,9 +59,9 @@ namespace TreeGPDesigner.MVVM.Model
             NotFailedYet = notFailedYet;
         }
 
-        public abstract int Eval();
+        public abstract double Eval();
 
-        public void SetDataAll(int[] data)
+        public void SetDataAll(double[] data)
         {
             Data = data;
 
@@ -162,7 +162,7 @@ namespace TreeGPDesigner.MVVM.Model
         //Getters and setters for private node variables.
         public string Symbol { get => symbol; set => symbol = value; }
         public bool Root { get => root; set => root = value; }
-        public int[] Data { get => data; set => data = value; }
+        public double[] Data { get => data; set => data = value; }
         public List<Node> ChildNodes { get => childNodes; set => childNodes = value; }
         public int Id { get => id; }
         public int NoOperands { get => noOperands; set => noOperands = value; }

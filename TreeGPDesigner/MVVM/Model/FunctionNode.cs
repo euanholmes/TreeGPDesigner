@@ -8,56 +8,58 @@ namespace TreeGPDesigner.MVVM.Model
 {
     public class FunctionNode : Node
     {
-        private Func<int[], int> function = null;
+        private Func<double[], double> function = null;
         private bool booleanFunction;
 
-        public FunctionNode(string symbol, int noOperands, Func<int[], int> function, bool booleanFunction) : base(symbol, noOperands)
+        public FunctionNode(string symbol, int noOperands, Func<double[], double> function, bool booleanFunction) : base(symbol, noOperands)
         {
             this.function = function;
             this.booleanFunction = booleanFunction;
         }
 
         //node description constructor
-        public FunctionNode(string symbol, int noOperands, string nodeDescription, bool isSelected, Func<int[], int> function, bool booleanFunction) : base(symbol, noOperands, nodeDescription, isSelected)
+        public FunctionNode(string symbol, int noOperands, string nodeDescription, bool isSelected, Func<double[], double> function, bool booleanFunction) : base(symbol, noOperands, nodeDescription, isSelected)
         {
             this.function = function;
             this.booleanFunction = booleanFunction;
         }
 
-        public FunctionNode(string symbol, bool root, int[] data, int noOperands, float fitness, bool notFailedYet,
-            Func<int[], int> function, bool booleanFunction) : base(symbol, root, data, noOperands, fitness, notFailedYet)
+        public FunctionNode(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet,
+            Func<double[], double> function, bool booleanFunction) : base(symbol, root, data, noOperands, fitness, notFailedYet)
         {
             this.function = function;
             this.booleanFunction = booleanFunction;
         }
 
-        public Func<int[], int> Function { get => function; set => function = value; }
+        public Func<double[], double> Function { get => function; set => function = value; }
         public bool BooleanFunction { get => booleanFunction; set => booleanFunction = value; }
 
-        public override int Eval()
+        public override double Eval()
         {
-            //Think this is right. Might not be!!!
-            /*if (booleanFunction && !Root)
-            {
-                if (function(ChildNodes[0].eval(), ChildNodes[1].eval()) == 1)
-                {
-                    return ChildNodes[0].eval();
-                }
-                else
-                {
-                    return ChildNodes[1].eval();
-                }
-            }*/
-            /*else
-            {*/
-            int[] operandNodes = new int[ChildNodes.Count];
+            double[] operandNodes = new double[ChildNodes.Count];
             for (int i = 0; i < ChildNodes.Count; i++)
             {
                 operandNodes[i] = ChildNodes[i].Eval();
             }
 
             return function(operandNodes);
-            /*}*/
+
+            //Think this is right. Might not be!!! Update: Probably won't use this just changed boolean function non-root nodes.
+            /*if (booleanFunction && !Root)
+            {
+                if (function(operandNodes) == 1)
+                {
+                    return ChildNodes[0].Eval();
+                }
+                else
+                {
+                    return ChildNodes[1].Eval();
+                }
+            }
+            else
+            {
+                return function(operandNodes);
+            }*/
         }
     }
 }

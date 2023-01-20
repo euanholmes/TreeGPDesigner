@@ -70,21 +70,28 @@ namespace TreeGPDesigner.MVVM.Model
                 CurrentDatasets.Add(false);
             }
 
-            AddFunctionNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0, true));
+            AddFunctionNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? a[0] : a[1], true));
             AddFunctionNode(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1], false));
             AddFunctionNode(new FunctionNode("-", 2, "Subtraction", true, a => a[0] - a[1], false));
             AddFunctionNode(new FunctionNode("*", 2, "Multiplication", true, a => a[0] * a[1], false));
             AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs", true, a => Math.Abs(a[0]), false));
             AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition", true, a => a[0] + a[1] + a[2], false));
+            AddFunctionNode(new FunctionNode("%", 2, "Protected Divide", true, a => a[1] == 0 ? 1 : a[0] / a[1], false));
             AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
             AddTerminalNode(new TerminalNode("CI", 0, "Current Item", true, 1, true));
             AddTerminalNode(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
             AddTerminalNode(new TerminalNode("-1", 0, "-1", true, -1, false));
             AddTerminalNode(new TerminalNode("1", 0, "1", true, 1, false));
+            AddTerminalNode(new TerminalNode("3.14", 0, "3.14", true, 3.14, false));
+
+            AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => a[0] - a[1], new int[]{ 2, 0}));
+            AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", true, 0, false, true, a => a[0] * 2, new int[] { 2 }));
+
             AddRootNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0, true));
             AddRootNode(new FunctionNode(">=", 2, "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0, true));
             AddRootNode(new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? 1 : 0, true));
             AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0, true));
+            AddRootNode(new FunctionNode("==", 2, "Equals", true, a => a[0] == a[1] ? 1 : 0, true));
 
             Node FFDTree = MakeFFDTree();
             KnownAlgorithms.Add(FFDTree);
@@ -99,7 +106,17 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(randomDataset200);
             bpDatasets.Add(randomDataset500);
 
-            AddCustomFunctionNode("* -1", 2, "Multiply then minus one", true, "a => (a[0] * a[1]) - 1", false);
+            //AddCustomFunctionNode("* -1", 2, "Multiply then minus one", true, "a => (a[0] * a[1]) - 1", false);
+
+            /*FunctionNode testboolean = new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1], false);
+            testboolean.Root = true;
+            testboolean.ChildNodes.Add(new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? a[0] : a[1], true));
+            testboolean.ChildNodes.Add(new TerminalNode("1", 0, "1", true, 1, false));
+            testboolean.ChildNodes[0].ChildNodes.Add(new TerminalNode("34", 0, "34", true, 34, false));
+            testboolean.ChildNodes[0].ChildNodes.Add(new TerminalNode("22", 0, "22", true, 22, false));
+
+            int testBooleanResult = testboolean.Eval();
+            Trace.WriteLine($"testBooleanResult = {testBooleanResult}");*/
         }
 
         /*public async Task testAsync()
@@ -163,7 +180,7 @@ namespace TreeGPDesigner.MVVM.Model
 
                 for (int i = 0; i < bins.Count; i++)
                 {
-                    int[] data = new int[] { bins[i].Sum(), items[0], binCapacity };
+                    double[] data = new double[] { bins[i].Sum(), items[0], binCapacity };
                     solution.SetDataAll(data);
 
                     if (solution.Eval() == 1)
@@ -195,7 +212,7 @@ namespace TreeGPDesigner.MVVM.Model
 
                 for (int i = 0; i < bins.Count; i++)
                 {
-                    int[] data = new int[] { bins[i].Sum(), items[0], binCapacity };
+                    double[] data = new double[] { bins[i].Sum(), items[0], binCapacity };
                     solution.SetDataAll(data);
 
                     if (solution.Eval() == 1)

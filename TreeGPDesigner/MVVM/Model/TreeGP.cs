@@ -66,7 +66,7 @@ namespace TreeGPDesigner.MVVM.Model
             bool customBooleanFunction)
         {
             var options = ScriptOptions.Default;
-            Func<int[], int> customFunction = await CSharpScript.EvaluateAsync<Func<int[], int>>(customFunctionString, options);
+            Func<double[], double> customFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customFunctionString, options);
 
             AddFunctionNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, customIsNodeSelected, customFunction, customBooleanFunction));
         }
@@ -768,7 +768,7 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 TerminalNode terminalNode = (TerminalNode)node;
                 copiedNode = new TerminalNode(terminalNode.Symbol, terminalNode.Root, terminalNode.Data, terminalNode.NoOperands, terminalNode.Fitness,
-                    true, terminalNode.Value, terminalNode.DataNeeded);
+                    true, terminalNode.Value, terminalNode.DataNeeded, terminalNode.FunctionNeeded, terminalNode.TerminalFunction, terminalNode.TerminalFunctionData);
             }
 
             foreach (Node childNode in node.ChildNodes)
