@@ -98,8 +98,9 @@ namespace TreeGPDesigner.MVVM.Model
         public TerminalNode GetRandomTerminalNode()
         {
             TerminalNode randomTerminalNode = TerminalNodes[random.Next(0, TerminalNodes.Count)];
-            TerminalNode terminalNode = new TerminalNode(randomTerminalNode.Symbol, randomTerminalNode.NoOperands,
-                randomTerminalNode.Value, randomTerminalNode.DataNeeded);
+            TerminalNode terminalNode = new TerminalNode(randomTerminalNode.Symbol, randomTerminalNode.NoOperands, randomTerminalNode.NodeDescription, 
+                randomTerminalNode.IsSelected,randomTerminalNode.Value, randomTerminalNode.DataNeeded, randomTerminalNode.FunctionNeeded, 
+                randomTerminalNode.TerminalFunction, randomTerminalNode.TerminalFunctionData);
             return terminalNode;
         }
 
@@ -129,8 +130,9 @@ namespace TreeGPDesigner.MVVM.Model
             else if (TerminalRootNodes.Count > 0 && FunctionRootNodes.Count == 0)
             {
                 TerminalNode randomTerminalRootNode = TerminalRootNodes[random.Next(0, TerminalRootNodes.Count)];
-                TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands,
-                    randomTerminalRootNode.Value, randomTerminalRootNode.DataNeeded);
+                TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands, randomTerminalRootNode.NodeDescription, 
+                    randomTerminalRootNode.IsSelected, randomTerminalRootNode.Value, randomTerminalRootNode.DataNeeded, randomTerminalRootNode.FunctionNeeded,
+                    randomTerminalRootNode.TerminalFunction, randomTerminalRootNode.TerminalFunctionData);
                 return terminalRootNode;
             }
             else
@@ -138,8 +140,9 @@ namespace TreeGPDesigner.MVVM.Model
                 if (randomNum == 1)
                 {
                     TerminalNode randomTerminalRootNode = TerminalRootNodes[random.Next(0, TerminalRootNodes.Count)];
-                    TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands,
-                        randomTerminalRootNode.Value, randomTerminalRootNode.DataNeeded);
+                    TerminalNode terminalRootNode = new TerminalNode(randomTerminalRootNode.Symbol, randomTerminalRootNode.NoOperands, randomTerminalRootNode.NodeDescription,
+                        randomTerminalRootNode.IsSelected, randomTerminalRootNode.Value, randomTerminalRootNode.DataNeeded, randomTerminalRootNode.FunctionNeeded,
+                        randomTerminalRootNode.TerminalFunction, randomTerminalRootNode.TerminalFunctionData);
                     return terminalRootNode;
                 }
                 else
