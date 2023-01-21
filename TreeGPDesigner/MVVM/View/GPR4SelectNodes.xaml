@@ -150,7 +150,7 @@
 
                     <!-- Add Terminal Nodes Button -->
                     <Viewbox Grid.Row="5">
-                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Add Terminal Node"/>
+                        <Button Command="{Binding AddTerminalNodeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Add Terminal Node"/>
                     </Viewbox>
                 </Grid>
 

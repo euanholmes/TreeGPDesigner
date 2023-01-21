@@ -62,12 +62,20 @@ namespace TreeGPDesigner.MVVM.Model
         public int CurrentGenerationNum { get => currentGenerationNum; set => currentGenerationNum = value; }
         public float LowestKnownAlgorithmFitness { get => lowestKnownAlgorithmFitness; set => lowestKnownAlgorithmFitness = value; }
 
-        public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, bool customIsNodeSelected, string customFunctionString)
+        public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, string customFunctionString)
         {
             var options = ScriptOptions.Default;
             Func<double[], double> customFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customFunctionString, options);
 
-            AddFunctionNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, customIsNodeSelected, customFunction));
+            AddFunctionNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, true, customFunction));
+        }
+
+        public async void AddCustomTerminalNode(string customSymbol, string customNodeDescription, string customTerminalFunctionString, int[] customTerminalFunctionData)
+        {
+            var options = ScriptOptions.Default;
+            Func<double[], double> customTerminalFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customTerminalFunctionString, options);
+
+            AddTerminalNode(new TerminalNode(customSymbol, 0, customNodeDescription, true, 0, false, true, customTerminalFunction, customTerminalFunctionData));
         }
 
         public void AddFunctionNode(FunctionNode functionNode)

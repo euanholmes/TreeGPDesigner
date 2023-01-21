@@ -90,6 +90,10 @@
                 <view:AddCustomFunctionNode/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:AddCustomTerminalNodeViewModel}">
+                <view:AddCustomTerminalNode/>
+            </DataTemplate>
+
 
             <!-- Custom Fonts -->
             <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>

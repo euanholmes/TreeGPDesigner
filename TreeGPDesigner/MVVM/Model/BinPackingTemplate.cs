@@ -84,7 +84,7 @@ namespace TreeGPDesigner.MVVM.Model
             AddTerminalNode(new TerminalNode("1", 0, "1", true, 1, false));
             AddTerminalNode(new TerminalNode("3.14", 0, "3.14", true, 3.14, false));
 
-            AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => a[0] - a[1], new int[]{ 2, 0}));
+            AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => a[0] - a[1], new int[]{ 2, 0 }));
             AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", true, 0, false, true, a => a[0] * 2, new int[] { 2 }));
 
             AddRootNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0));

@@ -7,11 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class AddCustomFunctionNodeViewModel : ObservableObject
+    public partial class AddCustomTerminalNodeViewModel : ObservableObject
     {
         //Common Variables
         [ObservableProperty]
@@ -53,10 +52,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private string functionText = "";
 
         //Constructor
-        public AddCustomFunctionNodeViewModel()
+        public AddCustomTerminalNodeViewModel()
         {
             NavBackCommand = new RelayCommand(NavBack);
-            AddCustomFunctionNodeCommand = new RelayCommand(AddCustomFunctionNode);
         }
 
         //Navigation Functions
@@ -68,7 +66,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //Add custom function node functions
         public void AddCustomFunctionNode()
         {
-            try
+           /* try
             {
                 AppInfoSingleton.Instance.CurrentTemplate.AddCustomFunctionNode(SymbolText, Convert.ToInt32(NoOperandsText), NodeDescriptionText, FunctionText);
                 ErrorColour = Brushes.Green;
@@ -78,7 +76,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             {
                 ErrorColour = Brushes.Red;
                 ErrorMessage = "*Failed to add node.";
-            }
+            }*/
         }
     }
 }

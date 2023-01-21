@@ -656,7 +656,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Display Tree-->
-                    <Border x:Name="treeBorder" Style="{DynamicResource Panel1}" ClipToBounds="true" Grid.Row="0">
+                    <Border x:Name="treeBorder" Cursor="Hand" Style="{DynamicResource Panel1}" ClipToBounds="true" Grid.Row="0">
                         <Grid>
                             <Grid>
                                 <Grid.ColumnDefinitions>
