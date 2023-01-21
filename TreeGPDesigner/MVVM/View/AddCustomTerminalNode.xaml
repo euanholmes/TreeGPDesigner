@@ -31,9 +31,11 @@
         <Border Grid.Row="3" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.2*"/>
                     <ColumnDefinition Width="0.75*"/>
-                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -42,7 +44,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="1">
+                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="2">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*"/>
@@ -95,19 +97,19 @@
                             
                             <!-- Value/Datapoint/Datapoint(s) -->
                             <Viewbox Grid.Row="5" Grid.Column="1">
-                                <TextBlock Width="115.366666666667" Text="Value:" Style="{DynamicResource RegularText}"/>
+                                <TextBlock Width="115.366666666667" Text="{Binding ValueTitleText}" Style="{DynamicResource RegularText}"/>
                             </Viewbox>
 
-                            <!-- Node Description Text Box -->
+                            <!-- Value/Datapoint/Datapoint(s) Text Box -->
                             <Viewbox Grid.Row="5" Grid.Column="3">
-                                <TextBox Text="1" Width="120" Style="{DynamicResource SettingsTextBox}"/>
+                                <TextBox Text="{Binding ValueText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
                             </Viewbox>
 
                             <!-- Data Needed -->
                             <Viewbox Grid.Row="7" Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="99.3" Text="Data Needed" Margin="0 0 5 0" Style="{DynamicResource RegularText}"/>
-                                    <CheckBox Style="{DynamicResource CheckBox}"/>
+                                    <CheckBox Command="{Binding DataNeededCommand}" IsChecked="{Binding DataNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
                                 </StackPanel>
                             </Viewbox>
 
@@ -115,18 +117,18 @@
                             <Viewbox Grid.Row="7" Grid.Column="3">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="99.3" Text="Function Needed" Margin="0 0 5 0" Style="{DynamicResource RegularText}"/>
-                                    <CheckBox Style="{DynamicResource CheckBox}"/>
+                                    <CheckBox Command="{Binding FunctionNeededCommand}" IsChecked="{Binding FunctionNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
                                 </StackPanel>
                             </Viewbox>
 
                             <!-- Function Text -->
                             <Viewbox Grid.Row="9" Grid.Column="1">
-                                <TextBlock Width="115.366666666667" Text="Function:" Style="{DynamicResource RegularText}"/>
+                                <TextBlock Visibility="{Binding FunctionVisibility}" Width="115.366666666667" Text="Function:" Style="{DynamicResource RegularText}"/>
                             </Viewbox>
 
                             <!-- Function Text Box -->
                             <Viewbox Grid.Row="9" Grid.Column="3">
-                                <TextBox Text="{Binding FunctionText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
+                                <TextBox Visibility="{Binding FunctionVisibility}" Text="{Binding FunctionText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
                             </Viewbox>
                         </Grid>
 
@@ -138,11 +140,43 @@
                             </Grid.RowDefinitions>
 
                             <Viewbox Grid.Row="0">
-                                <Button Command="{Binding AddCustomFunctionNodeCommand}" Content="Add" Style="{DynamicResource NormalButtonStyle}"/>
+                                <Button Command="{Binding AddCustomTerminalNodeCommand}" Content="Add" Style="{DynamicResource NormalButtonStyle}"/>
                             </Viewbox>
                         </Grid>
                     </Grid>
                 </Border>
+
+                <!-- Data Points Panel -->
+                <Border Grid.Row="1" Grid.Column="5" Style="{DynamicResource Panel2}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.2*"/>
+                            <RowDefinition Height="0.75*"/>
+                            <RowDefinition Height="0.2*"/>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="0.2*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Data Points Title -->
+                        <Viewbox Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="Data Points" Style="{DynamicResource SubTitleText}"/>
+                        </Viewbox>
+                        
+                        <!-- Data Points Panel -->
+                        <Border Grid.Row="3" Grid.Column="1" Style="{DynamicResource Panel1}">
+                            <Viewbox Margin="5">
+                                <TextBlock Text="{Binding DataPointsText}" Height="287.255011181467" Width="126.134453781513" TextWrapping="Wrap" Style="{DynamicResource RegularText}"/>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </Border>
+                
             </Grid>
         </Border>
 

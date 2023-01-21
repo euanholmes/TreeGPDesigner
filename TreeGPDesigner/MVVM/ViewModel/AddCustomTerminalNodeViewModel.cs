@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -30,7 +31,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         //Commands
         public ICommand NavBackCommand { get; }
-        public ICommand AddCustomFunctionNodeCommand { get; }
+        public ICommand AddCustomTerminalNodeCommand { get; }
+        public ICommand FunctionNeededCommand { get; }
+        public ICommand DataNeededCommand { get; }
 
         //Add Custom Function Node Variables
         [ObservableProperty]
@@ -46,15 +49,33 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private string nodeDescriptionText = "";
 
         [ObservableProperty]
-        private string noOperandsText = "";
+        private string valueText = "";
+
+        [ObservableProperty]
+        private string valueTitleText = "Value:";
 
         [ObservableProperty]
         private string functionText = "";
+
+        [ObservableProperty]
+        private Visibility functionVisibility = Visibility.Hidden;
+
+        [ObservableProperty]
+        private string dataPointsText = AppInfoSingleton.Instance.CurrentTemplate.CurrentDataPoints;
+
+        [ObservableProperty]
+        private bool functionNeededIsChecked = false;
+
+        [ObservableProperty]
+        private bool dataNeededIsChecked = false;
 
         //Constructor
         public AddCustomTerminalNodeViewModel()
         {
             NavBackCommand = new RelayCommand(NavBack);
+            AddCustomTerminalNodeCommand = new RelayCommand(AddCustomTerminalNode);
+            FunctionNeededCommand = new RelayCommand(FunctionNeeded);
+            DataNeededCommand = new RelayCommand(DataNeeded);
         }
 
         //Navigation Functions
@@ -64,7 +85,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //Add custom function node functions
-        public void AddCustomFunctionNode()
+        public void AddCustomTerminalNode()
         {
            /* try
             {
@@ -77,6 +98,37 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 ErrorColour = Brushes.Red;
                 ErrorMessage = "*Failed to add node.";
             }*/
+        }
+
+        public void FunctionNeeded()
+        {
+            DataNeededIsChecked = false;
+
+            if (FunctionNeededIsChecked)
+            {
+                FunctionVisibility = Visibility.Visible;
+                ValueTitleText = "Datapoint(s):";
+            }
+            else
+            {
+                FunctionVisibility = Visibility.Hidden;
+                ValueTitleText = "Value:";
+            }
+        }
+
+        public void DataNeeded()
+        {
+            FunctionNeededIsChecked = false;
+            FunctionVisibility = Visibility.Hidden;
+
+            if (DataNeededIsChecked)
+            {
+                ValueTitleText = "Datapoint:";
+            }
+            else
+            {
+                ValueTitleText = "Value:";
+            }
         }
     }
 }

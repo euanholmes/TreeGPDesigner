@@ -106,6 +106,8 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(randomDataset200);
             bpDatasets.Add(randomDataset500);
 
+            CurrentDataPoints = "[0] - Current Bin Weight\n[1] - Current Item\n[2] - Bin Capacity";
+
             //AddCustomFunctionNode("* -1", 2, "Multiply then minus one", true, "a => (a[0] * a[1]) - 1", false);
 
             /*FunctionNode testboolean = new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1], false);

@@ -36,6 +36,7 @@ namespace TreeGPDesigner.MVVM.Model
         private List<Node> knownAlgorithms = new List<Node>();
         private int currentGenerationNum = 0;
         private float lowestKnownAlgorithmFitness = float.MaxValue;
+        private string currentDataPoints = "";
 
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
@@ -61,6 +62,7 @@ namespace TreeGPDesigner.MVVM.Model
         public int CurrentMinDepth { get => currentMinDepth; set => currentMinDepth = value; }
         public int CurrentGenerationNum { get => currentGenerationNum; set => currentGenerationNum = value; }
         public float LowestKnownAlgorithmFitness { get => lowestKnownAlgorithmFitness; set => lowestKnownAlgorithmFitness = value; }
+        public string CurrentDataPoints { get => currentDataPoints; set => currentDataPoints = value; }
 
         public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, string customFunctionString)
         {
