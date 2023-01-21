@@ -207,7 +207,7 @@
 
                     <!-- Add Root Nodes Button -->
                     <Viewbox Grid.Row="5">
-                        <Button Style="{DynamicResource NormalButtonStyle}" Content="Add Root Node"/>
+                        <Button Command="{Binding AddRootNodeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Add Root Node"/>
                     </Viewbox>
                 </Grid>
 

@@ -24,7 +24,6 @@ namespace TreeGPDesigner.MVVM.View
         public AddCustomTerminalNode()
         {
             InitializeComponent();
-            DataContext = new AddCustomTerminalNodeViewModel();
         }
     }
 }

@@ -25,7 +25,6 @@ namespace TreeGPDesigner.MVVM.View
         public AddCustomFunctionNode()
         {
             InitializeComponent();
-            DataContext = new AddCustomFunctionNodeViewModel();
         }
 
         private static readonly Regex _regex = new Regex("[^0-9]+");

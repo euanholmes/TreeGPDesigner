@@ -33,6 +33,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         //Commands
         public ICommand NavBackCommand { get; }
+        public ICommand NavAddFunctionNodeCommand { get; }
         public ICommand AddCustomTerminalNodeCommand { get; }
         public ICommand FunctionNeededCommand { get; }
         public ICommand DataNeededCommand { get; }
@@ -71,10 +72,32 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private bool dataNeededIsChecked = false;
 
+        [ObservableProperty]
+        private string titleText = "";
+
+        [ObservableProperty]
+        private Visibility functionNodeButtonVisibility;
+
+        private bool root;
+
         //Constructor
-        public AddCustomTerminalNodeViewModel()
+        public AddCustomTerminalNodeViewModel(bool root)
         {
+            this.root = root;
+
+            if (root)
+            {
+                TitleText = "Add Custom Root Terminal Node";
+                FunctionNodeButtonVisibility = Visibility.Visible;
+            }
+            else
+            {
+                TitleText = "Add Custom Terminal Node";
+                FunctionNodeButtonVisibility = Visibility.Collapsed;
+            }
+
             NavBackCommand = new RelayCommand(NavBack);
+            NavAddFunctionNodeCommand = new RelayCommand(NavAddFunctionNode);
             AddCustomTerminalNodeCommand = new RelayCommand(AddCustomTerminalNode);
             FunctionNeededCommand = new RelayCommand(FunctionNeeded);
             DataNeededCommand = new RelayCommand(DataNeeded);
@@ -82,13 +105,18 @@ namespace TreeGPDesigner.MVVM.ViewModel
             string testString = "1, 2, 0";
 
             int[] testIntArray = ConvertStringToIntArray(testString);
-
+            
         }
 
         //Navigation Functions
         public void NavBack()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPR4SelectNodesViewModel();
+        }
+
+        public void NavAddFunctionNode()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new AddCustomFunctionNodeViewModel(true);
         }
 
         //Add custom function node functions
@@ -98,16 +126,38 @@ namespace TreeGPDesigner.MVVM.ViewModel
             {
                 if (!FunctionNeededIsChecked && !DataNeededIsChecked)
                 {
-                    AppInfoSingleton.Instance.CurrentTemplate.AddTerminalNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), false));
+                    if (root)
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.AddRootNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), false));
+                    }
+                    else
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.AddTerminalNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), false));
+                    }
                 }
                 else if (DataNeededIsChecked && !FunctionNeededIsChecked)
                 {
-                    AppInfoSingleton.Instance.CurrentTemplate.AddTerminalNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), true));
+                    if (root)
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.AddRootNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), true));
+                    }
+                    else
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.AddTerminalNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), true));
+                    }
                 }
                 else if (FunctionNeededIsChecked && !DataNeededIsChecked)
                 {
                     int[] FunctionData = ConvertStringToIntArray(ValueText);
-                    AppInfoSingleton.Instance.CurrentTemplate.AddCustomTerminalNode(SymbolText, NodeDescriptionText, FunctionText, FunctionData);
+
+                    if (root)
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.AddCustomRootTerminalNode(SymbolText, NodeDescriptionText, FunctionText, FunctionData);
+                    }
+                    else
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.AddCustomTerminalNode(SymbolText, NodeDescriptionText, FunctionText, FunctionData);
+                    }
                 }
 
                 ErrorColour = Brushes.Green;

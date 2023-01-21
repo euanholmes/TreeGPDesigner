@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
@@ -31,7 +33,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         //Commands
         public ICommand NavBackCommand { get; }
+        public ICommand NavAddTerminalNodeCommand { get; }
         public ICommand AddCustomFunctionNodeCommand { get; }
+        
 
         //Add Custom Function Node Variables
         [ObservableProperty]
@@ -52,11 +56,33 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private string functionText = "";
 
+        [ObservableProperty]
+        private string titleText = "";
+
+        [ObservableProperty]
+        private Visibility terminalNodeButtonVisibility;
+
+        private bool root;
+
         //Constructor
-        public AddCustomFunctionNodeViewModel()
+        public AddCustomFunctionNodeViewModel(bool root)
         {
             NavBackCommand = new RelayCommand(NavBack);
+            NavAddTerminalNodeCommand = new RelayCommand(NavAddTerminalNode);
             AddCustomFunctionNodeCommand = new RelayCommand(AddCustomFunctionNode);
+           
+            this.root = root;
+
+            if (root)
+            {
+                TitleText = "Add Custom Root Function Node";
+                TerminalNodeButtonVisibility = Visibility.Visible;
+            }
+            else
+            {
+                TitleText = "Add Custom Function Node";
+                TerminalNodeButtonVisibility = Visibility.Collapsed;
+            }
         }
 
         //Navigation Functions
@@ -65,12 +91,25 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new GPR4SelectNodesViewModel();
         }
 
+        public void NavAddTerminalNode()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new AddCustomTerminalNodeViewModel(true);
+        }
+
         //Add custom function node functions
         public void AddCustomFunctionNode()
         {
             try
             {
-                AppInfoSingleton.Instance.CurrentTemplate.AddCustomFunctionNode(SymbolText, Convert.ToInt32(NoOperandsText), NodeDescriptionText, FunctionText);
+                if (root)
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.AddCustomRootFunctionNode(SymbolText, Convert.ToInt32(NoOperandsText), NodeDescriptionText, FunctionText);
+                }
+                else
+                {
+                    AppInfoSingleton.Instance.CurrentTemplate.AddCustomFunctionNode(SymbolText, Convert.ToInt32(NoOperandsText), NodeDescriptionText, FunctionText);
+                }
+                
                 ErrorColour = Brushes.Green;
                 ErrorMessage = "*Added Node";
             }
