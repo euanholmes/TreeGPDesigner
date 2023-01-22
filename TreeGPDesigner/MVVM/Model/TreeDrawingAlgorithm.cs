@@ -37,7 +37,7 @@ namespace TreeGPDesigner.MVVM.Model
             node.YPos = depth;
             node.Mod = 0;
 
-            //euan add
+            //euan add - might be pointless exact same as YPos already there.
             node.DepthLevel = depth;
 
             foreach (var child in node.ChildNodes)
