@@ -117,9 +117,7 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
-                        <RowDefinition Height="2.5*"/>
-                        <RowDefinition Height="0.2*"/>
-                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="3*"/>
                         <RowDefinition Height="0.2*"/>
                     </Grid.RowDefinitions>
 
@@ -191,14 +189,6 @@
                             </Viewbox>
                         </Grid>
                     </Border>
-                    
-                    <!-- Print Buttons -->
-                    <Viewbox Grid.Column="1" Grid.Row="3">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 0 2.5 0" Content="Print Tree"/>
-                            <Button Style="{DynamicResource NormalButtonStyle}" Margin="2.5 0 0 0" Content="Print Algorithm + Wrapper" />
-                        </StackPanel>
-                    </Viewbox>
                 </Grid>
             </Border>
             
