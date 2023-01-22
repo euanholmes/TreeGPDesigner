@@ -8,7 +8,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                
                 <!-- App Styles-->
                 <ResourceDictionary Source="Theme/AppStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
