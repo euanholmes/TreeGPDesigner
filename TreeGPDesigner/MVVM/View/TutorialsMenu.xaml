@@ -128,7 +128,7 @@
                         </Border>
 
                         <Viewbox Grid.Column="1" Margin="15">
-                            <Button Style="{DynamicResource NormalButtonStyle}" Margin="10 10 10 10" Content="Start"/>
+                            <Button Command="{Binding NavAddCustomNodesTutorialCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="10 10 10 10" Content="Start"/>
                         </Viewbox>
 
                         <Border Style="{DynamicResource Panel1}" Grid.Column="2" Margin="15">

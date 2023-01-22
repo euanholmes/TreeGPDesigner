@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +10,7 @@ using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class TutorialsMenuViewModel : ObservableObject
+    public partial class ReferencesPageViewModel : ObservableObject
     {
         //Common Variables
         [ObservableProperty]
@@ -29,40 +28,25 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
 
+        //References Page Variables
+        [ObservableProperty]
+        private string referencesText = "Sim, K. (2014). Novel Hyper-heuristics Applied to the Domain of Bin Packing. Ph.D. dissertation, Edinburgh Napier University." +
+            "\n\nSim, K. GP Bin Packing Java Code + GP Cart Java Code" +
+            "\n\nTree Drawing Algorithm - Rachel Lim, C# Implementation of Reingold-Tillford algorithm found here: https://rachel53461.wordpress.com/2014/04/20/algorithm-for-drawing-trees/";
+
         //Commands
         public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavGPBasics1Command { get; }
-        public ICommand NavGPBasics2Command { get; }
-        public ICommand NavAddCustomNodesTutorialCommand { get; }
 
         //Constructor
-        public TutorialsMenuViewModel()
+        public ReferencesPageViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
-            NavGPBasics1Command = new RelayCommand(NavGPBasics1);
-            NavGPBasics2Command = new RelayCommand(NavGPBasics2);
-            NavAddCustomNodesTutorialCommand = new RelayCommand(NavAddCustomNodesTutorial);
         }
 
         //Navigation Functions
         public void NavHomeMenu()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
-        public void NavGPBasics1()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics1ViewModel();
-        }
-
-        public void NavGPBasics2()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics5ViewModel();
-        }
-
-        public void NavAddCustomNodesTutorial()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new CustomNodesTutorialViewModel();
         }
     }
 }

@@ -94,6 +94,14 @@
                 <view:AddCustomTerminalNode/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:CustomNodesTutorialViewModel}">
+                <view:CustomNodesTutorial/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ReferencesPageViewModel}">
+                <view:ReferencesPage/>
+            </DataTemplate>
+
 
             <!-- Custom Fonts -->
             <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>

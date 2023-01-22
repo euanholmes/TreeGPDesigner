@@ -662,7 +662,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation.Clear();
         }
 
-        //This might be wrong/just random, adapted from code here https://jamesmccaffrey.wordpress.com/2020/04/23/implementing-a-proportional-selection-function-using-roulette-wheel-selection/ 
+        //This might be wrong/just random. 
         public void FitnessProportionateSelection(int selectionNumber)
         {
             for (int i = 0; i < selectionNumber; i++)

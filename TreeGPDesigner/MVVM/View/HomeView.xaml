@@ -73,7 +73,7 @@
                 <UniformGrid Rows="3">
                     <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 5 0 0" Command="{Binding NavTutorialsMenuCommand}" Content="Tutorials"/>
                     <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 2.5 0 2.5" Command="{Binding NavStartGPRunCommand}"  Content="Start A GP Run"/>
-                    <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 0 0 5"  Content="Profiles"/>
+                    <Button Style="{DynamicResource NormalButtonStyle}" Margin="0 0 0 5" Command="{Binding NavReferencesCommand}" Content="References"/>
                 </UniformGrid>
             </Viewbox>
         </Grid>

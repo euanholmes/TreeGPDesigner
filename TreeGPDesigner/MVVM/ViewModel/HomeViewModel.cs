@@ -118,6 +118,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand NavStartGPRunCommand { get; }
+        public ICommand NavReferencesCommand { get; }
         public ICommand ToggleButtonCommand { get; }
         public ICommand RadioButton1Command { get; }
         public ICommand RadioButton2Command { get; }
@@ -155,6 +156,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavStartGPRunCommand = new RelayCommand(NavStartGPRun);
+            NavReferencesCommand = new RelayCommand(NavReferences);
             ToggleButtonCommand = new RelayCommand(ToggleButtonLightDarkMode);
             RadioButton1Command = new RelayCommand(RadioButton1);
             RadioButton2Command = new RelayCommand(RadioButton2);
@@ -219,6 +221,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public void NavStartGPRun()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPR1GPTemplateMenuViewModel();
+        }
+
+        public void NavReferences()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new ReferencesPageViewModel();
         }
 
         public void RadioButton1()

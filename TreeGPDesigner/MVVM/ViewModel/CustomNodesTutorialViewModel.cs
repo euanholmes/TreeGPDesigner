@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +10,7 @@ using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class TutorialsMenuViewModel : ObservableObject
+    public partial class CustomNodesTutorialViewModel : ObservableObject
     {
         //Common Variables
         [ObservableProperty]
@@ -31,17 +30,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         //Commands
         public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavGPBasics1Command { get; }
-        public ICommand NavGPBasics2Command { get; }
-        public ICommand NavAddCustomNodesTutorialCommand { get; }
+        public ICommand NavTutorialsMenuCommand { get; }
 
         //Constructor
-        public TutorialsMenuViewModel()
+        public CustomNodesTutorialViewModel()
         {
             NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
-            NavGPBasics1Command = new RelayCommand(NavGPBasics1);
-            NavGPBasics2Command = new RelayCommand(NavGPBasics2);
-            NavAddCustomNodesTutorialCommand = new RelayCommand(NavAddCustomNodesTutorial);
+            NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
         }
 
         //Navigation Functions
@@ -50,19 +45,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
         }
 
-        public void NavGPBasics1()
+        public void NavTutorialsMenu()
         {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics1ViewModel();
-        }
-
-        public void NavGPBasics2()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPBasics5ViewModel();
-        }
-
-        public void NavAddCustomNodesTutorial()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new CustomNodesTutorialViewModel();
+            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
         }
     }
 }
