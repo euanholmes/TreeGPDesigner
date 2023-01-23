@@ -4,66 +4,26 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR9MainScreenViewModel : ObservableObject
+    //Viewmodel class for Final Screen View
+    public partial class GPR9MainScreenViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
-
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        [ObservableProperty]
-        private Brush? background = AppInfoSingleton.Instance.CurrentBackground;
-
-        //Tree Drawing Variables
+        //Final Screen Variables
         public event PropertyChangedEventHandler? PropertyChanged2;
-
         public ObservableCollection<NodePlot>? DisplayTreePlot => AppInfoSingleton.Instance.MainDisplayTree;
         private void OnMainDisplayTreeChanged()
         {
             PropertyChanged2?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayTreePlot)));
         }
 
-        [ObservableProperty]
-        private Brush[]? brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
+        private List<Node> knownAlgorithms = AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms;
 
-        [ObservableProperty]
-        private ImageSource? zoomIconSource = AppInfoSingleton.Instance.CurrentZoomIcon;
-
-        [ObservableProperty]
-        private float? canvasWidth = 0;
-
-        [ObservableProperty]
-        private float? canvasHeight = 0;
-
-        //Commands
-        public ICommand NavHomeMenuCommand { get; }
-        public ICommand GetNextGenerationCommand { get; }
-
-        //Final Screen Variables
         [ObservableProperty]
         private string generationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
 
@@ -100,13 +60,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private List<Tree> knownAlgorithmTrees = new List<Tree>();
 
-        private List<Node> knownAlgorithms = AppInfoSingleton.Instance.CurrentTemplate.KnownAlgorithms;
-
         [ObservableProperty]
         private List<Node> currentGeneration = new();
 
         [ObservableProperty]
         private ObservableCollection<Tree> generationTrees = new();
+
+        //Commands
+        public ICommand GetNextGenerationCommand { get; }
 
         //Constructor
         public GPR9MainScreenViewModel()
@@ -116,7 +77,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             AppInfoSingleton.Instance.MainDisplayTreeChanged += OnMainDisplayTreeChanged;
 
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             GetNextGenerationCommand = new RelayCommand(GetNextGeneration);
 
             InitialiseSettings();
@@ -126,14 +86,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             splashScreen.Close(TimeSpan.FromSeconds(0.5));
         }
-
-        //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
-        
 
         //Main screen functions
         public void InitialiseSettings()
@@ -216,8 +168,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
                 CurrentGeneration[i].Name = treeName;
 
-                //Trace.WriteLine($"Lowest Known Algorithm Fitness = {AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness}");
-
                 if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness)
                 {
                     GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
@@ -237,6 +187,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
     }
 
+    //Class used in item control in this view.
     public class Tree
     {
         private Brush? textColour;

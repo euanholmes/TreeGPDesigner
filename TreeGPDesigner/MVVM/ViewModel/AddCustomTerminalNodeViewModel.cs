@@ -1,11 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -13,32 +8,12 @@ using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class AddCustomTerminalNodeViewModel : ObservableObject
+    //Viewmodel class for Add Custom Terminal Node View
+    public partial class AddCustomTerminalNodeViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
+        //Add Custom Terminal Node Variables
+        private bool root;
 
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        //Commands
-        public ICommand NavBackCommand { get; }
-        public ICommand NavAddFunctionNodeCommand { get; }
-        public ICommand AddCustomTerminalNodeCommand { get; }
-        public ICommand FunctionNeededCommand { get; }
-        public ICommand DataNeededCommand { get; }
-
-        //Add Custom Function Node Variables
         [ObservableProperty]
         private string errorMessage = "";
 
@@ -78,7 +53,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Visibility functionNodeButtonVisibility;
 
-        private bool root;
+        //Commands
+        public ICommand NavBackCommand { get; }
+        public ICommand NavAddFunctionNodeCommand { get; }
+        public ICommand AddCustomTerminalNodeCommand { get; }
+        public ICommand FunctionNeededCommand { get; }
+        public ICommand DataNeededCommand { get; }
 
         //Constructor
         public AddCustomTerminalNodeViewModel(bool root)
@@ -101,11 +81,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AddCustomTerminalNodeCommand = new RelayCommand(AddCustomTerminalNode);
             FunctionNeededCommand = new RelayCommand(FunctionNeeded);
             DataNeededCommand = new RelayCommand(DataNeeded);
-
-            string testString = "1, 2, 0";
-
-            int[] testIntArray = ConvertStringToIntArray(testString);
-            
         }
 
         //Navigation Functions
@@ -119,7 +94,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new AddCustomFunctionNodeViewModel(true);
         }
 
-        //Add custom function node functions
+        //Add custom terminal node functions
         public void AddCustomTerminalNode()
         {
             try

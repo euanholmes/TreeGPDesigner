@@ -3,36 +3,34 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPBasics3ViewModel : ObservableObject
+    //Viewmodel class for GP Basics 3 View
+    public partial class GPBasics3ViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
-
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
         //GP Basics 3 Variables
         private static Random random = new();
+
+        private BinPackingTemplate bpTemplate = new();
+
+        private List<int> items1 = new();
+        private List<int> items2 = new();
+        private List<int> items3 = new();
+        private List<int> items4 = new();
+
+        private List<List<int>> bins1;
+        private List<List<int>> bins2;
+        private List<List<int>> bins3;
+        private List<List<int>> bins4;
+
+        private ObservableCollection<Bin> binList1 = new();
+        private ObservableCollection<Bin> binList2 = new();
+        private ObservableCollection<Bin> binList3 = new();
+        private ObservableCollection<Bin> binList4 = new();
 
         [ObservableProperty]
         private int bc1 = random.Next(50, 61);
@@ -46,14 +44,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private int bc4 = random.Next(50, 61);
 
-        private List<int> items1 = new();
-
-        private List<int> items2 = new();
-
-        private List<int> items3 = new();
-
-        private List<int> items4 = new();
-
         [ObservableProperty]
         private string items1String;
 
@@ -65,18 +55,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         [ObservableProperty]
         private string items4String;
-
-        private List<List<int>> bins1;
-        private List<List<int>> bins2;
-        private List<List<int>> bins3;
-        private List<List<int>> bins4;
-
-        private ObservableCollection<Bin> binList1 = new();
-        private ObservableCollection<Bin> binList2 = new();
-        private ObservableCollection<Bin> binList3 = new();
-        private ObservableCollection<Bin> binList4 = new();
-
-        private BinPackingTemplate bpTemplate = new();
 
         [ObservableProperty]
         private ObservableCollection<Bin> bins = new();
@@ -95,8 +73,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             "if no bin is found a new a new bin will be opened, and it will be packed into the new bin.";
 
         //Commands
-        public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavTutorialsMenuCommand { get; }
         public ICommand NavPreviousCommand { get; }
         public ICommand NavNextCommand { get; }
         public ICommand RunWrapperCommand { get; }
@@ -105,8 +81,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //Constructor
         public GPBasics3ViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
-            NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavPreviousCommand = new RelayCommand(NavPrevious);
             NavNextCommand = new RelayCommand(NavNext);
             RunWrapperCommand = new RelayCommand(RunWrapper);
@@ -135,16 +109,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
-        public void NavTutorialsMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
-        }
-
         public void NavPrevious()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPBasics2ViewModel();
@@ -229,6 +193,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
     }
 
+    //Bin item class used in item control in this view.
     public class BinItem
     {
         private int currentBinItem;
@@ -244,6 +209,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public Brush TextColour { get => textColour; set => textColour = value; }
     }
 
+    //Bin class used in item control in this view.
     public class Bin
     {
         private List<BinItem> binItems = new();

@@ -1,13 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -15,9 +10,10 @@ using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
+    //Viewmodel class for Home View
     public partial class HomeViewModel : ObservableObject, INotifyPropertyChanged
     {
-        //Variables in every viewmodel.
+        //Main Menu Variables
         public new event PropertyChangedEventHandler? PropertyChanged;
 
         public Brush? TextColour => AppInfoSingleton.Instance.CurrentText;
@@ -50,8 +46,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NavButtonColour)));
         }
 
-
-        //Tree Drawing Variables.
         public Brush[]? BrushSet => AppInfoSingleton.Instance.CurrentBrushSet;
         private void OnCurrentBrushSetChanged()
         {
@@ -64,16 +58,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ZoomIconSource)));
         }
 
-        [ObservableProperty]
-        public ObservableCollection<NodePlot> displayTreePlot = new();
-
-        [ObservableProperty]
-        private float? canvasHeight;
-
-        [ObservableProperty]
-        private float? canvasWidth;
-
-        //View Model Specific Variables.
         public Brush[]? BrushSet1 => AppInfoSingleton.Instance.CurrentBrushSet1;
         private void OnCurrentBrushSet1Changed()
         {
@@ -116,6 +100,18 @@ namespace TreeGPDesigner.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ToggleButtonSource)));
         }
 
+        public Node? DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0);
+
+        [ObservableProperty]
+        public ObservableCollection<NodePlot> displayTreePlot = new();
+
+        [ObservableProperty]
+        private float? canvasHeight;
+
+        [ObservableProperty]
+        private float? canvasWidth;
+
+        //Commands
         public ICommand NavTutorialsMenuCommand { get; }
         public ICommand NavStartGPRunCommand { get; }
         public ICommand NavReferencesCommand { get; }
@@ -126,32 +122,23 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand RadioButton4Command { get; }
         public ICommand RadioButton5Command { get; }
         public ICommand RadioButton6Command { get; }
-
-        public Node? DisplayTree = new FunctionNode("Euan", 2, a => a[0] <= a[1] ? 1 : 0);
         
-
+        //Constructor
         public HomeViewModel()
         {
-            //Variables in every viewmodel.
             AppInfoSingleton.Instance.CurrentTextChanged += OnCurrentTextChanged;
             AppInfoSingleton.Instance.CurrentPanel1ColorChanged += OnCurrentPanel1ColourChanged;
             AppInfoSingleton.Instance.CurrentPanel2ColorChanged += OnCurrentPanel2ColourChanged;
             AppInfoSingleton.Instance.CurrentNormalButtonColorChanged += OnCurrentNormalButtonColourChanged;
             AppInfoSingleton.Instance.CurrentNavButtonColorChanged += OnCurrentNavButtonColourChanged;
-
-            //Tree Drawing Variables.
             AppInfoSingleton.Instance.CurrentBrushSetChanged += OnCurrentBrushSetChanged;
             AppInfoSingleton.Instance.CurrentZoomIconChanged += OnCurrentZoomIconChanged;
-
-            //Brush sets.
             AppInfoSingleton.Instance.CurrentBrushSet1Changed += OnCurrentBrushSet1Changed;
             AppInfoSingleton.Instance.CurrentBrushSet2Changed += OnCurrentBrushSet2Changed;
             AppInfoSingleton.Instance.CurrentBrushSet3Changed += OnCurrentBrushSet3Changed;
             AppInfoSingleton.Instance.CurrentBrushSet4Changed += OnCurrentBrushSet4Changed;
             AppInfoSingleton.Instance.CurrentBrushSet5Changed += OnCurrentBrushSet5Changed;
             AppInfoSingleton.Instance.CurrentBrushSet6Changed += OnCurrentBrushSet6Changed;
-
-            //Viewmodel Specific variables.
             AppInfoSingleton.Instance.CurrentModeToggleButtonChanged += OnCurrentToggleModeButtonChanged;
 
             NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
@@ -176,7 +163,24 @@ namespace TreeGPDesigner.MVVM.ViewModel
             CanvasHeight = DisplayTree.Height * 100 / (float)0.75; 
             CanvasWidth = DisplayTree.Width * 100 / (float)0.75;
         }
+        
+        //Navigation Functions
+        public void NavTutorialsMenu()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
+        }
 
+        public void NavStartGPRun()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new GPR1GPTemplateMenuViewModel();
+        }
+
+        public void NavReferences()
+        {
+            AppInfoSingleton.Instance.CurrentViewModel = new ReferencesPageViewModel();
+        }
+
+        //Main Menu Functions
         public void ToggleButtonLightDarkMode()
         {
             SwitchBrushSets();
@@ -211,21 +215,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             DisplayTreePlot.Clear();
             DisplayTreePlot = AppInfoSingleton.GetTreePlot(DisplayTreePlot, DisplayTree, BrushSet);
-        }
-
-        public void NavTutorialsMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
-        }
-
-        public void NavStartGPRun()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new GPR1GPTemplateMenuViewModel();
-        }
-
-        public void NavReferences()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new ReferencesPageViewModel();
         }
 
         public void RadioButton1()

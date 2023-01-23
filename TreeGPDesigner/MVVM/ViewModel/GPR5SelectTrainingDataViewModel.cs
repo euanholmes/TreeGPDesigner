@@ -2,44 +2,17 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR5SelectTrainingDataViewModel : ObservableObject
+    //Viewmodel class for Select Training Data View
+    public partial class GPR5SelectTrainingDataViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
-
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        [ObservableProperty]
-        private Brush? background = AppInfoSingleton.Instance.CurrentBackground;
-
-        //Commands
-        public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavNextCommand { get; }
-        public ICommand NavBackCommand { get; }
-
         //Select Dataset Variables
         private List<string> datasetsUI = AppInfoSingleton.Instance.CurrentTemplate.DatasetUI;
+
         private List<bool> currentDatasets = AppInfoSingleton.Instance.CurrentTemplate.CurrentDatasets;
 
         [ObservableProperty]
@@ -48,10 +21,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private string errorMessage = "";
 
+        //Commands
+        public ICommand NavNextCommand { get; }
+        public ICommand NavBackCommand { get; }
+
         //Constructor
         public GPR5SelectTrainingDataViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
 
@@ -59,11 +35,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
         public void NavNext()
         {
             bool noDatasets = true;
@@ -92,7 +63,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new GPR4SelectNodesViewModel();
         }
 
-        //Select Dataset Function
+        //Select Dataset Functions
         public void GetDatasets()
         {
             for (int i = 0; i < datasetsUI.Count; i++)
@@ -102,6 +73,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
     }
 
+    //Class used for item control in this view.
     public class SelectDataset
     {
         private string? datasetInfo;

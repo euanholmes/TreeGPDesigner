@@ -2,10 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -13,39 +9,9 @@ using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR4SelectNodesViewModel : ObservableObject
+    //Viewmodel class for Select Nodes View
+    public partial class GPR4SelectNodesViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
-
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        //Node/Tree Variables
-        [ObservableProperty]
-        private Brush[]? brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
-
-        [ObservableProperty]
-        private Brush? background = AppInfoSingleton.Instance.CurrentBackground;
-
-        //Commands
-        public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavNextCommand { get; }
-        public ICommand NavBackCommand { get; }
-        public ICommand AddFunctionNodeCommand { get; }
-        public ICommand AddTerminalNodeCommand { get; }
-        public ICommand AddRootNodeCommand { get; }
-
         //Select Nodes Variables
         [ObservableProperty]
         private List<FunctionNode> functionNodes = AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes;
@@ -71,10 +37,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private string errorMessage = "";
 
+        //Commands
+        public ICommand NavNextCommand { get; }
+        public ICommand NavBackCommand { get; }
+        public ICommand AddFunctionNodeCommand { get; }
+        public ICommand AddTerminalNodeCommand { get; }
+        public ICommand AddRootNodeCommand { get; }
+
         //Constructor
         public GPR4SelectNodesViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
             AddFunctionNodeCommand = new RelayCommand(AddFunctionNode);
@@ -85,11 +57,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
         public void NavNext()
         {
             bool terminalNodeListEmpty = IsNodeListEmpty(new List<Node>(AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes));
@@ -111,7 +78,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new GPR3SelectFitnessFunctionViewModel();
         }
 
-        //GP Basics 4 Functions
+        //Select Nodes Functions
         public void AddFunctionNode()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new AddCustomFunctionNodeViewModel(false);
@@ -142,7 +109,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             return nodeListEmpty;
         }
 
-
         public void GetSelectNodes()
         {
             foreach (FunctionNode node in FunctionNodes)
@@ -171,6 +137,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
     }
 
+    //Class used for the item control in this view.
     public class SelectNode
     {
         private string? symbol;

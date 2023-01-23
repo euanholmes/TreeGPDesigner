@@ -3,64 +3,18 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPBasics1ViewModel : ObservableObject
+    //Viewmodel class for GP Basics 1 View
+    public partial class GPBasics1ViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
-
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        //Tree Drawing Variables
-        [ObservableProperty]
-        private Brush[]? brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
-
-        [ObservableProperty]
-        private ImageSource? zoomIconSource = AppInfoSingleton.Instance.CurrentZoomIcon;
-
-        [ObservableProperty]
-        public ObservableCollection<NodePlot> displayTreePlot = new();
-
-        [ObservableProperty]
-        private float? canvasHeight = 0;
-
-        [ObservableProperty]
-        private float? canvasWidth = 0;
-
-        //Commands
-        public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavTutorialsMenuCommand { get; }
-        public ICommand NavNextCommand { get; }
-        public ICommand GenerateTreeCommand { get; }
-        public ICommand FunctionNodeCheckBoxCommand { get; set; }
-        public ICommand TerminalNodeCheckBoxCommand { get; set; }
-        public ICommand RootNodeCheckBoxCommand { get; set; }
-
         //GP Basics 1 Variables
-        public Node? DisplayTree;
         private static Random random = new Random();
+
+        public Node? DisplayTree;
 
         public List<FunctionNode> FunctionNodes = new() { new FunctionNode("+", 2, a => a[0] + a[1]), new FunctionNode("<", 2, a => a[0] < a[1]? 1 : 0),
             new FunctionNode("/", 2, a => a[0] / a[1]), new FunctionNode("-", 2, a => a[0] - a[1]), new FunctionNode("*", 2, a => a[0] * a[1]),
@@ -95,36 +49,30 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private string errorMessage = "";
 
+        //Commands
+        public ICommand NavNextCommand { get; }
+        public ICommand GenerateTreeCommand { get; }
+        public ICommand FunctionNodeCheckBoxCommand { get; set; }
+        public ICommand TerminalNodeCheckBoxCommand { get; set; }
+        public ICommand RootNodeCheckBoxCommand { get; set; }
+
         //Constructor
         public GPBasics1ViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
-            NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavNextCommand = new RelayCommand(NavNext);
             GenerateTreeCommand = new RelayCommand(GenerateTree);
-
             FunctionNodeCheckBoxCommand = new RelayCommand<string>(param => FunctionNodeCheckBox(param));
             TerminalNodeCheckBoxCommand = new RelayCommand<string>(param => TerminalNodeCheckBox(param));
             RootNodeCheckBoxCommand = new RelayCommand<string>(param => RootNodeCheckBox(param));
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
-        public void NavTutorialsMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
-        }
-
         public void NavNext()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPBasics2ViewModel();
         }
 
-        //Functions
+        //GP Basics 1 Functions
         public void GenerateTree()
         {
             BinPackingTemplate bpTemplate = new();
@@ -137,8 +85,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             if ((bpTemplate.TerminalNodes.Count == 0 && SelectedRootNodes[4] == false && SelectedRootNodes[5] == false) ||
                 (bpTemplate.TerminalRootNodes.Count == 0 && bpTemplate.FunctionRootNodes.Count == 0))
             {
-                /*MessageBox.Show("Error generating tree. Make sure there are root nodes selected. Also, if using only function root " +
-                    "nodes make sure there are terminal nodes selected.", "Tree Generation Error");*/
                 ErrorMessage = "*Select More Nodes.";
             }
             else

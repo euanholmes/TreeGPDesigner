@@ -1,19 +1,12 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.ComponentModel;
 using System.Windows.Media;
 
-namespace TreeGPDesigner.MVVM.ViewModel
+namespace TreeGPDesigner
 {
+    //Viewmodel class for Main Window
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
+        //Main Window Variables
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public object? CurrentView => AppInfoSingleton.Instance.CurrentViewModel;
@@ -29,7 +22,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Background)));
         }
 
-
+        //Constructor
         public MainWindowViewModel()
         {
             AppInfoSingleton.Instance.CurrentViewModelChanged += OnCurrentViewModelChanged;

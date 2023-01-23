@@ -3,55 +3,22 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPBasics4ViewModel : ObservableObject
+    //Viewmodel for GP Basics 4 View
+    public partial class GPBasics4ViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
-
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        //Tree Drawing Variables
-        [ObservableProperty]
-        private Brush[]? brushSet = AppInfoSingleton.Instance.CurrentBrushSet;
-
-        [ObservableProperty]
-        public ObservableCollection<NodePlot> displayTreePlot = new();
-
-        [ObservableProperty]
-        private float? canvasHeight = 0;
-
-        [ObservableProperty]
-        private float? canvasWidth = 0;
-
-        //Commands
-        public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavTutorialsMenuCommand { get; }
-        public ICommand NavPreviousCommand { get; }
-        public ICommand GetFitnessCommand { get; }
-        public ICommand NewTreeCommand { get; }
-
         //GP Basics 4 Variables
+        private static Random random = new();
+
+        private BinPackingTemplate bpTemplate = new();
+
+        private Node currentTree;
+
         [ObservableProperty]
         private string informationText = "Now that you have a population of programs as well as wrappers and datasets to use with them you can start assessing the " +
             "fitness of these programs. Assessing the fitness of programs is important to see firstly which programs complete the task correctly and " +
@@ -71,33 +38,20 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private Brush colourIndicator = Brushes.Gray;
 
-        private BinPackingTemplate bpTemplate = new();
-
-        private Node currentTree;
-
-        private static Random random = new();
+        //Commands
+        public ICommand NavPreviousCommand { get; }
+        public ICommand GetFitnessCommand { get; }
+        public ICommand NewTreeCommand { get; }
 
         //Constructor
         public GPBasics4ViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
-            NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavPreviousCommand = new RelayCommand(NavPrevious);
             GetFitnessCommand = new RelayCommand(GetFitness);
             NewTreeCommand = new RelayCommand(NewTree);
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
-        public void NavTutorialsMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
-        }
-
         public void NavPrevious()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPBasics3ViewModel();

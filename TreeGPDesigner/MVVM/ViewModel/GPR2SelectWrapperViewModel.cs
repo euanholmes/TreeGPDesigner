@@ -1,37 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR2SelectWrapperViewModel : ObservableObject
+    //Viewmodel class for Select Wrapper View
+    public partial class GPR2SelectWrapperViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
+        //Select Wrapper UI Variables
+        private List<FunctionModel> wrappers;
 
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        //Wrapper UI Variables
         [ObservableProperty]
         private string wrapperName;
 
@@ -41,10 +22,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private ImageSource wrapperImage;
 
-        private List<FunctionModel> wrappers;
-
         //Commands
-        public ICommand NavHomeMenuCommand { get; }
         public ICommand NavNextCommand { get; }
         public ICommand NavBackCommand { get; }
         public ICommand NextWrapperCommand { get; }
@@ -53,10 +31,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //Constructor
         public GPR2SelectWrapperViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
-
             NextWrapperCommand = new RelayCommand(NextWrapper);
             PreviousWrapperCommand = new RelayCommand(PreviousWrapper);
 
@@ -65,11 +41,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
         public void NavNext()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPR3SelectFitnessFunctionViewModel();
@@ -80,7 +51,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new GPR1GPTemplateMenuViewModel();
         }
 
-        //Next, previous wrapper functions.
+        //Select Wrapper Functions
         public void NextWrapper()
         {
             if (AppInfoSingleton.Instance.CurrentTemplate.CurrentWrapper == wrappers.Count - 1)
@@ -107,7 +78,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             SetWrapperUI();
         }
 
-        //Set wrapper UI
         public void SetWrapperUI()
         {
             WrapperName = wrappers[AppInfoSingleton.Instance.CurrentTemplate.CurrentWrapper].Name;

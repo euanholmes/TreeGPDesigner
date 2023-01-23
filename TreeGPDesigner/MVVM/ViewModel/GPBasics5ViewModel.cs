@@ -2,11 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -14,34 +9,9 @@ using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPBasics5ViewModel : ObservableObject
+    //Viewmodel class for GP Basics 5 View
+    public partial class GPBasics5ViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
-
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        [ObservableProperty]
-        private Brush? background = AppInfoSingleton.Instance.CurrentBackground;
-
-        //Commands
-        public ICommand NavHomeMenuCommand { get; }
-        public ICommand NavTutorialsMenuCommand { get; }
-        public ICommand NavNextCommand { get; }
-        public ICommand SelectCommand { get; }
-        public ICommand RadioButtonCommand { get; }
-
         //GP Basics 5 Variables
         private List<Node> programs = new();
 
@@ -90,12 +60,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
             "diversity while truncation selection will guarantee that high fitness programs make it through.\n\nTry out these different selection methods to see " +
             "which programs are selected.";
 
+        //Commands
+        public ICommand NavNextCommand { get; }
+        public ICommand SelectCommand { get; }
+        public ICommand RadioButtonCommand { get; }
 
         //Constructor
         public GPBasics5ViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
-            NavTutorialsMenuCommand = new RelayCommand(NavTutorialsMenu);
             NavNextCommand = new RelayCommand(NavNext);
             SelectCommand = new RelayCommand(Select);
             RadioButtonCommand = new RelayCommand<string>(param => RadioButton(param));
@@ -162,16 +134,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
-        public void NavTutorialsMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new TutorialsMenuViewModel();
-        }
-
         public void NavNext()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPBasics6ViewModel();
@@ -268,9 +230,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             }
 
             SelectEnabled = true;
-            selection1 = null;
-            selection2 = null;
-            selection3 = null;
         }
 
         public void RadioButton(string selectionMethodString)

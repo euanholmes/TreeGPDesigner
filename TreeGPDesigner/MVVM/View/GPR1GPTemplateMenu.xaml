@@ -58,7 +58,7 @@
                         </Border>
 
                         <Viewbox Grid.Column="1" Margin="15">
-                            <Button Command="{Binding NavSelectCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 10 0 10" Content="Select"/>
+                            <Button Command="{Binding NavSelectBPCommand}" Style="{DynamicResource NormalButtonStyle}" Margin="0 10 0 10" Content="Select"/>
                         </Viewbox>
 
                         <Border Style="{DynamicResource Panel1}" Grid.Column="2" Margin="15">

@@ -1,36 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
 using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
-    public partial class GPR3SelectFitnessFunctionViewModel : ObservableObject
+    //Viewmodel class for Select Fitness Function View
+    public partial class GPR3SelectFitnessFunctionViewModel : ViewModelBase
     {
-        //Common Variables
-        [ObservableProperty]
-        private Brush? textColour = AppInfoSingleton.Instance.CurrentText;
+        //Select Fitness Function Variables
+        private List<FunctionModel> fitnessFunctions;
 
-        [ObservableProperty]
-        private Brush? normalButtonColour = AppInfoSingleton.Instance.CurrentNormalButtonColor;
-
-        [ObservableProperty]
-        private Brush? navButtonColour = AppInfoSingleton.Instance.CurrentNavButtonColor;
-
-        [ObservableProperty]
-        private Brush? panel1Colour = AppInfoSingleton.Instance.CurrentPanel1Color;
-
-        [ObservableProperty]
-        private Brush? panel2Colour = AppInfoSingleton.Instance.CurrentPanel2Color;
-
-        //Fitness Function UI Variables
         [ObservableProperty]
         private string fitnessFunctionName;
 
@@ -40,10 +22,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private ImageSource fitnessFunctionImage;
 
-        private List<FunctionModel> fitnessFunctions;
-
         //Commands
-        public ICommand NavHomeMenuCommand { get; }
         public ICommand NavNextCommand { get; }
         public ICommand NavBackCommand { get; }
         public ICommand NextFitnessFunctionCommand { get; }
@@ -52,10 +31,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //Constructor
         public GPR3SelectFitnessFunctionViewModel()
         {
-            NavHomeMenuCommand = new RelayCommand(NavHomeMenu);
             NavNextCommand = new RelayCommand(NavNext);
             NavBackCommand = new RelayCommand(NavBack);
-
             NextFitnessFunctionCommand = new RelayCommand(NextFitnessFunction);
             PreviousFitnessFunctionCommand = new RelayCommand(PreviousFitnessFunction);
 
@@ -64,11 +41,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         }
 
         //Navigation Functions
-        public void NavHomeMenu()
-        {
-            AppInfoSingleton.Instance.CurrentViewModel = new HomeViewModel();
-        }
-
         public void NavNext()
         {
             AppInfoSingleton.Instance.CurrentViewModel = new GPR4SelectNodesViewModel();
@@ -79,7 +51,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AppInfoSingleton.Instance.CurrentViewModel = new GPR2SelectWrapperViewModel();
         }
 
-        //Next, previous fitness function functions.
+        //Select Fitness Function Functions
         public void NextFitnessFunction()
         {
             if (AppInfoSingleton.Instance.CurrentTemplate.CurrentFitnessFunction == fitnessFunctions.Count - 1)
@@ -106,7 +78,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             SetFitnessFunctionUI();
         }
 
-        //Set wrapper UI
         public void SetFitnessFunctionUI()
         {
             FitnessFunctionName = fitnessFunctions[AppInfoSingleton.Instance.CurrentTemplate.CurrentFitnessFunction].Name;

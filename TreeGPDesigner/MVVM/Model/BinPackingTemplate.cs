@@ -77,13 +77,13 @@ namespace TreeGPDesigner.MVVM.Model
             AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs", true, a => Math.Abs(a[0])));
             AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition", true, a => a[0] + a[1] + a[2]));
             AddFunctionNode(new FunctionNode("%", 2, "Protected Divide", true, a => a[1] == 0 ? 1 : a[0] / a[1]));
+
             AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
             AddTerminalNode(new TerminalNode("CI", 0, "Current Item", true, 1, true));
             AddTerminalNode(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
             AddTerminalNode(new TerminalNode("-1", 0, "-1", true, -1, false));
             AddTerminalNode(new TerminalNode("1", 0, "1", true, 1, false));
             AddTerminalNode(new TerminalNode("3.14", 0, "3.14", true, 3.14, false));
-
             AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => a[0] - a[1], new int[]{ 2, 0 }));
             AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", true, 0, false, true, a => a[0] * 2, new int[] { 2 }));
 
@@ -107,28 +107,7 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(randomDataset500);
 
             CurrentDataPoints = "[0] - Current Bin Weight\n[1] - Current Item\n[2] - Bin Capacity";
-
-            //AddCustomFunctionNode("* -1", 2, "Multiply then minus one", true, "a => (a[0] * a[1]) - 1", false);
-
-            /*FunctionNode testboolean = new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1], false);
-            testboolean.Root = true;
-            testboolean.ChildNodes.Add(new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? a[0] : a[1], true));
-            testboolean.ChildNodes.Add(new TerminalNode("1", 0, "1", true, 1, false));
-            testboolean.ChildNodes[0].ChildNodes.Add(new TerminalNode("34", 0, "34", true, 34, false));
-            testboolean.ChildNodes[0].ChildNodes.Add(new TerminalNode("22", 0, "22", true, 22, false));
-
-            int testBooleanResult = testboolean.Eval();
-            Trace.WriteLine($"testBooleanResult = {testBooleanResult}");*/
         }
-
-        /*public async Task testAsync()
-        {
-            string functionLambda = "a => a[0] + a[1]";
-            var options = ScriptOptions.Default;
-            Func<int[], int> additionFunction = await CSharpScript.EvaluateAsync<Func<int[],int>>(functionLambda, options);
-            int[] testInts = new int[] { 10, 24 };
-            Trace.WriteLine(additionFunction(testInts));
-        }*/
 
         public List<BPData> GenerateRandomBPDataset(int num)
         {
@@ -162,7 +141,7 @@ namespace TreeGPDesigner.MVVM.Model
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, 0, true));
             FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, 1, true));
 
-            FFDTree.Name = "FFD";
+            FFDTree.Name = "FF";
 
             return FFDTree;
         }
