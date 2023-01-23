@@ -16,7 +16,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
     {
         //Final Screen Variables
         public event PropertyChangedEventHandler? PropertyChanged2;
-        public ObservableCollection<NodePlot>? DisplayTreePlot => AppInfoSingleton.Instance.MainDisplayTree;
         private void OnMainDisplayTreeChanged()
         {
             PropertyChanged2?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayTreePlot)));
