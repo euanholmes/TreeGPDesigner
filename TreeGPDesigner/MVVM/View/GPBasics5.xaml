@@ -51,8 +51,6 @@
                     <Viewbox Margin="10">
                         <TextBlock Width="250" Height="372" TextWrapping="Wrap" Text="{Binding InformationText}" Style="{DynamicResource RegularText}"/>
                     </Viewbox>
-                        
-                    
                 </Border>
                 
                 <!-- Selection Methods Grid -->
@@ -113,7 +111,6 @@
                                             <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="196" Y1="138.98" X2="229.5" Y2="138.98"/>
                                             <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="162" Y1="138" X2="162" Y2="167"/>
                                             <Line StrokeThickness="2" Stroke="{Binding TextColour}" X1="229.5" Y1="138" X2="229.5" Y2="167"/>
-
                                         </Grid>
 
                                         <!-- Nodes -->
@@ -153,7 +150,6 @@
                                                     <RowDefinition Height="*"/>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
-
 
                                                 <Viewbox Grid.Row="2" Grid.Column="1">
                                                     <Border BorderThickness="1.5" BorderBrush="{Binding TextColour}" Width="40" Height="20"/>
@@ -331,10 +327,6 @@
                             </Grid>
                         </Grid>
                     </Border>
-                    
-                    
-
-
                 </Grid>
                 
                 <!-- Tree Selection Grid -->
@@ -525,7 +517,6 @@
                                     </Border>
                                 </StackPanel>
                             </Viewbox>
-
                         </Grid>
                     </Border>
                     
@@ -554,12 +545,12 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="0.25*"/>
                             </Grid.RowDefinitions>
-                            
+
                             <!-- Selection 1 Title -->
                             <Viewbox Grid.Column="1" Grid.Row="1">
                                 <TextBlock Style="{DynamicResource RegularText}" Text="Selection 1:"/>
                             </Viewbox>
-                            
+
                             <!-- 1st Selected Tree -->
                             <Viewbox Grid.Column="3" Grid.Row="1">
                                 <Border Margin="5" Background="{Binding Background}">
@@ -625,8 +616,6 @@
                             </Viewbox>
                         </Grid>
                     </Border>
-
-
                 </Grid>
             </Grid>
         </Border>

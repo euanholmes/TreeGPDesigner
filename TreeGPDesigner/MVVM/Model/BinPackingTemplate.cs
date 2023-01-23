@@ -1,22 +1,15 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Microsoft.CodeAnalysis.Scripting;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using TreeGPDesigner.MVVM.View;
 
 namespace TreeGPDesigner.MVVM.Model
 {
+    //Class for a bin packing template which inherits from TreeGP
     public class BinPackingTemplate : TreeGP
     {
+        //Bin packing template variables
         private List<FunctionModel> BPWrappersUI = new List<FunctionModel>() 
         { new FunctionModel("BP Offline Wrapper", "This is a wrapper for offline bin packing problems. Items are taken in and sorted " +
                                                   "in descending order, then the program tree solution will decide whether to pack the item " +
@@ -57,6 +50,7 @@ namespace TreeGPDesigner.MVVM.Model
 
         private List<List<BPData>> bpDatasets = new();
 
+        //Constructor
         public BinPackingTemplate()
         {
             WrappersUI = BPWrappersUI;
@@ -109,6 +103,7 @@ namespace TreeGPDesigner.MVVM.Model
             CurrentDataPoints = "[0] - Current Bin Weight\n[1] - Current Item\n[2] - Bin Capacity";
         }
 
+        //Function to generate random BP datasets
         public List<BPData> GenerateRandomBPDataset(int num)
         {
             List<BPData> dataset = new();
@@ -133,6 +128,7 @@ namespace TreeGPDesigner.MVVM.Model
             return dataset;
         }
 
+        //Function to make a first fit/first descending tree
         public Node MakeFFDTree()
         {
             Node FFDTree = new FunctionNode("<=", 2, a => a[0] <= a[1] ? 1 : 0);
@@ -146,6 +142,7 @@ namespace TreeGPDesigner.MVVM.Model
             return FFDTree;
         }
 
+        //Wrapper Functions
         public List<List<int>> BPOfflineWrapper(List<int> origItems, int binCapacity, Node solution)
         {
             List<int> items = new List<int>(origItems);
@@ -212,32 +209,7 @@ namespace TreeGPDesigner.MVVM.Model
             return bins;
         }
 
-        private void PrintItems(List<int> items)
-        {
-            Console.Write("Items: ");
-
-            for (int i = 0; i < items.Count; i++)
-            {
-                Console.Write(items[i] + " ");
-            }
-        }
-
-        private void PrintBins(List<List<int>> bins)
-        {
-
-            for (int i = 0; i < bins.Count; i++)
-            {
-                Console.Write("\nBin " + (i + 1) + ": ");
-
-                for (int x = 0; x < bins[i].Count; x++)
-                {
-                    Console.Write(bins[i][x] + " ");
-                }
-            }
-
-            Console.Write("\n");
-        }
-
+        //Fitness functions
         public Node FitnessFunctionOne(Node node, List<int> items, int binCapacity)
         {
             List<List<int>> bins = new List<List<int>>();
@@ -330,6 +302,7 @@ namespace TreeGPDesigner.MVVM.Model
             return node;
         }
 
+        //Function to remove unselected datasets
         public void RemoveUnselectedDatasets()
         {
             List<List<BPData>> chosenDatasets = new();
@@ -347,14 +320,10 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Function to get the BP population fitness
         public void GetBPPopulationFitness()
         {
-            List<int> testItems = new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 };
-            int testBinCapacity = 60;
-
             RemoveUnselectedDatasets();
-
-
 
             if (CurrentFitnessFunction == 0)
             {
@@ -362,7 +331,6 @@ namespace TreeGPDesigner.MVVM.Model
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    //FitnessFunctionOne(node, testItems, testBinCapacity);
 
                     foreach (List<BPData> dataset in bpDatasets)
                     {
@@ -377,7 +345,6 @@ namespace TreeGPDesigner.MVVM.Model
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    //FitnessFunctionOne(node, testItems, testBinCapacity);
                     foreach (List<BPData> dataset in bpDatasets)
                     {
                         foreach (BPData data in dataset)
@@ -393,7 +360,6 @@ namespace TreeGPDesigner.MVVM.Model
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    //FitnessFunctionTwo(node, testItems, testBinCapacity);
                     foreach (List<BPData> dataset in bpDatasets)
                     {
                         foreach (BPData data in dataset)
@@ -407,7 +373,6 @@ namespace TreeGPDesigner.MVVM.Model
                 {
                     node.Fitness = 0;
                     node.NotFailedYet = true;
-                    //FitnessFunctionTwo(node, testItems, testBinCapacity);
                     foreach (List<BPData> dataset in bpDatasets)
                     {
                         foreach (BPData data in dataset)
@@ -419,6 +384,7 @@ namespace TreeGPDesigner.MVVM.Model
             } 
         }
 
+        //Function to make all populations fitnesses positive as the fitness functions take points away past 0.
         public void MakeAllFitnessPositive()
         {
             float adjustNumber = 0;
@@ -443,6 +409,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Overriden TreeGP method which gets the population fitness
         public override void GetPopulationFitness()
         {
             GetBPPopulationFitness();
@@ -450,6 +417,7 @@ namespace TreeGPDesigner.MVVM.Model
         }
     }
 
+    //Class used for BP Datasets which has a variable for bin capacity and a variable for a list of items
     public class BPData
     {
         private int binCapacity;

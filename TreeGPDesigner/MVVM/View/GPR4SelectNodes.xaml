@@ -210,7 +210,6 @@
                         <Button Command="{Binding AddRootNodeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Add Root Node"/>
                     </Viewbox>
                 </Grid>
-
             </Grid>
         </Border>
 
@@ -250,7 +249,6 @@
             <Viewbox Grid.Column="2">
                 <TextBlock Foreground="Red" FontFamily="{StaticResource RobotoLightItalic}" Text="{Binding ErrorMessage}"/>
             </Viewbox>
-            
         </Grid>
     </Grid>
 </UserControl>

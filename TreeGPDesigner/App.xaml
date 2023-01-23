@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:TreeGPDesigner.MVVM.ViewModel"
              xmlns:view="clr-namespace:TreeGPDesigner.MVVM.View"
              StartupUri="MainWindow.xaml">
+    <!-- App settings with theme, fonts and data templates for each view -->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -100,7 +101,6 @@
             <DataTemplate DataType="{x:Type vm:ReferencesPageViewModel}">
                 <view:ReferencesPage/>
             </DataTemplate>
-
 
             <!-- Custom Fonts -->
             <FontFamily x:Key="RobotoBlack">pack://application:,,,/Fonts/#Roboto Black</FontFamily>

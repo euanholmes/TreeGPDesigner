@@ -2,15 +2,14 @@
 using Microsoft.CodeAnalysis.Scripting;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TreeGPDesigner.MVVM.Model
 {
+    //Abstract TreeGP class which will be inherited by all GP templates in the app. Provides GP functions for selection, tree growing etc.
     public abstract class TreeGP
     {
+        //TreeGP private variables
         private List<FunctionNode> functionNodes = new List<FunctionNode>();
         private List<TerminalNode> terminalNodes = new List<TerminalNode>();
         private List<FunctionNode> functionRootNodes = new List<FunctionNode>();
@@ -38,6 +37,7 @@ namespace TreeGPDesigner.MVVM.Model
         private float lowestKnownAlgorithmFitness = float.MaxValue;
         private string currentDataPoints = "";
 
+        //Getters and setters for private variables
         public List<FunctionNode> FunctionNodes { get => functionNodes; set => functionNodes = value; }
         public List<TerminalNode> TerminalNodes { get => terminalNodes; set => terminalNodes = value; }
         public List<FunctionNode> FunctionRootNodes { get => functionRootNodes; set => functionRootNodes = value; }
@@ -64,6 +64,8 @@ namespace TreeGPDesigner.MVVM.Model
         public float LowestKnownAlgorithmFitness { get => lowestKnownAlgorithmFitness; set => lowestKnownAlgorithmFitness = value; }
         public string CurrentDataPoints { get => currentDataPoints; set => currentDataPoints = value; }
 
+        //Functions using the Microsoft.CodeAnalysis.CSharp.Scripting package to convert strings to lambda expressions.
+        //To add custom nodes.
         public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, string customFunctionString)
         {
             var options = ScriptOptions.Default;
@@ -95,6 +97,7 @@ namespace TreeGPDesigner.MVVM.Model
             AddRootNode(new TerminalNode(customSymbol, 0, customNodeDescription, true, 0, false, true, customTerminalFunction, customTerminalFunctionData));
         }
 
+        //Add node functions.
         public void AddFunctionNode(FunctionNode functionNode)
         {
             FunctionNodes.Add(functionNode);
@@ -119,6 +122,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Get random node functions
         public TerminalNode GetRandomTerminalNode()
         {
             TerminalNode randomTerminalNode = TerminalNodes[random.Next(0, TerminalNodes.Count)];
@@ -179,6 +183,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Function which grows a "full" tree
         public Node FullTree(Node node, int depth)
         {
             if (depth < 1)
@@ -210,6 +215,7 @@ namespace TreeGPDesigner.MVVM.Model
             return node;
         }
 
+        //Function which grows a "grow" tree
         public Node GrowTree(Node node, int depth)
         {
             if (depth < 1 || node == null)
@@ -256,8 +262,10 @@ namespace TreeGPDesigner.MVVM.Model
             return node;
         }
 
+        //Abstract function inherited by all templates to calculate a populations fitness
         public abstract void GetPopulationFitness();
 
+        //Generates a population all with the "full" method
         public void GeneratePopulationAllFull(int populationNum, int minDepth, int maxDepth)
         {
             List<Node> population = new List<Node>();
@@ -305,6 +313,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation = population;
         }
 
+        //Generates a population all with the "grow" method
         public void GeneratePopulationAllGrow(int populationNum, int minDepth, int maxDepth)
         {
             List<Node> population = new List<Node>();
@@ -352,6 +361,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation = population;
         }
 
+        //Generates a population with the ramped half and half method
         public void GeneratePopulationRampedHalfAndHalf(int populationNum, int minDepth, int maxDepth)
         {
             List<Node> population = new List<Node>();
@@ -413,6 +423,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation = population;
         }
 
+        //Gets an intial population depending on the selected tree growing method
         public void GetInitialPopulation()
         {
             RemoveUnselectedNodes();
@@ -435,6 +446,7 @@ namespace TreeGPDesigner.MVVM.Model
             GetLowestKnownAlgorithmFitness();
         }
 
+        //Gets the next generation of programs
         public void GetNextGeneration()
         {
             Selection();
@@ -475,11 +487,10 @@ namespace TreeGPDesigner.MVVM.Model
             currentGenerationNum++;
         }
 
+        //Selection function depending on current selection method
         public void Selection()
         {
             int selectionNum = (int)Math.Floor((CurrentSelectionPercent / 100d) * CurrentPopulationCount);
-
-            //Trace.WriteLine($"Selection Num = {selectionNum}, CurrentSelectionPercent = {CurrentSelectionPercent}, CurrentPopulationCount = {CurrentPopulationCount}");
 
             if (selectionNum < 2)
             {
@@ -500,11 +511,13 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Function to sort generation by fitness
         public void SortGenerationByFitness()
         {
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
         }
 
+        //Function to remove unchecked nodes
         public void RemoveUnselectedNodes()
         {
             List<FunctionNode> chosenFunctionNodes = new();
@@ -550,6 +563,7 @@ namespace TreeGPDesigner.MVVM.Model
             TerminalRootNodes = chosenTerminalRootNodes;
         }
 
+        //Function to get the lowest known algorithm fitness
         public void GetLowestKnownAlgorithmFitness()
         {
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
@@ -557,6 +571,7 @@ namespace TreeGPDesigner.MVVM.Model
             LowestKnownAlgorithmFitness = KnownAlgorithms.OrderByDescending(a => a.Fitness).ToList()[knownAlgorithms.Count - 1].Fitness;
         }
 
+        //Function which gets a random node in a tree
         public Node GetRandomChildNodeAtDepthLevelDown(Node node, int depth)
         {
             if (node.Parent == null && node.ChildNodes.Count == 0)
@@ -573,6 +588,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Function which gets a random terminal node in a tree
         public Node GetRandomTerminalNodeOfTree(Node node)
         {
             if (node.GetType() == typeof(TerminalNode))
@@ -585,6 +601,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Mutation function
         public void Mutate(Node node, int maxDepth)
         {
             TreeDrawingAlgorithm.CalculateNodePositions(node);
@@ -627,6 +644,7 @@ namespace TreeGPDesigner.MVVM.Model
             TreeDrawingAlgorithm.CalculateNodePositions(node);
         }
 
+        //Crossover function
         //Not fixed for all cases yet.
         public void Crossover(Node node1, Node node2, int maxDepth)
         {
@@ -654,6 +672,7 @@ namespace TreeGPDesigner.MVVM.Model
             TreeDrawingAlgorithm.CalculateNodePositions(node1);
         }
 
+        //Truncation selection function
         public void TruncationSelection(int selectionNumber)
         {
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
@@ -662,7 +681,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation.Clear();
         }
 
-        //This might be wrong/just random. 
+        //Fitness proportionate selection function 
         public void FitnessProportionateSelection(int selectionNumber)
         {
             for (int i = 0; i < selectionNumber; i++)
@@ -699,8 +718,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation.Clear();
         }
 
-        //Note: There was a bug with this that generation was set to another list and it changed that list as well. Fixed it
-        //in problem by doing Generation = new List<Node>(programs). Didn't break truncation selection though????
+        //Tournament selection function
         public void TournamentSelection(int selectionNumber)
         {
             int tournamentSelectionNum = (int)Math.Floor((60 / 100d) * CurrentPopulationCount);
@@ -725,6 +743,7 @@ namespace TreeGPDesigner.MVVM.Model
             Generation.Clear();
         }
 
+        //Function which applies genetic functions mutation and crossover
         public void ApplyGeneticFunctions(int crossoverNumber, int mutationNumber, int maxDepth)
         {
             for (int i = 0; i < crossoverNumber; i++)
@@ -781,6 +800,7 @@ namespace TreeGPDesigner.MVVM.Model
             GeneticFunctionPool.Clear();
         }
 
+        //Copy node function which creates a new node with all the same information
         public Node CopyNode(Node node)
         {
             Node copiedNode;

@@ -176,9 +176,7 @@
                                         </Canvas>
                                     </Grid>
                                 </Viewbox>
-
-
-
+                                
                                 <!-- Full Tree Radio Button -->
                                 <Viewbox Grid.Column="2">
                                     <RadioButton Command="{Binding ChangeGrowMethodCommand}" Style="{DynamicResource RadioButton}" GroupName="growMethods"/>
@@ -197,7 +195,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="0.5*"/>
                         </Grid.RowDefinitions>
-                        
+
                         <!-- Display Tree Panel -->
                         <Border x:Name="treeBorder" Cursor="Hand" ClipToBounds="true" Grid.Row="0" Style="{DynamicResource Panel1}">
                             <Grid>
@@ -271,10 +269,8 @@
                         <Viewbox Grid.Row="2">
                             <Button Command="{Binding GenerateTreeCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Generate Tree"/>
                         </Viewbox>
-                        
                     </Grid>
                 </Grid>
-                
             </Grid>
         </Border>
 

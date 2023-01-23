@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d"
              d:DesignHeight="540" d:DesignWidth="960">
-
-    <!-- Main Window Grid -->
+    <!-- Home View Grid -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>

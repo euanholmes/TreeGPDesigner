@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    >
-
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<!-- Styles for elements throughout the app -->
+    
+    <!-- Style for Light/Dark Mode Toggle Button -->
     <Style x:Key="ToggleButtonStyle" TargetType="Button">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Cursor" Value="Hand" />
@@ -21,6 +22,7 @@
         </Setter>
     </Style>
 
+    <!-- Style for basic button -->
     <Style x:Key="NormalButtonStyle" TargetType="Button">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Cursor" Value="Hand" />
@@ -43,6 +45,7 @@
         </Setter>
     </Style>
 
+    <!-- Style for button in items control -->
     <Style x:Key="TreeButtonStyle" TargetType="Button">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Cursor" Value="Hand" />
@@ -65,6 +68,7 @@
         </Setter>
     </Style>
 
+    <!-- Style for exit and menu navigation buttons -->
     <Style x:Key="NavButtonStyle" TargetType="Button">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Cursor" Value="Hand" />
@@ -86,33 +90,38 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-
+    
+    <!-- Style for title text -->
     <Style x:Key="TitleText" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{DynamicResource RobotoMedium}"/>
         <Setter Property="Foreground" Value="{Binding TextColour}"/>
     </Style>
 
+    <!-- Style for subtitle text -->
     <Style x:Key="SubTitleText" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{DynamicResource RobotoMediumItalic}"/>
         <Setter Property="Foreground" Value="{Binding TextColour}"/>
     </Style>
 
+    <!-- Style for block regular text -->
     <Style x:Key="RegularText" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{DynamicResource RobotoRegular}"/>
         <Setter Property="Foreground" Value="{Binding TextColour}"/>
     </Style>
 
+    <!-- Style for background panel -->
     <Style x:Key="Panel1" TargetType="Border">
         <Setter Property="Background" Value="{Binding Panel1Colour}"/>
         <Setter Property="CornerRadius" Value="20"/>
     </Style>
 
+    <!-- Style for background panel -->
     <Style x:Key="Panel2" TargetType="Border">
         <Setter Property="Background" Value="{Binding Panel2Colour}"/>
         <Setter Property="CornerRadius" Value="20"/>
     </Style>
 
+    <!-- Style for checkbox -->
     <Style x:Key="CheckBox" TargetType="CheckBox">
         <Setter Property="Background" Value="{Binding NormalButtonColour}" />
         <Setter Property="BorderBrush" Value="{Binding TextColour}"/>
@@ -124,10 +133,8 @@
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
                         <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" Width="15" Height="15">
-                            <!--                                   your color here -->
                             <Path Stretch="Uniform" Width="15" Height="10" Fill="{Binding TextColour}" Name="eliCheck" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Visibility="Collapsed"/>
                         </Border>
-                     <!--   <TextBlock Margin="6"  VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}"></TextBlock> -->
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -148,6 +155,7 @@
         </Setter>
     </Style>
 
+    <!-- Style for radio button -->
     <Style x:Key="RadioButton" TargetType="RadioButton">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -205,6 +213,7 @@
         </Setter>
     </Style>
 
+    <!-- Style for settings text box -->
     <Style x:Key="SettingsTextBox" TargetType="TextBox">
         <Setter Property="FontFamily" Value="{DynamicResource RobotoRegular}"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -216,7 +225,4 @@
         <Setter Property="Background" Value="{Binding Panel2Colour}"/>
         <Setter Property="Margin" Value="1"/>
     </Style>
-
-
-
 </ResourceDictionary>

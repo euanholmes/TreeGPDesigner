@@ -179,7 +179,6 @@
                     <Viewbox Grid.Row="7">
                         <RadioButton IsChecked="{Binding RadioButton1IsChecked}" Command="{Binding SetSelectionMethodCommand}" CommandParameter="0" Foreground="{Binding TextColour}" GroupName="selectionMethod" Style="{DynamicResource RadioButton}"/>
                     </Viewbox>
-
                 </Grid>
                 
                 <!-- Fitness Proportionate Selection Grid -->

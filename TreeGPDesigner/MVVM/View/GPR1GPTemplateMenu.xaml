@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
-
     <!-- GP Template Menu Grid -->
     <Grid>
         <Grid.RowDefinitions>
@@ -15,7 +14,6 @@
             <RowDefinition Height="0.75*"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="2.5*"/>
-
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -37,7 +35,6 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
 
                 <!-- Bin Packing Template -->
                 <Border Grid.Row="0" BorderBrush="{Binding TextColour}" BorderThickness="0 0 0 1">

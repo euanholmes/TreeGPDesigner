@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace TreeGPDesigner.MVVM.Model
 {
+    //Class for a node plot
     public class NodePlot
     {
+        //Private node plot variables
         private float x;
         private float y;
         private float width;
@@ -23,7 +20,8 @@ namespace TreeGPDesigner.MVVM.Model
         private float linex2;
         private float liney2;
         private Brush symbolColour;
-
+        
+        //Constructor
         public NodePlot(float x, float y, float width, float height, Brush background, Brush border, CornerRadius cornerRadius, string symbol, float linex1, float liney1, float linex2, float liney2, Brush symbolColour)
         {
             this.x = x;
@@ -41,6 +39,7 @@ namespace TreeGPDesigner.MVVM.Model
             this.SymbolColour = symbolColour;
         }
 
+        //Getters and Setters for private variables
         public float X { get => x; set => x = value; }
         public float Y { get => y; set => y = value; }
         public float Width { get => width; set => width = value; }

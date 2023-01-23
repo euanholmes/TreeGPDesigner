@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
-            
+
             <!-- Algorithms and Settings Panel -->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -55,7 +55,7 @@
                         Algorithms
                     </TextBlock>
                 </Viewbox>
-                
+
                 <!-- Known Algorithms Panel-->
                 <Border Grid.Row="3" Style="{DynamicResource Panel2}">
                     <ScrollViewer Margin="10">
@@ -103,9 +103,8 @@
                         </StackPanel>
                     </Viewbox>
                 </Border>
-                
             </Grid>
-            
+
             <!-- Current Tree Panel -->
             <Border Grid.Column="3" Style="{DynamicResource Panel2}">
                 <Grid>
@@ -191,7 +190,7 @@
                     </Border>
                 </Grid>
             </Border>
-            
+
             <!-- Current Generation Panel -->
             <Grid Grid.Column="5">
                 <Grid.RowDefinitions>
@@ -235,9 +234,7 @@
                     </ScrollViewer>
                 </Border>
             </Grid>
-
         </Grid>
-        
 
         <!--Navigation Buttons-->
         <Grid Grid.Row="4" Grid.Column="1">

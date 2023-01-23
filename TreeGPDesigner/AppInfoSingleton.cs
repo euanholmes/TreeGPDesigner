@@ -1,11 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -13,11 +7,13 @@ using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner
 {
+    //Singleton class that contains information on current theme, brush sets, viewmodel, template and has a function
+    //for getting node plot information to display trees.
     public sealed partial class AppInfoSingleton
     {
         private static AppInfoSingleton instance = null;
 
-        //Theme Brushes.
+        //Theme Brushes
         public static Brush LightBackground = (Brush)new BrushConverter().ConvertFrom("#FFFFFF");
         public static Brush DarkBackground = (Brush)new BrushConverter().ConvertFrom("#121212");
         public static Brush LightPanel1 = (Brush)new BrushConverter().ConvertFrom("#f2f3f5");
@@ -29,6 +25,7 @@ namespace TreeGPDesigner
         public static Brush LightNavButton = Brushes.LightGray;
         public static Brush DarkNavButton = Brushes.Gray;
 
+        //Rainbow Brushes
         public static LinearGradientBrush RainbowBrush = new();
         public static LinearGradientBrush LightRainbowBrush = new();
 
@@ -88,6 +85,7 @@ namespace TreeGPDesigner
                                                  Brushes.White,
                                                  new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/the-starry-night-over-the-rhone.jpg")))};
 
+        //Private constructor
         private AppInfoSingleton()
         {
             RainbowBrush.StartPoint = new Point(0, 0);
@@ -179,44 +177,6 @@ namespace TreeGPDesigner
         {
             MainDisplayTreeChanged.Invoke();
         }
-
-       /* //Main Screen Canvas Width
-        public event Action MainCanvasWidthChanged;
-        private float? mainCanvasWidth;
-
-        public float? MainCanvasWidth
-        {
-            get => mainCanvasWidth;
-            set
-            {
-                mainCanvasWidth = value;
-                OnMainCanvasWidthChanged();
-            }
-        }
-
-        private void OnMainCanvasWidthChanged()
-        {
-            MainCanvasWidthChanged.Invoke();
-        }
-
-        //Main Screen Canvas Height
-        public event Action MainCanvasHeightChanged;
-        private float? mainCanvasHeight;
-
-        public float? MainCanvasHeight
-        {
-            get => mainCanvasHeight;
-            set
-            {
-                mainCanvasHeight = value;
-                OnMainCanvasHeightChanged();
-            }
-        }
-
-        private void OnMainCanvasHeightChanged()
-        {
-            MainCanvasHeightChanged.Invoke();
-        }*/
 
         //Current Panel1 Colour
         public event Action CurrentPanel1ColorChanged;

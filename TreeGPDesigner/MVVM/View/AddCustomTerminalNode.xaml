@@ -208,7 +208,6 @@
             <Viewbox Grid.Column="2">
                 <TextBlock Foreground="{Binding ErrorColour}" FontFamily="{StaticResource RobotoLightItalic}" Text="{Binding ErrorMessage}"/>
             </Viewbox>
-
         </Grid>
     </Grid>
 </UserControl>

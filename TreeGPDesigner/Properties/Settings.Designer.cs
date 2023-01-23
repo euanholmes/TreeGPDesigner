@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using TreeGPDesigner.MVVM.Model;
-
 namespace TreeGPDesigner.Properties {
     
     

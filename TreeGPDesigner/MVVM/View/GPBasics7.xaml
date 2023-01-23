@@ -303,10 +303,8 @@
                         <Viewbox Grid.Row="2">
                             <Button Command="{Binding CrossoverTreesCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Crossover Trees"/>
                         </Viewbox>
-
                     </Grid>
                 </Grid>
-
             </Grid>
         </Border>
 

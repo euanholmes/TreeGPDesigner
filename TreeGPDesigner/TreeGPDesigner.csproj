@@ -23,11 +23,9 @@
     <None Remove="Images\BPOfflineWrapperImage.png" />
     <None Remove="Images\BPOnlineWrapper.png" />
     <None Remove="Images\dark-mode-toggle-icon-inverted.png" />
-    <None Remove="Images\dark-mode-toggle-icon.png" />
     <None Remove="Images\FitnessFunctionOne.png" />
     <None Remove="Images\FitnessFunctionTwo.png" />
     <None Remove="Images\light-mode-toggle-icon.png" />
-    <None Remove="Images\PanZoom2.png" />
     <None Remove="Images\starry-night.jpg" />
     <None Remove="Images\sunflowers.jpg" />
     <None Remove="Images\tempLoadScreen.jpg" />
@@ -58,11 +56,9 @@
     <Resource Include="Images\BPOfflineWrapperImage.png" />
     <Resource Include="Images\BPOnlineWrapper.png" />
     <Resource Include="Images\dark-mode-toggle-icon-inverted.png" />
-    <Resource Include="Images\dark-mode-toggle-icon.png" />
     <Resource Include="Images\FitnessFunctionOne.png" />
     <Resource Include="Images\FitnessFunctionTwo.png" />
     <Resource Include="Images\light-mode-toggle-icon.png" />
-    <Resource Include="Images\PanZoom2.png" />
     <Resource Include="Images\starry-night.jpg" />
     <Resource Include="Images\sunflowers.jpg" />
     <Resource Include="Images\tempLoadScreen.jpg" />

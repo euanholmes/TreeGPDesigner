@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TreeGPDesigner.MVVM.Model
 {
+    //Abstract node class which is inherited by function node and terminal node. Contains common variables.
     public abstract class Node
     {
+        //Private Node variables
         private static int idCount = 0;
         private int id = idCount++;
         private string symbol;
@@ -28,6 +27,7 @@ namespace TreeGPDesigner.MVVM.Model
         private string name;
         private int depthLevel = 0;
 
+        //Node constructors
         public Node(string symbol, int noOperands)
         {
             this.symbol = symbol;
@@ -59,8 +59,10 @@ namespace TreeGPDesigner.MVVM.Model
             NotFailedYet = notFailedYet;
         }
 
+        //Abstract eval() function overriden by function and terminal node.
         public abstract double Eval();
 
+        //Sets the data points for all nodes in a tree, only used by terminal nodes
         public void SetDataAll(double[] data)
         {
             Data = data;
@@ -74,6 +76,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Sets parents for a tree
         public void SetParents()
         {
             if (ChildNodes.Count > 0)
@@ -86,6 +89,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        //Prints all nodes in a tree
         public void PrintAllNodes()
         {
             Console.WriteLine($"Node = {Symbol}, id = {Id}, fitness = {fitness}");
@@ -99,7 +103,7 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
-        //Functions needed for TreeDrawingAlgorithm class Author = Rachel Lim
+        //Functions needed for TreeDrawingAlgorithm class, Author = Rachel Lim
         public bool IsLeftMost()
         {
             if (this.Parent == null)
