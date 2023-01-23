@@ -11,17 +11,12 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private string runName = AppInfoSingleton.Instance.CurrentTemplate.CurrentRunName;
 
+        //Might be a bug with these at some point there was with the sliders
         [ObservableProperty]
         private string populationCount = AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount.ToString();
 
         [ObservableProperty]
         private string maxDepth = AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth.ToString();
-
-        [ObservableProperty]
-        private int selectionSliderValue = AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent;
-
-        [ObservableProperty]
-        private int mutationCrossoverSliderValue = AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent;
 
         //Commands
         public ICommand NavStartRunCommand { get; }

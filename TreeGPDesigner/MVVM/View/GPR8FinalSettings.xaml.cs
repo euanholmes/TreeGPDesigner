@@ -17,6 +17,8 @@ namespace TreeGPDesigner.MVVM.View
         public GPR8FinalSettings()
         {
             InitializeComponent();
+            mutationCrossoverSlider.Value = AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent;
+            selectionSlider.Value = AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent;
             selectionSliderTitle.Text = "Selection = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent + "%";
             mutationTitle.Text = "Mutation = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent + "%";
             crossoverTitle.Text = "Crossover = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent + "%";
@@ -92,7 +94,7 @@ namespace TreeGPDesigner.MVVM.View
             selectionSliderTitle.Text = "Selection % = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent + "%";
         }
 
-        private void MutationCrossoverSliderChanged(object sender , RoutedPropertyChangedEventArgs<double> e)
+        private void MutationCrossoverSliderChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent = (int)mutationCrossoverSlider.Value;
             AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent = 100 - AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent;

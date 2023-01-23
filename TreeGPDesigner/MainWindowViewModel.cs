@@ -8,7 +8,6 @@ namespace TreeGPDesigner
     {
         //Main Window Variables
         public event PropertyChangedEventHandler? PropertyChanged;
-
         public object? CurrentView => AppInfoSingleton.Instance.CurrentViewModel;
         public Brush? Background => AppInfoSingleton.Instance.CurrentBackground;
 

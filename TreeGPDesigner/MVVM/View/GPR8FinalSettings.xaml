@@ -148,7 +148,7 @@
                             
                             <!-- Selection % Slider -->
                             <Viewbox Grid.Row="5" Grid.Column="1">
-                                <Slider x:Name="selectionSlider" Value="{Binding SelectionSliderValue}" ValueChanged="SelectionSliderChanged" IsSnapToTickEnabled="True" Width="300" TickFrequency="1" Minimum="0" Maximum="100">
+                                <Slider x:Name="selectionSlider" ValueChanged="SelectionSliderChanged" IsSnapToTickEnabled="True" Width="300" TickFrequency="1" Minimum="0" Maximum="100">
                                     
                                 </Slider>
                             </Viewbox>
@@ -255,7 +255,7 @@
 
                             <!-- Genetic Function % % Slider -->
                             <Viewbox Grid.Row="5" Grid.Column="1">
-                                <Slider x:Name="mutationCrossoverSlider" ValueChanged="MutationCrossoverSliderChanged" IsSnapToTickEnabled="True" Value="{Binding MutationCrossoverSliderValue}" Width="300" TickFrequency="1" Minimum="0" Maximum="100">
+                                <Slider x:Name="mutationCrossoverSlider" ValueChanged="MutationCrossoverSliderChanged" IsSnapToTickEnabled="True" Width="300" TickFrequency="1" Minimum="0" Maximum="100">
 
                                 </Slider>
                             </Viewbox>

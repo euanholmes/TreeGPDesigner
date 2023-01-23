@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -76,10 +75,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             var splashScreen = new SplashScreen("Images/tempLoadScreen.jpg");
             splashScreen.Show(false);
 
-            AppInfoSingleton.Instance.MainDisplayTreeChanged += OnMainDisplayTreeChanged;
-
             GetNextGenerationCommand = new RelayCommand(GetNextGeneration);
 
+            AppInfoSingleton.Instance.MainDisplayTreeChanged += OnMainDisplayTreeChanged;
             InitialiseSettings();
             GetInitialPopulation();
             GetKnownAlgorithmTrees();
@@ -136,13 +134,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             }
         }
 
-        public void GetNextGeneration()
-        {
-            AppInfoSingleton.Instance.CurrentTemplate.GetNextGeneration();
-            CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
-            GenerationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
-            GetGenerationTrees();
-        }
+        
 
         public void GetInitialPopulation()
         {
@@ -185,6 +177,14 @@ namespace TreeGPDesigner.MVVM.ViewModel
                     CurrentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false, this));
                 }
             }
+        }
+
+        public void GetNextGeneration()
+        {
+            AppInfoSingleton.Instance.CurrentTemplate.GetNextGeneration();
+            CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
+            GenerationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
+            GetGenerationTrees();
         }
     }
 

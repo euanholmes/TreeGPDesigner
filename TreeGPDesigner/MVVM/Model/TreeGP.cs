@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.Scripting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace TreeGPDesigner.MVVM.Model
@@ -723,6 +724,8 @@ namespace TreeGPDesigner.MVVM.Model
         {
             int tournamentSelectionNum = (int)Math.Floor((60 / 100d) * CurrentPopulationCount);
             List<Node> tournament = new();
+
+            
 
             for (int i = 0; i < selectionNumber; i++)
             {
