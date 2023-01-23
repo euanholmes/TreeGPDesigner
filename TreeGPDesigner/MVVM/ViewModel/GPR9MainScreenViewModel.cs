@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -80,8 +81,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             GetNextGenerationCommand = new RelayCommand(GetNextGeneration);
 
             InitialiseSettings();
-            GetKnownAlgorithmTrees();
             GetInitialPopulation();
+            GetKnownAlgorithmTrees();
             AppInfoSingleton.Instance.MainDisplayTree = new();
 
             splashScreen.Close(TimeSpan.FromSeconds(0.5));
