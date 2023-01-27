@@ -15,14 +15,16 @@ namespace TreeGPDesigner.MVVM.Model
         private Brush border;
         private CornerRadius cornerRadius;
         private string symbol;
+        private string description;
         private float linex1;
         private float liney1;
         private float linex2;
         private float liney2;
         private Brush symbolColour;
-        
+
         //Constructor
-        public NodePlot(float x, float y, float width, float height, Brush background, Brush border, CornerRadius cornerRadius, string symbol, float linex1, float liney1, float linex2, float liney2, Brush symbolColour)
+        public NodePlot(float x, float y, float width, float height, Brush background, Brush border, CornerRadius cornerRadius, string symbol,
+            float linex1, float liney1, float linex2, float liney2, Brush symbolColour, string description)
         {
             this.x = x;
             this.y = y;
@@ -37,6 +39,7 @@ namespace TreeGPDesigner.MVVM.Model
             this.linex2 = linex2;
             this.liney2 = liney2;
             this.SymbolColour = symbolColour;
+            this.description = description;
         }
 
         //Getters and Setters for private variables
@@ -53,5 +56,6 @@ namespace TreeGPDesigner.MVVM.Model
         public float Linex2 { get => linex2; set => linex2 = value; }
         public float Liney2 { get => liney2; set => liney2 = value; }
         public Brush SymbolColour { get => symbolColour; set => symbolColour = value; }
+        public string Description { get => description; set => description = value; }
     }
 }

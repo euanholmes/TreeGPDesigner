@@ -202,7 +202,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private bool knownAlgorithm;
         private GPR9MainScreenViewModel mainVM;
 
-        public Tree(Brush? textColour, Brush? background, Brush? normalButtonColour, string name, string fitness, Brush? colourIndicator, string displayTreeParameter, bool knownAlgorithm, GPR9MainScreenViewModel mainVM)
+        public Tree(Brush? textColour, Brush? background, Brush? normalButtonColour, string name, string fitness, Brush? colourIndicator, string displayTreeParameter, 
+            bool knownAlgorithm, GPR9MainScreenViewModel mainVM)
         {
             this.TextColour = textColour;
             this.Background = background;

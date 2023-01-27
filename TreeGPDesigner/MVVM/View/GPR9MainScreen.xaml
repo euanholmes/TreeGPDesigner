@@ -177,7 +177,7 @@
                                             </ItemsControl.ItemContainerStyle>
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Border BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
+                                                    <Border ToolTip="{Binding Description}" BorderThickness="2" CornerRadius="{Binding CornerRadius}" BorderBrush="{Binding Border}" Background="{Binding Background}" Width="{Binding Width}" Height="{Binding Height}">
                                                         <TextBlock Foreground="{Binding SymbolColour}" Text="{Binding Symbol}" FontFamily="{StaticResource RobotoBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </Border>
                                                 </DataTemplate>
