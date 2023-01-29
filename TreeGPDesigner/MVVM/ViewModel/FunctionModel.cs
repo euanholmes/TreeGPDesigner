@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace TreeGPDesigner.MVVM.Model
+namespace TreeGPDesigner.MVVM.ViewModel
 {
     //Class used to display wrapper and fitness function UI information
     public class FunctionModel

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media.Imaging;
+using TreeGPDesigner.MVVM.ViewModel;
 
 namespace TreeGPDesigner.MVVM.Model
 {
@@ -41,12 +42,6 @@ namespace TreeGPDesigner.MVVM.Model
         };
 
         private static Random random = new();
-
-        private List<BPData> randomDataset10;
-        private List<BPData> randomDataset50;
-        private List<BPData> randomDataset100;
-        private List<BPData> randomDataset200;
-        private List<BPData> randomDataset500;
 
         private List<List<BPData>> bpDatasets = new();
 
@@ -89,16 +84,12 @@ namespace TreeGPDesigner.MVVM.Model
 
             Node FFDTree = MakeFFDTree();
             KnownAlgorithms.Add(FFDTree);
-            randomDataset10 = GenerateRandomBPDataset(10);
-            randomDataset50 = GenerateRandomBPDataset(50);
-            randomDataset100 = GenerateRandomBPDataset(100);
-            randomDataset200 = GenerateRandomBPDataset(200);
-            randomDataset500 = GenerateRandomBPDataset(500);
-            bpDatasets.Add(randomDataset10);
-            bpDatasets.Add(randomDataset50);
-            bpDatasets.Add(randomDataset100);
-            bpDatasets.Add(randomDataset200);
-            bpDatasets.Add(randomDataset500);
+
+            bpDatasets.Add(GenerateRandomBPDataset(10));
+            bpDatasets.Add(GenerateRandomBPDataset(50));
+            bpDatasets.Add(GenerateRandomBPDataset(100));
+            bpDatasets.Add(GenerateRandomBPDataset(200));
+            bpDatasets.Add(GenerateRandomBPDataset(500));
 
             CurrentDataPoints = "[0] - Current Bin Weight\n[1] - Current Item\n[2] - Bin Capacity";
         }

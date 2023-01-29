@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace TreeGPDesigner.MVVM.Model
+namespace TreeGPDesigner.MVVM.ViewModel
 {
     //Class for a node plot
     public class NodePlot

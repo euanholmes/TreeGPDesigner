@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Windows.Media;
-using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {

@@ -134,8 +134,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
             }
         }
 
-        
-
         public void GetInitialPopulation()
         {
             AppInfoSingleton.Instance.CurrentTemplate.GetInitialPopulation();
