@@ -36,9 +36,9 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         //Constructor used in copynode functions which copies all variables
-        public TerminalNode(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet,
+        public TerminalNode(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet, string nodeDescription,
             double value, bool dataNeeded, bool functionNeeded, Func<double[], double> terminalFunction, 
-            int[] terminalFunctionData) : base(symbol, root, data, noOperands, fitness, notFailedYet)
+            int[] terminalFunctionData) : base(symbol, root, data, noOperands, fitness, notFailedYet, nodeDescription)
         {
             this.value = value;
             this.dataNeeded = dataNeeded;

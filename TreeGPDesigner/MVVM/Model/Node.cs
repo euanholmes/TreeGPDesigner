@@ -49,7 +49,7 @@ namespace TreeGPDesigner.MVVM.Model
             IsSelected = isSelected;
         }
 
-        public Node(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet)
+        public Node(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet, string nodeDescription)
         {
             Symbol = symbol;
             Root = root;
@@ -57,6 +57,7 @@ namespace TreeGPDesigner.MVVM.Model
             NoOperands = noOperands;
             Fitness = fitness;
             NotFailedYet = notFailedYet;
+            NodeDescription = nodeDescription;
         }
 
         //Abstract eval() function overriden by function and terminal node.

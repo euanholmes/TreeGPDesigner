@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -138,6 +139,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             AppInfoSingleton.Instance.CurrentTemplate.GetInitialPopulation();
             CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
+
+            //debug
+            for (int i = 0; i < CurrentGeneration.Count; i++)
+            {
+                Trace.WriteLine($"CurrentGeneration[{i}]: {CurrentGeneration[i].NodeDescription}");
+            }
+
+            
+
             GetGenerationTrees();
         }
 

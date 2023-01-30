@@ -38,7 +38,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             this.liney1 = liney1;
             this.linex2 = linex2;
             this.liney2 = liney2;
-            this.SymbolColour = symbolColour;
+            this.symbolColour = symbolColour;
             this.description = description;
         }
 
