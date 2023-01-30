@@ -64,10 +64,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
             {
                 currentTree.Fitness = 0;
                 currentTree.NotFailedYet = true;
-                bpTemplate.FitnessFunctionOne(currentTree, new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60);
+                bpTemplate.FitnessFunctionOne(currentTree, new List<double>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60);
                 string fitnessNumString = (11 + currentTree.Fitness).ToString();
                 TreeFitness = "Fitness = " + fitnessNumString;
-                List<List<int>> rawBins = bpTemplate.BPOfflineWrapper(new List<int>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60, currentTree);
+                List<List<double>> rawBins = bpTemplate.BPOfflineWrapper(new List<double>() { 6, 6, 8, 8, 24, 17, 22, 44, 24, 21 }, 60, currentTree);
                 GPBasics3ViewModel vmgp3 = new();
                 Bins.Clear();
                 Bins = vmgp3.GetBinList(rawBins);

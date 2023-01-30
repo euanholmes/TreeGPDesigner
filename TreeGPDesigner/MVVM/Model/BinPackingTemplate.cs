@@ -34,11 +34,19 @@ namespace TreeGPDesigner.MVVM.Model
 
         private List<string> BPDatasetsUI = new List<string>()
         {
-            "Random Dataset 1 (10 problems)",
-            "Random Dataset 2 (50 problems)",
-            "Random Dataset 3 (100 problems)",
-            "Random Dataset 4 (200 problems)",
-            "Random Dataset 5 (500 problems)"
+            "Faulkner Dataset 1 (20 problems | BC:150 | No. Items:120 | Item Sizes:20-100)",
+            "Faulkner Dataset 2 (20 problems | BC:150 | No. Items:250 | Item Sizes:20-100 | *Load Time)",
+            "Faulkner Dataset 3 (20 problems | BC:150 | No. Items:500 | Item Sizes:20-100 | *Load Time)",
+            "Faulkner Dataset 4 (20 problems | BC:150 | No. Items:1000 | Item Sizes:20-100 | *Load Time)",
+            "Faulkner Dataset 5 (20 problems | BC:100 | No. Items:60 | Item Sizes:25-50)",
+            "Faulkner Dataset 6 (20 problems | BC:100 | No. Items:120 | Item Sizes:25-50)",
+            "Faulkner Dataset 7 (20 problems | BC:100 | No. Items:249 | Item Sizes:25-50 | *Load Time)",
+            "Faulkner Dataset 8 (20 problems | BC:100 | No. Items:501 | Item Sizes:25-50 | *Load Time)",
+            "Random Dataset 1 (10 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
+            "Random Dataset 2 (50 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
+            "Random Dataset 3 (100 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
+            "Random Dataset 4 (200 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)",
+            "Random Dataset 5 (500 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)"
         };
 
         private static Random random = new();
@@ -85,6 +93,15 @@ namespace TreeGPDesigner.MVVM.Model
             Node FFDTree = MakeFFDTree();
             KnownAlgorithms.Add(FFDTree);
 
+            bpDatasets.Add(BPDatasets.FaulknerDataset1);
+            bpDatasets.Add(BPDatasets.FaulknerDataset2);
+            bpDatasets.Add(BPDatasets.FaulknerDataset3);
+            bpDatasets.Add(BPDatasets.FaulknerDataset4);
+            bpDatasets.Add(BPDatasets.FaulknerDataset5);
+            bpDatasets.Add(BPDatasets.FaulknerDataset6);
+            bpDatasets.Add(BPDatasets.FaulknerDataset7);
+            bpDatasets.Add(BPDatasets.FaulknerDataset8);
+
             bpDatasets.Add(GenerateRandomBPDataset(10));
             bpDatasets.Add(GenerateRandomBPDataset(50));
             bpDatasets.Add(GenerateRandomBPDataset(100));
@@ -102,7 +119,7 @@ namespace TreeGPDesigner.MVVM.Model
             for (int i = 0; i < num; i++)
             {
                 int binCapacity = random.Next(50, 61);
-                List<int> items = new();
+                List<double> items = new();
 
                 for (int j = 0; j < 5; j++)
                 {
@@ -134,14 +151,14 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         //Wrapper Functions
-        public List<List<int>> BPOfflineWrapper(List<int> origItems, int binCapacity, Node solution)
+        public List<List<double>> BPOfflineWrapper(List<double> origItems, double binCapacity, Node solution)
         {
-            List<int> items = new List<int>(origItems);
-            List<List<int>> bins = new List<List<int>>();
+            List<double> items = new List<double>(origItems);
+            List<List<double>> bins = new List<List<double>>();
             bool binFound;
             items.Sort();
             items.Reverse();
-            bins.Add(new List<int>());
+            bins.Add(new List<double>());
 
             while (items.Count > 0 && bins.Count < origItems.Count)
             {
@@ -162,18 +179,18 @@ namespace TreeGPDesigner.MVVM.Model
                 }
                 if (binFound == false)
                 {
-                    bins.Add(new List<int>());
+                    bins.Add(new List<double>());
                 }
             }
             return bins;
         }
 
-        public List<List<int>> BPOnlineWrapper(List<int> origItems, int binCapacity, Node solution)
+        public List<List<double>> BPOnlineWrapper(List<double> origItems, double binCapacity, Node solution)
         {
-            List<int> items = new List<int>(origItems);
-            List<List<int>> bins = new List<List<int>>();
+            List<double> items = new List<double>(origItems);
+            List<List<double>> bins = new List<List<double>>();
             bool binFound;
-            bins.Add(new List<int>());
+            bins.Add(new List<double>());
 
             while (items.Count > 0 && bins.Count < origItems.Count)
             {
@@ -194,16 +211,16 @@ namespace TreeGPDesigner.MVVM.Model
                 }
                 if (binFound == false)
                 {
-                    bins.Add(new List<int>());
+                    bins.Add(new List<double>());
                 }
             }
             return bins;
         }
 
         //Fitness functions
-        public Node FitnessFunctionOne(Node node, List<int> items, int binCapacity)
+        public Node FitnessFunctionOne(Node node, List<double> items, double binCapacity)
         {
-            List<List<int>> bins = new List<List<int>>();
+            List<List<double>> bins = new List<List<double>>();
 
             if (CurrentWrapper == 0)
             {
@@ -213,11 +230,11 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 bins = BPOnlineWrapper(items, binCapacity, node);
             }
-            
-            int totalBinWeight = 0;
-            int totalItemWeight = items.Sum();
 
-            foreach (List<int> bin in bins)
+            double totalBinWeight = 0;
+            double totalItemWeight = items.Sum();
+
+            foreach (List<double> bin in bins)
             {
                 totalBinWeight += bin.Sum();
 
@@ -243,9 +260,9 @@ namespace TreeGPDesigner.MVVM.Model
             return node;
         }
 
-        public Node FitnessFunctionTwo(Node node, List<int> items, int binCapacity)
+        public Node FitnessFunctionTwo(Node node, List<double> items, double binCapacity)
         {
-            List<List<int>> bins = new List<List<int>>();
+            List<List<double>> bins = new List<List<double>>();
 
             if (CurrentWrapper == 0)
             {
@@ -256,10 +273,10 @@ namespace TreeGPDesigner.MVVM.Model
                 bins = BPOnlineWrapper(items, binCapacity, node);
             }
 
-            int totalBinWeight = 0;
-            int totalItemWeight = items.Sum();
+            double totalBinWeight = 0;
+            double totalItemWeight = items.Sum();
 
-            foreach (List<int> bin in bins)
+            foreach (List<double> bin in bins)
             {
                 totalBinWeight += bin.Sum();
 
@@ -281,7 +298,7 @@ namespace TreeGPDesigner.MVVM.Model
                 node.NotFailedYet = false;
             }
 
-            foreach(List<int> bin in bins)
+            foreach(List<double> bin in bins)
             {
                 if (bin.Sum() == binCapacity)
                 {
@@ -411,16 +428,16 @@ namespace TreeGPDesigner.MVVM.Model
     //Class used for BP Datasets which has a variable for bin capacity and a variable for a list of items
     public class BPData
     {
-        private int binCapacity;
-        private List<int> items;
+        private double binCapacity;
+        private List<double> items;
 
-        public BPData(int binCapacity, List<int> items)
+        public BPData(double binCapacity, List<double> items)
         {
             this.binCapacity = binCapacity;
             this.items = items;
         }
 
-        public int BinCapacity { get => binCapacity; set => binCapacity = value; }
-        public List<int> Items { get => items; set => items = value; }
+        public double BinCapacity { get => binCapacity; set => binCapacity = value; }
+        public List<double> Items { get => items; set => items = value; }
     }
 }

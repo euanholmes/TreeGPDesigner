@@ -17,15 +17,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         private BinPackingTemplate bpTemplate = new();
 
-        private List<int> items1 = new();
-        private List<int> items2 = new();
-        private List<int> items3 = new();
-        private List<int> items4 = new();
+        private List<double> items1 = new();
+        private List<double> items2 = new();
+        private List<double> items3 = new();
+        private List<double> items4 = new();
 
-        private List<List<int>> bins1;
-        private List<List<int>> bins2;
-        private List<List<int>> bins3;
-        private List<List<int>> bins4;
+        private List<List<double>> bins1;
+        private List<List<double>> bins2;
+        private List<List<double>> bins3;
+        private List<List<double>> bins4;
 
         private ObservableCollection<Bin> binList1 = new();
         private ObservableCollection<Bin> binList2 = new();
@@ -155,7 +155,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             binList4 = GetBinList(bins4);
         }
 
-        public ObservableCollection<Bin> GetBinList(List<List<int>> rawBinList)
+        public ObservableCollection<Bin> GetBinList(List<List<double>> rawBinList)
         {
             ObservableCollection<Bin> binList = new();
 
@@ -173,7 +173,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             return binList;
         }
 
-        public string ConvertItemsToString(List<int> itemsList)
+        public string ConvertItemsToString(List<double> itemsList)
         {
             string itemsString = "";
 
@@ -196,16 +196,16 @@ namespace TreeGPDesigner.MVVM.ViewModel
     //Bin item class used in item control in this view.
     public class BinItem
     {
-        private int currentBinItem;
+        private double currentBinItem;
         private Brush textColour;
 
-        public BinItem(int currentBinItem, Brush textColour)
+        public BinItem(double currentBinItem, Brush textColour)
         {
             this.currentBinItem = currentBinItem;
             this.textColour = textColour;
         }
 
-        public int CurrentBinItem { get => currentBinItem; set => currentBinItem = value; }
+        public double CurrentBinItem { get => currentBinItem; set => currentBinItem = value; }
         public Brush TextColour { get => textColour; set => textColour = value; }
     }
 
