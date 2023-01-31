@@ -100,10 +100,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
             Items3String = ConvertItemsToString(items3);
             Items4String = ConvertItemsToString(items4);
 
-            bins1 = bpTemplate.BPOfflineWrapper(items1, Bc1, bpTemplate.KnownAlgorithms[0]);
-            bins2 = bpTemplate.BPOfflineWrapper(items2, Bc2, bpTemplate.KnownAlgorithms[0]);
-            bins3 = bpTemplate.BPOfflineWrapper(items3, Bc3, bpTemplate.KnownAlgorithms[0]);
-            bins4 = bpTemplate.BPOfflineWrapper(items4, Bc4, bpTemplate.KnownAlgorithms[0]);
+            bins1 = bpTemplate.BPOfflineWrapper(items1, Bc1, bpTemplate.KnownAlgorithms[2]);
+            bins2 = bpTemplate.BPOfflineWrapper(items2, Bc2, bpTemplate.KnownAlgorithms[2]);
+            bins3 = bpTemplate.BPOfflineWrapper(items3, Bc3, bpTemplate.KnownAlgorithms[2]);
+            bins4 = bpTemplate.BPOfflineWrapper(items4, Bc4, bpTemplate.KnownAlgorithms[2]);
 
             GetBinLists();
         }

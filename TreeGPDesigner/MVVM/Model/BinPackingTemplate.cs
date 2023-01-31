@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media.Imaging;
 using TreeGPDesigner.MVVM.ViewModel;
@@ -91,10 +92,13 @@ namespace TreeGPDesigner.MVVM.Model
             AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0));
             AddRootNode(new FunctionNode("==", 2, "Equals", true, a => a[0] == a[1] ? 1 : 0));
 
-            Node FFDTree = MakeFFTree();
-            Node NFTree = MakeNFTree();
+            Node NFTree = MakeNextFitTree();
+            Node FFDTree = MakeFirstFitTree();
+            Node BFTree = MakeBestFitTree();
+            
             KnownAlgorithms.Add(NFTree);
             KnownAlgorithms.Add(FFDTree);
+            KnownAlgorithms.Add(BFTree);
 
             bpDatasets.Add(BPDatasets.FaulknerDataset1);
             bpDatasets.Add(BPDatasets.FaulknerDataset2);
@@ -111,7 +115,8 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(GenerateRandomBPDataset(200));
             bpDatasets.Add(GenerateRandomBPDataset(500));
 
-            CurrentDataPoints = "[0] - Current Bin Weight (double)\n[1] - Current Item (double)\n[2] - Bin Capacity (double)\n[3] - On Last Bin (bool)";
+            CurrentDataPoints = "[0] - Current Bin Weight (double)\n[1] - Current Item (double)\n[2] - Bin Capacity (double)\n[3] - On Last Bin (bool)\n" +
+                "[4] - Best Fitting Bin (bool)";
         }
 
         //Function to generate random BP datasets
@@ -139,8 +144,8 @@ namespace TreeGPDesigner.MVVM.Model
             return dataset;
         }
 
-        //Function to make a first fit/first descending tree
-        public Node MakeFFTree()
+        //Function to make known algorithms
+        public Node MakeFirstFitTree()
         {
             Node FFTree = new FunctionNode("<=", 2, "Less Than or Equal to", true, a => a[0] <= a[1] ? 1 : 0);
             FFTree.ChildNodes.Add(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1]));
@@ -153,7 +158,7 @@ namespace TreeGPDesigner.MVVM.Model
             return FFTree;
         }
 
-        public Node MakeNFTree()
+        public Node MakeNextFitTree()
         {
             Node NFTree = new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? 1 : 0);
             NFTree.ChildNodes.Add(new FunctionNode("*", 2, "Multiplication", true, a => a[0] * a[1]));
@@ -170,6 +175,15 @@ namespace TreeGPDesigner.MVVM.Model
             return NFTree;
         }
 
+        public Node MakeBestFitTree()
+        {
+            //Node BFTree = new TerminalNode("BFB", 0, "Best Fitting Bin", true, 4, true);
+            Node BFTree = new TerminalNode("BFB", 0, "Best Fitting Bin", true, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 4 });
+            BFTree.Name = "Best Fit";
+
+            return BFTree;
+        }
+
         //Wrapper Functions
         public List<List<double>> BPOfflineWrapper(List<double> origItems, double binCapacity, Node solution)
         {
@@ -184,6 +198,16 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 binFound = false;
 
+                double maxLoad = -1;
+
+                foreach (List<double> checkBin in bins)
+                {
+                    if ((checkBin.Sum() > maxLoad) && ((checkBin.Sum() + items[0]) <= binCapacity))
+                    {
+                        maxLoad = checkBin.Sum();
+                    }
+                }
+
                 for (int i = 0; i < bins.Count; i++)
                 {
                     bool currentBin = false;
@@ -192,7 +216,15 @@ namespace TreeGPDesigner.MVVM.Model
                     {
                         currentBin = true;
                     }
-                    object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin };
+
+                    bool bestFittingBin = false;
+
+                    if (bins[i].Sum() == maxLoad && maxLoad > -1)
+                    {
+                        bestFittingBin = true;
+                    }
+
+                    object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin, bestFittingBin };
                     solution.SetDataAll(data);
 
                     if (solution.Eval() == 1)
@@ -222,6 +254,16 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 binFound = false;
 
+                double maxLoad = -1;
+
+                foreach (List<double> checkBin in bins)
+                {
+                    if ((checkBin.Sum() > maxLoad) && ((checkBin.Sum() + items[0]) <= binCapacity))
+                    {
+                        maxLoad = checkBin.Sum();
+                    }
+                }
+
                 for (int i = 0; i < bins.Count; i++)
                 {
                     bool currentBin = false;
@@ -230,8 +272,15 @@ namespace TreeGPDesigner.MVVM.Model
                     {
                         currentBin = true;
                     }
+                    
+                    bool bestFittingBin = false;
 
-                    object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin };
+                    if (bins[i].Sum() == maxLoad && maxLoad > -1)
+                    {
+                        bestFittingBin = true;
+                    }
+
+                    object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin, bestFittingBin };
                     solution.SetDataAll(data);
 
                     if (solution.Eval() == 1)
