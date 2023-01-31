@@ -21,7 +21,7 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         //Constructor used in copynode functions which copies all variables
-        public FunctionNode(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet, string nodeDescription,
+        public FunctionNode(string symbol, bool root, object[] data, int noOperands, float fitness, bool notFailedYet, string nodeDescription,
             Func<double[], double> function) : base(symbol, root, data, noOperands, fitness, notFailedYet, nodeDescription)
         {
             this.function = function;

@@ -81,8 +81,9 @@ namespace TreeGPDesigner.MVVM.Model
             AddTerminalNode(new TerminalNode("-1", 0, "-1", true, -1, false));
             AddTerminalNode(new TerminalNode("1", 0, "1", true, 1, false));
             AddTerminalNode(new TerminalNode("3.14", 0, "3.14", true, 3.14, false));
-            AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => a[0] - a[1], new int[]{ 2, 0 }));
-            AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", true, 0, false, true, a => a[0] * 2, new int[] { 2 }));
+            AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => Convert.ToDouble(a[0]) - Convert.ToDouble(a[1]), new int[]{ 2, 0 }));
+            AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", true, 0, false, true, a => Convert.ToDouble(a[0]) * 2, new int[] { 2 }));
+            AddTerminalNode(new TerminalNode("LB", 0, "On last bin", true, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 3 }));
 
             AddRootNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0));
             AddRootNode(new FunctionNode(">=", 2, "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0));
@@ -90,7 +91,9 @@ namespace TreeGPDesigner.MVVM.Model
             AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0));
             AddRootNode(new FunctionNode("==", 2, "Equals", true, a => a[0] == a[1] ? 1 : 0));
 
-            Node FFDTree = MakeFFDTree();
+            Node FFDTree = MakeFFTree();
+            Node NFTree = MakeNFTree();
+            KnownAlgorithms.Add(NFTree);
             KnownAlgorithms.Add(FFDTree);
 
             bpDatasets.Add(BPDatasets.FaulknerDataset1);
@@ -108,7 +111,7 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(GenerateRandomBPDataset(200));
             bpDatasets.Add(GenerateRandomBPDataset(500));
 
-            CurrentDataPoints = "[0] - Current Bin Weight\n[1] - Current Item\n[2] - Bin Capacity";
+            CurrentDataPoints = "[0] - Current Bin Weight (double)\n[1] - Current Item (double)\n[2] - Bin Capacity (double)\n[3] - On Last Bin (bool)";
         }
 
         //Function to generate random BP datasets
@@ -137,17 +140,34 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         //Function to make a first fit/first descending tree
-        public Node MakeFFDTree()
+        public Node MakeFFTree()
         {
-            Node FFDTree = new FunctionNode("<=", 2, a => a[0] <= a[1] ? 1 : 0);
-            FFDTree.ChildNodes.Add(new FunctionNode("+", 2, a => a[0] + a[1]));
-            FFDTree.ChildNodes.Add(new TerminalNode("BC", 0, 2, true));
-            FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, 0, true));
-            FFDTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, 1, true));
+            Node FFTree = new FunctionNode("<=", 2, "Less Than or Equal to", true, a => a[0] <= a[1] ? 1 : 0);
+            FFTree.ChildNodes.Add(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1]));
+            FFTree.ChildNodes.Add(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
+            FFTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
+            FFTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, "Current Item", true, 1, true));
 
-            FFDTree.Name = "FF";
+            FFTree.Name = "First Fit";
 
-            return FFDTree;
+            return FFTree;
+        }
+
+        public Node MakeNFTree()
+        {
+            Node NFTree = new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? 1 : 0);
+            NFTree.ChildNodes.Add(new FunctionNode("*", 2, "Multiplication", true, a => a[0] * a[1]));
+            NFTree.ChildNodes.Add(new TerminalNode("0", 0, "0", true, 0, false));
+            NFTree.ChildNodes[0].ChildNodes.Add(new FunctionNode("<=", 2, "Less Than or Equal to", true, a => a[0] <= a[1] ? 1 : 0));
+            NFTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("LB", 0, "On last bin", true, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 3 }));
+            NFTree.ChildNodes[0].ChildNodes[0].ChildNodes.Add(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1]));
+            NFTree.ChildNodes[0].ChildNodes[0].ChildNodes.Add(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
+            NFTree.ChildNodes[0].ChildNodes[0].ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
+            NFTree.ChildNodes[0].ChildNodes[0].ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, "Current Item", true, 1, true));
+
+            NFTree.Name = "Next Fit";
+
+            return NFTree;
         }
 
         //Wrapper Functions
@@ -166,7 +186,13 @@ namespace TreeGPDesigner.MVVM.Model
 
                 for (int i = 0; i < bins.Count; i++)
                 {
-                    double[] data = new double[] { bins[i].Sum(), items[0], binCapacity };
+                    bool currentBin = false;
+
+                    if (bins[i] == bins[bins.Count - 1])
+                    {
+                        currentBin = true;
+                    }
+                    object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin };
                     solution.SetDataAll(data);
 
                     if (solution.Eval() == 1)
@@ -198,7 +224,14 @@ namespace TreeGPDesigner.MVVM.Model
 
                 for (int i = 0; i < bins.Count; i++)
                 {
-                    double[] data = new double[] { bins[i].Sum(), items[0], binCapacity };
+                    bool currentBin = false;
+
+                    if (bins[i] == bins[bins.Count - 1])
+                    {
+                        currentBin = true;
+                    }
+
+                    object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin };
                     solution.SetDataAll(data);
 
                     if (solution.Eval() == 1)

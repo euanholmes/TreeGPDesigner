@@ -70,7 +70,7 @@ namespace TreeGPDesigner.MVVM.Model
         //To add custom nodes.
         public async void AddCustomFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, string customFunctionString)
         {
-            var options = ScriptOptions.Default;
+            var options = ScriptOptions.Default.AddImports("System");
             Func<double[], double> customFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customFunctionString, options);
 
             AddFunctionNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, true, customFunction));
@@ -78,7 +78,7 @@ namespace TreeGPDesigner.MVVM.Model
 
         public async void AddCustomRootFunctionNode(string customSymbol, int customNoOperands, string customNodeDescription, string customFunctionString)
         {
-            var options = ScriptOptions.Default;
+            var options = ScriptOptions.Default.AddImports("System");
             Func<double[], double> customFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customFunctionString, options);
 
             AddRootNode(new FunctionNode(customSymbol, customNoOperands, customNodeDescription, true, customFunction));
@@ -86,15 +86,15 @@ namespace TreeGPDesigner.MVVM.Model
 
         public async void AddCustomTerminalNode(string customSymbol, string customNodeDescription, string customTerminalFunctionString, int[] customTerminalFunctionData)
         {
-            var options = ScriptOptions.Default;
-            Func<double[], double> customTerminalFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customTerminalFunctionString, options);
+            var options = ScriptOptions.Default.AddImports("System");
+            Func<object[], double> customTerminalFunction = await CSharpScript.EvaluateAsync<Func<object[], double>>(customTerminalFunctionString, options);
 
             AddTerminalNode(new TerminalNode(customSymbol, 0, customNodeDescription, true, 0, false, true, customTerminalFunction, customTerminalFunctionData));
         }
         public async void AddCustomRootTerminalNode(string customSymbol, string customNodeDescription, string customTerminalFunctionString, int[] customTerminalFunctionData)
         {
-            var options = ScriptOptions.Default;
-            Func<double[], double> customTerminalFunction = await CSharpScript.EvaluateAsync<Func<double[], double>>(customTerminalFunctionString, options);
+            var options = ScriptOptions.Default.AddImports("System");
+            Func<object[], double> customTerminalFunction = await CSharpScript.EvaluateAsync<Func<object[], double>>(customTerminalFunctionString, options);
 
             AddRootNode(new TerminalNode(customSymbol, 0, customNodeDescription, true, 0, false, true, customTerminalFunction, customTerminalFunctionData));
         }

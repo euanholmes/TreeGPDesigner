@@ -9,7 +9,7 @@ namespace TreeGPDesigner.MVVM.Model
         private double value;
         private bool dataNeeded;
         private bool functionNeeded = false;
-        private Func<double[], double> terminalFunction = null;
+        private Func<object[], double> terminalFunction = null;
         private int[] terminalFunctionData = null;
 
         //Terminal node constructors
@@ -26,7 +26,7 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         public TerminalNode(string symbol, int noOperands, string nodeDescription, bool isSelected, double value, bool dataNeeded,
-            bool functionNeeded, Func<double[], double> terminalFunction, int[] terminalFunctionData) : base(symbol, noOperands, nodeDescription, isSelected)
+            bool functionNeeded, Func<object[], double> terminalFunction, int[] terminalFunctionData) : base(symbol, noOperands, nodeDescription, isSelected)
         {
             this.value = value;
             this.dataNeeded = dataNeeded;
@@ -36,8 +36,8 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         //Constructor used in copynode functions which copies all variables
-        public TerminalNode(string symbol, bool root, double[] data, int noOperands, float fitness, bool notFailedYet, string nodeDescription,
-            double value, bool dataNeeded, bool functionNeeded, Func<double[], double> terminalFunction, 
+        public TerminalNode(string symbol, bool root, object[] data, int noOperands, float fitness, bool notFailedYet, string nodeDescription,
+            double value, bool dataNeeded, bool functionNeeded, Func<object[], double> terminalFunction, 
             int[] terminalFunctionData) : base(symbol, root, data, noOperands, fitness, notFailedYet, nodeDescription)
         {
             this.value = value;
@@ -51,7 +51,7 @@ namespace TreeGPDesigner.MVVM.Model
         public double Value { get => value; set => this.value = value; }
         public bool DataNeeded { get => dataNeeded; set => dataNeeded = value; }
         public bool FunctionNeeded { get => functionNeeded; set => functionNeeded = value; }
-        public Func<double[], double> TerminalFunction { get => terminalFunction; set => terminalFunction = value; }
+        public Func<object[], double> TerminalFunction { get => terminalFunction; set => terminalFunction = value; }
         public int[] TerminalFunctionData { get => terminalFunctionData; set => terminalFunctionData = value; }
 
         //Eval function which ovverides node eval()
@@ -59,7 +59,7 @@ namespace TreeGPDesigner.MVVM.Model
         {
             if (functionNeeded)
             {
-                double[] operands = new double[TerminalFunctionData.Length];
+                object[] operands = new object[TerminalFunctionData.Length];
 
                 for (int i = 0; i < TerminalFunctionData.Length; i++)
                 {
@@ -72,7 +72,7 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 if (dataNeeded)
                 {
-                    return Data[(int)value];
+                    return Convert.ToDouble(Data[(int)value]);
                 }
                 else
                 {
