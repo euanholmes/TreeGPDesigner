@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 using System.Windows.Media;
 using TreeGPDesigner.MVVM.Model;
@@ -31,6 +33,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private ObservableCollection<Bin> binList2 = new();
         private ObservableCollection<Bin> binList3 = new();
         private ObservableCollection<Bin> binList4 = new();
+
+        private int currentAlgorithm = 0;
+        private string[] algorithmTitles = { "Next Fit", "First Fit", "Best Fit" };
 
         [ObservableProperty]
         private int bc1 = random.Next(50, 61);
@@ -68,15 +73,19 @@ namespace TreeGPDesigner.MVVM.ViewModel
             " a list of items, bin capacity and current bin weight which can be used in the solution program. When using a wrapper, a dataset might also" +
             " be required. A bin packing dataset would include a list of problems which would each have a bin capacity and a list of items. Note that " +
             "not all GP applications require wrappers, or even datasets if there are only static terminal nodes used in your program trees.\n\n" +
-            "Try the offline bin packing wrapper to the right with some randomly generated bin packing problems. The solution program used in the" +
-            " wrapper here is the \"first fit descending algorithm\". This algorithm will pack the current item into the first bin it fits into, " +
-            "if no bin is found a new a new bin will be opened, and it will be packed into the new bin.";
+            "Try the offline bin packing wrapper to the right with some randomly generated bin packing problems. Select the current solution program" +
+            " by using the arrow buttons. The solution programs available include the known bin packing algorithms: \"Next Fit\", \"First Fit\" and \"Best Fit\".";
+
+        [ObservableProperty]
+        private string currentAlgorithmTitle;
 
         //Commands
         public ICommand NavPreviousCommand { get; }
         public ICommand NavNextCommand { get; }
         public ICommand RunWrapperCommand { get; }
         public ICommand RadioButtonCommand { get; }
+        public ICommand NextAlgorithmCommand { get; }
+        public ICommand PreviousAlgorithmCommand { get; }
 
         //Constructor
         public GPBasics3ViewModel()
@@ -85,6 +94,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             NavNextCommand = new RelayCommand(NavNext);
             RunWrapperCommand = new RelayCommand(RunWrapper);
             RadioButtonCommand = new RelayCommand<string>(param => RadioButton(param));
+            NextAlgorithmCommand = new RelayCommand(NextAlgorithm);
+            PreviousAlgorithmCommand = new RelayCommand(PreviousAlgorithm);
 
             items1 = new() { random.Next(10, Bc1), random.Next(10, Bc1), random.Next(10, Bc1), random.Next(10, Bc1), random.Next(10, Bc1), random.Next(10, Bc1), 
             random.Next(1, 10), random.Next(1, 10), random.Next(1, 10), random.Next(1, 10) };
@@ -100,12 +111,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             Items3String = ConvertItemsToString(items3);
             Items4String = ConvertItemsToString(items4);
 
-            bins1 = bpTemplate.BPOfflineWrapper(items1, Bc1, bpTemplate.KnownAlgorithms[2]);
-            bins2 = bpTemplate.BPOfflineWrapper(items2, Bc2, bpTemplate.KnownAlgorithms[2]);
-            bins3 = bpTemplate.BPOfflineWrapper(items3, Bc3, bpTemplate.KnownAlgorithms[2]);
-            bins4 = bpTemplate.BPOfflineWrapper(items4, Bc4, bpTemplate.KnownAlgorithms[2]);
-
-            GetBinLists();
+            CurrentAlgorithmTitle = algorithmTitles[currentAlgorithm];
         }
 
         //Navigation Functions
@@ -123,6 +129,13 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             Bins.Clear();
 
+            bins1 = bpTemplate.BPOfflineWrapper(items1, Bc1, bpTemplate.KnownAlgorithms[currentAlgorithm]);
+            bins2 = bpTemplate.BPOfflineWrapper(items2, Bc2, bpTemplate.KnownAlgorithms[currentAlgorithm]);
+            bins3 = bpTemplate.BPOfflineWrapper(items3, Bc3, bpTemplate.KnownAlgorithms[currentAlgorithm]);
+            bins4 = bpTemplate.BPOfflineWrapper(items4, Bc4, bpTemplate.KnownAlgorithms[currentAlgorithm]);
+
+            GetBinLists();
+
             if (CurrentBinList == 0)
             {
                 Bins = new ObservableCollection<Bin>(binList1);
@@ -139,6 +152,36 @@ namespace TreeGPDesigner.MVVM.ViewModel
             {
                 Bins = new ObservableCollection<Bin>(binList4);
             }
+        }
+
+        public void NextAlgorithm()
+        {
+            if (currentAlgorithm + 1 > algorithmTitles.Length - 1)
+            {
+                currentAlgorithm = 0;
+            }
+            else
+            {
+                currentAlgorithm++;
+            }
+
+            Trace.WriteLine($"currentAlgorithm = {currentAlgorithm}");
+
+            CurrentAlgorithmTitle = algorithmTitles[currentAlgorithm];
+        }
+
+        public void PreviousAlgorithm()
+        {
+            if (currentAlgorithm - 1 < 0)
+            {
+                currentAlgorithm = algorithmTitles.Length - 1;
+            }
+            else
+            {
+                currentAlgorithm--;
+            }
+
+            CurrentAlgorithmTitle = algorithmTitles[currentAlgorithm];
         }
 
         public void RadioButton(string radioButtonNumString)

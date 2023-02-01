@@ -68,29 +68,34 @@ namespace TreeGPDesigner.MVVM.Model
                 CurrentDatasets.Add(false);
             }
 
-            AddFunctionNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? a[0] : a[1]));
+            
             AddFunctionNode(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1]));
             AddFunctionNode(new FunctionNode("-", 2, "Subtraction", true, a => a[0] - a[1]));
             AddFunctionNode(new FunctionNode("*", 2, "Multiplication", true, a => a[0] * a[1]));
-            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs", true, a => Math.Abs(a[0])));
-            AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition", true, a => a[0] + a[1] + a[2]));
             AddFunctionNode(new FunctionNode("%", 2, "Protected Divide", true, a => a[1] == 0 ? 1 : a[0] / a[1]));
+            AddFunctionNode(new FunctionNode("ABS", 1, "Math.Abs", false, a => Math.Abs(a[0])));
+            AddFunctionNode(new FunctionNode("+ +", 3, "3 Operand Addition", false, a => a[0] + a[1] + a[2]));
+            AddFunctionNode(new FunctionNode("<=", 2, "Less Than or Equal To", false, a => a[0] <= a[1] ? a[0] : a[1]));
 
             AddTerminalNode(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
             AddTerminalNode(new TerminalNode("CI", 0, "Current Item", true, 1, true));
             AddTerminalNode(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
+            AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => Convert.ToDouble(a[0]) - Convert.ToDouble(a[1]), new int[] { 2, 0 }));
             AddTerminalNode(new TerminalNode("-1", 0, "-1", true, -1, false));
             AddTerminalNode(new TerminalNode("1", 0, "1", true, 1, false));
-            AddTerminalNode(new TerminalNode("3.14", 0, "3.14", true, 3.14, false));
-            AddTerminalNode(new TerminalNode("FS", 0, "Free Space", true, 0, false, true, a => Convert.ToDouble(a[0]) - Convert.ToDouble(a[1]), new int[]{ 2, 0 }));
-            AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", true, 0, false, true, a => Convert.ToDouble(a[0]) * 2, new int[] { 2 }));
-            AddTerminalNode(new TerminalNode("LB", 0, "On last bin", true, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 3 }));
+            AddTerminalNode(new TerminalNode("0", 0, "0", true, 0, false));
+            AddTerminalNode(new TerminalNode("3.14", 0, "3.14", false, 3.14, false));
+            AddTerminalNode(new TerminalNode("2BC", 0, "2 X Bin Capacity", false, 0, false, true, a => Convert.ToDouble(a[0]) * 2, new int[] { 2 }));
+            AddTerminalNode(new TerminalNode("LB", 0, "On last bin", false, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 3 }));
+            AddTerminalNode(new TerminalNode("BFB", 0, "Best Fitting Bin", false, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 4 }));
 
+            AddRootNode(new FunctionNode("==", 2, "Equals", true, a => a[0] == a[1] ? 1 : 0));
             AddRootNode(new FunctionNode("<=", 2, "Less Than or Equal To", true, a => a[0] <= a[1] ? 1 : 0));
             AddRootNode(new FunctionNode(">=", 2, "Greater Than or Equal To", true, a => a[0] >= a[1] ? 1 : 0));
             AddRootNode(new FunctionNode(">", 2, "Greater Than", true, a => a[0] > a[1] ? 1 : 0));
             AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0));
-            AddRootNode(new FunctionNode("==", 2, "Equals", true, a => a[0] == a[1] ? 1 : 0));
+            AddRootNode(new TerminalNode("BFB", 0, "Best Fitting Bin", false, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 4 }));
+
 
             Node NFTree = MakeNextFitTree();
             Node FFDTree = MakeFirstFitTree();

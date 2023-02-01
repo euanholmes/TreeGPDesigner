@@ -20,9 +20,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
             "1 or a variable. Static terminal nodes are easy to add simply specify the value to be added. Variable terminal nodes require data which is exposed by the current " +
             "wrapper. For example an offline bin packing wrapper might have the data points: [0] - Current Bin Weight, [1] - Current Item, [2] - Bin Capacity. Then to add a " +
             "simple variable terminal node you'd specify that data is needed then select 0, 1 or 2. To add more complex terminal nodes a function may be needed. This function " +
-            "will be a Func<double[ ], double> lambda expression. With the double[ ] being the operands for the function specified by a datapoints int array.\n\nAn example of a simple " +
+            "will be a Func<object[ ], double> lambda expression. With the object[ ] being the operands for the function specified by a datapoints int array, these objects will " +
+            "need to be converted appropriately before being used in the function.\n\nAn example of a simple " +
             "terminal node could be:\nName: 34\nDescription: The number 34\nValue: 34 \n\nAn example of a more complex terminal node could be:\nName: FS\nDescription: " +
-            "Free Space\nDatapoints: 2, 0\nFunction: a => a[0] - a[1]";
+            "Free Space\nDatapoints: 2, 0\nFunction: a => Convert.ToDouble(a[0]) - Convert.ToDouble(a[1])";
 
         //Constructor
         public CustomNodesTutorialViewModel()
