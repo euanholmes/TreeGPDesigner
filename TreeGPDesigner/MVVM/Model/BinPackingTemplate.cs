@@ -16,7 +16,7 @@ namespace TreeGPDesigner.MVVM.Model
         { new FunctionModel("BP Offline Wrapper", "This is a wrapper for offline bin packing problems. Items are taken in and sorted " +
                                                   "in descending order, then the program tree solution will decide whether to pack the item " +
                                                   "into a bin or not.", 
-                            new BitmapImage(new Uri("pack://application:,,,/Images/BPOfflineWrapperImage.png"))),
+                            new BitmapImage(new Uri("pack://application:,,,/Images/BPOfflineWrapper.png"))),
 
           new FunctionModel("BP Online Wrapper",  "This is a wrapper for online bin packing problems. Items are not pre sorted and " +
                                                   "are given to the solution tree as is to evaluate.",
@@ -198,13 +198,10 @@ namespace TreeGPDesigner.MVVM.Model
             items.Sort();
             items.Reverse();
             bins.Add(new List<double>());
-
             while (items.Count > 0 && bins.Count < origItems.Count)
             {
                 binFound = false;
-
                 double maxLoad = -1;
-
                 foreach (List<double> checkBin in bins)
                 {
                     if ((checkBin.Sum() > maxLoad) && ((checkBin.Sum() + items[0]) <= binCapacity))
@@ -212,26 +209,20 @@ namespace TreeGPDesigner.MVVM.Model
                         maxLoad = checkBin.Sum();
                     }
                 }
-
                 for (int i = 0; i < bins.Count; i++)
                 {
                     bool currentBin = false;
-
                     if (bins[i] == bins[bins.Count - 1])
                     {
                         currentBin = true;
                     }
-
                     bool bestFittingBin = false;
-
                     if (bins[i].Sum() == maxLoad && maxLoad > -1)
                     {
                         bestFittingBin = true;
                     }
-
                     object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin, bestFittingBin };
                     solution.SetDataAll(data);
-
                     if (solution.Eval() == 1)
                     {
                         bins[i].Add(items[0]);
@@ -254,13 +245,10 @@ namespace TreeGPDesigner.MVVM.Model
             List<List<double>> bins = new List<List<double>>();
             bool binFound;
             bins.Add(new List<double>());
-
             while (items.Count > 0 && bins.Count < origItems.Count)
             {
                 binFound = false;
-
                 double maxLoad = -1;
-
                 foreach (List<double> checkBin in bins)
                 {
                     if ((checkBin.Sum() > maxLoad) && ((checkBin.Sum() + items[0]) <= binCapacity))
@@ -268,26 +256,20 @@ namespace TreeGPDesigner.MVVM.Model
                         maxLoad = checkBin.Sum();
                     }
                 }
-
                 for (int i = 0; i < bins.Count; i++)
                 {
                     bool currentBin = false;
-
                     if (bins[i] == bins[bins.Count - 1])
                     {
                         currentBin = true;
                     }
-                    
                     bool bestFittingBin = false;
-
                     if (bins[i].Sum() == maxLoad && maxLoad > -1)
                     {
                         bestFittingBin = true;
                     }
-
                     object[] data = new object[] { bins[i].Sum(), items[0], binCapacity, currentBin, bestFittingBin };
                     solution.SetDataAll(data);
-
                     if (solution.Eval() == 1)
                     {
                         bins[i].Add(items[0]);
@@ -308,7 +290,6 @@ namespace TreeGPDesigner.MVVM.Model
         public Node FitnessFunctionOne(Node node, List<double> items, double binCapacity)
         {
             List<List<double>> bins = new List<List<double>>();
-
             if (CurrentWrapper == 0)
             {
                 bins = BPOfflineWrapper(items, binCapacity, node);
@@ -317,32 +298,26 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 bins = BPOnlineWrapper(items, binCapacity, node);
             }
-
             double totalBinWeight = 0;
             double totalItemWeight = items.Sum();
-
             foreach (List<double> bin in bins)
             {
                 totalBinWeight += bin.Sum();
-
                 if (bin.Sum() > binCapacity || bin.Sum() == 0)
                 {
                     node.Fitness -= 100;
                     node.NotFailedYet = false;
                 }
             }
-
             if (bins[0].Sum() == totalItemWeight)
             {
                 node.Fitness -= 100 * (items.Count - 2);
             }
-
             if (totalBinWeight != totalItemWeight)
             {
                 node.Fitness -= 100;
                 node.NotFailedYet = false;
             }
-
             node.Fitness -= bins.Count;
             return node;
         }
@@ -350,7 +325,6 @@ namespace TreeGPDesigner.MVVM.Model
         public Node FitnessFunctionTwo(Node node, List<double> items, double binCapacity)
         {
             List<List<double>> bins = new List<List<double>>();
-
             if (CurrentWrapper == 0)
             {
                 bins = BPOfflineWrapper(items, binCapacity, node);
@@ -359,32 +333,26 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 bins = BPOnlineWrapper(items, binCapacity, node);
             }
-
             double totalBinWeight = 0;
             double totalItemWeight = items.Sum();
-
             foreach (List<double> bin in bins)
             {
                 totalBinWeight += bin.Sum();
-
                 if (bin.Sum() > binCapacity || bin.Sum() == 0)
                 {
                     node.Fitness -= 100;
                     node.NotFailedYet = false;
                 }
             }
-
             if (bins[0].Sum() == totalItemWeight)
             {
                 node.Fitness -= 100 * (items.Count - 2);
             }
-
             if (totalBinWeight != totalItemWeight)
             {
                 node.Fitness -= 100;
                 node.NotFailedYet = false;
             }
-
             foreach(List<double> bin in bins)
             {
                 if (bin.Sum() == binCapacity)
@@ -392,7 +360,6 @@ namespace TreeGPDesigner.MVVM.Model
                     node.Fitness += 1;
                 }
             }
-
             node.Fitness -= bins.Count;
             return node;
         }

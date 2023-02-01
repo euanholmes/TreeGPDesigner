@@ -11,8 +11,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             "to understand the function node class used in the application. The function node class has properties for name and description which are simple strings. " +
             "On top of this there is a number of operands variable which is an int. As well as a Func<double[ ], double> lambda expression variable. This lambda expression " +
             "takes an array of doubles, the operands, (the size of this array being specfied by the number of operands variable) and returns a double. All these variables " +
-            "are entered as strings and then parsed to their appropriate variables.\n\nAn example of an addition node would be:\nName: +\nDescription: Addition" +
-            "\nNumber of operands: 2\nFunction: a => a[0] + a[1]\n\nAn example of a less than node would be:\nName: <\nDescription: Less Than\nNumber of operands: 2" +
+            "are entered as strings and then parsed to their appropriate variables.\n\nAn example of an addition node would be:\nSymbol: +\nDescription: Addition" +
+            "\nNumber of operands: 2\nFunction: a => a[0] + a[1]\n\nAn example of a less than node would be:\nSymbol: <\nDescription: Less Than\nNumber of operands: 2" +
             "\nFunction: a => a[0] < a[1] ? a[0] : a[1]";
 
         [ObservableProperty]
@@ -22,7 +22,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
             "simple variable terminal node you'd specify that data is needed then select 0, 1 or 2. To add more complex terminal nodes a function may be needed. This function " +
             "will be a Func<object[ ], double> lambda expression. With the object[ ] being the operands for the function specified by a datapoints int array, these objects will " +
             "need to be converted appropriately before being used in the function.\n\nAn example of a simple " +
-            "terminal node could be:\nName: 34\nDescription: The number 34\nValue: 34 \n\nAn example of a more complex terminal node could be:\nName: FS\nDescription: " +
+            "terminal node could be:\nSymbol: 34\nDescription: The number 34\nValue: 34 \n\nAn example of a more complex terminal node could be:\nSymbol: FS\nDescription: " +
             "Free Space\nDatapoints: 2, 0\nFunction: a => Convert.ToDouble(a[0]) - Convert.ToDouble(a[1])";
 
         //Constructor

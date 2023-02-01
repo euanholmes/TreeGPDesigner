@@ -87,7 +87,7 @@
 
                                 <!-- Wrapper -->
                                 <Viewbox Grid.Row="3" Margin="10">
-                                    <Image Source="pack://application:,,,/Images/BPOfflineWrapperImage.png"/>
+                                    <Image Source="pack://application:,,,/Images/BPOfflineWrapper.png"/>
                                 </Viewbox>
                             </Grid>
                         </Border>

@@ -73,7 +73,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         //Constructor
         public GPR9MainScreenViewModel()
         {
-            var splashScreen = new SplashScreen("Images/tempLoadScreen.jpg");
+            var splashScreen = new SplashScreen("Images/LoadSplashVer2.png");
             splashScreen.Show(false);
 
             GetNextGenerationCommand = new RelayCommand(GetNextGeneration);
@@ -139,15 +139,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             AppInfoSingleton.Instance.CurrentTemplate.GetInitialPopulation();
             CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
-
-            //debug
-            for (int i = 0; i < CurrentGeneration.Count; i++)
-            {
-                Trace.WriteLine($"CurrentGeneration[{i}]: {CurrentGeneration[i].NodeDescription}");
-            }
-
-            
-
             GetGenerationTrees();
         }
 
@@ -189,10 +180,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void GetNextGeneration()
         {
+            var splashScreen = new SplashScreen("Images/LoadSplashVer2.png");
+            splashScreen.Show(false);
+
             AppInfoSingleton.Instance.CurrentTemplate.GetNextGeneration();
             CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
             GenerationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
             GetGenerationTrees();
+
+            splashScreen.Close(TimeSpan.FromSeconds(0.5));
         }
     }
 

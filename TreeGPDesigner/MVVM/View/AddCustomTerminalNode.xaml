@@ -53,83 +53,102 @@
 
                         <!-- Enter Custom Node Details -->
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.2*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="0.2*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="0.2*"/>
-                            </Grid.ColumnDefinitions>
-
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="4*"/>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="0.5*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="0.5*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="0.5*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="0.5*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="0.5*"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Symbol Text -->
-                            <Viewbox Grid.Row="1" Grid.Column="1">
-                                <TextBlock Width="115.366666666667" Text="Symbol:" Style="{DynamicResource RegularText}"/>
-                            </Viewbox>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!-- Symbol Text Box -->
-                            <Viewbox Grid.Row="1" Grid.Column="3">
-                                <TextBox Text="{Binding SymbolText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
-                            </Viewbox>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
 
-                            <!-- Node Description Text -->
-                            <Viewbox Grid.Row="3" Grid.Column="1">
-                                <TextBlock Width="115.366666666667" Text="Node Description:" Style="{DynamicResource RegularText}"/>
-                            </Viewbox>
+                                <!-- Symbol Text -->
+                                <Viewbox Grid.Row="1" Grid.Column="1">
+                                    <TextBlock Width="115.366666666667" Text="Symbol:" Style="{DynamicResource RegularText}"/>
+                                </Viewbox>
 
-                            <!-- Node Description Text Box -->
-                            <Viewbox Grid.Row="3" Grid.Column="3">
-                                <TextBox Text="{Binding NodeDescriptionText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
-                            </Viewbox>
-                            
-                            <!-- Value/Datapoint/Datapoint(s) -->
-                            <Viewbox Grid.Row="5" Grid.Column="1">
-                                <TextBlock Width="115.366666666667" Text="{Binding ValueTitleText}" Style="{DynamicResource RegularText}"/>
-                            </Viewbox>
+                                <!-- Symbol Text Box -->
+                                <Viewbox Grid.Row="1" Grid.Column="3">
+                                    <TextBox Text="{Binding SymbolText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
+                                </Viewbox>
 
-                            <!-- Value/Datapoint/Datapoint(s) Text Box -->
-                            <Viewbox Grid.Row="5" Grid.Column="3">
-                                <TextBox Text="{Binding ValueText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
-                            </Viewbox>
+                                <!-- Node Description Text -->
+                                <Viewbox Grid.Row="3" Grid.Column="1">
+                                    <TextBlock Width="115.366666666667" Text="Node Description:" Style="{DynamicResource RegularText}"/>
+                                </Viewbox>
 
-                            <!-- Data Needed -->
-                            <Viewbox Grid.Row="7" Grid.Column="1">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="99.3" Text="Data Needed" Margin="0 0 5 0" Style="{DynamicResource RegularText}"/>
-                                    <CheckBox Command="{Binding DataNeededCommand}" IsChecked="{Binding DataNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
-                                </StackPanel>
-                            </Viewbox>
+                                <!-- Node Description Text Box -->
+                                <Viewbox Grid.Row="3" Grid.Column="3">
+                                    <TextBox Text="{Binding NodeDescriptionText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
+                                </Viewbox>
 
-                            <!-- Function Needed -->
-                            <Viewbox Grid.Row="7" Grid.Column="3">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="99.3" Text="Function Needed" Margin="0 0 5 0" Style="{DynamicResource RegularText}"/>
-                                    <CheckBox Command="{Binding FunctionNeededCommand}" IsChecked="{Binding FunctionNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
-                                </StackPanel>
-                            </Viewbox>
+                                <!-- Value/Datapoint/Datapoint(s) -->
+                                <Viewbox Grid.Row="5" Grid.Column="1">
+                                    <TextBlock Width="115.366666666667" Text="{Binding ValueTitleText}" Style="{DynamicResource RegularText}"/>
+                                </Viewbox>
 
-                            <!-- Function Text -->
-                            <Viewbox Grid.Row="9" Grid.Column="1">
-                                <TextBlock Visibility="{Binding FunctionVisibility}" Width="115.366666666667" Text="Function:" Style="{DynamicResource RegularText}"/>
-                            </Viewbox>
+                                <!-- Value/Datapoint/Datapoint(s) Text Box -->
+                                <Viewbox Grid.Row="5" Grid.Column="3">
+                                    <TextBox Text="{Binding ValueText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
+                                </Viewbox>
 
-                            <!-- Function Text Box -->
-                            <Viewbox Grid.Row="9" Grid.Column="3">
-                                <TextBox Visibility="{Binding FunctionVisibility}" Text="{Binding FunctionText}" Width="120" Style="{DynamicResource SettingsTextBox}"/>
-                            </Viewbox>
+                                <!-- Data Needed -->
+                                <Viewbox Grid.Row="7" Grid.Column="1">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="99.3" Text="Data Needed" Margin="0 0 5 0" Style="{DynamicResource RegularText}"/>
+                                        <CheckBox Command="{Binding DataNeededCommand}" IsChecked="{Binding DataNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
+                                    </StackPanel>
+                                </Viewbox>
+
+                                <!-- Function Needed -->
+                                <Viewbox Grid.Row="7" Grid.Column="3">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="99.3" Text="Function Needed" Margin="0 0 5 0" Style="{DynamicResource RegularText}"/>
+                                        <CheckBox Command="{Binding FunctionNeededCommand}" IsChecked="{Binding FunctionNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
+                                    </StackPanel>
+                                </Viewbox>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="2.2*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
+
+                                <Viewbox Grid.Row="0" Grid.Column="1">
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <!-- Terminal Function Text -->
+                                        <TextBlock Visibility="{Binding FunctionVisibility}" Width="60" Text="Function:" Style="{DynamicResource RegularText}"/>
+
+                                        <!-- Terminal Function Text Box-->
+                                        <TextBox Visibility="{Binding FunctionVisibility}" Text="{Binding FunctionText}" Width="190" Style="{DynamicResource SettingsTextBox}"/>
+                                    </StackPanel>
+                                </Viewbox>
+                            </Grid>
                         </Grid>
 
                         <!-- Add Button -->
