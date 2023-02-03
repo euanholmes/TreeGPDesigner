@@ -8,38 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\Roboto-Black.ttf" />
-    <None Remove="Fonts\Roboto-BlackItalic.ttf" />
-    <None Remove="Fonts\Roboto-Bold.ttf" />
-    <None Remove="Fonts\Roboto-BoldItalic.ttf" />
-    <None Remove="Fonts\Roboto-Italic.ttf" />
-    <None Remove="Fonts\Roboto-Light.ttf" />
-    <None Remove="Fonts\Roboto-LightItalic.ttf" />
-    <None Remove="Fonts\Roboto-Medium.ttf" />
-    <None Remove="Fonts\Roboto-MediumItalic.ttf" />
-    <None Remove="Fonts\Roboto-Regular.ttf" />
-    <None Remove="Fonts\Roboto-Thin.ttf" />
-    <None Remove="Fonts\Roboto-ThinItalic.ttf" />
-    <None Remove="Images\AppLoadSplash.png" />
-    <None Remove="Images\BPOfflineWrapper.png" />
-    <None Remove="Images\BPOnlineWrapper.png" />
-    <None Remove="Images\dark-mode-toggle-icon-inverted.png" />
-    <None Remove="Images\FitnessFunctionOne.png" />
-    <None Remove="Images\FitnessFunctionTwo.png" />
-    <None Remove="Images\light-mode-toggle-icon.png" />
-    <None Remove="Images\LoadSplash.png" />
-    <None Remove="Images\LoadSplashVer2.png" />
-    <None Remove="Images\starry-night.jpg" />
-    <None Remove="Images\sunflowers.jpg" />
-    <None Remove="Images\the-bedroom-at-arles.jpg" />
-    <None Remove="Images\the-starry-night-over-the-rhone.jpg" />
-    <None Remove="Images\zoom-pan-icon-inverted.png" />
-    <None Remove="Images\zoom-pan-icon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.4.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
   </ItemGroup>
 
   <ItemGroup>

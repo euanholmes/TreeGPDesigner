@@ -188,8 +188,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             if (Properties.Settings.Default.SettingsMode)
             {
-                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/dark-mode-toggle-icon-inverted.png"));
-                AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/Images/zoom-pan-icon-inverted.png"));
+                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/dark-mode-toggle-icon-inverted.png"));
+                AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/zoom-pan-icon-inverted.png"));
                 AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.DarkBackground;
                 AppInfoSingleton.Instance.CurrentText = Brushes.White;
                 AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.DarkPanel1;
@@ -201,8 +201,8 @@ namespace TreeGPDesigner.MVVM.ViewModel
             }
             else
             {
-                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/Images/light-mode-toggle-icon.png"));
-                AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/Images/zoom-pan-icon.png"));
+                AppInfoSingleton.Instance.CurrentModeToggleButton = new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/light-mode-toggle-icon.png"));
+                AppInfoSingleton.Instance.CurrentZoomIcon = new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/zoom-pan-icon.png"));
                 AppInfoSingleton.Instance.CurrentBackground = AppInfoSingleton.LightBackground;
                 AppInfoSingleton.Instance.CurrentText = Brushes.Black;
                 AppInfoSingleton.Instance.CurrentPanel1Color = AppInfoSingleton.LightPanel1;

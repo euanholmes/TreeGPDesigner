@@ -12,25 +12,25 @@ namespace TreeGPDesigner.MVVM.Model
     public class BinPackingTemplate : TreeGP
     {
         //Bin packing template variables
-        private List<FunctionModel> BPWrappersUI = new List<FunctionModel>() 
+        private List<FunctionModel> BPWrappersUI = new List<FunctionModel>()
         { new FunctionModel("BP Offline Wrapper", "This is a wrapper for offline bin packing problems. Items are taken in and sorted " +
                                                   "in descending order, then the program tree solution will decide whether to pack the item " +
-                                                  "into a bin or not.", 
-                            new BitmapImage(new Uri("pack://application:,,,/Images/BPOfflineWrapper.png"))),
+                                                  "into a bin or not.",
+                            new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/BPOfflineWrapper.png"))),
 
           new FunctionModel("BP Online Wrapper",  "This is a wrapper for online bin packing problems. Items are not pre sorted and " +
                                                   "are given to the solution tree as is to evaluate.",
-                            new BitmapImage(new Uri("pack://application:,,,/Images/BPOnlineWrapper.png")))
+                            new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/BPOnlineWrapper.png")))
         };
 
         private List<FunctionModel> BPFitnessFunctionsUI = new List<FunctionModel>()
         { new FunctionModel("Minimum Bins", "This is a fitness function which rewards solutions that pack items into bins with the " +
                                             "lower number of bins being awarded higher fitness scores.",
-                            new BitmapImage(new Uri("pack://application:,,,/Images/FitnessFunctionOne.png"))),
+                            new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/FitnessFunctionOne.png"))),
 
           new FunctionModel("Minimum Bins + Bin Fill%", "This is a fitness function that builds on fitness function one by also " +
                             "rewarding bin fill percentage.",
-              new BitmapImage(new Uri("pack://application:,,,/Images/FitnessFunctionTwo.png")))
+              new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/FitnessFunctionTwo.png")))
         };
 
         private List<string> BPDatasetsUI = new List<string>()
