@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using TreeGPDesigner.MVVM.Model;
 using TreeGPDesigner.MVVM.ViewModel;
 
 namespace TreeGPDesigner
@@ -73,6 +74,10 @@ namespace TreeGPDesigner
             {
                 AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet6;
             }
+
+            //Code to load asynchronous functions early. Increases initial load time but removes load time of adding first custom node.
+            BinPackingTemplate bpTemplate = new BinPackingTemplate();
+            bpTemplate.AddCustomFunctionNode("X", 2, "Load", "a => a[0] + a[1]");
 
             InitializeComponent();
             DataContext = new MainWindowViewModel();

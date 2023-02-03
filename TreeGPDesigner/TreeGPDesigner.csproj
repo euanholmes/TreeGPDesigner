@@ -20,6 +20,7 @@
     <None Remove="Fonts\Roboto-Regular.ttf" />
     <None Remove="Fonts\Roboto-Thin.ttf" />
     <None Remove="Fonts\Roboto-ThinItalic.ttf" />
+    <None Remove="Images\AppLoadSplash.png" />
     <None Remove="Images\BPOfflineWrapper.png" />
     <None Remove="Images\BPOnlineWrapper.png" />
     <None Remove="Images\dark-mode-toggle-icon-inverted.png" />
@@ -68,6 +69,10 @@
     <Resource Include="Images\the-starry-night-over-the-rhone.jpg" />
     <Resource Include="Images\zoom-pan-icon-inverted.png" />
     <Resource Include="Images\zoom-pan-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Images\AppLoadSplash.png" />
   </ItemGroup>
 
   <ItemGroup>
