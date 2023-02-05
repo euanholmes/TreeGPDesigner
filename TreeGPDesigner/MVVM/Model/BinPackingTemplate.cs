@@ -35,6 +35,11 @@ namespace TreeGPDesigner.MVVM.Model
 
         private List<string> BPDatasetsUI = new List<string>()
         {
+            "Random Dataset 1 (10 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
+            "Random Dataset 2 (50 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
+            "Random Dataset 3 (100 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
+            "Random Dataset 4 (200 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)",
+            "Random Dataset 5 (500 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)",
             "Faulkner Dataset 1 (20 problems | BC:150 | No. Items:120 | Item Sizes:20-100)",
             "Faulkner Dataset 2 (20 problems | BC:150 | No. Items:250 | Item Sizes:20-100 | *Load Time)",
             "Faulkner Dataset 3 (20 problems | BC:150 | No. Items:500 | Item Sizes:20-100 | *Load Time)",
@@ -42,12 +47,7 @@ namespace TreeGPDesigner.MVVM.Model
             "Faulkner Dataset 5 (20 problems | BC:100 | No. Items:60 | Item Sizes:25-50)",
             "Faulkner Dataset 6 (20 problems | BC:100 | No. Items:120 | Item Sizes:25-50)",
             "Faulkner Dataset 7 (20 problems | BC:100 | No. Items:249 | Item Sizes:25-50 | *Load Time)",
-            "Faulkner Dataset 8 (20 problems | BC:100 | No. Items:501 | Item Sizes:25-50 | *Load Time)",
-            "Random Dataset 1 (10 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
-            "Random Dataset 2 (50 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
-            "Random Dataset 3 (100 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
-            "Random Dataset 4 (200 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)",
-            "Random Dataset 5 (500 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)"
+            "Faulkner Dataset 8 (20 problems | BC:100 | No. Items:501 | Item Sizes:25-50 | *Load Time)" 
         };
 
         private static Random random = new();
@@ -67,7 +67,6 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 CurrentDatasets.Add(false);
             }
-
             
             AddFunctionNode(new FunctionNode("+", 2, "Addition", true, a => a[0] + a[1]));
             AddFunctionNode(new FunctionNode("-", 2, "Subtraction", true, a => a[0] - a[1]));
@@ -105,6 +104,12 @@ namespace TreeGPDesigner.MVVM.Model
             KnownAlgorithms.Add(FFDTree);
             KnownAlgorithms.Add(BFTree);
 
+            bpDatasets.Add(GenerateRandomBPDataset(10));
+            bpDatasets.Add(GenerateRandomBPDataset(50));
+            bpDatasets.Add(GenerateRandomBPDataset(100));
+            bpDatasets.Add(GenerateRandomBPDataset(200));
+            bpDatasets.Add(GenerateRandomBPDataset(500));
+
             bpDatasets.Add(BPDatasets.FaulknerDataset1);
             bpDatasets.Add(BPDatasets.FaulknerDataset2);
             bpDatasets.Add(BPDatasets.FaulknerDataset3);
@@ -113,12 +118,6 @@ namespace TreeGPDesigner.MVVM.Model
             bpDatasets.Add(BPDatasets.FaulknerDataset6);
             bpDatasets.Add(BPDatasets.FaulknerDataset7);
             bpDatasets.Add(BPDatasets.FaulknerDataset8);
-
-            bpDatasets.Add(GenerateRandomBPDataset(10));
-            bpDatasets.Add(GenerateRandomBPDataset(50));
-            bpDatasets.Add(GenerateRandomBPDataset(100));
-            bpDatasets.Add(GenerateRandomBPDataset(200));
-            bpDatasets.Add(GenerateRandomBPDataset(500));
 
             CurrentDataPoints = "[0] - Current Bin Weight (double)\n[1] - Current Item (double)\n[2] - Bin Capacity (double)\n[3] - On Last Bin (bool)\n" +
                 "[4] - Best Fitting Bin (bool)";

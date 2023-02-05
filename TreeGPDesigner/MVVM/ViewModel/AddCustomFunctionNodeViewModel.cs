@@ -4,6 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using TreeGPDesigner.MVVM.Model;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
@@ -79,6 +80,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             try
             {
+                int initialFunctionNodesCount = AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes.Count;
+                int initialRootFunctionNodesCount = AppInfoSingleton.Instance.CurrentTemplate.FunctionRootNodes.Count;
+
                 if (root)
                 {
                     AppInfoSingleton.Instance.CurrentTemplate.AddCustomRootFunctionNode(SymbolText, Convert.ToInt32(NoOperandsText), NodeDescriptionText, FunctionText);
@@ -87,9 +91,57 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 {
                     AppInfoSingleton.Instance.CurrentTemplate.AddCustomFunctionNode(SymbolText, Convert.ToInt32(NoOperandsText), NodeDescriptionText, FunctionText);
                 }
-                
-                ErrorColour = Brushes.Green;
-                ErrorMessage = "*Added Node";
+
+                if (root)
+                {
+                    if (initialRootFunctionNodesCount == AppInfoSingleton.Instance.CurrentTemplate.FunctionRootNodes.Count)
+                    {
+                        ErrorColour = Brushes.Red;
+                        ErrorMessage = "*Failed to add node.";
+                    }
+                    else
+                    {
+                        ErrorColour = Brushes.Green;
+                        ErrorMessage = "*Added Node";
+                    }
+                }
+                else
+                {
+                    if (initialFunctionNodesCount == AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes.Count)
+                    {
+                        ErrorColour = Brushes.Red;
+                        ErrorMessage = "*Failed to add node.";
+                    }
+                    else
+                    {
+                        ErrorColour = Brushes.Green;
+                        ErrorMessage = "*Added Node";
+                    }
+                }
+
+                //Number of operands check
+                if (ErrorMessage == "*Added Node")
+                {
+                    try
+                    {
+                        Node functionNodeCopy = AppInfoSingleton.Instance.CurrentTemplate.CopyNode(
+                            AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes[AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes.Count - 1]);
+
+                        for (int i = 0; i < Convert.ToInt32(NoOperandsText); i++)
+                        {
+                            functionNodeCopy.ChildNodes.Add(new TerminalNode("2", 0, 2, false));
+                        }
+
+                        functionNodeCopy.Eval();
+                    }
+                    catch 
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes.Remove(
+                            AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes[AppInfoSingleton.Instance.CurrentTemplate.FunctionNodes.Count - 1]);
+                        ErrorColour = Brushes.Red;
+                        ErrorMessage = "*Failed to add node.";
+                    }
+                }
             }
             catch
             {

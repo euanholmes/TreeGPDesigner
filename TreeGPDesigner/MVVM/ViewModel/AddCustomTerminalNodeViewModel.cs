@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -99,6 +101,10 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             try
             {
+                int initialTerminalNodesCount = AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes.Count;
+                int initialRootTerminalNodesCount = AppInfoSingleton.Instance.CurrentTemplate.TerminalRootNodes.Count;
+                string[] dataPoints = AppInfoSingleton.Instance.CurrentTemplate.CurrentDataPoints.Split("\n");
+
                 if (!FunctionNeededIsChecked && !DataNeededIsChecked)
                 {
                     if (root)
@@ -112,31 +118,97 @@ namespace TreeGPDesigner.MVVM.ViewModel
                 }
                 else if (DataNeededIsChecked && !FunctionNeededIsChecked)
                 {
-                    if (root)
+                    if (Convert.ToDouble(ValueText) > dataPoints.Length - 1 || Convert.ToDouble(ValueText) < 0)
                     {
-                        AppInfoSingleton.Instance.CurrentTemplate.AddRootNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), true));
+
                     }
                     else
                     {
-                        AppInfoSingleton.Instance.CurrentTemplate.AddTerminalNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), true));
+                        if (root)
+                        {
+                            AppInfoSingleton.Instance.CurrentTemplate.AddRootNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), true));
+                        }
+                        else
+                        {
+                            AppInfoSingleton.Instance.CurrentTemplate.AddTerminalNode(new TerminalNode(SymbolText, 0, NodeDescriptionText, true, Convert.ToDouble(ValueText), true));
+                        }
                     }
                 }
                 else if (FunctionNeededIsChecked && !DataNeededIsChecked)
                 {
                     int[] FunctionData = ConvertStringToIntArray(ValueText);
+                    bool validPoints = true;
 
-                    if (root)
+                    foreach(int dataPoint in FunctionData)
                     {
-                        AppInfoSingleton.Instance.CurrentTemplate.AddCustomRootTerminalNode(SymbolText, NodeDescriptionText, FunctionText, FunctionData);
+                        if (dataPoint > dataPoints.Length - 1)
+                        {
+                            validPoints = false;
+                            break;
+                        }
                     }
-                    else
+
+                    if (validPoints)
                     {
-                        AppInfoSingleton.Instance.CurrentTemplate.AddCustomTerminalNode(SymbolText, NodeDescriptionText, FunctionText, FunctionData);
+                        if (root)
+                        {
+                            AppInfoSingleton.Instance.CurrentTemplate.AddCustomRootTerminalNode(SymbolText, NodeDescriptionText, FunctionText, FunctionData);
+                        }
+                        else
+                        {
+                            AppInfoSingleton.Instance.CurrentTemplate.AddCustomTerminalNode(SymbolText, NodeDescriptionText, FunctionText, FunctionData);
+                        }
                     }
                 }
 
-                ErrorColour = Brushes.Green;
-                ErrorMessage = "*Added Node";
+                if (root)
+                {
+                    if (initialRootTerminalNodesCount == AppInfoSingleton.Instance.CurrentTemplate.TerminalRootNodes.Count)
+                    {
+                        ErrorColour = Brushes.Red;
+                        ErrorMessage = "*Failed to add node.";
+                    }
+                    else
+                    {
+                        ErrorColour = Brushes.Green;
+                        ErrorMessage = "*Added Node";
+                    }
+                }
+                else
+                {
+                    if (initialTerminalNodesCount == AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes.Count)
+                    {
+                        ErrorColour = Brushes.Red;
+                        ErrorMessage = "*Failed to add node.";
+                    }
+                    else
+                    {
+                        ErrorColour = Brushes.Green;
+                        ErrorMessage = "*Added Node";
+                    }
+                }
+
+                //Number of operands check
+                if (ErrorMessage == "*Added Node")
+                {
+                    try
+                    {
+                        int[] FunctionData = ConvertStringToIntArray(ValueText);
+                        Node terminalNodeCopy = AppInfoSingleton.Instance.CurrentTemplate.CopyNode(
+                            AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes[AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes.Count - 1]);
+
+                        //need to make this not bp specific
+                        terminalNodeCopy.Data = new object[] { 20, 10, 15, true, true };
+                        terminalNodeCopy.Eval();
+                    }
+                    catch
+                    {
+                        AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes.Remove(
+                            AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes[AppInfoSingleton.Instance.CurrentTemplate.TerminalNodes.Count - 1]);
+                        ErrorColour = Brushes.Red;
+                        ErrorMessage = "*Failed to add node.";
+                    }
+                }
             }
             catch
             {
