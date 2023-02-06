@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 using TreeGPDesigner;
 using TreeGPDesigner.MVVM.Model;
 using TreeGPDesigner.MVVM.ViewModel;
@@ -15,9 +17,54 @@ namespace TreeGPDesignerUnitTesting
     public class ViewModelUnitTests
     {
         [TestMethod]
+        public void VMTestGPBasics1()
+        {
+            //Start required viewmodels and set variables
+            AppInfoSingleton.Instance.CurrentBrushSet1 = AppInfoSingleton.BrushSet1;
+            AppInfoSingleton.Instance.CurrentBrushSet = AppInfoSingleton.Instance.CurrentBrushSet1;
+
+            //Start GP Basics 1 viemodel
+            GPBasics1ViewModel vm = new();
+
+            //Set the function, terminal and root node check values
+            vm.SelectedFunctionNodes = new() { true, true, true, true, true, true };
+            vm.SelectedTerminalNodes = new() { true, true, true, true, true, true };
+            vm.SelectedRootNodes = new() { true, true, true, true, true, true };
+
+            //Call GenerateTree()
+            vm.GenerateTree();
+
+            //Set the function, terminal and root node check values for another case
+            vm.SelectedFunctionNodes = new() { false, false, false, false, false, false };
+            vm.SelectedTerminalNodes = new() { true, true, true, true, true, true };
+            vm.SelectedRootNodes = new() { true, true, true, true, true, true };
+
+            //Call GenerateTree()
+            vm.GenerateTree();
+
+            //Set the function, terminal and root node check values for another case
+            vm.SelectedFunctionNodes = new() { false, false, false, false, false, false };
+            vm.SelectedTerminalNodes = new() { false, false, false, false, false, false };
+            vm.SelectedRootNodes = new() { true, true, true, true, true, true };
+
+            //Call GenerateTree()
+            vm.GenerateTree();
+
+            //Set the function, terminal and root node check values for another case
+            vm.SelectedFunctionNodes = new() { false, false, false, false, false, false };
+            vm.SelectedTerminalNodes = new() { false, false, false, false, false, false };
+            vm.SelectedRootNodes = new() { false, false, false, false, false, false };
+
+            //Call GenerateTree()
+            vm.GenerateTree();
+
+            //If theres no crash with these cases then the test has passed
+        }
+
+        [TestMethod]
         public void VMTestAddCustomFunctionNode()
         {
-            //Start the viewmodels which initialise certain variables
+            //Start required viewmodels and set variables
             MainWindowViewModel mainVM = new();
             GPR1GPTemplateMenuViewModel gptVM = new();
             BinPackingTemplate bpTemplate = new();

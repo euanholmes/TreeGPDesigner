@@ -17,12 +17,14 @@ namespace TreeGPDesigner.MVVM.View
         public GPR8FinalSettings()
         {
             InitializeComponent();
+            runTitle.Text = AppInfoSingleton.Instance.CurrentTemplate.CurrentRunName;
             mutationCrossoverSlider.Value = AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent;
             selectionSlider.Value = AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent;
             selectionSliderTitle.Text = "Selection = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentSelectionPercent + "%";
             mutationTitle.Text = "Mutation = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentMutationPercent + "%";
             crossoverTitle.Text = "Crossover = " + AppInfoSingleton.Instance.CurrentTemplate.CurrentCrossoverPercent + "%";
-            FocusManager.SetFocusedElement(this, runTitle);
+            popCount.Text = AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount.ToString();
+            maxDepth.Text = AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth.ToString();
         }
 
         //Code that makes sure you only enter numbers in a text box

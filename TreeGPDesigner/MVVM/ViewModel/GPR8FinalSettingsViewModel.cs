@@ -7,17 +7,6 @@ namespace TreeGPDesigner.MVVM.ViewModel
     //Viewmodel class for Final Settings View
     public partial class GPR8FinalSettingsViewModel : ViewModelBase
     {
-        //Final Settings Variables
-        [ObservableProperty]
-        private string runName = AppInfoSingleton.Instance.CurrentTemplate.CurrentRunName;
-
-        //Might be a bug with these at some point there was with the sliders
-        [ObservableProperty]
-        private string populationCount = AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount.ToString();
-
-        [ObservableProperty]
-        private string maxDepth = AppInfoSingleton.Instance.CurrentTemplate.CurrentMaxDepth.ToString();
-
         //Commands
         public ICommand NavStartRunCommand { get; }
         public ICommand NavBackCommand { get; }
