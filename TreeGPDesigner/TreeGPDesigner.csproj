@@ -32,7 +32,6 @@
     <Resource Include="Images\FitnessFunctionOne.png" />
     <Resource Include="Images\FitnessFunctionTwo.png" />
     <Resource Include="Images\light-mode-toggle-icon.png" />
-    <Resource Include="Images\LoadSplash.png" />
     <Resource Include="Images\LoadSplashVer2.png" />
     <Resource Include="Images\starry-night.jpg" />
     <Resource Include="Images\sunflowers.jpg" />

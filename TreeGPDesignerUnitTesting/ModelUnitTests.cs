@@ -118,5 +118,43 @@ namespace TreeGPDesignerUnitTesting
             //Assert that the actual and expected lowest known algorithm fitnesses are the same
             Assert.AreEqual(expectedLowestKnownAlgorithmFitness, actualLowestKnownAlgorithmFitness);
         }
+
+        [TestMethod]
+        public void MTestGPRun()
+        {
+            BinPackingTemplate bpTemplate = new();
+
+            /*bpTemplate.CurrentDatasets[0] = false;
+            bpTemplate.CurrentDatasets[5] = true;*/
+
+            bpTemplate.GetInitialPopulation();
+
+            Trace.WriteLine($"Wrapper: {bpTemplate.WrappersUI[bpTemplate.CurrentWrapper].Name}");
+            Trace.WriteLine($"Fitness Function: {bpTemplate.FitnessFunctionsUI[bpTemplate.CurrentFitnessFunction].Name}");
+            Trace.WriteLine($"Function Nodes: (+, -, *, %)   Terminal Nodes: (CBW, CI, BC, FS, 1, -1, 0)   Root Nodes: (==, <=, >=, >, <)");
+            Trace.WriteLine($"Training Data: {bpTemplate.DatasetUI[5]}");
+            Trace.WriteLine($"Tree Growing Method: {bpTemplate.CurrentTreeGrowingMethod}");
+            Trace.WriteLine($"Selection Method: {bpTemplate.CurrentSelectionMethod}");
+            Trace.WriteLine($"Population Count: {bpTemplate.CurrentPopulationCount}");
+            Trace.WriteLine($"Max Depth: {bpTemplate.CurrentMaxDepth}");
+            Trace.WriteLine($"Selection %: {bpTemplate.CurrentSelectionPercent}");
+            Trace.WriteLine($"Mutation %: {bpTemplate.CurrentMutationPercent}");
+            Trace.WriteLine($"Crossover %: {bpTemplate.CurrentCrossoverPercent}");
+            Trace.WriteLine("");
+            Trace.WriteLine("Top Algorithm Fitness, Average Fitness Of Generation, Number Of Passing Algorithms");
+
+            Trace.WriteLine($"{bpTemplate.Generation[0].Fitness}, " +
+                $"{bpTemplate.Generation.Sum(a => a.Fitness) / bpTemplate.CurrentPopulationCount}, " +
+                $"{bpTemplate.Generation.Sum(a => a.NotFailedYet == true ? 1 : 0)}");
+
+            for (int i = 1; i < 11; i++)
+            {
+                bpTemplate.GetNextGeneration();
+
+                Trace.WriteLine($"{bpTemplate.Generation[0].Fitness}, " +
+                    $"{bpTemplate.Generation.Sum(a => a.Fitness) / bpTemplate.CurrentPopulationCount}, " +
+                    $"{bpTemplate.Generation.Sum(a => a.NotFailedYet == true ? 1 : 0)}");
+            }
+        }
     }
 }

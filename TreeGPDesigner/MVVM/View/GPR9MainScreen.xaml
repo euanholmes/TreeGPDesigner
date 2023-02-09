@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Loaded="Window_Loaded"
              d:DesignHeight="540" d:DesignWidth="960">
     <!-- Main Screen Grid -->
     <Grid>

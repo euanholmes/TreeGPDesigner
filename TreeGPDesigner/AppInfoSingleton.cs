@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -121,6 +123,14 @@ namespace TreeGPDesigner
                 return instance;
             }
         }
+
+        /*public static Window LoadingWindow;
+
+        public static Task LoadTask;
+
+        public static CancellationTokenSource LoadCancellationTokenSource = new();
+
+        public static CancellationToken LoadCancellationToken = new();*/
 
         //Current view model
         public event Action CurrentViewModelChanged;

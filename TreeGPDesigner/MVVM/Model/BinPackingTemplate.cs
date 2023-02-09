@@ -455,7 +455,6 @@ namespace TreeGPDesigner.MVVM.Model
                 if (-node.Fitness > adjustNumber)
                 {
                     adjustNumber = -node.Fitness;
-                    Console.WriteLine($"Adjust Number: {adjustNumber}");
                 }
             }
 

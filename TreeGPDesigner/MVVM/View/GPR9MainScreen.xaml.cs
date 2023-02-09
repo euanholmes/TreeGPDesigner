@@ -9,10 +9,16 @@ namespace TreeGPDesigner.MVVM.View
     //Code behind for Main Screen View
     public partial class GPR9MainScreen : UserControl
     {
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Window.GetWindow(this).Show();
+        }
+
         //Constructor
         public GPR9MainScreen()
         {
             InitializeComponent();
+            Application.Current.MainWindow.Show();
 
             //Pan and zoom code.
             TransformGroup transformGroup = new TransformGroup();

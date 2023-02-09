@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -66,6 +67,12 @@ namespace TreeGPDesigner.MVVM.View
             {
                 AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount = popCountInt;
             }
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Window.GetWindow(this).Hide();
+            
         }
 
         private void MaxDepthChanged(object sender, TextChangedEventArgs e)

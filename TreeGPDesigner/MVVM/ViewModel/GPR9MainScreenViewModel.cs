@@ -5,10 +5,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using TreeGPDesigner.MVVM.Model;
+using TreeGPDesigner.MVVM.View;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
@@ -76,6 +79,11 @@ namespace TreeGPDesigner.MVVM.ViewModel
             var splashScreen = new SplashScreen("Images/LoadSplashVer2.png");
             splashScreen.Show(false);
 
+            if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
+            {
+                
+            }
+
             GetNextGenerationCommand = new RelayCommand(GetNextGeneration);
 
             AppInfoSingleton.Instance.MainDisplayTreeChanged += OnMainDisplayTreeChanged;
@@ -84,6 +92,18 @@ namespace TreeGPDesigner.MVVM.ViewModel
             GetKnownAlgorithmTrees();
             AppInfoSingleton.Instance.MainDisplayTree = new();
 
+
+
+
+
+            /* if (AppInfoSingleton.LoadingWindow.Dispatcher.CheckAccess())
+                 AppInfoSingleton.LoadingWindow.Close();
+             else
+                 AppInfoSingleton.LoadingWindow.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(AppInfoSingleton.LoadingWindow.Close));*/
+
+
+
+            //loadScreen.Close();
             splashScreen.Close(TimeSpan.FromSeconds(0.5));
         }
 

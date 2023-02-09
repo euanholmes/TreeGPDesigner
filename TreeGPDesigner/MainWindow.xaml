@@ -6,11 +6,9 @@
         xmlns:local="clr-namespace:TreeGPDesigner"
         xmlns:vm="clr-namespace:TreeGPDesigner.MVVM.ViewModel"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
         Title="MainWindow" Height="540" Width="960"
         Background="{Binding Background}">
 
     <!--Whole Application Content Control-->
     <ContentControl Content="{Binding CurrentView}"/>
-    
 </Window>
