@@ -156,7 +156,6 @@ namespace TreeGPDesigner.MVVM.Model
             FFTree.ChildNodes.Add(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
             FFTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
             FFTree.ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, "Current Item", true, 1, true));
-
             FFTree.Name = "First Fit";
 
             return FFTree;
@@ -173,7 +172,6 @@ namespace TreeGPDesigner.MVVM.Model
             NFTree.ChildNodes[0].ChildNodes[0].ChildNodes.Add(new TerminalNode("BC", 0, "Bin Capacity", true, 2, true));
             NFTree.ChildNodes[0].ChildNodes[0].ChildNodes[0].ChildNodes.Add(new TerminalNode("CBW", 0, "Current Bin Weight", true, 0, true));
             NFTree.ChildNodes[0].ChildNodes[0].ChildNodes[0].ChildNodes.Add(new TerminalNode("CI", 0, "Current Item", true, 1, true));
-
             NFTree.Name = "Next Fit";
 
             return NFTree;
@@ -181,7 +179,6 @@ namespace TreeGPDesigner.MVVM.Model
 
         public Node MakeBestFitTree()
         {
-            //Node BFTree = new TerminalNode("BFB", 0, "Best Fitting Bin", true, 4, true);
             Node BFTree = new TerminalNode("BFB", 0, "Best Fitting Bin", true, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 4 });
             BFTree.Name = "Best Fit";
 

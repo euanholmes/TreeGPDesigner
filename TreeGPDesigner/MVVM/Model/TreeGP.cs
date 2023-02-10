@@ -761,8 +761,6 @@ namespace TreeGPDesigner.MVVM.Model
             int tournamentSelectionNum = (int)Math.Floor((60 / 100d) * CurrentPopulationCount);
             List<Node> tournament = new();
 
-            
-
             for (int i = 0; i < selectionNumber; i++)
             {
                 tournament = new List<Node>(Generation);

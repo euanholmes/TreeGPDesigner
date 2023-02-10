@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
+﻿using System.Diagnostics;
 using TreeGPDesigner;
 using TreeGPDesigner.MVVM.Model;
 using TreeGPDesigner.MVVM.ViewModel;
@@ -139,7 +131,8 @@ namespace TreeGPDesignerUnitTesting
             GPR1GPTemplateMenuViewModel gptVM = new();
             BinPackingTemplate bpTemplate = new();
             AppInfoSingleton.Instance.CurrentTemplate = bpTemplate;
-
+            
+            //Start add custom terminal node view model
             AddCustomTerminalNodeViewModel vm = new(false);
 
             //Set the variables that will be used in a CORRECT one terminal node function

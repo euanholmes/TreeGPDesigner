@@ -1,7 +1,5 @@
 using System.Diagnostics;
-using System.Windows.Media.Imaging;
 using TreeGPDesigner.MVVM.Model;
-using TreeGPDesigner.MVVM.ViewModel;
 
 namespace TreeGPDesignerUnitTesting
 {
@@ -12,6 +10,119 @@ namespace TreeGPDesignerUnitTesting
         public static void IntialiseTest(TestContext ctx)
         {
             new System.Windows.Application();
+        }
+
+        [TestMethod]
+        public void MTestBPOfflineWrapper()
+        {
+            //Start a new bin packing template
+            BinPackingTemplate bpTemplate = new();
+
+            //Initialise test items
+            List<double> items = new List<double>() { 6, 24, 8, 17, 6, 22, 8, 24, 44, 21 };
+
+            //Intialise expected bins
+            List<List<double>> expectedBins = new List<List<double>>() { new List<double>() { 44, 8, 8 },
+            new List<double>() { 24, 24, 6, 6 }, new List<double>() { 22, 21, 17 }};
+
+            //Call BP offline wrapper with test items, bin capacity 60 and first fit descending algorithm. Set the result to actual bins.
+            List<List<double>> actualBins = bpTemplate.BPOfflineWrapper(items, 60, bpTemplate.KnownAlgorithms[1]);
+
+            //Print Results
+            Trace.WriteLine("\nItems: 6, 24, 8, 17, 6, 22, 8, 24, 44, 21 \nBin Capacity: 60 \nSolution: First Fit Descending\n");
+            Trace.WriteLine("Expected Bins:");
+            PrintBins(expectedBins);
+            Trace.WriteLine("\nActual Bins:");
+            PrintBins(actualBins);
+
+            //Assert each bin equals each other in the actual and expected bins
+            for (int i = 0; i < expectedBins.Count; i++)
+            {
+                CollectionAssert.AreEqual(expectedBins[i], actualBins[i]);
+            }
+
+            //Update expected bins for a bin capacity of 61
+            expectedBins = new List<List<double>>() { new List<double>() { 44, 17 },
+            new List<double>() { 24, 24, 8 }, new List<double>() { 22, 21, 8, 6 }, new List<double>() { 6 }};
+
+            //Call BP offline wrapper with test items, bin capacity 61 and first fit descending algorithm. Set the result to actual bins.
+            actualBins = bpTemplate.BPOfflineWrapper(items, 61, bpTemplate.KnownAlgorithms[1]);
+
+            //Print Results
+            Trace.WriteLine("\nItems: 6, 24, 8, 17, 6, 22, 8, 24, 44, 21 \nBin Capacity: 60 \nSolution: First Fit Descending\n");
+            Trace.WriteLine("Expected Bins:");
+            PrintBins(expectedBins);
+            Trace.WriteLine("\nActual Bins:");
+            PrintBins(actualBins);
+
+            //Assert each bin equals each other in the actual and expected bins
+            for (int i = 0; i < expectedBins.Count; i++)
+            {
+                CollectionAssert.AreEqual(expectedBins[i], actualBins[i]);
+            }
+        }
+
+        [TestMethod]
+        public void MTestBPOnlineWrapper()
+        {
+            //Start a new bin packing template
+            BinPackingTemplate bpTemplate = new();
+
+            //Initialise test items
+            List<double> items = new List<double>() { 6, 24, 8, 17, 6, 22, 8, 24, 44, 21 };
+
+            //Intialise expected bins
+            List<List<double>> expectedBins = new List<List<double>>() { new List<double>() { 6, 24, 8, 17 },
+            new List<double>() { 6, 22, 8, 24 }, new List<double>() { 44 }, new List<double>() { 21 }};
+
+            //Call BP online wrapper with test items, bin capacity 60 and first fit descending algorithm. Set the result to actual bins.
+            List<List<double>> actualBins = bpTemplate.BPOnlineWrapper(items, 60, bpTemplate.KnownAlgorithms[1]);
+
+            //Print Results
+            Trace.WriteLine("\nItems: 6, 24, 8, 17, 6, 22, 8, 24, 44, 21 \nBin Capacity: 60 \nSolution: First Fit Descending\n");
+            Trace.WriteLine("Expected Bins:");
+            PrintBins(expectedBins);
+            Trace.WriteLine("\nActual Bins:");
+            PrintBins(actualBins);
+
+            //Assert each bin equals each other in the actual and expected bins
+            for (int i = 0; i < expectedBins.Count; i++)
+            {
+                CollectionAssert.AreEqual(expectedBins[i], actualBins[i]);
+            }
+
+            //Update expected bins for a bin capacity of 61
+            expectedBins = new List<List<double>>() { new List<double>() { 6, 24, 8, 17, 6 },
+            new List<double>() { 22, 8, 24 }, new List<double>() { 44 }, new List<double>() { 21 }};
+
+            //Call BP online wrapper with test items, bin capacity 61 and first fit descending algorithm. Set the result to actual bins.
+            actualBins = bpTemplate.BPOnlineWrapper(items, 61, bpTemplate.KnownAlgorithms[1]);
+
+            //Print Results
+            Trace.WriteLine("\nItems: 6, 24, 8, 17, 6, 22, 8, 24, 44, 21 \nBin Capacity: 60 \nSolution: First Fit Descending\n");
+            Trace.WriteLine("Expected Bins:");
+            PrintBins(expectedBins);
+            Trace.WriteLine("\nActual Bins:");
+            PrintBins(actualBins);
+
+            //Assert each bin equals each other in the actual and expected bins
+            for (int i = 0; i < expectedBins.Count; i++)
+            {
+                CollectionAssert.AreEqual(expectedBins[i], actualBins[i]);
+            }
+        }
+
+        //Function used to print bins for bp offline and online wrapper functions
+        public void PrintBins(List<List<double>> bins)
+        {
+            foreach (var b in bins)
+            {
+                foreach (var item in b)
+                {
+                    Trace.Write(item + " ");
+                }
+                Trace.WriteLine("");
+            }
         }
 
         [TestMethod]
@@ -122,13 +233,13 @@ namespace TreeGPDesignerUnitTesting
         [TestMethod]
         public void MTestGPRun()
         {
+            //Start a new bin packing template
             BinPackingTemplate bpTemplate = new();
 
-            /*bpTemplate.CurrentDatasets[0] = false;
-            bpTemplate.CurrentDatasets[5] = true;*/
-
+            //Get initial population with default settings
             bpTemplate.GetInitialPopulation();
 
+            //Print the current settings
             Trace.WriteLine($"Wrapper: {bpTemplate.WrappersUI[bpTemplate.CurrentWrapper].Name}");
             Trace.WriteLine($"Fitness Function: {bpTemplate.FitnessFunctionsUI[bpTemplate.CurrentFitnessFunction].Name}");
             Trace.WriteLine($"Function Nodes: (+, -, *, %)   Terminal Nodes: (CBW, CI, BC, FS, 1, -1, 0)   Root Nodes: (==, <=, >=, >, <)");
@@ -143,10 +254,12 @@ namespace TreeGPDesignerUnitTesting
             Trace.WriteLine("");
             Trace.WriteLine("Top Algorithm Fitness, Average Fitness Of Generation, Number Of Passing Algorithms");
 
+            //Print the top program fitness, average fitness of the population and the number of passing programs.
             Trace.WriteLine($"{bpTemplate.Generation[0].Fitness}, " +
                 $"{bpTemplate.Generation.Sum(a => a.Fitness) / bpTemplate.CurrentPopulationCount}, " +
                 $"{bpTemplate.Generation.Sum(a => a.NotFailedYet == true ? 1 : 0)}");
 
+            //Get 10 generations and print out the results of each generation
             for (int i = 1; i < 11; i++)
             {
                 bpTemplate.GetNextGeneration();
