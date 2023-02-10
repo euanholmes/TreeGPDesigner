@@ -221,9 +221,18 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 for (int i = 0; i < node.NoOperands; i++)
                 {
-                    FunctionNode randomFunctionNode = GetRandomFunctionNode();
-                    randomFunctionNode.DepthLevel = node.DepthLevel++;
-                    node.ChildNodes.Add(randomFunctionNode);
+                    if (FunctionNodes.Count > 0)
+                    {
+                        FunctionNode randomFunctionNode = GetRandomFunctionNode();
+                        randomFunctionNode.DepthLevel = node.DepthLevel++;
+                        node.ChildNodes.Add(randomFunctionNode);
+                    }
+                    else
+                    {
+                        TerminalNode randomTerminalNode = GetRandomTerminalNode();
+                        randomTerminalNode.DepthLevel = node.DepthLevel++;
+                        node.ChildNodes.Add(randomTerminalNode);
+                    }
                 }
 
                 for (int i = 0; i < node.NoOperands; i++)
@@ -263,9 +272,18 @@ namespace TreeGPDesigner.MVVM.Model
                     }
                     else
                     {
-                        FunctionNode randomFunctionNode = GetRandomFunctionNode();
-                        randomFunctionNode.DepthLevel = node.DepthLevel++;
-                        node.ChildNodes.Add(randomFunctionNode);
+                        if (FunctionNodes.Count > 0)
+                        {
+                            FunctionNode randomFunctionNode = GetRandomFunctionNode();
+                            randomFunctionNode.DepthLevel = node.DepthLevel++;
+                            node.ChildNodes.Add(randomFunctionNode);
+                        }
+                        else
+                        {
+                            TerminalNode randomTerminalNode = GetRandomTerminalNode();
+                            randomTerminalNode.DepthLevel = node.DepthLevel++;
+                            node.ChildNodes.Add(randomTerminalNode);
+                        }
                     }
                 }
 

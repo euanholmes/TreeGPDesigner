@@ -113,7 +113,7 @@
                                 <!-- Program Tree -->
                                 <Grid Grid.Row="3" x:Name="treeBorder" ClipToBounds="True">
                                     <Viewbox>
-                                        <Grid>
+                                        <Grid Margin="50 50 0 0">
                                             <Grid>
                                                 <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="0" Y2="311.49"/>
                                                 <Line StrokeThickness="0" Stroke="Black" X1="0" Y1="0" X2="370.71" Y2="0"/>
