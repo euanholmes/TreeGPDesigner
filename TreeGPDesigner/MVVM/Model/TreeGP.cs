@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using TreeGPDesigner.MVVM.ViewModel;
 
 namespace TreeGPDesigner.MVVM.Model
@@ -411,7 +412,6 @@ namespace TreeGPDesigner.MVVM.Model
                 lastSplit += populationNum - (depthSplit * depthLevels);
             }
 
-
             if (minDepth < 0 || maxDepth < 0 || depthLevels > populationNum)
             {
             }
@@ -604,7 +604,6 @@ namespace TreeGPDesigner.MVVM.Model
         public void GetLowestKnownAlgorithmFitness()
         {
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
-
             LowestKnownAlgorithmFitness = KnownAlgorithms.OrderByDescending(a => a.Fitness).ToList()[knownAlgorithms.Count - 1].Fitness;
         }
 

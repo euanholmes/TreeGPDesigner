@@ -4,14 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Threading;
-using System.Windows;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
 using TreeGPDesigner.MVVM.Model;
-using TreeGPDesigner.MVVM.View;
 
 namespace TreeGPDesigner.MVVM.ViewModel
 {
@@ -62,7 +58,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private string crossoverPercentSetting;
 
         [ObservableProperty]
-        private List<Tree> knownAlgorithmTrees = new List<Tree>();
+        private ObservableCollection<Tree> knownAlgorithmTrees = new();
 
         [ObservableProperty]
         private List<Node> currentGeneration = new();
@@ -70,41 +66,19 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private ObservableCollection<Tree> generationTrees = new();
 
+        [ObservableProperty]
+        private string loadingMessage = "";
+
         //Commands
         public ICommand GetNextGenerationCommand { get; }
 
         //Constructor
         public GPR9MainScreenViewModel()
         {
-            var splashScreen = new SplashScreen("Images/LoadSplashVer2.png");
-            splashScreen.Show(false);
-
-            if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
-            {
-                
-            }
-
             GetNextGenerationCommand = new RelayCommand(GetNextGeneration);
-
             AppInfoSingleton.Instance.MainDisplayTreeChanged += OnMainDisplayTreeChanged;
             InitialiseSettings();
-            GetInitialPopulation();
-            GetKnownAlgorithmTrees();
             AppInfoSingleton.Instance.MainDisplayTree = new();
-
-
-
-
-
-            /* if (AppInfoSingleton.LoadingWindow.Dispatcher.CheckAccess())
-                 AppInfoSingleton.LoadingWindow.Close();
-             else
-                 AppInfoSingleton.LoadingWindow.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(AppInfoSingleton.LoadingWindow.Close));*/
-
-
-
-            //loadScreen.Close();
-            splashScreen.Close(TimeSpan.FromSeconds(0.5));
         }
 
         //Main screen functions
@@ -148,11 +122,15 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void GetKnownAlgorithmTrees()
         {
-            for (int i = 0; i < knownAlgorithms.Count; i++)
+            App.Current.Dispatcher.Invoke((Action)delegate
             {
-                KnownAlgorithmTrees.Add(new Tree(TextColour, Background, NormalButtonColour, knownAlgorithms[i].Name, knownAlgorithms[i].Fitness.ToString(), 
-                    AppInfoSingleton.RainbowBrush, i.ToString(), true, this));
-            }
+                KnownAlgorithmTrees.Clear();
+                for (int i = 0; i < knownAlgorithms.Count; i++)
+                {
+                    KnownAlgorithmTrees.Add(new Tree(TextColour, Background, NormalButtonColour, knownAlgorithms[i].Name, knownAlgorithms[i].Fitness.ToString(),
+                        AppInfoSingleton.RainbowBrush, i.ToString(), true, this));
+                }
+            }); 
         }
 
         public void GetInitialPopulation()
@@ -164,51 +142,65 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
         public void GetGenerationTrees()
         {
-            GenerationTrees.Clear();
-            for (int i = 0; i < CurrentGeneration.Count; i++)
+            App.Current.Dispatcher.Invoke((Action)delegate
             {
-                string treeName;
+                GenerationTrees.Clear();
+                for (int i = 0; i < CurrentGeneration.Count; i++)
+                {
+                    string treeName;
 
-                if (CurrentGeneration[i].Name != null)
-                {
-                    treeName = CurrentGeneration[i].Name;
-                }
-                else
-                {
-                    treeName = "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1);
-                }
+                    if (CurrentGeneration[i].Name != null)
+                    {
+                        treeName = CurrentGeneration[i].Name;
+                    }
+                    else
+                    {
+                        treeName = "G" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + "-" + (i + 1);
+                    }
 
-                CurrentGeneration[i].Name = treeName;
+                    CurrentGeneration[i].Name = treeName;
 
-                if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness)
-                {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
-                    CurrentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false, this));
+                    if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness)
+                    {
+                        GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
+                        CurrentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false, this));
+                    }
+                    else if (CurrentGeneration[i].NotFailedYet)
+                    {
+                        GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
+                        CurrentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false, this));
+                    }
+                    else
+                    {
+                        GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
+                        CurrentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false, this));
+                    }
                 }
-                else if (CurrentGeneration[i].NotFailedYet)
-                {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
-                    CurrentGeneration[i].Fitness.ToString(), Brushes.Green, i.ToString(), false, this));
-                }
-                else
-                {
-                    GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
-                    CurrentGeneration[i].Fitness.ToString(), Brushes.Red, i.ToString(), false, this));
-                }
-            }
+            });
         }
 
-        public void GetNextGeneration()
+        public async void GetNextGeneration()
         {
-            var splashScreen = new SplashScreen("Images/LoadSplashVer2.png");
-            splashScreen.Show(false);
+            LoadingMessage = "Loading...";
+            await Task.Run(GetNextGenerationTask);
+            LoadingMessage = "";
+        }
 
-            AppInfoSingleton.Instance.CurrentTemplate.GetNextGeneration();
-            CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
-            GenerationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
-            GetGenerationTrees();
+        public async Task GetNextGenerationTask()
+        {
+            if (CurrentGeneration.Count < 1)
+            {
+                GetInitialPopulation();
+            }
+            else
+            {
+                AppInfoSingleton.Instance.CurrentTemplate.GetNextGeneration();
+                CurrentGeneration = AppInfoSingleton.Instance.CurrentTemplate.Generation;
+                GenerationNumber = "Generation #" + AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum;
+                GetGenerationTrees();
+            }
 
-            splashScreen.Close(TimeSpan.FromSeconds(0.5));
+            GetKnownAlgorithmTrees();   
         }
     }
 

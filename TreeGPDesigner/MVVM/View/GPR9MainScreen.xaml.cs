@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -9,16 +8,10 @@ namespace TreeGPDesigner.MVVM.View
     //Code behind for Main Screen View
     public partial class GPR9MainScreen : UserControl
     {
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //Window.GetWindow(this).Show();
-        }
-
         //Constructor
         public GPR9MainScreen()
         {
             InitializeComponent();
-            Application.Current.MainWindow.Show();
 
             //Pan and zoom code.
             TransformGroup transformGroup = new TransformGroup();
@@ -69,7 +62,6 @@ namespace TreeGPDesigner.MVVM.View
                 {
                     Point mousePosition = e.GetPosition(this);
                     var matrix = matrixTransform.Matrix;
-
                     matrix.Translate(mousePosition.X - clickPosition.X, mousePosition.Y - clickPosition.Y);
                     matrixTransform.Matrix = matrix;
                     clickPosition = mousePosition;

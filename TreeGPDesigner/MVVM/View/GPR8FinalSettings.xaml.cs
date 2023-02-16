@@ -62,17 +62,10 @@ namespace TreeGPDesigner.MVVM.View
                 loadMessage.Text = "";
             }
 
-
             if (success)
             {
                 AppInfoSingleton.Instance.CurrentTemplate.CurrentPopulationCount = popCountInt;
             }
-        }
-
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //Window.GetWindow(this).Hide();
-            
         }
 
         private void MaxDepthChanged(object sender, TextChangedEventArgs e)

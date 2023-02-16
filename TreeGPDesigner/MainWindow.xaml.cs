@@ -13,8 +13,6 @@ namespace TreeGPDesigner
         //Constructor
         public MainWindow()
         {
-            //AppInfoSingleton.MainWindow = this;
-
             //Dark or Light Mode Settings
             if (Properties.Settings.Default.SettingsMode)
             {
