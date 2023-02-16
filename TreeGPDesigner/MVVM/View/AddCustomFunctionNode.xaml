@@ -31,9 +31,13 @@
         <Border Grid.Row="3" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.05*"/>
                     <ColumnDefinition Width="0.75*"/>
-                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.05*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -42,14 +46,14 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="1">
+                <!-- Enter Custom Node Details -->
+                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="3">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-
-                        <!-- Enter Custom Node Details -->
+                        
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"/>
@@ -140,6 +144,69 @@
 
                             <Viewbox Grid.Row="0">
                                 <Button Command="{Binding AddCustomFunctionNodeCommand}" Content="Add" Style="{DynamicResource NormalButtonStyle}"/>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <!--Example Custom Nodes-->
+                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Example Text Boxes Grid-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Example Symbol Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="1">
+                                <TextBox Width="100" TextWrapping="Wrap" Text="{Binding ExampleSymbolText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+
+                            <!--Example Node Description Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="3">
+                                <TextBox Width="100" TextWrapping="Wrap" Text="{Binding ExampleNodeDescriptionText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+
+                            <!--Example Number of Operands Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="5">
+                                <TextBox Width="100" TextWrapping="Wrap" Text="{Binding ExampleNoOperandsText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+
+                            <!--Example Function Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="7">
+                                <TextBox Width="100" TextWrapping="Wrap" Text="{Binding ExampleFunctionText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+                        </Grid>
+                        
+                        <!--New Example Button-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                            </Grid.RowDefinitions>
+
+                            <Viewbox Grid.Row="0">
+                                <Button Command="{Binding NewExampleCommand}" Content="New Example" Style="{DynamicResource NormalButtonStyle}"/>
                             </Viewbox>
                         </Grid>
                     </Grid>

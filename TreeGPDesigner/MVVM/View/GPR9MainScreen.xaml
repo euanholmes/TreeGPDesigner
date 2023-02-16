@@ -76,7 +76,7 @@
 
                                                 <!-- Colour Indicator and Fitness -->
                                                 <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding ColourIndicator}">
-                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Fitness}"/>
+                                                    <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Fitness}"/>
                                                 </Border>
                                             </Grid>
                                         </Viewbox>
@@ -223,7 +223,7 @@
 
                                                 <!-- Colour Indicator and Fitness -->
                                                 <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding ColourIndicator}">
-                                                    <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Fitness}"/>
+                                                    <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Fitness}"/>
                                                 </Border>
                                             </Grid>
                                         </Viewbox>

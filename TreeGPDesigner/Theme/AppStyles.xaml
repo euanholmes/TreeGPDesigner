@@ -225,4 +225,17 @@
         <Setter Property="Background" Value="{Binding Panel2Colour}"/>
         <Setter Property="Margin" Value="1"/>
     </Style>
+
+    <!-- Style for example settings text box -->
+    <Style x:Key="ExampleSettingsTextBox" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="{DynamicResource RobotoItalic}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SelectionBrush" Value="{Binding NormalButtonColour}"/>
+        <Setter Property="CaretBrush" Value="{Binding TextColour}"/>
+        <Setter Property="Foreground" Value="{Binding TextColour}"/>
+        <Setter Property="Background" Value="{Binding Panel2Colour}"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
 </ResourceDictionary>
