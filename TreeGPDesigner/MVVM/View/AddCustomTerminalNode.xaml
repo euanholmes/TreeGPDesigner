@@ -6,6 +6,26 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
+
+    <!-- Resources for hatched brush-->
+    <UserControl.Resources>
+        <VisualBrush x:Key="HatchBrushnew" TileMode="Tile" Viewport="0,0,30,30" ViewportUnits="Absolute" Viewbox="0,0,30,30" ViewboxUnits="Absolute">
+            <VisualBrush.Transform>
+                <RotateTransform Angle="135" CenterX=".5" CenterY=".5" />
+            </VisualBrush.Transform>
+            <VisualBrush.Visual>
+                <Canvas>
+                    <Rectangle Fill="{Binding Panel1Colour}" Width="30" Height="30"/>
+                    <Path Stroke="{Binding Panel2Colour}" StrokeThickness="0.05cm" >
+                        <Path.Data>
+                            <LineGeometry StartPoint="15,0" EndPoint="15,30" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </UserControl.Resources>
+    
     <!-- Add Custom Terminal Node Grid -->
     <Grid>
         <Grid.RowDefinitions>
@@ -31,11 +51,13 @@
         <Border Grid.Row="3" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.3*"/>
-                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.05*"/>
                     <ColumnDefinition Width="0.75*"/>
-                    <ColumnDefinition Width="0.2*"/>
-                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.05*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -44,7 +66,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="2">
+                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="3">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*"/>
@@ -190,12 +212,109 @@
                         <!-- Data Points Panel -->
                         <Border Grid.Row="3" Grid.Column="1" Style="{DynamicResource Panel1}">
                             <Viewbox Margin="5">
-                                <TextBlock Text="{Binding DataPointsText}" Height="287.255011181467" Width="126.134453781513" TextWrapping="Wrap" Style="{DynamicResource RegularText}"/>
+                                <TextBlock Text="{Binding DataPointsText}" Height="287.255011181467" Width="171.512605042017" TextWrapping="Wrap" Style="{DynamicResource RegularText}"/>
                             </Viewbox>
                         </Border>
                     </Grid>
                 </Border>
-                
+
+                <!--Example Custom Nodes-->
+                <Border Background="{StaticResource HatchBrushnew}" Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Example Text Boxes Grid-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Example Symbol Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="1">
+                                <TextBox Width="100" TextWrapping="Wrap" Text="{Binding ExampleSymbolText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+
+                            <!--Example Node Description Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="3">
+                                <TextBox Width="100" TextWrapping="Wrap" Text="{Binding ExampleNodeDescriptionText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+
+                            <!--Example Value Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="5">
+                                <TextBox Width="100" TextWrapping="Wrap" Text="{Binding ExampleValueText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+
+                            <!-- Example Data/Function Needed Grid -->
+                            <Grid Grid.Row="7" Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Example Data Needed Label -->
+                                <Viewbox Grid.Column="0">
+                                    <TextBlock Style="{DynamicResource RegularText}" Width="45.7766666666667" Text="Data"/>
+                                </Viewbox>
+
+                                <!-- Example Data Checkbox -->
+                                <Viewbox Grid.Column="2">
+                                    <CheckBox IsHitTestVisible="False" Focusable="False" IsChecked="{Binding ExampleDataNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
+                                </Viewbox>
+
+                                <!-- Example Function Needed Label -->
+                                <Viewbox Grid.Column="4">
+                                    <TextBlock Style="{DynamicResource RegularText}" Text="Function"/>
+                                </Viewbox>
+
+                                <!-- Example Function Checkbox -->
+                                <Viewbox Grid.Column="6">
+                                    <CheckBox IsHitTestVisible="False" Focusable="False" IsChecked="{Binding ExampleFunctionNeededIsChecked}" Style="{DynamicResource CheckBox}"/>
+                                </Viewbox>
+                            </Grid>
+
+                            <!--Example Function Text Box-->
+                            <Viewbox Grid.Column="1" Grid.Row="9">
+                                <TextBox Visibility="{Binding ExampleFunctionVisibility}" Text="{Binding ExampleFunctionText}" IsReadOnly="True"   Style="{DynamicResource ExampleSettingsTextBox}"/>
+                            </Viewbox>
+                        </Grid>
+
+                        <!--New Example Button-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                            </Grid.RowDefinitions>
+
+                            <Viewbox Grid.Row="0">
+                                <Button Command="{Binding NewExampleCommand}" Content="New Example" Style="{DynamicResource NormalButtonStyle}"/>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+                </Border>
             </Grid>
         </Border>
 

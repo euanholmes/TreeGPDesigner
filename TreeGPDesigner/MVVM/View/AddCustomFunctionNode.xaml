@@ -6,6 +6,26 @@
              xmlns:local="clr-namespace:TreeGPDesigner.MVVM.View"
              mc:Ignorable="d" 
             d:DesignHeight="540" d:DesignWidth="960">
+
+    <!-- Resources for hatched brush-->
+    <UserControl.Resources>
+        <VisualBrush x:Key="HatchBrushnew" TileMode="Tile" Viewport="0,0,30,30" ViewportUnits="Absolute" Viewbox="0,0,30,30" ViewboxUnits="Absolute">
+            <VisualBrush.Transform>
+                <RotateTransform Angle="135" CenterX=".5" CenterY=".5" />
+            </VisualBrush.Transform>
+            <VisualBrush.Visual>
+                <Canvas>
+                    <Rectangle Fill="{Binding Panel1Colour}" Width="30" Height="30"/>
+                    <Path Stroke="{Binding Panel2Colour}" StrokeThickness="0.05cm" >
+                        <Path.Data>
+                            <LineGeometry StartPoint="15,0" EndPoint="15,30" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </UserControl.Resources>
+    
     <!-- Add Custom Function Node Grid -->
     <Grid>
         <Grid.RowDefinitions>
@@ -53,13 +73,13 @@
                             <RowDefinition Height="6*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        
+
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            
+
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.2*"/>
@@ -124,10 +144,10 @@
 
                                 <Viewbox Grid.Row="0" Grid.Column="1">
                                     <StackPanel Orientation="Horizontal">
-                                        
+
                                         <!-- Function Text -->
                                         <TextBlock Width="60" Text="Function:" Style="{DynamicResource RegularText}"/>
-                                        
+
                                         <!-- Function Text Box-->
                                         <TextBox Text="{Binding FunctionText}" Width="190" Style="{DynamicResource SettingsTextBox}"/>
                                     </StackPanel>
@@ -150,7 +170,7 @@
                 </Border>
 
                 <!--Example Custom Nodes-->
-                <Border Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="1">
+                <Border Background="{StaticResource HatchBrushnew}" Style="{DynamicResource Panel1}" Grid.Row="1" Grid.Column="1">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*"/>

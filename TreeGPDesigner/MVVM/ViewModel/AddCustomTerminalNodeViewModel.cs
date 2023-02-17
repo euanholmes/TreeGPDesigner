@@ -15,6 +15,21 @@ namespace TreeGPDesigner.MVVM.ViewModel
     {
         //Add Custom Terminal Node Variables
         private bool root;
+        private ExampleTerminalNode[] exampleTerminalNodes =
+            {
+                new ExampleTerminalNode("CBW", "Current Bin Weight", "0", "", true, false),
+                new ExampleTerminalNode("CI", "Current Item", "1", "", true, false),
+                new ExampleTerminalNode("BC", "Bin Capacity", "2", "", true, false),
+                new ExampleTerminalNode("FS", "Free Space", "2, 0", "a => Convert.ToDouble(a[0]) - Convert.ToDouble(a[1])", false, true),
+                new ExampleTerminalNode("-1", "-1", "-1", "", false, false),
+                new ExampleTerminalNode("1", "1", "1", "", false, false),
+                new ExampleTerminalNode("0", "0", "0", "", false, false),
+                new ExampleTerminalNode("3.14", "3.14", "3.14", "", false, false),
+                new ExampleTerminalNode("2BC", "2 X Bin Capacity", "2", "a => Convert.ToDouble(a[0]) * 2", false, true),
+                new ExampleTerminalNode("LB", "On Last Bin", "3", "a => (bool)a[0] == true ? 1 : 0", false, true),
+                new ExampleTerminalNode("BFB", "Best Fitting Bin", "4", "a => (bool)a[0] == true ? 1 : 0", false, true)
+            };
+        private int exampleTerminalNodesIndex = 0;
 
         [ObservableProperty]
         private string errorMessage = "";
@@ -38,6 +53,18 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private string functionText = "";
 
         [ObservableProperty]
+        private string exampleSymbolText = "";
+
+        [ObservableProperty]
+        private string exampleNodeDescriptionText = "";
+
+        [ObservableProperty]
+        private string exampleValueText = "";
+
+        [ObservableProperty]
+        private string exampleFunctionText = "";
+
+        [ObservableProperty]
         private Visibility functionVisibility = Visibility.Hidden;
 
         [ObservableProperty]
@@ -50,10 +77,19 @@ namespace TreeGPDesigner.MVVM.ViewModel
         private bool dataNeededIsChecked = false;
 
         [ObservableProperty]
+        private bool exampleFunctionNeededIsChecked = false;
+
+        [ObservableProperty]
+        private bool exampleDataNeededIsChecked = false;
+
+        [ObservableProperty]
         private string titleText = "";
 
         [ObservableProperty]
         private Visibility functionNodeButtonVisibility;
+
+        [ObservableProperty]
+        private Visibility exampleFunctionVisibility;
 
         //Commands
         public ICommand NavBackCommand { get; }
@@ -61,6 +97,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         public ICommand AddCustomTerminalNodeCommand { get; }
         public ICommand FunctionNeededCommand { get; }
         public ICommand DataNeededCommand { get; }
+        public ICommand NewExampleCommand { get; }
 
         //Constructor
         public AddCustomTerminalNodeViewModel(bool root)
@@ -83,6 +120,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
             AddCustomTerminalNodeCommand = new RelayCommand(AddCustomTerminalNode);
             FunctionNeededCommand = new RelayCommand(FunctionNeeded);
             DataNeededCommand = new RelayCommand(DataNeeded);
+            NewExampleCommand = new RelayCommand(NewExample);
+
+            NewExample();
         }
 
         //Navigation Functions
@@ -260,5 +300,58 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
             return intArray;
         }
+
+        public void NewExample()
+        {
+            if (exampleTerminalNodesIndex == exampleTerminalNodes.Length)
+            {
+                exampleTerminalNodesIndex = 0;
+            }
+
+            ExampleSymbolText = exampleTerminalNodes[exampleTerminalNodesIndex].SymbolText;
+            ExampleNodeDescriptionText = exampleTerminalNodes[exampleTerminalNodesIndex].NodeDescriptionText;
+            ExampleValueText = exampleTerminalNodes[exampleTerminalNodesIndex].ValueText;
+            ExampleFunctionText = exampleTerminalNodes[exampleTerminalNodesIndex].FunctionText;
+            ExampleDataNeededIsChecked = exampleTerminalNodes[exampleTerminalNodesIndex].IsDataNeeded;
+            ExampleFunctionNeededIsChecked = exampleTerminalNodes[exampleTerminalNodesIndex].IsFunctionNeeded;
+
+            if (ExampleFunctionNeededIsChecked)
+            {
+                ExampleFunctionVisibility = Visibility.Visible;
+            }
+            else
+            {
+                ExampleFunctionVisibility = Visibility.Collapsed;
+            }
+
+            exampleTerminalNodesIndex++;
+        }
+    }
+
+    public class ExampleTerminalNode
+    {
+        private string symbolText;
+        private string nodeDescriptionText;
+        private string valueText;
+        private string functionText;
+        private bool isDataNeeded;
+        private bool isFunctionNeeded;
+
+        public ExampleTerminalNode(string symbolText, string nodeDescriptionText, string valueText, string functionText, bool isDataNeeded, bool isFunctionNeeded)
+        {
+            this.symbolText = symbolText;
+            this.nodeDescriptionText = nodeDescriptionText;
+            this.valueText = valueText;
+            this.functionText = functionText;
+            this.isDataNeeded = isDataNeeded;
+            this.isFunctionNeeded = isFunctionNeeded;
+        }
+
+        public string SymbolText { get => symbolText; set => symbolText = value; }
+        public string NodeDescriptionText { get => nodeDescriptionText; set => nodeDescriptionText = value; }
+        public string ValueText { get => valueText; set => valueText = value; }
+        public string FunctionText { get => functionText; set => functionText = value; }
+        public bool IsDataNeeded { get => isDataNeeded; set => isDataNeeded = value; }
+        public bool IsFunctionNeeded { get => isFunctionNeeded; set => isFunctionNeeded = value; }
     }
 }

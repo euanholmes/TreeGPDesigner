@@ -69,6 +69,9 @@ namespace TreeGPDesigner.MVVM.ViewModel
         [ObservableProperty]
         private string loadingMessage = "";
 
+        [ObservableProperty]
+        private string buttonContent = "Get Initial Population";
+
         //Commands
         public ICommand GetNextGenerationCommand { get; }
 
@@ -183,6 +186,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
         {
             LoadingMessage = "Loading...";
             await Task.Run(GetNextGenerationTask);
+            ButtonContent = "Get Generation #" + (AppInfoSingleton.Instance.CurrentTemplate.CurrentGenerationNum + 1);
             LoadingMessage = "";
         }
 

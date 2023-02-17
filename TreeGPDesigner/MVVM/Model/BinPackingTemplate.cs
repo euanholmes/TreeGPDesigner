@@ -95,7 +95,6 @@ namespace TreeGPDesigner.MVVM.Model
             AddRootNode(new FunctionNode("<", 2, "Less Than", true, a => a[0] < a[1] ? 1 : 0));
             AddRootNode(new TerminalNode("BFB", 0, "Best Fitting Bin", false, 0, false, true, a => (bool)a[0] == true ? 1 : 0, new int[] { 4 }));
 
-
             Node NFTree = MakeNextFitTree();
             Node FFDTree = MakeFirstFitTree();
             Node BFTree = MakeBestFitTree();

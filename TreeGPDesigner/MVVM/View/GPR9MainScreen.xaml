@@ -261,7 +261,7 @@
                 </Grid.RowDefinitions>
 
                 <Viewbox Grid.Row="1">
-                    <Button Command="{Binding GetNextGenerationCommand}" Style="{DynamicResource NormalButtonStyle}" Content="Get Next Generation"/>
+                    <Button Command="{Binding GetNextGenerationCommand}" Style="{DynamicResource NormalButtonStyle}" Content="{Binding ButtonContent}"/>
                 </Viewbox>
             </Grid>
 
