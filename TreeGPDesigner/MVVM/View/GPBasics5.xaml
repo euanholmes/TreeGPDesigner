@@ -371,7 +371,7 @@
                                                         <GradientStop Color="Violet" Offset="1.0"/>
                                                     </LinearGradientBrush>
                                                 </Border.Background>
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="100"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="100"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -386,7 +386,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 2"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="98"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="98"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -401,7 +401,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 3"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="97"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="97"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -416,7 +416,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 4"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Green">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="96"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="96"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -431,7 +431,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 5"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="94"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="94"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -451,7 +451,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 6"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="93"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="93"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -466,7 +466,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 7"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="92"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="92"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -481,7 +481,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 8"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="83"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="83"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -496,7 +496,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 9"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="73"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="73"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -511,7 +511,7 @@
 
                                             <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="Program 10"/>
                                             <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="Red">
-                                                <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
+                                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="51"/>
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -563,7 +563,7 @@
 
                                         <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="{Binding Selection1Name}"/>
                                         <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding Selection1Colour}">
-                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection1Fitness}"/>
+                                            <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection1Fitness}"/>
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -586,7 +586,7 @@
 
                                         <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="{Binding Selection2Name}"/>
                                         <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding Selection2Colour}">
-                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection2Fitness}"/>
+                                            <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection2Fitness}"/>
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -609,7 +609,7 @@
 
                                         <TextBlock Width="150" Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Grid.Column="2" Text="{Binding Selection3Name}"/>
                                         <Border VerticalAlignment="Center" Grid.Column="0" Width="50" Height="50" Background="{Binding Selection3Colour}">
-                                            <TextBlock Foreground="{Binding TextColour}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection3Fitness}"/>
+                                            <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" FontFamily="{StaticResource RobotoBold}" Text="{Binding Selection3Fitness}"/>
                                         </Border>
                                     </Grid>
                                 </Border>

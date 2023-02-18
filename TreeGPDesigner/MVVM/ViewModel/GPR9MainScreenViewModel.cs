@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -163,7 +164,7 @@ namespace TreeGPDesigner.MVVM.ViewModel
 
                     CurrentGeneration[i].Name = treeName;
 
-                    if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness)
+                    if (CurrentGeneration[i].Fitness >= AppInfoSingleton.Instance.CurrentTemplate.LowestKnownAlgorithmFitness && CurrentGeneration[i].NotFailedYet)
                     {
                         GenerationTrees.Add(new Tree(TextColour, Background, NormalButtonColour, CurrentGeneration[i].Name,
                         CurrentGeneration[i].Fitness.ToString(), AppInfoSingleton.RainbowBrush, i.ToString(), false, this));

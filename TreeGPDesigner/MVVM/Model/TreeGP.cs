@@ -552,6 +552,7 @@ namespace TreeGPDesigner.MVVM.Model
         public void SortGenerationByFitness()
         {
             Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
+            //KnownAlgorithms = KnownAlgorithms.OrderByDescending(a => a.Fitness).ToList();
         }
 
         //Function to remove unchecked nodes

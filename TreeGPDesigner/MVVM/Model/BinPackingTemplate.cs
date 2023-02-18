@@ -24,12 +24,16 @@ namespace TreeGPDesigner.MVVM.Model
         };
 
         private List<FunctionModel> BPFitnessFunctionsUI = new List<FunctionModel>()
-        { new FunctionModel("Minimum Bins", "This is a fitness function which rewards solutions that pack items into bins with the " +
-                                            "lower number of bins being awarded higher fitness scores.",
+        { new FunctionModel("Custom Number of Bins", "This is a custom fitness function using the number of bins packed. The lower the number of bins the higher" +
+            " the fitness score. The bin packing wrapper is first called to produce a list of bins from the solution program. Then the bins produced from this " +
+            "wrapper are checked for validity. The invalid solutions are marked as such and their fitness score is reduced. Then the number of bins fitness function" +
+            " is applied.",
                             new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/FitnessFunctionOne.png"))),
 
-          new FunctionModel("Minimum Bins + Bin Fill%", "This is a fitness function that builds on fitness function one by also " +
-                            "rewarding bin fill percentage.",
+          new FunctionModel("Custom Falkenauer's Fitness", "This is a custom fitness function that builds on Falkenauer's fitness function. The percentage fill" +
+              " of each bin in the solution is used to determine the fitness. The bin packing wrapper is first called to produce a list of bins from the solution " +
+              "program. Then the bins produced from this wrapper are checked for validity. The invalid solutions are marked as such and their " +
+              "fitness score is reduced. Then the Falkenauer fitness is applied using k=2.",
               new BitmapImage(new Uri("pack://application:,,,/TreeGPDesigner;component/Images/FitnessFunctionTwo.png")))
         };
 
@@ -40,14 +44,14 @@ namespace TreeGPDesigner.MVVM.Model
             "Random Dataset 3 (100 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC)",
             "Random Dataset 4 (200 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)",
             "Random Dataset 5 (500 problems | BC:50-60 | No. Items:10 | Item Sizes:1-BC | *Load Time)",
-            "Faulkner Dataset 1 (20 problems | BC:150 | No. Items:120 | Item Sizes:20-100)",
-            "Faulkner Dataset 2 (20 problems | BC:150 | No. Items:250 | Item Sizes:20-100 | *Load Time)",
-            "Faulkner Dataset 3 (20 problems | BC:150 | No. Items:500 | Item Sizes:20-100 | *Load Time)",
-            "Faulkner Dataset 4 (20 problems | BC:150 | No. Items:1000 | Item Sizes:20-100 | *Load Time)",
-            "Faulkner Dataset 5 (20 problems | BC:100 | No. Items:60 | Item Sizes:25-50)",
-            "Faulkner Dataset 6 (20 problems | BC:100 | No. Items:120 | Item Sizes:25-50)",
-            "Faulkner Dataset 7 (20 problems | BC:100 | No. Items:249 | Item Sizes:25-50 | *Load Time)",
-            "Faulkner Dataset 8 (20 problems | BC:100 | No. Items:501 | Item Sizes:25-50 | *Load Time)" 
+            "Falkenauer Dataset 1 (20 problems | BC:150 | No. Items:120 | Item Sizes:20-100)",
+            "Falkenauer Dataset 2 (20 problems | BC:150 | No. Items:250 | Item Sizes:20-100 | *Load Time)",
+            "Falkenauer Dataset 3 (20 problems | BC:150 | No. Items:500 | Item Sizes:20-100 | *Load Time)",
+            "Falkenauer Dataset 4 (20 problems | BC:150 | No. Items:1000 | Item Sizes:20-100 | *Load Time)",
+            "Falkenauer Dataset 5 (20 problems | BC:100 | No. Items:60 | Item Sizes:25-50)",
+            "Falkenauer Dataset 6 (20 problems | BC:100 | No. Items:120 | Item Sizes:25-50)",
+            "Falkenauer Dataset 7 (20 problems | BC:100 | No. Items:249 | Item Sizes:25-50 | *Load Time)",
+            "Falkenauer Dataset 8 (20 problems | BC:100 | No. Items:501 | Item Sizes:25-50 | *Load Time)"
         };
 
         private static Random random = new();
@@ -282,17 +286,8 @@ namespace TreeGPDesigner.MVVM.Model
         }
 
         //Fitness functions
-        public Node FitnessFunctionOne(Node node, List<double> items, double binCapacity)
+        public Node CheckValidity(Node node, List<List<double>> bins, List<double> items, double binCapacity)
         {
-            List<List<double>> bins = new List<List<double>>();
-            if (CurrentWrapper == 0)
-            {
-                bins = BPOfflineWrapper(items, binCapacity, node);
-            }
-            else
-            {
-                bins = BPOnlineWrapper(items, binCapacity, node);
-            }
             double totalBinWeight = 0;
             double totalItemWeight = items.Sum();
             foreach (List<double> bin in bins)
@@ -313,13 +308,29 @@ namespace TreeGPDesigner.MVVM.Model
                 node.Fitness -= 100;
                 node.NotFailedYet = false;
             }
+
+            return node;
+        }
+
+        public Node FitnessFunctionOne(Node node, List<double> items, double binCapacity)
+        {
+            List<List<double>> bins;
+            if (CurrentWrapper == 0)
+            {
+                bins = BPOfflineWrapper(items, binCapacity, node);
+            }
+            else
+            {
+                bins = BPOnlineWrapper(items, binCapacity, node);
+            }
+            CheckValidity(node, bins, items, binCapacity);
             node.Fitness -= bins.Count;
             return node;
         }
 
         public Node FitnessFunctionTwo(Node node, List<double> items, double binCapacity)
         {
-            List<List<double>> bins = new List<List<double>>();
+            List<List<double>> bins;
             if (CurrentWrapper == 0)
             {
                 bins = BPOfflineWrapper(items, binCapacity, node);
@@ -328,34 +339,13 @@ namespace TreeGPDesigner.MVVM.Model
             {
                 bins = BPOnlineWrapper(items, binCapacity, node);
             }
-            double totalBinWeight = 0;
-            double totalItemWeight = items.Sum();
+            CheckValidity(node, bins, items, binCapacity);
+            double binFill = 0;
             foreach (List<double> bin in bins)
             {
-                totalBinWeight += bin.Sum();
-                if (bin.Sum() > binCapacity || bin.Sum() == 0)
-                {
-                    node.Fitness -= 100;
-                    node.NotFailedYet = false;
-                }
+                binFill += (bin.Sum() / binCapacity) * 2;
             }
-            if (bins[0].Sum() == totalItemWeight)
-            {
-                node.Fitness -= 100 * (items.Count - 2);
-            }
-            if (totalBinWeight != totalItemWeight)
-            {
-                node.Fitness -= 100;
-                node.NotFailedYet = false;
-            }
-            foreach(List<double> bin in bins)
-            {
-                if (bin.Sum() == binCapacity)
-                {
-                    node.Fitness += 1;
-                }
-            }
-            node.Fitness -= bins.Count;
+            node.Fitness += (float)binFill/bins.Count;
             return node;
         }
 
@@ -465,11 +455,68 @@ namespace TreeGPDesigner.MVVM.Model
             }
         }
 
+        public void RoundFitness()
+        {
+            foreach (Node node in Generation)
+            {
+                node.Fitness = (float)Math.Round(node.Fitness, 3);
+            }
+
+            foreach (Node node in KnownAlgorithms)
+            {
+                node.Fitness = (float)Math.Round(node.Fitness, 3);
+            }
+        }
+
+        public void NormaliseFitness()
+        {
+            Generation = Generation.OrderByDescending(a => a.Fitness).ToList();
+            //KnownAlgorithms = KnownAlgorithms.OrderByDescending(a => a.Fitness).ToList();
+
+            float genMaxValue = Generation[0].Fitness;
+            float genMinValue = Generation[Generation.Count - 1].Fitness;
+            float knoMaxValue = KnownAlgorithms.OrderByDescending(a => a.Fitness).ToList()[0].Fitness;
+            float knoMinValue = LowestKnownAlgorithmFitness;
+
+            float maxValue;
+            float minValue;
+
+            if (genMaxValue > knoMaxValue)
+            {
+                maxValue = genMaxValue;
+            }
+            else
+            {
+                maxValue = knoMaxValue;
+            }
+
+            if (genMinValue < knoMinValue)
+            {
+                minValue = genMinValue;
+            }
+            else
+            {
+                minValue = knoMinValue;
+            }
+
+            foreach (Node node in Generation)
+            {
+                node.Fitness = ((node.Fitness - minValue) / (maxValue - minValue)) * 100;
+            }
+
+            foreach (Node node in KnownAlgorithms)
+            {
+                node.Fitness = ((node.Fitness - minValue) / (maxValue - minValue)) * 100;
+            }
+        }
+
         //Overriden TreeGP method which gets the population fitness
         public override void GetPopulationFitness()
         {
             GetBPPopulationFitness();
             MakeAllFitnessPositive();
+            NormaliseFitness();
+            RoundFitness();
         }
     }
 

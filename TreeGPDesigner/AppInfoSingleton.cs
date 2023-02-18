@@ -124,14 +124,6 @@ namespace TreeGPDesigner
             }
         }
 
-        /*public static Window LoadingWindow;
-
-        public static Task LoadTask;
-
-        public static CancellationTokenSource LoadCancellationTokenSource = new();
-
-        public static CancellationToken LoadCancellationToken = new();*/
-
         //Current view model
         public event Action CurrentViewModelChanged;
         private object? currentViewModel;
