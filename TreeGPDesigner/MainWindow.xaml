@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:TreeGPDesigner.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="540" Width="960"
+        WindowStartupLocation="CenterScreen"
         Background="{Binding Background}">
 
     <!--Whole Application Content Control-->
